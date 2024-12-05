@@ -3,7 +3,6 @@ import chromadb
 from chromadb import Documents, EmbeddingFunction, Embeddings
 
 
-
 class EmbeddingFunc(EmbeddingFunction):
     def __init__(self, model_name):
         super().__init__()
@@ -24,7 +23,7 @@ class Retriever:
         self.model_name = model_name
         self.chroma_dir = chroma_dir
         self.model= None
-        self.client = None
+        self.client= None
         self.collection = None
 
     def load_model(self):

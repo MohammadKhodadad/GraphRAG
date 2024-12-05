@@ -2,9 +2,11 @@ if __name__ == "__main__":
     
     from llm import OpenAIQA
     from retriever import Retriever
+    from graph_reranker import GraphReranker
 else:
     from .llm import OpenAIQA
     from .retriever import Retriever
+    from .graph_reranker import GraphReranker
 
 
 
@@ -19,8 +21,9 @@ class Pipeline:
         """
         self.openai_qa = OpenAIQA(api_key)
         self.retriever = Retriever()
+        self.graph_reranker = GraphReranker(api_key)
 
-    def process_query(self, query, top_k=5):
+    def process_query(self, query, top_k=5,max_iterations=5,iterative_retrival_k=2):
         """
         Process the query by retrieving relevant documents and getting an answer.
 
@@ -33,8 +36,15 @@ class Pipeline:
         """
         # Retrieve relevant documents
         retrieved_docs = self.retriever.similarity_search(query, top_k=top_k)
-        print(retrieved_docs)
+        print(f"Number of Retrieved Docs: {len(retrieved_docs['documents'][0])}")
+        # print(retrieved_docs)
+        if iterative_retrival_k!=0 and max_iterations!=0:
+            relevant_paragraphs = self.graph_reranker.iterative_retrieval(query, retrieved_docs, max_iterations=max_iterations, top_k=2)
+            print(f"Number of Retrieved Paragraphs: {len(relevant_paragraphs)}")
+            print('Paragraphs:\n\n',relevant_paragraphs,'\n\n\n\n')
+        retrieved_docs['reranker']=[relevant_paragraphs]
         # Get the answer using OpenAIQA
+
         answer = self.openai_qa.query(query=query, documents=retrieved_docs)
         return answer
 

@@ -23,11 +23,16 @@ class OpenAIQA:
         """
         if documents:
             # Combine documents into a context string
-            context = "\n\n".join(documents.get("documents", [['']])[0])
+            if 'reranker' in documents.keys():
+                print("Reranker data used")
+                context = "\n\n".join(documents.get("reranker", [['']])[0])
+            else:
+                print("documents data used")
+                context = "\n\n".join(documents.get("documents", [['']])[0])
             augmented_prompt = (
                 f"Context:\n{context}\n\n"
                 f"Question:\n{query}\n\n"
-                "Please provide a detailed and relevant answer based on the above context."
+                "Please provide a detailed and relevant answer based on the above context. Do not use your internal knowledge, just based on the documents."
             )
         else:
             # If no documents are provided, use the query as is
