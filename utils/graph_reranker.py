@@ -9,6 +9,16 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.neighbors import kneighbors_graph
 import numpy as np
 
+#HybridSearch
+#Chemistry Benchmark
+#Chemistry Retrieval
+#GraphReasoning (Chain/Graph/Tree of Thoughts)
+#GraphQuery
+#FutureHouse
+#ChemCrow
+#KnowledgeGraph for NextQuestionGeneration & Retrieval
+#GraphRAG Microsoft
+
 
 class GraphReranker:
     def __init__(self, api_key, model_name: str = 'all-MiniLM-L6-v2',
