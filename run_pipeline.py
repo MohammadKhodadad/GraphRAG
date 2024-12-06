@@ -26,6 +26,6 @@ if __name__ == "__main__":
     # pipeline.retriever.embed_and_store(texts, ids)
 
     # Step 3: Query the Pipeline
-    query = "what's up in medicine?"
+    query = "What foods help with eye dryness?"
     response = pipeline.process_query( query, top_k=10,max_iterations=3,iterative_retrival_k=2,hybrid=True)
     print("Response:", response)
