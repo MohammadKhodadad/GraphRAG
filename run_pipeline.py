@@ -14,10 +14,11 @@ if __name__ == "__main__":
 
     # Step 1: Download Medical Wikipedia Pages
     # documents = wiki_fetch_pages_in_category_recursive_combined('Medicine', max_pages=1000, max_depth=2)
+    # print(len(documents))
     # Step 2: Preprocess and Store Data
     pipeline = Pipeline(api_key)
-    # texts = []
-    # ids = []
+    texts = []
+    ids = []
     # for title, page in documents.items():
     #     texts.append(page['text'])
     #     ids.append(title)
@@ -25,6 +26,6 @@ if __name__ == "__main__":
     # pipeline.retriever.embed_and_store(texts, ids)
 
     # Step 3: Query the Pipeline
-    query = "What are the drugs that I should consume when I have high blood pressure, and how I should use them?"
-    response = pipeline.process_query( query, top_k=10,max_iterations=3,iterative_retrival_k=2)
+    query = "what's up in medicine?"
+    response = pipeline.process_query( query, top_k=10,max_iterations=3,iterative_retrival_k=2,hybrid=True)
     print("Response:", response)

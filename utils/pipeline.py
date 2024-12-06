@@ -23,7 +23,7 @@ class Pipeline:
         self.retriever = Retriever()
         self.graph_reranker = GraphReranker(api_key)
 
-    def process_query(self, query, top_k=5,max_iterations=5,iterative_retrival_k=2):
+    def process_query(self, query, top_k=5,max_iterations=5,iterative_retrival_k=2, hybrid=True):
         """
         Process the query by retrieving relevant documents and getting an answer.
 
@@ -35,7 +35,7 @@ class Pipeline:
         - str: The answer to the query.
         """
         # Retrieve relevant documents
-        retrieved_docs = self.retriever.similarity_search(query, top_k=top_k)
+        retrieved_docs = self.retriever.similarity_search(query, top_k=top_k,hybrid=hybrid)
         print(f"Number of Retrieved Docs: {len(retrieved_docs['documents'][0])}")
         # print(retrieved_docs)
         if iterative_retrival_k!=0 and max_iterations!=0:
