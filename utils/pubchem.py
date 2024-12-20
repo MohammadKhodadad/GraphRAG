@@ -3,7 +3,7 @@ import tqdm
 import json
 from collections import deque
 import pandas as pd
-
+import time
 
 # Function to fetch and parse the JSON file
 def fetch_compound_json(cid):
@@ -64,7 +64,8 @@ def download_and_store_pubchem(address='pubchem_dump.csv'):
     edges=[]
     names=[]
     for i in tqdm.tqdm(range(50000)):
-
+        if i%10==0:
+            time.sleep(1)
         edge,text,name = fetch_compound(i)
         cids.append(i)
         texts.append(text)
