@@ -5,7 +5,7 @@ import openai
 import dotenv
 
 from utils.pipeline import Pipeline
-from utils.wikipedia import wiki_fetch_pages_in_category_recursive_combined
+from data_loader.utils.wikipedia import wiki_fetch_pages_in_category_recursive_combined
 
 if __name__ == "__main__":
     import dotenv

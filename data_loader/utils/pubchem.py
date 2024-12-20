@@ -4,6 +4,7 @@ import json
 from collections import deque
 import pandas as pd
 import time
+import os
 
 # Function to fetch and parse the JSON file
 import requests
@@ -73,9 +74,18 @@ def download_and_store_pubchem(address='pubchem_dump.csv'):
     texts=[]
     edges=[]
     names=[]
-    for i in tqdm.tqdm(range(1,50001)):
+    start=1
+    if os.path.exists(address):
+        data=pd.read_csv(address)
+        cids=list(data.cid)
+        texts=list(data.text)
+        edges=list(data.edge)
+        names=list(data.name)
+        start=cids[-1]+1
+    print(f"starting from {start}")
+    for i in tqdm.tqdm(range(start,50001)):
         if i%10==0:
-            time.sleep(1)
+            time.sleep(0.1)
         edge,text,name = fetch_compound(i)
         cids.append(i)
         texts.append(text)
@@ -83,3 +93,6 @@ def download_and_store_pubchem(address='pubchem_dump.csv'):
         names.append(name)
         if i%1000==0 and i>0:
             pd.DataFrame({'text':texts,'edge':edges,'cid':cids,'name':names}).to_csv(address)
+
+if __name__=='__main__':
+    fetch_compound(22)
