@@ -19,7 +19,6 @@ import numpy as np
 #KnowledgeGraph for NextQuestionGeneration & Retrieval
 #GraphRAG Microsoft
 
-
 class GraphReranker:
     def __init__(self, api_key, model_name: str = 'all-MiniLM-L6-v2',
                  cross_encoder_model_name: str = "cross-encoder/ms-marco-MiniLM-L-12-v2"):
