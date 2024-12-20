@@ -73,7 +73,7 @@ def download_and_store_pubchem(address='pubchem_dump.csv'):
     texts=[]
     edges=[]
     names=[]
-    for i in tqdm.tqdm(range(50000)):
+    for i in tqdm.tqdm(range(1,50001)):
         if i%10==0:
             time.sleep(1)
         edge,text,name = fetch_compound(i)
