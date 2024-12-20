@@ -6,16 +6,26 @@ import pandas as pd
 import time
 
 # Function to fetch and parse the JSON file
+import requests
+import time
+
 def fetch_compound_json(cid):
     url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/{cid}/JSON/"
-    try:
-        response = requests.get(url)
-        response.raise_for_status()  # Raise an HTTPError for bad responses (4xx and 5xx)
-        data = response.json()  # Parse the JSON data
-        return data
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching the JSON file: {e}")
-        return {}
+    retries = 3  # Number of retries
+    delay = 2  # Delay in seconds between retries
+
+    for attempt in range(retries):
+        try:
+            response = requests.get(url)
+            response.raise_for_status()  # Raise an HTTPError for bad responses (4xx and 5xx)
+            data = response.json()  # Parse the JSON data
+            return data
+        except requests.exceptions.RequestException as e:
+            print(f"Attempt {attempt + 1} failed: {e}")
+            time.sleep(delay)
+    
+    print("All retry attempts failed.")
+    return {}
 
 
 
