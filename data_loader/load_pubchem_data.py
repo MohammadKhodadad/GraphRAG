@@ -24,10 +24,6 @@ def process_row(row):
 if __name__ == "__main__":
     # # download_and_store_pubchem('data/pubchem_dump.csv')
     data = pd.read_csv('data/pubchem_dump.csv')
-
-    # Prepare a list to store results
-    wiki_text = [None] * len(data)
-
     # Use ThreadPoolExecutor for multithreading
     with ThreadPoolExecutor() as executor:
         # Submit tasks to the executor

@@ -28,24 +28,29 @@ def fetch_compound_json(cid):
     print("All retry attempts failed.")
     return {}
 
-
-
-def extract_edges_and_text(json_data,cid=None):
-    text=""
-    edges=[]
-    sections=json_data.get('Record',{}).get('Section',{})
+def extract_name(json_data):
     name=json_data.get('Record',{}).get('RecordTitle',None)
+    return name
+
+def extract_name_and_identifier(sections):
     temp=[section for section in sections if section.get("TOCHeading",None)=='Names and Identifiers']
     if len(temp)>0:
         names_and_identifiers=temp[0].get('Section',{})
     else:
         names_and_identifiers={}
+    return names_and_identifiers
+
+def extract_record_description(names_and_identifiers):
     temp=[section for section in names_and_identifiers if section.get("TOCHeading",None)=='Record Description']
     if len(temp)>0:
         record_description=temp[0].get('Information',[])
     else:
         record_description=[]
+    return record_description
 
+def extract_description(record_description,cid=None):
+    text=""
+    mentioned_entities=[]
     for record in record_description:
         value=record.get('Value',{})
         string_with_markup=value.get('StringWithMarkup',[])
@@ -60,39 +65,97 @@ def extract_edges_and_text(json_data,cid=None):
                     if 'CID-' in extra:
                         extra=extra.replace('CID-','')
                         if (extra!=str(cid)) or (not cid):
-                            edges.append(extra)
-    return list(set(edges)),text,name
+                            mentioned_entities.append(extra)
+    return text,list(set(mentioned_entities))
+def extract_safety(sections):
+    safety=[]
+    # print( [section.get("TOCHeading",'None') for section in sections])
+    temp=[section for section in sections if section.get("TOCHeading",None)=='Chemical Safety']
+    if len(temp)>0:
+        chemical_safety=temp[0]
+    else:
+        chemical_safety={}
+    chemical_safety_info=chemical_safety.get('Information',[])
+    if len(chemical_safety_info)>0:
+        string_with_markup=chemical_safety_info[0].get('Value',{}).get('StringWithMarkup',[])
+    else:
+        string_with_markup=[]
+    for string_with_markup_case in string_with_markup:
+        markup=string_with_markup_case.get('Markup',[])
+        for markup_item in markup:
+            extra=markup_item.get('Extra','')
+            if extra:
+                safety.append(extra)
+    return ' and '.join(safety)
+
+def extract_smiles(names_and_identifiers):
+    temp=[section for section in names_and_identifiers if section.get("TOCHeading",None)=='Computed Descriptors']
+    if len(temp)>0:
+        computed_discriptors=temp[0].get('Section',[])
+    else:
+        computed_discriptors=[]
+    temp=[section for section in computed_discriptors if section.get("TOCHeading",None)=='SMILES']
+    if len(temp)>0:
+        smiles=temp[0].get('Information',[])
+    else:
+        smiles=[]
+    if len(smiles)>0:
+        string_with_markup= smiles[0].get('Value',{}).get('StringWithMarkup',[])
+    else:
+        string_with_markup=[]
+    if len(string_with_markup)>0:
+        smiles_string=string_with_markup[0].get('String','')
+    else:
+        smiles_string=''
+    return smiles_string
+
+    
+def extract_properties(sections):
+    safety = extract_safety(sections)
+    names_and_identifiers = extract_name_and_identifier(sections)
+    smiles = extract_smiles(names_and_identifiers)
+    return safety,smiles
+
+def extract_pubchem_data(json_data,cid=None):
+    name = extract_name(json_data)
+    sections=json_data.get('Record',{}).get('Section',{})
+    names_and_identifiers = extract_name_and_identifier(sections)
+    record_description = extract_record_description(names_and_identifiers)
+    text,mentioned_entities=extract_description(record_description,cid)
+    safety,smiles = extract_properties(sections)
+    return mentioned_entities,text,name, safety, smiles
+
 
 
 def fetch_compound(cid):
     json_data = fetch_compound_json(cid)
-    edges,text,name = extract_edges_and_text(json_data,cid)
-    return edges,text,name            
+    mentioned_entities,text,name, safety, smiles  = extract_pubchem_data(json_data,cid)
+    return mentioned_entities,text,name, safety, smiles           
 
 def download_and_store_pubchem(address='pubchem_dump.csv'):
     cids=[]
     texts=[]
-    edges=[]
+    mentioned_entities=[]
     names=[]
     start=1
     if os.path.exists(address):
         data=pd.read_csv(address)
         cids=list(data.cid)
         texts=list(data.text)
-        edges=list(data.edge)
+        mentioned_entities=list(data.mentioned_entity)
         names=list(data.name)
         start=cids[-1]+1
     print(f"starting from {start}")
     for i in tqdm.tqdm(range(start,50001)):
         if i%10==0:
             time.sleep(0.1)
-        edge,text,name = fetch_compound(i)
+        mentioned_entity,text,name = fetch_compound(i)
         cids.append(i)
         texts.append(text)
-        edges.append(json.dumps(edge))
+        mentioned_entities.append(json.dumps(mentioned_entity))
         names.append(name)
         if i%1000==0 and i>0:
-            pd.DataFrame({'text':texts,'edge':edges,'cid':cids,'name':names}).to_csv(address)
+            pd.DataFrame({'text':texts,'mentioned_entity':mentioned_entities,'cid':cids,'name':names}).to_csv(address)
 
 if __name__=='__main__':
-    fetch_compound(22)
+    print(fetch_compound(50))
