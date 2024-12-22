@@ -109,12 +109,64 @@ def extract_smiles(names_and_identifiers):
         smiles_string=''
     return smiles_string
 
-    
+def extract_formula(names_and_identifiers):
+    temp=[section for section in names_and_identifiers if section.get("TOCHeading",None)=="Molecular Formula"]
+    if len(temp)>0:
+        molecular_formula=temp[0].get('Information',[])
+    else:
+        molecular_formula=[]
+    if len(molecular_formula)>0:
+        string_with_markup=molecular_formula[0].get('Value',{}).get('StringWithMarkup',[])
+    else:
+        string_with_markup=[]
+    if len(string_with_markup)>0:
+        formula_string=string_with_markup[0].get('String','')
+    else:
+        formula_string=''
+    return formula_string
+
+def chemical_properties(sections):
+    chem_prot=''
+    temp=[section for section in sections if section.get("TOCHeading",None)=='Chemical and Physical Properties']
+    if len(temp)>0:
+        chemical_and_physical_properties=temp[0].get('Section',[])
+    else:
+        chemical_and_physical_properties=[]
+    temp=[section for section in chemical_and_physical_properties if section.get("TOCHeading",None)=='Computed Properties']
+    if len(temp)>0:
+        computed_properties=temp[0].get('Section',[])
+    else:
+        computed_properties=[]
+    for prop in computed_properties:
+        chem_prot+=(prop.get('TOCHeading','Unknown')+': ')
+        information=prop.get("Information",[])
+        if len(information)>0:
+            value=information[0].get('Value',{})
+            number=value.get('Number',[''])
+            if len(number)>0:
+                chem_prot+=str(number[0])
+            string_with_markup = value.get('StringWithMarkup',[])
+            if len(string_with_markup)>0:
+                number_string=string_with_markup[0].get('String','')
+                chem_prot+=(number_string+' ')
+                chem_prot+=value.get("Unit",'')
+        chem_prot+='\n'
+    return chem_prot
+            
+
+        
 def extract_properties(sections):
     safety = extract_safety(sections)
     names_and_identifiers = extract_name_and_identifier(sections)
     smiles = extract_smiles(names_and_identifiers)
-    return safety,smiles
+    forumla=extract_formula(names_and_identifiers)
+    chem_properties=chemical_properties(sections)
+    properties=f'safety: {safety}\n'
+    properties+=f'smiles: {smiles}\n'
+    properties+=f'forumla: {forumla}\n'
+    properties+=f'chem_properties: {chem_properties}\n'
+
+    return properties
 
 def extract_pubchem_data(json_data,cid=None):
     name = extract_name(json_data)
@@ -122,40 +174,43 @@ def extract_pubchem_data(json_data,cid=None):
     names_and_identifiers = extract_name_and_identifier(sections)
     record_description = extract_record_description(names_and_identifiers)
     text,mentioned_entities=extract_description(record_description,cid)
-    safety,smiles = extract_properties(sections)
-    return mentioned_entities,text,name, safety, smiles
+    properties = extract_properties(sections)
+    return mentioned_entities,text,name, properties
 
 
 
 def fetch_compound(cid):
     json_data = fetch_compound_json(cid)
-    mentioned_entities,text,name, safety, smiles  = extract_pubchem_data(json_data,cid)
-    return mentioned_entities,text,name, safety, smiles           
+    mentioned_entities,text,name, properties  = extract_pubchem_data(json_data,cid)
+    return mentioned_entities,text,name, properties          
 
 def download_and_store_pubchem(address='pubchem_dump.csv'):
     cids=[]
     texts=[]
     mentioned_entities=[]
     names=[]
+    properties=[]
     start=1
     if os.path.exists(address):
         data=pd.read_csv(address)
         cids=list(data.cid)
         texts=list(data.text)
-        mentioned_entities=list(data.mentioned_entity)
+        mentioned_entities=list(data.mentioned_entities)
         names=list(data.name)
+        properties=list(data.properties)
         start=cids[-1]+1
     print(f"starting from {start}")
     for i in tqdm.tqdm(range(start,50001)):
         if i%10==0:
             time.sleep(0.1)
-        mentioned_entity,text,name = fetch_compound(i)
+        mentioned_entity,text,name,prop = fetch_compound(i)
         cids.append(i)
         texts.append(text)
         mentioned_entities.append(json.dumps(mentioned_entity))
         names.append(name)
+        properties.append(prop)
         if i%1000==0 and i>0:
-            pd.DataFrame({'text':texts,'mentioned_entity':mentioned_entities,'cid':cids,'name':names}).to_csv(address)
+            pd.DataFrame({'text':texts,'mentioned_entities':mentioned_entities,'cid':cids,'name':names,'properties':properties}).to_csv(address)
 
 if __name__=='__main__':
-    print(fetch_compound(50))
+    print(fetch_compound(51)[3])

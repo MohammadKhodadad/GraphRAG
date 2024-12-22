@@ -22,7 +22,7 @@ def process_row(row):
 
 # Main script
 if __name__ == "__main__":
-    # # download_and_store_pubchem('data/pubchem_dump.csv')
+    # download_and_store_pubchem('data/pubchem_dump.csv')
     data = pd.read_csv('data/pubchem_dump.csv')
     # Use ThreadPoolExecutor for multithreading
     with ThreadPoolExecutor() as executor:
@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
     # Add the fetched text back to the DataFrame
     data['wiki_text'] = results
-    data['combined_text'] = "wikipedia: " + data['wiki_text'] + '\n pubchem:' + data['text']
+    data['combined_text'] = "wikipedia: " + data['wiki_text'] + '\n pubchem:' + data['text']+ '\n'+data['properties']
 
     # Save the DataFrame to a new CSV file
     data.to_csv('data/pubchem_dump_with_wiki_text.csv', index=False)
