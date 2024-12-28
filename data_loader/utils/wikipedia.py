@@ -1,5 +1,7 @@
 import wikipediaapi
-
+from concurrent.futures import ThreadPoolExecutor
+import time
+import tqdm
 # Initialize Wikipedia API
 wiki_wiki = wikipediaapi.Wikipedia("Anonymous")
 
@@ -80,7 +82,27 @@ def wiki_fetch_pages_in_category_recursive_combined(category_name, max_pages=100
     
     return documents
 
+def wiki_process_row(row):
+    for i in range(5):
+        try:
+            name = row['name']
+            if wiki_exists(name):
+                combined_text = wiki_fetch_combined_text(name)
+            else:
+                combined_text = ''
+            return combined_text
+        except Exception as e:
+            print(f'Error {e}. Lets sleep for {i}th time')
+            time.sleep(5)
+    combined_text = ''
+    return combined_text
 
+def add_wiki_data(data):
+    with ThreadPoolExecutor() as executor:
+        results = list(tqdm.tqdm(executor.map(wiki_process_row, data.to_dict('records')), total=len(data)))
+    data['wiki_text'] = results
+    data['combined_text'] = "wikipedia: " + data['wiki_text'].fillna('') + '\n pubchem:' + data['text'].fillna('')+ '\n'+data['properties']
+    return data
 # Example Usage
 if __name__ == "__main__":
     # Specify the category to fetch

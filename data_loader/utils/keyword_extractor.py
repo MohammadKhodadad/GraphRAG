@@ -35,26 +35,26 @@ def keyword_document_mapping(documents, terms, num_threads=16):
 
     return keyword_to_documents
 
-# def keyword_document_mapping(documents, terms):
-#     # Sort terms by length to prioritize longer terms
-#     sorted_terms = sorted(terms, key=len, reverse=True)
+def keyword_document_mapping_old(documents, terms):
+    # Sort terms by length to prioritize longer terms
+    sorted_terms = sorted(terms, key=len, reverse=True)
     
-#     # Create a regex pattern for exact matching
-#     pattern = r'\b(' + '|'.join(re.escape(term) for term in sorted_terms) + r')\b'
+    # Create a regex pattern for exact matching
+    pattern = r'\b(' + '|'.join(re.escape(term) for term in sorted_terms) + r')\b'
     
-#     # Initialize the dictionary to store results
-#     keyword_to_documents = {term: [] for term in terms}
+    # Initialize the dictionary to store results
+    keyword_to_documents = {term: [] for term in terms}
     
-#     # Process each document
-#     for idx, doc in tqdm.tqdm(enumerate(documents)):
-#         matches = re.findall(pattern, doc, re.IGNORECASE)
-#         # Normalize matches to original case in `terms`
-#         matched_terms = set(term.lower() for term in matches)
-#         for term in terms:
-#             if term.lower() in matched_terms:
-#                 keyword_to_documents[term].append(idx)  # Use document index (1-based)
+    # Process each document
+    for idx, doc in tqdm.tqdm(enumerate(documents)):
+        matches = re.findall(pattern, doc, re.IGNORECASE)
+        # Normalize matches to original case in `terms`
+        matched_terms = set(term.lower() for term in matches)
+        for term in terms:
+            if term.lower() in matched_terms:
+                keyword_to_documents[term].append(idx)  # Use document index (1-based)
     
-#     return keyword_to_documents
+    return keyword_to_documents
 
 if __name__=='__main__':
     # List of keywords
