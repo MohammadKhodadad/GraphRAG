@@ -83,11 +83,12 @@ def pubchem_generate_2_hop_questions(data,keywords,count=3,api_key=None):
 
     for number in random_numbers:
         indices=keywords_with_two_elements[keys_[number]]
-        row1=data.iloc[indices[0]]
-        row2=data.iloc[indices[1]]
+        selected_indices=random.sample(range(0, len(indices)), 2)
+        row1=data.iloc[indices[selected_indices[0]]]
+        row2=data.iloc[indices[selected_indices[1]]]
         qa={'source':row1['name'],'source_cid':str(row1['cid']),'bridge':row2['name'],
             'bridge_cid':str(row2['cid']),'text1':row1['combined_text'],'text2':row2['combined_text'],
-            'ind1':str(indices[0]),'ind2':str(indices[1])}
+            'ind1':str(indices[selected_indices[0]]),'ind2':str(indices[selected_indices[1]])}
         try:
             qa=pubchem_generate_2_hop_question(qa,client)
             qas.append(qa)

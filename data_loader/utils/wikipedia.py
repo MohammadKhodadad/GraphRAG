@@ -101,7 +101,8 @@ def add_wiki_data(data):
     with ThreadPoolExecutor() as executor:
         results = list(tqdm.tqdm(executor.map(wiki_process_row, data.to_dict('records')), total=len(data)))
     data['wiki_text'] = results
-    data['combined_text'] = "wikipedia: " + data['wiki_text'].fillna('') + '\n pubchem:' + data['text'].fillna('')+ '\n'+data['properties']
+    data['name']=data['name'].fillna('nameless!!')
+    data['combined_text'] = "Title: "+data['name']+"\nwikipedia: " + data['wiki_text'].fillna('') + '\n pubchem:' + data['text'].fillna('')+ '\n'+data['properties']
     return data
 # Example Usage
 if __name__ == "__main__":
