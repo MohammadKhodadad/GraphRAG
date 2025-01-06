@@ -5,7 +5,8 @@ from bert_score import score
 from transformers import AutoTokenizer, AutoModel
 import torch
 from sklearn.metrics.pairwise import cosine_similarity
-
+import pandas as pd
+import tqdm
 # Download NLTK resources
 nltk.download("punkt")
 
@@ -74,11 +75,20 @@ def evaluate_similarity(reference, prediction):
 
     return results
 
+def bulk_evaluation(list_of_reference,list_of_prediction):
+    metrics=[]
+    if len(list_of_prediction)!=len(list_of_reference):
+        raise Exception('Lengths of references and predictions not equal')
+    for ref,pred in tqdm.tqdm(zip(list_of_reference,list_of_prediction)):
+        metrics.append(evaluate_similarity(ref,pred))
+    return pd.DataFrame(metrics)
+
 # Example usage
 if __name__ == "__main__":
-    reference_text = "The Eiffel Tower is one of the most famous landmarks in the world, located in Paris, France."
-    prediction_text = "The Eiffel Tower, located in Paris, is a well-known global landmark."
-
-    metrics = evaluate_similarity(reference_text, prediction_text)
-    for metric, value in metrics.items():
-        print(f"{metric}: {value:.4f}")
+    reference_text =[ "The Eiffel Tower is one of the most famous landmarks in the world, located in Paris, France."]
+    prediction_text = ["The Eiffel Tower, located in Paris, is a well-known global landmark."]
+    metrics=bulk_evaluation(reference_text,prediction_text)
+    print(metrics.mean(axis=0))
+    # metrics = evaluate_similarity(reference_text, prediction_text)
+    # for metric, value in metrics.items():
+    #     print(f"{metric}: {value:.4f}")
