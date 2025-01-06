@@ -81,14 +81,14 @@ def bulk_evaluation(list_of_reference,list_of_prediction):
         raise Exception('Lengths of references and predictions not equal')
     for ref,pred in tqdm.tqdm(zip(list_of_reference,list_of_prediction)):
         metrics.append(evaluate_similarity(ref,pred))
-    return pd.DataFrame(metrics)
+    return pd.DataFrame(metrics).mean(axis=0)
 
 # Example usage
 if __name__ == "__main__":
-    reference_text =[ "The Eiffel Tower is one of the most famous landmarks in the world, located in Paris, France."]
-    prediction_text = ["The Eiffel Tower, located in Paris, is a well-known global landmark."]
+    reference_text =[ "The Eiffel Tower is one of the most famous landmarks in the world, located in Paris, France.",'test2','test3']
+    prediction_text = ["The Eiffel Tower, located in Paris, is a well-known global landmark.",'test2','test3']
     metrics=bulk_evaluation(reference_text,prediction_text)
-    print(metrics.mean(axis=0))
+    print(metrics)
     # metrics = evaluate_similarity(reference_text, prediction_text)
     # for metric, value in metrics.items():
     #     print(f"{metric}: {value:.4f}")
