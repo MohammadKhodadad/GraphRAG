@@ -15,7 +15,7 @@ def init_processes():
     """Initializer function for each process."""
     global pipeline, api_key
     # Load environment variables and initialize the pipeline
-    dotenv.load_dotenv()
+    
     api_key = os.environ.get("OPENAI_API_KEY")
     pipeline = Pipeline(api_key)
     pipeline.retriever.load_model()
@@ -35,6 +35,8 @@ def process_query(args):
     return index, answer, our_response, gpt_response
 
 def main():
+    dotenv.load_dotenv()
+    print(bulk_evaluation(['references'], ['test'],os.environ.get("OPENAI_API_KEY")))
     # Load Q&A data
     with open('data_loader/data/qas.json', 'r', encoding='utf-8') as f:
         qas = json.load(f)
@@ -64,9 +66,9 @@ def main():
 
     # Evaluate the answers
     print("Ours:")
-    print(bulk_evaluation(references, our_answers))
+    print(bulk_evaluation(references, our_answers,os.environ.get("OPENAI_API_KEY")))
     print("GPT's:")
-    print(bulk_evaluation(references, gpt_answers))
+    print(bulk_evaluation(references, gpt_answers,os.environ.get("OPENAI_API_KEY")))
 
 if __name__ == '__main__':
     main()
