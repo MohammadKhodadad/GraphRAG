@@ -3,7 +3,7 @@ import openai
 from openai import OpenAI
 # Once there was a boy, who saw his father smiling at him just before he passed away. He always sorrowed about that moment, until he saw his son standing by his deathbed.
 # He just then realized, His father was also thinking about his own father. That was when he too smiled. 
-def gpt4o_query(question,api_key):
+def gpt_query(question,api_key,model='gpt-4o'):
     client = OpenAI(api_key=api_key)
     response = client.chat.completions.create(
                 messages=[
