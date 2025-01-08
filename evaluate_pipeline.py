@@ -52,7 +52,7 @@ def main():
     num_processes = min(4, multiprocessing.cpu_count())
 
     # Prepare arguments for each query
-    args = [(i, qas[i]) for i in range(len(qas))]  # Adjust range as needed
+    args = [(i, qas[i]) for i in range(2)]#len(qas))]  # Adjust range as needed
 
     # Initialize the pool with the initializer function
     with multiprocessing.Pool(processes=num_processes, initializer=init_processes) as pool:
@@ -72,7 +72,7 @@ def main():
     answers={}
     answers['ours'] = bulk_evaluation(references, our_answers,os.environ.get("OPENAI_API_KEY"))
     answers['gpt4o'] = bulk_evaluation(references, gpt4o_answers,os.environ.get("OPENAI_API_KEY"))
-    answers['gpto1'] = bulk_evaluation(references, gpto1_response,os.environ.get("OPENAI_API_KEY"))
+    answers['gpto1'] = bulk_evaluation(references, gpto1_answers,os.environ.get("OPENAI_API_KEY"))
     print(answers)
 if __name__ == '__main__':
     main()

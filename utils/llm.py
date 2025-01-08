@@ -12,7 +12,7 @@ def gpt_query(question,api_key,model='gpt-4o'):
                         "content": f"Respond with the answer of the following question in one paragraph\nQuestion: {question}",
                     }
                 ],
-                model="gpt-4o",
+                model=model,
             )
     return response.choices[0].message.content
 
