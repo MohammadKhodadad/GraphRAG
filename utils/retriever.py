@@ -9,7 +9,8 @@ from whoosh.scoring import BM25F
 from whoosh.query import Or, Term
 import os
 import re
-import spacy
+# import spacy
+from transformers import pipeline
 
 class EmbeddingFunc(EmbeddingFunction):
     def __init__(self, model_name):
@@ -35,7 +36,7 @@ class Retriever:
         self.client= None
         self.collection = None
         self.whoosh_index = None
-        self.nlp = spacy.load("en_core_web_sm")
+        self.ner_pipeline = pipeline("ner", model="dbmdz/bert-large-cased-finetuned-conll03-english")
 
     def load_model(self):
         """
@@ -76,14 +77,29 @@ class Retriever:
         writer.commit()
 
 
-    def extract_entities(self, query): # We can update this function to make it better.
-        """Use spaCy to extract entities from the query."""
-        clean_query = re.sub(r'[^\w\s]', '', query.lower())
-        doc = self.nlp(clean_query)
-        # Extract named entities or fall back to noun tokens if no entities found
-        entities = [ent.text.lower() for ent in doc.ents]
+    # def extract_entities(self, query): # We can update this function to make it better.
+    #     """Use spaCy to extract entities from the query."""
+    #     clean_query = re.sub(r'[^\w\s]', '', query.lower())
+    #     doc = self.nlp(clean_query)
+    #     # Extract named entities or fall back to noun tokens if no entities found
+    #     entities = [ent.text.lower() for ent in doc.ents]
+    #     if not entities:
+    #         entities = [token.text.lower() for token in doc if token.is_alpha and not token.is_stop]
+    #     return entities
+
+    def extract_entities(self, query):
+        """Use a transformer model to extract entities from the query."""
+        # Clean the query by removing punctuation and converting to lowercase
+        clean_query = re.sub(r'[^\w\s]', '', query)
+        
+        # Use the NER pipeline to extract entities
+        ner_results = self.ner_pipeline(clean_query)
+        
+        # Extract entities or fall back to tokenized words if no entities found
+        entities = [result['word'].lower() for result in ner_results if result['entity'].startswith("B-")]
         if not entities:
-            entities = [token.text.lower() for token in doc if token.is_alpha and not token.is_stop]
+            entities = [word.lower() for word in clean_query.split() if word.isalpha()]
+        
         return entities
     
     def similarity_search(self, query: str, top_k: int = 5, hybrid: bool=True):
@@ -104,7 +120,7 @@ class Retriever:
             with self.whoosh_index.searcher(weighting=BM25F()) as searcher:
                 entities = self.extract_entities(query)
                 whoosh_query = Or([Term("content", entity) for entity in entities])
-                print(whoosh_query)
+                print('WHOOSH QUERY: ',whoosh_query)
                 results_lexical = searcher.search(whoosh_query, limit=top_k)
                 results_lexical = [(hit["id"], hit["content"], hit.score) for hit in results_lexical]
             # print(results['documents'][0])
@@ -130,9 +146,9 @@ if __name__ == "__main__":
     ids = ["doc11", "doc12", "doc13"]
 
     # Store embeddings
-    retriever.embed_and_store(texts, ids)
+    # retriever.embed_and_store(texts, ids)
 
     # Perform a similarity search
-    query = "doc"
+    query = "first document"
     results = retriever.similarity_search(query, top_k=2)
     print(results)
