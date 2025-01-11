@@ -1,6 +1,7 @@
 import os
 import json
 import dotenv
+import pandas as pd
 import multiprocessing
 from tqdm import tqdm
 from utils.pipeline import Pipeline
@@ -52,7 +53,7 @@ def main():
     num_processes = min(4, multiprocessing.cpu_count())
 
     # Prepare arguments for each query
-    args = [(i, qas[i]) for i in range(2)]#len(qas))]  # Adjust range as needed
+    args = [(i, qas[i]) for i in range(len(qas))]  # Adjust range as needed
 
     # Initialize the pool with the initializer function
     with multiprocessing.Pool(processes=num_processes, initializer=init_processes) as pool:
@@ -74,5 +75,8 @@ def main():
     answers['gpt4o'] = bulk_evaluation(references, gpt4o_answers,os.environ.get("OPENAI_API_KEY"))
     answers['gpto1'] = bulk_evaluation(references, gpto1_answers,os.environ.get("OPENAI_API_KEY"))
     print(answers)
+    with open('results.json', 'w') as f:
+        json.dump(answers, f)
+    pd.DataFrame(answers).to_csv('results.csv')
 if __name__ == '__main__':
     main()
