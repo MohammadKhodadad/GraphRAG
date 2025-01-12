@@ -50,8 +50,8 @@ def main():
 
 
     # Limit the number of processes to prevent resource exhaustion
-    num_processes = min(4, multiprocessing.cpu_count())
-
+    num_processes = min(8, multiprocessing.cpu_count())
+    print(f"{num_processes} processors are available.")
     # Prepare arguments for each query
     args = [(i, qas[i]) for i in range(len(qas))]  # Adjust range as needed
 

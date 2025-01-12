@@ -25,9 +25,9 @@ if __name__ == "__main__":
     # data=pd.read_csv('./data_loader/data/pubchem_dump_with_wiki_text.csv')
     # texts = []
     # ids = []
-    # # for title, page in documents.items():
-    # #     texts.append(page['text'])
-    # #     ids.append(title)
+    # for title, page in documents.items():
+    #     texts.append(page['text'])
+    #     ids.append(title)
     # for index, row in tqdm.tqdm(data.head(10000).iterrows()):
     #     texts.append(row['combined_text'])
     #     ids.append(row['name'])

@@ -45,7 +45,7 @@ class Retriever:
         self.client = chromadb.PersistentClient(path=self.chroma_dir)
         self.model= EmbeddingFunc(self.model_name)
         existing_collections = self.client.list_collections()
-        if not 'docs' in [col.name for col in existing_collections]:
+        if not 'docs' in [col for col in existing_collections]:
             print('"docs" does not exist. So, we will create it.')
             self.collection = self.client.create_collection( name="docs",embedding_function=self.model)
         else:
@@ -138,12 +138,12 @@ if __name__ == "__main__":
     retriever.load_model()
 
     # Example texts to embed and store
-    texts = [
-        "This is the first document.",
-        "This is the second document.",
-        "Here is another piece of text. doc"
-    ]
-    ids = ["doc11", "doc12", "doc13"]
+    # texts = [
+    #     "This is the first document.",
+    #     "This is the second document.",
+    #     "Here is another piece of text. doc"
+    # ]
+    # ids = ["doc11", "doc12", "doc13"]
 
     # Store embeddings
     # retriever.embed_and_store(texts, ids)
