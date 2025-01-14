@@ -14,6 +14,7 @@ import dotenv
 # Download NLTK resources
 nltk.download("punkt")
 
+#Todo: https://docs.confident-ai.com/docs/evaluation-introduction USE THIS
 
 def compute_gpt4o_scientific_similarity(sentence1, sentence2, api_key):
 
