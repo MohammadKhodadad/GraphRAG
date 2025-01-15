@@ -9,6 +9,7 @@ import tqdm
 from utils.pipeline import Pipeline
 from data_loader.utils.wikipedia import wiki_fetch_pages_in_category_recursive_combined
 from data_loader.utils.answer_evaluation import evaluate_similarity
+from utils.llm import gpt_query
 
 if __name__ == "__main__":
     import dotenv
@@ -43,7 +44,27 @@ if __name__ == "__main__":
     answer=qas[10]['answer']
     print(question)
     # query =  "What role does the 2'-glucoside of phloretin, which is converted by hydrolytic enzymes in the small intestine and considered an irritant, play in the inhibition of glucose transport in the body?"
-    response = pipeline.process_query( question, top_k=50,max_iterations=3,iterative_retrival_k=3,hybrid=True)
-    print("Response:", response)
-    print(evaluate_similarity(answer, response))
-    print(evaluate_similarity(answer, "The 2'-glucoside of phloretin, also known as phloridzin, plays a critical role as an inhibitor of glucose transport in the body by targeting sodium-glucose cotransporters (SGLTs), particularly SGLT1 and SGLT2. When ingested, phloridzin is hydrolyzed by enzymes in the small intestine, releasing phloretin, which inhibits glucose uptake in the brush-border membrane of enterocytes. This inhibition reduces glucose absorption from the intestinal lumen into the bloodstream, impacting postprandial glucose levels. Furthermore, in the kidneys, phloridzin or its metabolites can inhibit renal glucose reabsorption by blocking SGLT2 in the proximal tubules, promoting glucosuria (excretion of glucose in urine) and lowering blood glucose levels. Despite its potential therapeutic uses, its irritant properties and poor systemic absorption limit its direct clinical application, although it has inspired the development of modern SGLT2 inhibitors used in managing diabetes.")) #Answer from chatgpt
+    # response = pipeline.process_query( question, top_k=50,max_iterations=3,iterative_retrival_k=3,hybrid=True)
+    # gpt4o_response = gpt_query(question, api_key)
+    # gpt4omini_response = gpt_query(question, api_key, 'gpt-4o-mini')
+    # print("Our Response:", response)
+    # print("GPT40's Response:", gpt4o_response)
+    # print("GPT40-mini's Response:", gpt4omini_response)
+    # print(evaluate_similarity(answer, response))
+    # print(evaluate_similarity(answer, "The 2'-glucoside of phloretin, also known as phloridzin, plays a critical role as an inhibitor of glucose transport in the body by targeting sodium-glucose cotransporters (SGLTs), particularly SGLT1 and SGLT2. When ingested, phloridzin is hydrolyzed by enzymes in the small intestine, releasing phloretin, which inhibits glucose uptake in the brush-border membrane of enterocytes. This inhibition reduces glucose absorption from the intestinal lumen into the bloodstream, impacting postprandial glucose levels. Furthermore, in the kidneys, phloridzin or its metabolites can inhibit renal glucose reabsorption by blocking SGLT2 in the proximal tubules, promoting glucosuria (excretion of glucose in urine) and lowering blood glucose levels. Despite its potential therapeutic uses, its irritant properties and poor systemic absorption limit its direct clinical application, although it has inspired the development of modern SGLT2 inhibitors used in managing diabetes.")) #Answer from chatgpt
+    questions = [
+        "What is the chemical class of the antihypertensive drug that contains the pyridazine pharmacophore and is classified as an irritant?",
+        "What is the role of the compound involved in the biosynthesis of Indole-3-acetic acid (IAA) in Saccharomyces cerevisiae?",
+        "What is the main therapeutic use of the hydrazide derivative of isonicotinic acid, considering it is classified as an irritant?"
+    ]
+    # Process and print responses
+    for question in questions:
+        response = response = pipeline.process_query( question, top_k=50,max_iterations=3,iterative_retrival_k=3,hybrid=True)
+        gpt4o_response = gpt_query(question, api_key, "gpt-4o")
+        gpt4o_mini_response = gpt_query(question, api_key, "gpt-4o-mini")
+
+        print(f"Question: {question}")
+        print(f"GraphRAG Response: {response}")
+        print(f"GPT 4o Response: {gpt4o_response}")
+        print(f"GPT 4o Mini Response: {gpt4o_mini_response}")
+        print("-" * 50)
