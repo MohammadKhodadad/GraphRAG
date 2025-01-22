@@ -157,11 +157,11 @@ class Retriever:
         """
         if not self.model:
             raise ValueError("Model is not loaded. Call `load_model()` first.")
-        
         results = self.collection.query(
             query_texts=[query], # Chroma will embed this for you
             n_results=top_k # how many results to return
         )
+        old_count=len(results['ids'][0])
         if hybrid:
             with self.whoosh_index.searcher(weighting=BM25F()) as searcher:
                 entities = self.extract_entities(query)
@@ -173,17 +173,18 @@ class Retriever:
                 print('WHOOSH QUERY: ',whoosh_query)
                 results_lexical = searcher.search(whoosh_query, limit=top_k)
                 results_lexical = [(hit["id"], hit["content"], hit.score) for hit in results_lexical]
-            print(results_lexical)
+            # print(results_lexical)
             for item in results_lexical:
                 if item[0] not in results['ids'][0]:
                     results['documents'][0].append(item[1])
                     results['ids'][0].append(item[0])
-            print('Whoosh added:',len(results['documents'][0])-len(results['ids'][0]))
-        if not reranker:
-            return results, None
-        else:
+            new_count=len(results['ids'][0])
+            print('Whoosh added:',new_count-old_count, f' Whoosh found {old_count}')
+        if reranker:
             reranker_results= self.cross_encoder_similarity_search(query, results, top_k=reranker_top_k)
-            return results, reranker_results
+            results['reranker']=[res[0] for res in reranker_results]
+            results['reranker_score']=[res[1] for res in reranker_results]
+        return results
 
 
 # Example Usage
@@ -232,6 +233,5 @@ if __name__ == "__main__":
 
     # Perform a similarity search
     query = "acetylsalicylic acid"
-    results, reranker_results = retriever.similarity_search(query, top_k=4)
+    results = retriever.similarity_search(query, top_k=4)
     print(results)
-    print(reranker_results)

@@ -21,19 +21,19 @@ if __name__ == "__main__":
     # print(len(documents))
     # Step 2: Preprocess and Store Data
     pipeline = Pipeline(api_key)
-    pipeline.retriever.load_model()
+    # pipeline.retriever.load_model()
     # LOAD DATA
     # data=pd.read_csv('./data_loader/data/pubchem_dump_with_wiki_text.csv')
     # texts = []
     # ids = []
-    # for title, page in documents.items():
-    #     texts.append(page['text'])
-    #     ids.append(title)
+    # # for title, page in documents.items():
+    # #     texts.append(page['text'])
+    # #     ids.append(title)
     # for index, row in tqdm.tqdm(data.head(10000).iterrows()):
     #     texts.append(row['combined_text'])
     #     ids.append(row['name'])
-    #     if index%1000==0:
-    #         pipeline.retriever.embed_and_store(texts, ids)
+    #     if index%1000==0 or index==9999:
+    #         pipeline.cot.retriever.embed_and_store(texts, ids)
     #         texts=[]
     #         ids=[]
 
@@ -59,7 +59,9 @@ if __name__ == "__main__":
     ]
     # Process and print responses
     for question in questions:
-        response = response = pipeline.process_query( question, top_k=50,max_iterations=3,iterative_retrival_k=3,hybrid=True)
+        response = pipeline.process_query(
+            question, top_k=50, max_iterations=3, hybrid=True,reranker=True,reranker_top_k=2
+        )
         gpt4o_response = gpt_query(question, api_key, "gpt-4o")
         gpt4o_mini_response = gpt_query(question, api_key, "gpt-4o-mini")
 

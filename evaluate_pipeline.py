@@ -19,7 +19,7 @@ def init_processes():
     
     api_key = os.environ.get("OPENAI_API_KEY")
     pipeline = Pipeline(api_key)
-    pipeline.retriever.load_model()
+    # pipeline.retriever.load_model()
 
 def process_query(args):
     """Function to process a single query."""
@@ -29,7 +29,7 @@ def process_query(args):
 
     # Use the global pipeline and API key
     our_response = pipeline.process_query(
-        question, top_k=50, max_iterations=3, iterative_retrival_k=3, hybrid=True
+            question, top_k=50, max_iterations=3, hybrid=True,reranker=True,reranker_top_k=2
     )
     gpt4o_response = gpt_query(question, api_key)
     gpto1_response = gpt_query(question, api_key, 'o1')

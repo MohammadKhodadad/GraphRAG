@@ -13,7 +13,7 @@ if __name__ == '__main__':
     dotenv.load_dotenv()
     api_key = os.environ.get("OPENAI_API_KEY")
     pipeline = Pipeline(api_key)
-    pipeline.retriever.load_model()
+    # pipeline.retriever.load_model()
     # Load Q&A data
     with open('data_loader/data/qas.json', 'r', encoding='utf-8') as f:
         qas = json.load(f)
@@ -30,7 +30,7 @@ if __name__ == '__main__':
 
         # Use the global pipeline and API key
         our_response = pipeline.process_query(
-            question, top_k=50, max_iterations=3, iterative_retrival_k=3, hybrid=True
+            question, top_k=50, max_iterations=3, hybrid=True,reranker=True,reranker_top_k=2
         )
         gpt4o_response = gpt_query(question, api_key)
         gpt4omini_response = gpt_query(question, api_key, 'gpt-4o-mini')
