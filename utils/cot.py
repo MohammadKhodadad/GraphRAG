@@ -78,7 +78,15 @@ class ChainOfThoughts:
 
     def chain_of_thoughts(self, query: str, max_iterations:int=5, top_k: int = 5, hybrid: bool=True, reranker:bool =True, reranker_top_k: int=3):
         pool = []  # Start with an empty pool
-
+        if max_iterations==0: # No Chain basically.
+            retriever_result = self.retriever.similarity_search(query=query, top_k=top_k, hybrid=hybrid, reranker=reranker, reranker_top_k=reranker_top_k)
+            top_paragraphs = retriever_result.get('reranker',
+                                                retriever_result.get('documents',[[]])[0])
+            for paragraph in top_paragraphs:
+                if paragraph not in pool:
+                    pool.append(paragraph)
+            answer = self.query(query,pool)
+            return {'answer':answer, 'retrived_information':pool}
         for _ in range(max_iterations):
             # Ask OpenAI what is needed
             next_question = self.next_question(query, pool)
@@ -86,7 +94,7 @@ class ChainOfThoughts:
             if 'stop!' in next_question.lower():
                 break
             
-            retriever_result = self.retriever.similarity_search(query=query, top_k=top_k, hybrid=hybrid, reranker=reranker, reranker_top_k=reranker_top_k)
+            retriever_result = self.retriever.similarity_search(query=next_question, top_k=top_k, hybrid=hybrid, reranker=reranker, reranker_top_k=reranker_top_k)
             top_paragraphs = retriever_result.get('reranker',
                                                 retriever_result.get('documents',[[]])[0])
 

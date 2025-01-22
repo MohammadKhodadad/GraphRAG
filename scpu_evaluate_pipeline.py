@@ -1,9 +1,10 @@
+
 import os
 import json
 import tqdm
 import dotenv
 import pandas as pd
-import multiprocessing
+
 from utils.pipeline import Pipeline
 from data_loader.utils.answer_evaluation import bulk_evaluation
 from utils.llm import gpt_query
@@ -27,12 +28,12 @@ if __name__ == '__main__':
         qa=qas[i]
         question = qa['question']
         answer = qa['answer']
-
+    
         # Use the global pipeline and API key
         our_response = pipeline.process_query(
             question, top_k=50, max_iterations=3, hybrid=True,reranker=True,reranker_top_k=2
         )
-        gpt4o_response = gpt_query(question, api_key)
+        gpt4o_response = gpt_query(question, api_key,)
         gpt4omini_response = gpt_query(question, api_key, 'gpt-4o-mini')
         references.append(answer)
         our_answers.append(our_response)

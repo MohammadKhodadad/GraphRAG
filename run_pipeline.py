@@ -38,11 +38,11 @@ if __name__ == "__main__":
     #         ids=[]
 
     # Step 3: Query the Pipeline
-    with open('data_loader/data/qas.json', 'r', encoding='utf-8') as f:
-        qas = json.load(f)
-    question=qas[10]['question']
-    answer=qas[10]['answer']
-    print(question)
+    # with open('data_loader/data/qas.json', 'r', encoding='utf-8') as f:
+    #     qas = json.load(f)
+    # question=qas[10]['question']
+    # answer=qas[10]['answer']
+    # print(question)
     # query =  "What role does the 2'-glucoside of phloretin, which is converted by hydrolytic enzymes in the small intestine and considered an irritant, play in the inhibition of glucose transport in the body?"
     # response = pipeline.process_query( question, top_k=50,max_iterations=3,iterative_retrival_k=3,hybrid=True)
     # gpt4o_response = gpt_query(question, api_key)
