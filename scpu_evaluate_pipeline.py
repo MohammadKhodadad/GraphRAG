@@ -31,10 +31,10 @@ if __name__ == '__main__':
     
         # Use the global pipeline and API key
         our_response = pipeline.process_query(
-            question, top_k=50, max_iterations=3, hybrid=True,reranker=True,reranker_top_k=5
+            question, top_k=50, max_iterations=0, hybrid=True,reranker=True,reranker_top_k=15
         )
-        gpt4o_response = gpt_query(question, api_key,)
-        gpt4omini_response = gpt_query(question, api_key, 'gpt-4o-mini')
+        gpt4o_response = ''#gpt_query(question, api_key,)
+        gpt4omini_response = ''# gpt_query(question, api_key, 'gpt-4o-mini')
         references.append(answer)
         our_answers.append(our_response)
         gpt4o_answers.append(gpt4o_response)
