@@ -54,19 +54,19 @@ if __name__ == "__main__":
     # print(evaluate_similarity(answer, "The 2'-glucoside of phloretin, also known as phloridzin, plays a critical role as an inhibitor of glucose transport in the body by targeting sodium-glucose cotransporters (SGLTs), particularly SGLT1 and SGLT2. When ingested, phloridzin is hydrolyzed by enzymes in the small intestine, releasing phloretin, which inhibits glucose uptake in the brush-border membrane of enterocytes. This inhibition reduces glucose absorption from the intestinal lumen into the bloodstream, impacting postprandial glucose levels. Furthermore, in the kidneys, phloridzin or its metabolites can inhibit renal glucose reabsorption by blocking SGLT2 in the proximal tubules, promoting glucosuria (excretion of glucose in urine) and lowering blood glucose levels. Despite its potential therapeutic uses, its irritant properties and poor systemic absorption limit its direct clinical application, although it has inspired the development of modern SGLT2 inhibitors used in managing diabetes.")) #Answer from chatgpt
     questions = [
         "What is the chemical class of the antihypertensive drug that contains the pyridazine pharmacophore and is classified as an irritant?",
-        "What is the role of the compound involved in the biosynthesis of Indole-3-acetic acid (IAA) in Saccharomyces cerevisiae?",
-        "What is the main therapeutic use of the hydrazide derivative of isonicotinic acid, considering it is classified as an irritant?"
+        # "What is the role of the compound involved in the biosynthesis of Indole-3-acetic acid (IAA) in Saccharomyces cerevisiae?",
+        # "What is the main therapeutic use of the hydrazide derivative of isonicotinic acid, considering it is classified as an irritant?"
     ]
     # Process and print responses
     for question in questions:
         response = pipeline.process_query(
-            question, top_k=50, max_iterations=3, hybrid=True,reranker=True,reranker_top_k=2
+            question, top_k=50, max_iterations=0, hybrid=True,reranker=True,reranker_top_k=10
         )
-        gpt4o_response = gpt_query(question, api_key, "gpt-4o")
-        gpt4o_mini_response = gpt_query(question, api_key, "gpt-4o-mini")
+        # gpt4o_response = gpt_query(question, api_key, "gpt-4o")
+        # gpt4o_mini_response = gpt_query(question, api_key, "gpt-4o-mini")
 
         print(f"Question: {question}")
         print(f"GraphRAG Response: {response}")
-        print(f"GPT 4o Response: {gpt4o_response}")
-        print(f"GPT 4o Mini Response: {gpt4o_mini_response}")
+        # print(f"GPT 4o Response: {gpt4o_response}")
+        # print(f"GPT 4o Mini Response: {gpt4o_mini_response}")
         print("-" * 50)

@@ -86,6 +86,7 @@ class ChainOfThoughts:
                 if paragraph not in pool:
                     pool.append(paragraph)
             answer = self.query(query,pool)
+            # print(f'Pool: \n{pool}')
             return {'answer':answer, 'retrived_information':pool}
         for _ in range(max_iterations):
             # Ask OpenAI what is needed
@@ -101,7 +102,9 @@ class ChainOfThoughts:
             for paragraph in top_paragraphs:
                 if paragraph not in pool:
                     pool.append(paragraph)
+        
         answer = self.query(query,pool)
+        # print(f'Pool: \n{pool}')
         return {'answer':answer, 'retrived_information':pool}
 # Example usage
 if __name__ == "__main__":
