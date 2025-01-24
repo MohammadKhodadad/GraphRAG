@@ -4,7 +4,7 @@ import tqdm
 import time
 import os
 
-def fetch_all_papers_from_2024(output_file="chemrxiv_data.json",total=500):
+def fetch_all_papers_from_2024(output_file="chemrxiv_data.json",total=50000):
     """
     Fetch all papers from ChemRxiv starting from 2024 and save them to a JSON file.
 
@@ -19,7 +19,8 @@ def fetch_all_papers_from_2024(output_file="chemrxiv_data.json",total=500):
     params = {
         "limit": 50,                # Max results per page
         "sort": "VIEWS_COUNT_DESC", # Sort by most viewed papers
-        "searchDateFrom": "2024-01-01" # Filter papers from 2024 onwards
+        "searchDateFrom": "2023-06-01", # Filter papers from 2024 onwards
+        # "searchDateTo": "2023-12-01"
     }
 
     all_papers = []
@@ -59,6 +60,30 @@ def fetch_all_papers_from_2024(output_file="chemrxiv_data.json",total=500):
 
     print(f"All data saved to {output_file}. Total papers: {total_fetched}")
     return all_papers
+
+def download_paper(paper,output_folder):
+    time.sleep(0.2)
+    # Get the paper title and URL
+    paper_title = paper.get("item", {}).get("title", "unknown_title").replace("/", "-").replace(" ", "_")  # Sanitize filename
+    paper_url = paper.get("item", {}).get("asset", {}).get("original", {}).get("url")
+    paper_license = paper.get("item", {}).get("license", {}).get("name", "")
+    
+    if not paper_url:
+        print(f"Skipping paper '{paper_title}' (No URL found)")
+    elif ('ND' not in paper_license) and paper_license:
+        # Determine the output file path
+        file_extension = paper_url.split(".")[-1]  # Get file extension from URL
+        file_name = f"{paper_title}.{file_extension}"
+        file_path = os.path.join(output_folder, file_name)
+        
+        # Download the paper
+        response = requests.get(paper_url, stream=True)
+        response.raise_for_status()
+        
+        with open(file_path, "wb") as f:
+            for chunk in response.iter_content(chunk_size=1024):
+                f.write(chunk)
+
 def download_papers(all_papers, output_folder="chemrxiv_papers"):
     """
     Download papers from the given list and save them to the specified output folder.
@@ -74,43 +99,18 @@ def download_papers(all_papers, output_folder="chemrxiv_papers"):
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
     
-    total_papers = len(all_papers)
-    downloaded_count = 0
-    
     for paper in tqdm.tqdm(all_papers):
-        try:
-            time.sleep(0.5)
-            # Get the paper title and URL
-            paper_title = paper.get("item", {}).get("title", "unknown_title").replace("/", "-").replace(" ", "_")  # Sanitize filename
-            paper_url = paper.get("item", {}).get("asset", {}).get("original", {}).get("url")
-            
-            if not paper_url:
-                print(f"Skipping paper '{paper_title}' (No URL found)")
-                continue
-            
-            # Determine the output file path
-            file_extension = paper_url.split(".")[-1]  # Get file extension from URL
-            file_name = f"{paper_title}.{file_extension}"
-            file_path = os.path.join(output_folder, file_name)
-            
-            # Download the paper
-            response = requests.get(paper_url, stream=True)
-            response.raise_for_status()
-            
-            with open(file_path, "wb") as f:
-                for chunk in response.iter_content(chunk_size=1024):
-                    f.write(chunk)
-            
-            downloaded_count += 1
-            print(f"Downloaded: {file_name} ({downloaded_count}/{total_papers})")
-        
-        except requests.exceptions.RequestException as e:
-            print(f"Failed to download {paper_title}: {e}")
-    
-    print(f"Downloaded {downloaded_count}/{total_papers} papers.")
+        for try_n in range(3):
+            try:
+                download_paper(paper,output_folder)
+            except Exception as e:
+                print(f"Failed to download {try_n}. Let's go to sleep for 5 seconds")
+                time.sleep(5)
 
 # Example usage
 if __name__=='__main__':
 
-    all_papers=fetch_all_papers_from_2024(output_file="chemrxiv_data_2024.json")
-    download_papers(all_papers)
+    all_papers=fetch_all_papers_from_2024(output_file="../data/chemrxiv_data_2024.json")
+    with open('../data/chemrxiv_data_2024.json','rb') as f:
+        all_papers=json.load(f)
+    # download_papers(all_papers)

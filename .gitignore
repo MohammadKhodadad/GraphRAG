@@ -2,3 +2,4 @@
 chroma_db/
 whoosh_index/
 *.csv
+chemrxiv_papers/
