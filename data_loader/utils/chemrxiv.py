@@ -1,5 +1,7 @@
 import requests
 import json
+import tqdm
+import time
 import os
 
 def fetch_all_papers_from_2024(output_file="chemrxiv_data.json",total=500):
@@ -57,8 +59,58 @@ def fetch_all_papers_from_2024(output_file="chemrxiv_data.json",total=500):
 
     print(f"All data saved to {output_file}. Total papers: {total_fetched}")
     return all_papers
+def download_papers(all_papers, output_folder="chemrxiv_papers"):
+    """
+    Download papers from the given list and save them to the specified output folder.
+
+    Args:
+        all_papers (list): List of papers with metadata including the download URL.
+        output_folder (str): Folder to save the downloaded papers.
+
+    Returns:
+        None
+    """
+    # Create output folder if it doesn't exist
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+    
+    total_papers = len(all_papers)
+    downloaded_count = 0
+    
+    for paper in tqdm.tqdm(all_papers):
+        try:
+            time.sleep(0.5)
+            # Get the paper title and URL
+            paper_title = paper.get("item", {}).get("title", "unknown_title").replace("/", "-").replace(" ", "_")  # Sanitize filename
+            paper_url = paper.get("item", {}).get("asset", {}).get("original", {}).get("url")
+            
+            if not paper_url:
+                print(f"Skipping paper '{paper_title}' (No URL found)")
+                continue
+            
+            # Determine the output file path
+            file_extension = paper_url.split(".")[-1]  # Get file extension from URL
+            file_name = f"{paper_title}.{file_extension}"
+            file_path = os.path.join(output_folder, file_name)
+            
+            # Download the paper
+            response = requests.get(paper_url, stream=True)
+            response.raise_for_status()
+            
+            with open(file_path, "wb") as f:
+                for chunk in response.iter_content(chunk_size=1024):
+                    f.write(chunk)
+            
+            downloaded_count += 1
+            print(f"Downloaded: {file_name} ({downloaded_count}/{total_papers})")
+        
+        except requests.exceptions.RequestException as e:
+            print(f"Failed to download {paper_title}: {e}")
+    
+    print(f"Downloaded {downloaded_count}/{total_papers} papers.")
 
 # Example usage
 if __name__=='__main__':
 
     all_papers=fetch_all_papers_from_2024(output_file="chemrxiv_data_2024.json")
+    download_papers(all_papers)
