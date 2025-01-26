@@ -4,7 +4,11 @@ import tqdm
 import time
 import os
 
-def fetch_all_papers_from_2024(output_file="chemrxiv_data.json",total=50000):
+import fitz  # PyMuPDF
+import re
+import pandas as pd
+
+def chemrxiv_fetch_all_papers_from_2024(output_file="chemrxiv_data.json",total=50):
     """
     Fetch all papers from ChemRxiv starting from 2024 and save them to a JSON file.
 
@@ -61,7 +65,7 @@ def fetch_all_papers_from_2024(output_file="chemrxiv_data.json",total=50000):
     print(f"All data saved to {output_file}. Total papers: {total_fetched}")
     return all_papers
 
-def download_paper(paper,output_folder):
+def chemrxiv_download_paper(paper,output_folder):
     time.sleep(0.2)
     # Get the paper title and URL
     paper_title = paper.get("item", {}).get("title", "unknown_title").replace("/", "-").replace(" ", "_")  # Sanitize filename
@@ -84,7 +88,7 @@ def download_paper(paper,output_folder):
             for chunk in response.iter_content(chunk_size=1024):
                 f.write(chunk)
 
-def download_papers(all_papers, output_folder="chemrxiv_papers"):
+def chemrxiv_download_papers(all_papers, output_folder="chemrxiv_papers"):
     """
     Download papers from the given list and save them to the specified output folder.
 
@@ -102,15 +106,51 @@ def download_papers(all_papers, output_folder="chemrxiv_papers"):
     for paper in tqdm.tqdm(all_papers):
         for try_n in range(3):
             try:
-                download_paper(paper,output_folder)
+                chemrxiv_download_paper(paper,output_folder)
             except Exception as e:
                 print(f"Failed to download {try_n}. Let's go to sleep for 5 seconds")
                 time.sleep(5)
 
+
+
+
+def extract_text_from_pdf(pdf_path):
+    """Extracts text from a PDF file using PyMuPDF."""
+    text = ""
+    doc = fitz.open(pdf_path)
+    for page in doc:
+        text += page.get_text("text") + "\n"
+    return text
+
+def clean_text(text):
+    """Cleans the extracted text by removing unwanted characters and formatting."""
+    text = re.sub(r'\s+', ' ', text)  # Replace multiple spaces and newlines with a single space
+    text = re.sub(r'[^a-zA-Z0-9.,;!?()\s]', '', text)  # Keep only alphanumeric and punctuation
+    return text.strip()
+
+def process_pdfs_to_dataframe(directory, output_file="chemrxiv_data.csv"):
+    """Processes all PDFs in a given directory, extracts, cleans text, and stores in a DataFrame."""
+    pdf_data = []
+    
+    for filename in os.listdir(directory):
+        if filename.endswith(".pdf"):
+            pdf_path = os.path.join(directory, filename)
+            print(f"Processing: {filename}")
+            raw_text = extract_text_from_pdf(pdf_path)
+            cleaned_text = clean_text(raw_text)
+            pdf_data.append({"filename": filename, "text": cleaned_text})
+    
+    df = pd.DataFrame(pdf_data)
+    if output_file:
+        df.to_csv(output_file)
+    return df
+
+
 # Example usage
 if __name__=='__main__':
 
-    all_papers=fetch_all_papers_from_2024(output_file="../data/chemrxiv_data_2024.json")
+    all_papers=chemrxiv_fetch_all_papers_from_2024(output_file="../data/chemrxiv_data_2024.json")
     with open('../data/chemrxiv_data_2024.json','rb') as f:
         all_papers=json.load(f)
-    # download_papers(all_papers)
+    chemrxiv_download_papers(all_papers,)
+    process_pdfs_to_dataframe('./chemrxiv_papers')
