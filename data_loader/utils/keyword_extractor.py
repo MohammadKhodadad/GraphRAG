@@ -2,6 +2,50 @@ import re
 import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
 # Function to create a keyword-document mapping
+from transformers import pipeline
+
+class EntityExtractor:
+    def __init__(self, model_name="pruas/BENT-PubMedBERT-NER-Chemical"):
+        """Initialize the entity extractor with a specified model."""
+        self.ner_pipeline = pipeline("ner", model=model_name, tokenizer=model_name)
+    
+    def extract_entities(self, query):
+        """Use a transformer model to extract entities from the query."""
+        # Clean the query by removing punctuation and converting to lowercase
+        clean_query = re.sub(r'[^\w\s]', '', query)
+        
+        # Use the NER pipeline to extract entities
+        ner_results = self.ner_pipeline(clean_query)
+        entities = []
+        current_entity = ""
+        print(ner_results)
+        for result in ner_results:
+            word = result['word']
+            if result['entity'].startswith("B") and (word.startswith("##")):  # Begin a new entity
+                current_entity += word[2:]  # Append to entity phrase
+            elif result['entity'].startswith("B") and (not word.startswith("##")):  # Begin a new entity
+                if current_entity:  # If an entity was being built, save it
+                    entities.append(current_entity.lower())
+                current_entity = word  # Start a new entity
+            
+            elif result['entity'].startswith("I") and current_entity:  # Continue entity
+                current_entity += " " + word  # Append to entity phrase
+            
+            else:  # If we hit an "O" (outside entity), save the last entity
+                if current_entity:
+                    entities.append(current_entity.lower())
+                    current_entity = ""  # Reset
+
+        if current_entity:  # Save last entity if it wasn't stored
+            entities.append(current_entity.lower())
+
+        # Fallback to simple word extraction if no entities were found
+        if not entities:
+            entities = [word.lower() for word in clean_query.split() if word.isalpha()]
+        
+        return entities
+    
+
 
 def process_document(doc, pattern, terms, doc_idx):
     """Process a single document to find matching terms."""
@@ -58,21 +102,26 @@ def keyword_document_mapping_old(documents, terms):
 
 if __name__=='__main__':
     # List of keywords
-    chemical_terms = ["acet","2-3 acet", "acetyl", "acetyl group", "chemical A", "compound B", "reaction D"]
+    # chemical_terms = ["acet","2-3 acet", "acetyl", "acetyl group", "chemical A", "compound B", "reaction D"]
 
-    # List of documents
-    documents = [
-        "Acet is 2-3 acet often used in reactions.",
-        "2-3 acet often used in reactions.",
-        "The acetyl group is a key part of biochemistry.",
-        "Chemical A reacts with compound B in reaction D.",
-        "Both acet and acetyl can be found in organic compounds."
-    ]
+    # # List of documents
+    # documents = [
+    #     "Acet is 2-3 acet often used in reactions.",
+    #     "2-3 acet often used in reactions.",
+    #     "The acetyl group is a key part of biochemistry.",
+    #     "Chemical A reacts with compound B in reaction D.",
+    #     "Both acet and acetyl can be found in organic compounds."
+    # ]
 
 
-    # Generate the dictionary
-    result = keyword_document_mapping(documents, chemical_terms)
+    # # Generate the dictionary
+    # result = keyword_document_mapping(documents, chemical_terms)
 
-    # Display the result
-    for keyword, doc_list in result.items():
-        print(f"Keyword '{keyword}' found in documents: {doc_list}")
+    # # Display the result
+    # for keyword, doc_list in result.items():
+    #     print(f"Keyword '{keyword}' found in documents: {doc_list}")
+
+    extractor = EntityExtractor()
+    text = "Aspirin (C9H8O4) is widely used as an anti-inflammatory drug. Acetic anhydride reacts with salicylic acid to form it."
+    extracted_entities = extractor.extract_entities(text)
+    print("Extracted Entities:", extracted_entities)

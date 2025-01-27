@@ -95,13 +95,14 @@ class Retriever:
 
         for result in ner_results:
             word = result['word']
-            
-            if result['entity'].startswith("B-"):  # Begin a new entity
+            if result['entity'].startswith("B") and (word.startswith("##")):  # Begin a new entity
+                current_entity += word[2:]  # Append to entity phrase
+            elif result['entity'].startswith("B") and (not word.startswith("##")):  # Begin a new entity
                 if current_entity:  # If an entity was being built, save it
                     entities.append(current_entity.lower())
                 current_entity = word  # Start a new entity
             
-            elif result['entity'].startswith("I-") and current_entity:  # Continue entity
+            elif result['entity'].startswith("I") and current_entity:  # Continue entity
                 current_entity += " " + word  # Append to entity phrase
             
             else:  # If we hit an "O" (outside entity), save the last entity
