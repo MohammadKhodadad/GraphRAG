@@ -60,7 +60,7 @@ if __name__ == "__main__":
     # Process and print responses
     for question in questions:
         response = pipeline.process_query(
-            question, top_k=50, max_iterations=0, hybrid=True,reranker=True,reranker_top_k=10
+            question, top_k=50, max_iterations=3, hybrid=True,reranker=True,reranker_top_k=5
         )
         # gpt4o_response = gpt_query(question, api_key, "gpt-4o")
         # gpt4o_mini_response = gpt_query(question, api_key, "gpt-4o-mini")

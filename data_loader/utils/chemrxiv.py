@@ -112,40 +112,6 @@ def chemrxiv_download_papers(all_papers, output_folder="chemrxiv_papers"):
                 time.sleep(5)
 
 
-
-
-def extract_text_from_pdf(pdf_path):
-    """Extracts text from a PDF file using PyMuPDF."""
-    text = ""
-    doc = fitz.open(pdf_path)
-    for page in doc:
-        text += page.get_text("text") + "\n"
-    return text
-
-def clean_text(text):
-    """Cleans the extracted text by removing unwanted characters and formatting."""
-    text = re.sub(r'\s+', ' ', text)  # Replace multiple spaces and newlines with a single space
-    text = re.sub(r'[^a-zA-Z0-9.,;!?()\s]', '', text)  # Keep only alphanumeric and punctuation
-    return text.strip()
-
-def process_pdfs_to_dataframe(directory, output_file="chemrxiv_data.csv"):
-    """Processes all PDFs in a given directory, extracts, cleans text, and stores in a DataFrame."""
-    pdf_data = []
-    
-    for filename in os.listdir(directory):
-        if filename.endswith(".pdf"):
-            pdf_path = os.path.join(directory, filename)
-            print(f"Processing: {filename}")
-            raw_text = extract_text_from_pdf(pdf_path)
-            cleaned_text = clean_text(raw_text)
-            pdf_data.append({"filename": filename, "text": cleaned_text})
-    
-    df = pd.DataFrame(pdf_data)
-    if output_file:
-        df.to_csv(output_file)
-    return df
-
-
 # Example usage
 if __name__=='__main__':
 
