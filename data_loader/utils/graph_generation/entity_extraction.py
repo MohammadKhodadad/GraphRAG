@@ -101,7 +101,54 @@ def extract_relations(text, entities, api_key, model="gpt-4o", max_facts=20):
                 model=model,
                 max_tokens=500
             )
-    return json.dumps(eval(response.choices[0].message.content))
+    return eval(response.choices[0].message.content)
+
+
+def extract_entity_descriptions(text, entities, api_key, model="gpt-4o", max_descriptions=20):
+    client = OpenAI(api_key=api_key)
+    prompt = f"""
+        You are an expert in chemical text analysis. Your task is to extract **concise yet informative descriptions** of a given set of entities from the provided text. 
+
+        ### **Guidelines for Entity Description Extraction:**
+        1. **Entity Matching:** Extract descriptions **only** for the entities listed in the provided set. Ignore any entity that is not explicitly mentioned in the set.
+        2. **Concise & Relevant Descriptions:** Each description should be **factual, chemically relevant, and no longer than a sentence or two**. Avoid unnecessary explanations.
+        3. **Meaningful Chemical Properties:** Focus on essential chemical **properties, behaviors, or roles** (e.g., acidity, solubility, reactivity, catalytic function).
+        4. **Tuple Format:** Output extracted facts as a Python list of tuples in the form of **(entity, description)**.
+        5. **Avoid General/Vague Information:** Descriptions should be precise and **chemically informative** rather than generic (e.g., "is a compound" is too weak).
+        
+        ### **Examples of Valid Descriptions:**
+        ✅ ("HCl", "A strong acid that ionizes completely in water.")  
+        ✅ ("Sodium hydroxide", "A strong base that reacts with acids to form salts and water.")  
+        ✅ ("Ethanol", "A polar solvent commonly used in organic synthesis and pharmaceuticals.")  
+        ✅ ("Copper sulfate", "A blue crystalline compound used as a fungicide and electrolyte.")  
+        
+        🚫 **Avoid These Weak Descriptions:**
+        ❌ ("HCl", "A chemical compound.") → Too vague  
+        ❌ ("Sodium hydroxide", "A substance used in labs.") → Lacks chemical detail  
+
+        #### **Entities Provided:**
+        {entities}
+
+        #### **Text:**
+        {text}
+
+        #### **Example Output:**
+        [
+            ("HCl", "A strong acid that ionizes completely in water."),
+            ("Sodium hydroxide", "A strong base that reacts with acids to form salts and water.")
+        ]
+
+        Extract **at most {max_descriptions}** descriptions.
+
+        Provide the output as a **Python list of tuples**, containing only the extracted entity descriptions without any code formatting, backticks, or markdown.
+        """
+    response = client.chat.completions.create(
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.2,
+                model=model,
+                max_tokens=500
+            )
+    return eval(response.choices[0].message.content)
 
 
 
@@ -116,3 +163,5 @@ if __name__=='__main__':
     print("Extracted Entities:", extracted_entities)
     relations = extract_relations(text,extracted_entities,api_key)
     print("Extracted Relations:",relations)
+    descriptions= extract_entity_descriptions(text,extracted_entities,api_key)
+    print('Extracted Descriptions:', descriptions)
