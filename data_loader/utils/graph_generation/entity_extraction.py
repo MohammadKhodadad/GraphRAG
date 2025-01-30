@@ -15,38 +15,50 @@ class EntityExtractor:
     
     def extract_entities(self, query):
         """Use a transformer model to extract entities from the query."""
-        # Clean the query by removing punctuation and converting to lowercase
-        clean_query = re.sub(r'[^\w\s]', '', query)
         
         # Use the NER pipeline to extract entities
-        ner_results = self.ner_pipeline(clean_query)
+        ner_results = self.ner_pipeline(query)
+        print(ner_results)
         entities = []
         current_entity = ""
-        # print(ner_results)
-        for result in ner_results:
+        last_end = -1  # Track the last token's ending position
+
+        for i, result in enumerate(ner_results):
             word = result['word']
-            if result['entity'].startswith("B") and (word.startswith("##")):  # Begin a new entity
-                current_entity += word[2:]  # Append to entity phrase
-            elif result['entity'].startswith("B") and (not word.startswith("##")):  # Begin a new entity
-                if current_entity:  # If an entity was being built, save it
-                    entities.append(current_entity.lower())
-                current_entity = word  # Start a new entity
+            entity_type = result['entity']
+            start = result.get('start', None)  # Get start position in original text
+            end = result.get('end', None)  # Get end position in original text
+
+            # Remove "##" from subwords (e.g., "##yl" → "yl")
+            if word.startswith("##"):
+                word = word[2:]
+
+            # If it's the start of a new entity
+            if entity_type.startswith("B"):
+                if current_entity:
+                    entities.append(current_entity.lower())  # Store previous entity
+                current_entity = word  # Start new entity
             
-            elif result['entity'].startswith("I") and current_entity:  # Continue entity
-                current_entity += " " + word  # Append to entity phrase
+            # If it's a continuation (Inside)
+            elif entity_type.startswith("I") and current_entity:
+                if start == last_end:  
+                    current_entity += word  # Merge directly if no space exists in the original text
+                else:
+                    current_entity += " " + word  # Add a space if there's a gap in the text
             
-            else:  # If we hit an "O" (outside entity), save the last entity
+            # If it's an "O" tag (outside entity), save the entity
+            else:
                 if current_entity:
                     entities.append(current_entity.lower())
-                    current_entity = ""  # Reset
+                    current_entity = ""
 
-        if current_entity:  # Save last entity if it wasn't stored
+            # Update the last token end position
+            last_end = end
+
+        # Ensure last entity is stored
+        if current_entity:
             entities.append(current_entity.lower())
 
-        # Fallback to simple word extraction if no entities were found
-        if not entities:
-            entities = [word.lower() for word in clean_query.split() if word.isalpha()]
-        
         return entities
 
 
@@ -115,6 +127,7 @@ def extract_entity_descriptions(text, entities, api_key, model="gpt-4o", max_des
         3. **Meaningful Chemical Properties:** Focus on essential chemical **properties, behaviors, or roles** (e.g., acidity, solubility, reactivity, catalytic function).
         4. **Tuple Format:** Output extracted facts as a Python list of tuples in the form of **(entity, description)**.
         5. **Avoid General/Vague Information:** Descriptions should be precise and **chemically informative** rather than generic (e.g., "is a compound" is too weak).
+        6. **Only Output from the Given Text:** Descriptions have to come from the text. If there is no description for an entity, don't output anything for that entity.
         
         ### **Examples of Valid Descriptions:**
         ✅ ("HCl", "A strong acid that ionizes completely in water.")  
@@ -159,6 +172,8 @@ if __name__=='__main__':
     extractor = EntityExtractor()
     text = "Aspirin (C9H8O4) is widely used as an anti-inflammatory drug. Acetic anhydride reacts with salicylic acid to form it."
     # text = "Aspirin and ibuprofen are common nonsteroidal anti-inflammatory drugs (NSAIDs)."
+    text = '2-Benzyl-1-(4-methylphenyl)-3-(4-prop-2-enoxyphenyl)guanidine.'
+    # text = 'N,N-Dimethylformamide'
     extracted_entities = extractor.extract_entities(text)
     print("Extracted Entities:", extracted_entities)
     relations = extract_relations(text,extracted_entities,api_key)
