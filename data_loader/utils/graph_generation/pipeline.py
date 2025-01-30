@@ -29,7 +29,7 @@ def graph_pipeline(directory, graph_directory, api_key):
     
         chunks = split_text(cleaned_text,max_words=128)
         print(f'Num chunks: {len(chunks)}')
-        for chunk in chunks:
+        for chunk in chunks[:16]:
             try:
                 extracted_entities = entity_extractor.extract_entities(chunk)
                 descriptions = extract_entity_descriptions(chunk, extracted_entities, api_key)                
