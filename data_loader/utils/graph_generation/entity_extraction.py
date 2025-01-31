@@ -18,7 +18,7 @@ class EntityExtractor:
         
         # Use the NER pipeline to extract entities
         ner_results = self.ner_pipeline(query)
-        print(ner_results)
+        # print(ner_results)
         entities = []
         current_entity = ""
         last_end = -1  # Track the last token's ending position
