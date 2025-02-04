@@ -12,4 +12,4 @@ api_key = os.environ.get("OPENAI_API_KEY")  # Ensure this is set in your environ
 # chemrxiv_download_papers(all_papers,'./data/chemrxiv_papers')
 # process_pdfs_to_dataframe('./data/chemrxiv_papers','./data/chemrxiv_data.csv',api_key)
 # graph_pipeline('./data/chemrxiv_papers','./data/chemrxiv_graph_v1.json',api_key)
-print(sample_graph_pipeline('./data/chemrxiv_graph_v1.json'))
+paths = sample_graph_pipeline('./data/chemrxiv_graph_v1.json')

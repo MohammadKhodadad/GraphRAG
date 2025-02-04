@@ -13,24 +13,24 @@ class GraphExplorer:
         self.graph_manager = graph_manager
 
     def find_all_paths_of_length_n(self, length):
-        """Finds all paths of exact length `length` from all nodes using BFS and tracks edges."""
+        """Finds all paths of exact length `length` from all nodes using BFS."""
         all_paths = []
 
-        for start in self.graph_manager.graph.nodes:
-            queue = deque([(start, [start], [])])  # (current node, path taken, edges taken)
+        for start in tqdm.tqdm(self.graph_manager.graph.nodes):
+            queue = deque([(start, [start])])  # (current node, path taken)
 
             while queue:
-                node, path, edges = queue.popleft()
+                node, path = queue.popleft()
 
                 # If we have reached the exact required length, add to results
                 if len(path) == length + 1:
-                    all_paths.append((path, edges))
-                    continue  # Stop expanding this path
+                    all_paths.append(path)
+                    continue  # Don't expand this path further
 
                 # Expand neighbors while avoiding cycles
                 for neighbor in self.graph_manager.graph.neighbors(node):
                     if neighbor not in path:  # Ensures simple paths
-                        queue.append((neighbor, path + [neighbor], edges + [(node, neighbor)]))
+                        queue.append((neighbor, path + [neighbor]))
 
         return all_paths
 
@@ -44,16 +44,20 @@ class GraphExplorer:
         sampled_paths = random.sample(paths, min(num_samples, len(paths)))
         return sampled_paths
 
-    def display_random_paths(self, length, num_samples=5):
-        """Displays randomly sampled paths of the given length."""
-        sampled_paths = self.sample_random_paths(length, num_samples)
-        if sampled_paths:
-            print(f"Randomly sampled {len(sampled_paths)} paths of length {length}:")
-            for path in sampled_paths:
-                print(" -> ".join(path))
-        else:
-            print(f"No paths found for length {length}.")
-####################################################### EDGE DESCRIPTION##################################
+    def display_path(self, path):
+
+        path_str = []
+        
+        for i in range(len(path) - 1):
+            node1, node2 = path[i], path[i + 1]
+            edge_desc = self.graph_manager.graph.edges[node1, node2].get("description", "No description")
+            
+            # Format: "Node1 -> (Edge Description) -> Node2"
+            path_str.append(f"{node1} -> ({edge_desc})")
+        path_str.append(f" -> {node2}")
+        
+        print(" -> ".join(path_str))
+
 # Example usage
 if __name__ == "__main__":
     gm = GraphManager()
