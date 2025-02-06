@@ -5,16 +5,16 @@ class GraphManager:
     def __init__(self):
         self.graph = nx.Graph()
     
-    def add_node(self, node, source, description=""):
+    def add_node(self, node, source, description="",text=""):
         """Adds a node with a description from a specific source."""
         if node not in self.graph.nodes:
             self.graph.add_node(node, description={})
         if description:
             if source not in self.graph.nodes[node]["description"]:
                 self.graph.nodes[node]["description"][source] = []
-            self.graph.nodes[node]["description"][source].append(description)
+            self.graph.nodes[node]["description"][source].append({'description': description, 'text':text})
     
-    def add_edge(self, node1, node2, source, description=""):
+    def add_edge(self, node1, node2, source, description="",text=""):
         """Adds an edge between two nodes with a description from a specific source as a list."""
         if not self.graph.has_edge(node1, node2):
             self.graph.add_edge(node1, node2, description={})
@@ -22,7 +22,7 @@ class GraphManager:
         if description:
             if source not in self.graph.edges[node1, node2]["description"]:
                 self.graph.edges[node1, node2]["description"][source] = []
-            self.graph.edges[node1, node2]["description"][source].append(description)
+            self.graph.edges[node1, node2]["description"][source].append({'description': description, 'text':text})
     
     
     def get_node_description(self, node):

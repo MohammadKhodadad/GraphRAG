@@ -50,13 +50,15 @@ class GraphExplorer:
         
         for i in range(len(path) - 1):
             node1, node2 = path[i], path[i + 1]
-            edge_desc = self.graph_manager.graph.edges[node1, node2].get("description", "No description")
-            
-            # Format: "Node1 -> (Edge Description) -> Node2"
-            path_str.append(f"{node1} -> ({edge_desc})")
-        path_str.append(f" -> {node2}")
-        
-        print(" -> ".join(path_str))
+            print('\nNODE:')
+            print(f"{node1}: ",self.graph_manager.graph.nodes[node1].get("description", "No description"))
+            print('\nEDGE:')
+            print(self.graph_manager.graph.edges[node1, node2].get("description", "No description"))
+            path_str.append(f"{node1} ->")
+        path_str.append(f"{node2}")
+        print('\nNODE:')
+        print(f"{node2}: ",self.graph_manager.graph.nodes[node2].get("description", "No description"))
+        print(" ".join(path_str))
 
 # Example usage
 if __name__ == "__main__":

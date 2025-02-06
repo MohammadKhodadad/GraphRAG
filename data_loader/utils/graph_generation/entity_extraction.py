@@ -172,7 +172,7 @@ if __name__=='__main__':
     extractor = EntityExtractor()
     text = "Aspirin (C9H8O4) is widely used as an anti-inflammatory drug. Acetic anhydride reacts with salicylic acid to form it."
     # text = "Aspirin and ibuprofen are common nonsteroidal anti-inflammatory drugs (NSAIDs)."
-    text = '2-Benzyl-1-(4-methylphenyl)-3-(4-prop-2-enoxyphenyl)guanidine.'
+    # text = '2-Benzyl-1-(4-methylphenyl)-3-(4-prop-2-enoxyphenyl)guanidine.'
     # text = 'N,N-Dimethylformamide'
     extracted_entities = extractor.extract_entities(text)
     print("Extracted Entities:", extracted_entities)
