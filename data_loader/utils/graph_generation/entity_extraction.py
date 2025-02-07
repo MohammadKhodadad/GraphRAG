@@ -6,7 +6,11 @@ import os
 import openai
 from openai import OpenAI
 import json
-
+from rdkit import Chem
+from rdkit.Chem import Descriptors
+from rdkit.Chem.rdMolDescriptors import CalcMolFormula
+from openai import OpenAI
+from pubchempy import get_compounds
 
 class EntityExtractor:
     def __init__(self, model_name="pruas/BENT-PubMedBERT-NER-Chemical"):
@@ -18,7 +22,7 @@ class EntityExtractor:
         
         # Use the NER pipeline to extract entities
         ner_results = self.ner_pipeline(query)
-        # print(ner_results)
+        print(ner_results)
         entities = []
         current_entity = ""
         last_end = -1  # Track the last token's ending position
@@ -61,6 +65,84 @@ class EntityExtractor:
 
         return entities
 
+
+def validate_chemical_entities(entities):
+    """
+    Validate a list of chemical entities by checking if they exist in PubChem.
+    
+    Args:
+        entities (list): List of chemical entity names.
+    
+    Returns:
+        list: A filtered list containing only valid chemical entities.
+    """
+    valid_entities = []
+    
+    for entity in entities:
+        try:
+            compounds = get_compounds(entity, 'name')
+            if compounds:  # If PubChem returns results, consider it valid
+                valid_entities.append(entity)
+        except:
+            continue  # Ignore any errors (e.g., PubChem request issues)
+    
+    return valid_entities
+
+def verify_entities_from_text(text, entities, api_key, model="gpt-4o"):
+    """
+    Extract valid chemical entities from text after NER and filter incorrect ones.
+
+    Args:
+        text (str): The input text containing chemical information.
+        entities (list): List of extracted entities from an NER model.
+        api_key (str): OpenAI API key.
+        model (str): OpenAI model to use.
+
+    Returns:
+        list: Filtered list of correct chemical entities.
+    """
+    client = OpenAI(api_key=api_key)
+
+    # Validate extracted entities
+    filtered_entities = entities # validate_chemical_entities(entities)
+
+    if not filtered_entities:
+        return []
+
+    prompt = f"""
+        You are a chemistry expert. Your task is to verify if the extracted entities 
+        are meaningful chemical entities within the given text. Remove any irrelevant terms.
+
+        ### **Entities Extracted by NER:**  
+        {entities}
+
+        ### **Text:**  
+        {text}
+
+        ### **Example of Valid Entities:**  
+        ✅ "HCl"  
+        ✅ "Sodium hydroxide"  
+        ✅ "Ethanol"  
+        ✅ "Benzene"  
+
+        ### **Example of Invalid Entities (Remove these):**  
+        🚫 "Reaction"  
+        🚫 "Temperature"  
+        🚫 "Strong acid"  
+        🚫 "Solution"  
+
+        Provide the output as a **Python list**, containing only the valid chemical entities.
+        Do NOT include any markdown, formatting, or explanations.
+    """
+
+    response = client.chat.completions.create(
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.2,
+        model=model,
+        max_tokens=300
+    )
+
+    return eval(response.choices[0].message.content)
 
 def extract_relations(text, entities, api_key, model="gpt-4o", max_facts=20):
     client = OpenAI(api_key=api_key)
@@ -174,8 +256,12 @@ if __name__=='__main__':
     # text = "Aspirin and ibuprofen are common nonsteroidal anti-inflammatory drugs (NSAIDs)."
     # text = '2-Benzyl-1-(4-methylphenyl)-3-(4-prop-2-enoxyphenyl)guanidine.'
     # text = 'N,N-Dimethylformamide'
+    text = "Hydrochloric acid (HCl) reacts with sodium hydroxide (NaOH) to form water and salt."
+    # entities = ["HCl", "Sodium hydroxide", "Reaction", "Solution", "Water"]
     extracted_entities = extractor.extract_entities(text)
     print("Extracted Entities:", extracted_entities)
+    filtered_entities = verify_entities_from_text(text, extracted_entities, api_key)
+    print("Verified Entities:", extracted_entities)
     relations = extract_relations(text,extracted_entities,api_key)
     print("Extracted Relations:",relations)
     descriptions= extract_entity_descriptions(text,extracted_entities,api_key)

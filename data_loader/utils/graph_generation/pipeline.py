@@ -5,12 +5,12 @@ import json
 # Ensure the script runs correctly when executed directly
 if __name__ == "__main__" and __package__ is None:
     sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-    from entity_extraction import EntityExtractor, extract_relations, extract_entity_descriptions
+    from entity_extraction import EntityExtractor, extract_relations, extract_entity_descriptions, verify_entities_from_text
     from graph_manager import GraphManager
     from text_extraction import extract_text_from_pdf, clean_text, split_text
     from graph_explorer import GraphExplorer
 else:
-    from .entity_extraction import EntityExtractor, extract_relations, extract_entity_descriptions
+    from .entity_extraction import EntityExtractor, extract_relations, extract_entity_descriptions, verify_entities_from_text
     from .graph_manager import GraphManager
     from .text_extraction import extract_text_from_pdf, clean_text, split_text
     from .graph_explorer import GraphExplorer
@@ -34,8 +34,9 @@ def graph_pipeline(directory, graph_directory, api_key):
         for chunk in chunks[:16]:
             try:
                 extracted_entities = entity_extractor.extract_entities(chunk)
-                descriptions = extract_entity_descriptions(chunk, extracted_entities, api_key)                
-                relations = extract_relations(chunk, extracted_entities, api_key)
+                verified_entities = verify_entities_from_text(extracted_entities)
+                descriptions = extract_entity_descriptions(chunk, verified_entities, api_key)                
+                relations = extract_relations(chunk, verified_entities, api_key)
                 for entity, description in descriptions:
                     G.add_node(entity, name, description, chunk)
                 for entity1, relation, entity2 in relations:
