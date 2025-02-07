@@ -3,3 +3,4 @@ chroma_db/
 whoosh_index/
 *.csv
 chemrxiv_papers/
+chemrxiv_graph_v1.json
