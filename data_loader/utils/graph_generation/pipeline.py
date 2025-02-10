@@ -58,8 +58,8 @@ def sample_graph_pipeline(graph_directory,sample_legnths = {2:2, 3:2 }, api_key=
     samples={}
     for key, value in sample_legnths.items():
         samples[key]= E.sample_random_paths(key, value)
-        for path in samples[key]:
-            E.display_path(path)
+        # for path in samples[key]:
+        #     E.display_path(path)
     
     return samples
 # Example Usage

@@ -1,4 +1,5 @@
 import tqdm
+import json
 import random
 import networkx as nx
 from collections import deque
@@ -42,7 +43,23 @@ class GraphExplorer:
             return []
         
         sampled_paths = random.sample(paths, min(num_samples, len(paths)))
-        return sampled_paths
+        completed_sampled_paths=[]
+        
+        for path in sampled_paths:
+            completed_path=[]
+            for i in range(len(path) - 1):
+                node1, node2 = path[i], path[i + 1]
+                description = self.graph_manager.graph.edges[node1, node2].get("description")
+                print(description)
+                if len(description)>0:
+                    for key,value in description.items():
+                        relation = value.get('description')
+                        text = value.get('text')
+                else:
+                    continue
+                completed_path.append((node1, relation, node2, text))
+            completed_sampled_paths.append(completed_path)
+        return completed_sampled_paths
 
     def display_path(self, path):
 
