@@ -121,7 +121,7 @@ class Retriever:
     
 
 
-    def extract_paragraphs(self, documents):
+    def extract_paragraphs(self, documents): ### ADD BETTER PARAGRAPHIZATION
         """
         Extract paragraphs from documents.
         """

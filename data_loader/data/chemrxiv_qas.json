@@ -1,0 +1,86 @@
+[
+    {
+        "q": "What widely available building block undergoes an electrochemically enabled nickel-catalyzed crosscoupling with (hetero)aryl halides to furnish a key intermediate that can be further transformed via a direct Pd-catalyzed Buchwald–Hartwig C–N cross-coupling reaction?",
+        "a": "bromoglutarimide",
+        "path": [
+            [
+                "bromoglutarimide",
+                "nickelcatalyzed crosscoupling with",
+                "(hetero)aryl halides",
+                "A far \nmore direct and inexpensive approach would enlist a\nbromoglutarimide 1, a widely available building block, in a cross\ncoupling with (hetero)aryl halides. The capricious nature of unpro\ntected 1 makes it virtually unusable in crosscoupling approaches \nand no metalmediated crosscoupling of 1 have been reported to \ndate. In our hands, all known crosscoupling methods failed to react \n1 with pyridine 2 in more than traces (chemical, photochemical, or \nelectrochemical).7, 8 Herein we report a direct, electrochemically \nenabled nickelcatalyzed crosscoupling of unprotected a\nbromoglutarimide with various (hetero)aryl halides to forge the \nessential C3(sp3)C(sp2) glutarimide linkage (Figure 1B2). This \nradical crosscoupling strategy succeeds when other cuttingedge \nmethods fail and is characterized by operational simplicity, intuitive \nretrosynthesis, and high chemoselectivity, enabling the modular \nsynthesis of targeted protein degraders."
+            ],
+            [
+                "(hetero)aryl halides",
+                "is synthesized from",
+                "N(hetero)aryl glutarimides",
+                "An ap\nproach that leverages readily available starting materials and \nintuitive retrosynthetic logic would enable access to a broader \nscope of potential CBMs, which in turn further enables de\ngrader drug discovery campaigns. In this work, a direct Pdcatalyzed BuchwaldHartwig \nCN crosscoupling of a wide range of (hetero)aryl halides with \na simple unprotected amino glutarimide is realized via high\nthroughput experimentation (HTE), thus offering medicinal \nchemists a reliable tool to expedite the CBM SAR exploration \nfrom commercially available starting materials in a single step \n(Figure 1C). Figure 1 A) Cereblon binding motifs represent an important \nstructural variable in degrader drug discovery. B) Current ap\nproaches to N(hetero)aryl glutarimides lack generality or suf\nfer from lengthy synthetic sequences."
+            ]
+        ]
+    },
+    {
+        "q": "Which type of halides engage in redox‐neutral cross‐coupling reactions with sulfonyl hydrazides, the versatile radical precursor used to forge C(sp3)–C(sp) bonds, as described in the abstract?",
+        "a": "alkynyl halides",
+        "path": [
+            [
+                "alkynyl halides",
+                "reacts with",
+                "sulfonyl hydrazides",
+                "These authors contributed equally to this work. Correspondence to pbaranscripps.edu \n \nAbstract \nSulfonyl hydrazides are disclosed as versatile radical precursors as exemplified with seven new \nCC bond forming, redoxneutral crosscouplings with (1) activated olefins, (2) alkyl halides, (3) \nredox active esters, (4) aryl halides, (5) alkenyl halides, (6) alkynyl halides, and (7) a \ntrifluoromethylating reagent to forge C(sp3)C(sp3), C(sp3)C(sp2), and C(sp3)C(sp) bonds. Sulfonyl hydrazides are stable and usually crystalline substances that can be accessed in a variety \nof ways including transiently from hydrazones to achieve a net reductive arylation of carbonyl \ncompounds. Exogenous redox (chemical, photoelectrochemical) additives are not necessary as \nthese functional groups serve the dual role of radical precursor and electron donor."
+            ],
+            [
+                "sulfonyl hydrazides",
+                "produces",
+                "C(sp3)C(sp)",
+                "These authors contributed equally to this work. Correspondence to pbaranscripps.edu \n \nAbstract \nSulfonyl hydrazides are disclosed as versatile radical precursors as exemplified with seven new \nCC bond forming, redoxneutral crosscouplings with (1) activated olefins, (2) alkyl halides, (3) \nredox active esters, (4) aryl halides, (5) alkenyl halides, (6) alkynyl halides, and (7) a \ntrifluoromethylating reagent to forge C(sp3)C(sp3), C(sp3)C(sp2), and C(sp3)C(sp) bonds. Sulfonyl hydrazides are stable and usually crystalline substances that can be accessed in a variety \nof ways including transiently from hydrazones to achieve a net reductive arylation of carbonyl \ncompounds. Exogenous redox (chemical, photoelectrochemical) additives are not necessary as \nthese functional groups serve the dual role of radical precursor and electron donor."
+            ]
+        ]
+    },
+    {
+        "q": "What is generated under AP electrolysis from a ubiquitous chemical feedstock that is used with another reagent in a regioselective quaternization process ultimately involving carbon as revealed by an X‑ray crystal structure?",
+        "a": "C-centered radicals",
+        "path": [
+            [
+                "C-centered radicals",
+                "generate",
+                "carboxylic acids",
+                "AP \nelectrolysis was recently employed to selectively generate Ccentered radicals from carboxylic acids and applied it \nto obtain a heteroKolbe coupling of acids in moderate yields (33). Consequently, our group recently utilized AP \nelectrolysis to enable efficient aryl radical generation from organoboron reagents (30). In this previous study, we \ndemonstrated that under AP electrolysis, which reverses the polarity of the electrodes at controlled intervals, one \ncan effectively reduce radical accumulation and minimize electrode surface grafting. This enhancement is evident \nfrom significantly higher conversion to radical based products (e.g., homocoupling) compared to conventional \ndirect constant current electrolysis (DC). When our reaction is performed under AP electrolysis, the desired cross\ncoupling products were observed in trace yields (Figure 2B; see also Table S1)."
+            ],
+            [
+                "carboxylic acids",
+                "is synthesized from",
+                "carbon",
+                "The cross coupling between two different redox active esters has \nalso been reported but is not generally applicable to quaternary center synthesis.8, 9 Here we show \nhow a single catalyst can mediate regioselective quaternization of carbon using ubiquitous \nchemical feedstocks olefins and carboxylic acids (Figure 1B). An inexpensive Febased catalyst \nin the presence of simple reducing agents can effectively achieve this powerful transformation in \na chemoselective fashion with broad substrate scope through a similar mechanistic pathway. It is \nparticularly striking that a single catalyst can both activate distinct functional groups (RAEs and \nolefins) and mediate bond formation between them."
+            ],
+            [
+                "carbon",
+                "is part of",
+                "compound 70",
+                "Reaction conditions (f) POCl3, KPF6, DMF, 90 C, 2 h; (g) 61b63b N2H4H2O, EtOH, \nreflux, 12 h; 64b N2H4H2O, MeONa, MeOH, 70 C, 12 h; (h) guanidine acetate, Py, 100 C, 12 h. Group D. Comparison of approaches to pyrimidines 14c and \n18b. Group E. Reaction conditions (i) bisnucleophiles, Py, 90 C, 12 h. Xray crystal structure of compound 70 (carbon  white, oxygen  red, sulfur  green, \nbromine  orange, nitrogen  blue). Ellipsoids are shown at 30 probability level. httpsdoi.org10.26434chemrxiv20243lxgq Content not peerreviewed by ChemRxiv. License CC BY 4.0\n\n \n \n \n \n \nComparison with other methods. The reagent 1 developed \nherein can be used not only to make new sulfones, but also to \nsimplify the synthesis of the existing ones. The synthesis of \npyrazole 2 was already discussed earlier (Scheme 1)."
+            ]
+        ]
+    },
+    {
+        "q": "What compound is produced when a substance obtained from pyridine is further processed into an intermediate that is subsequently used in the synthesis of a medication?",
+        "a": "urea",
+        "path": [
+            [
+                "chlorpropamide",
+                "is synthesized from",
+                "urea",
+                "Examples \ninclude ROY, Olanzapine, Galunisertib, Axitinib, Chlorpropamide, Flufenamic acid, and \nPiroxicam. Accurate prediction for these molecules requires CSP methods to produce a diversity \nof molecular packing solutions for each molecule and achieve accurate relative energy \nevaluations. The dataset was further enriched by molecules with previously published CSP and experimental \nresults with relevance to smallmolecule pharmaceuticals. The final dataset, comprising 66 \nmolecules, covers a diversity of functional groups, including polar groups such as amide, urea, \npyridine, sulfonamide, hydroxyl, nitro, carboxylate, cyano, nonpolar groups such as phenyl and \nalkane chains, and various substituted aromatic and nonaromatic rings. The functional group \ndiversity present in the dataset requires high accuracy of the energy models across chemical \nspace, particularly as it applies to intra and intermolecular interactions relevant for molecular \ncrystal packing."
+            ],
+            [
+                "urea",
+                "is synthesized from",
+                "piroxicam",
+                "Examples \ninclude ROY, Olanzapine, Galunisertib, Axitinib, Chlorpropamide, Flufenamic acid, and \nPiroxicam. Accurate prediction for these molecules requires CSP methods to produce a diversity \nof molecular packing solutions for each molecule and achieve accurate relative energy \nevaluations. The dataset was further enriched by molecules with previously published CSP and experimental \nresults with relevance to smallmolecule pharmaceuticals. The final dataset, comprising 66 \nmolecules, covers a diversity of functional groups, including polar groups such as amide, urea, \npyridine, sulfonamide, hydroxyl, nitro, carboxylate, cyano, nonpolar groups such as phenyl and \nalkane chains, and various substituted aromatic and nonaromatic rings. The functional group \ndiversity present in the dataset requires high accuracy of the energy models across chemical \nspace, particularly as it applies to intra and intermolecular interactions relevant for molecular \ncrystal packing."
+            ],
+            [
+                "piroxicam",
+                "is synthesized from",
+                "pyridine",
+                "Examples \ninclude ROY, Olanzapine, Galunisertib, Axitinib, Chlorpropamide, Flufenamic acid, and \nPiroxicam. Accurate prediction for these molecules requires CSP methods to produce a diversity \nof molecular packing solutions for each molecule and achieve accurate relative energy \nevaluations. The dataset was further enriched by molecules with previously published CSP and experimental \nresults with relevance to smallmolecule pharmaceuticals. The final dataset, comprising 66 \nmolecules, covers a diversity of functional groups, including polar groups such as amide, urea, \npyridine, sulfonamide, hydroxyl, nitro, carboxylate, cyano, nonpolar groups such as phenyl and \nalkane chains, and various substituted aromatic and nonaromatic rings. The functional group \ndiversity present in the dataset requires high accuracy of the energy models across chemical \nspace, particularly as it applies to intra and intermolecular interactions relevant for molecular \ncrystal packing."
+            ]
+        ]
+    }
+]

@@ -2,7 +2,7 @@ import pandas as pd
 from openai import OpenAI
 import os
 import random
-
+import json
 
 def ask_openai(client,prompt):
     response = client.chat.completions.create(
@@ -57,53 +57,70 @@ def generate_multihop_question(client, path):
     Returns:
         A dictionary with keys 'q' (multi-hop question) and 'a' (final answer).
     """
-    
-    if len(path) < 2:
-        raise ValueError("Multi-hop questions require at least two edges.")
+    try:
+        if len(path) < 2:
+            raise ValueError("Multi-hop questions require at least two edges.")
 
-    # Generate individual questions for each relation in the path
-    qa_pairs = []
-    for entity1, relation, entity2, text in path:
-        qa = generate_relation_question(client, entity1, relation, entity2, text)
-        qa_pairs.append(qa)
+        # Generate individual questions for each relation in the path
+        qa_pairs = []
+        for entity1, relation, entity2, text in path:
+            qa = generate_relation_question(client, entity1, relation, entity2, text)
+            qa_pairs.append(qa)
 
-    # Extract only questions and answers from the generated QAs
-    formatted_qas = "\n".join([f"Q{i+1}: {qa['q']}\nA{i+1}: {qa['a']}" for i, qa in enumerate(qa_pairs)])
+        # Extract only questions and answers from the generated QAs
+        formatted_qas = "\n".join([f"Q{i+1}: {qa['q']}\nA{i+1}: {qa['a']}" for i, qa in enumerate(qa_pairs)])
 
-    # Example to guide the LLM
-    print(formatted_qas)
-    example = """
-Example:
-Q1: What is oxidized to form Carbon Dioxide?
-A1: Methane
-Q2: What is used in Photosynthesis?
-A2: Carbon Dioxide
-Q3: What produces Oxygen?
-A3: Photosynthesis
+        # Example to guide the LLM
+        print(formatted_qas)
+        example = """
+    Example:
+    Q1: What is oxidized to form Carbon Dioxide?
+    A1: Methane
+    Q2: What is used in Photosynthesis?
+    A2: Carbon Dioxide
+    Q3: What produces Oxygen?
+    A3: Photosynthesis
 
-Multi-hop question:
-Q: What is oxidized to produce a substance that is used in a process that results in Oxygen?
-A: Methane
-"""
+    Multi-hop question:
+    Q: What is oxidized to produce a substance that is used in a process that results in Oxygen?
+    A: Methane
+    """
 
-    # Multi-hop question generation prompt
-    prompt = (
-        f"You are given multiple factual questions and their answers that are logically connected.\n"
-        f"Your task is to chain them into a single, coherent multi-hop question that requires multiple reasoning steps.\n"
-        f"Ensure that the (only) answer is the answer to the frist question, and the question naturally follows from the facts given.\n"
-        f"You have to start from the last generated question and build up a single multi-hop question so it aggregates them all "
-        f"and the answer is the answer to the first question.\n"
-        f"No entity except for the second entity of the last relation should be in the question.\n\n"
-        f"Here is an example:\n{example}\n\n"
-        f"Here are the generated questions and answers:\n{formatted_qas}\n\n"
-        f"Return a python dictionary without any code formatting, backticks, or markdown, with keys 'q' (multi-hop question) and 'a' (final answer)."
-    )
+        # Multi-hop question generation prompt
+        prompt = (
+            f"You are given multiple factual questions and their answers that are logically connected.\n"
+            f"Your task is to chain them into a single, coherent multi-hop question that requires multiple reasoning steps.\n"
+            f"Ensure that the (only) answer is the answer to the frist question, and the question naturally follows from the facts given.\n"
+            f"You have to start from the last generated question and build up a single multi-hop question so it aggregates them all "
+            f"and the answer is the answer to the first question.\n"
+            f"No entity except for the second entity of the last relation should be in the question.\n\n"
+            f"Here is an example:\n{example}\n\n"
+            f"Here are the generated questions and answers:\n{formatted_qas}\n\n"
+            f"Return a python dictionary without any code formatting, backticks, or markdown, with keys 'q' (multi-hop question) and 'a' (final answer)."
+        )
 
-    # Get the final multi-hop question
-    multi_hop_qa = eval(ask_openai(client, prompt))
+        # Get the final multi-hop question
+        multi_hop_qa = eval(ask_openai(client, prompt))
+        multi_hop_qa['path']=path
+    except Exception as e:
+        print(e)
+        multi_hop_qa={}
     return multi_hop_qa
 
 
+def generate_questions_from_paths(paths, api_key, save_address=None):
+    sampled_qas = []
+    client = OpenAI(api_key=api_key)
+    
+    for length, paths in paths.items():
+        for path in paths:
+            sampled_qas.append(generate_multihop_question(client, path))
+    
+    if save_address:
+        with open(save_address, "w", encoding="utf-8") as f:
+            json.dump(sampled_qas, f, ensure_ascii=False, indent=4)
+    
+    return sampled_qas
 
 
 
