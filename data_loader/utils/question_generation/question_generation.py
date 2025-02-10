@@ -129,10 +129,12 @@ if __name__ == "__main__":
 
 
     path = [
-        ("Alan Turing", "developed", "Turing Machine", "Alan Turing developed the Turing Machine, which laid the foundation for modern computing."),
-        ("Turing Machine", "influenced", "Modern Computers", "The Turing Machine influenced the development of modern computers and computational theory."),
-        ("Modern Computers", "are used in", "Artificial Intelligence", "Modern computers are widely used in artificial intelligence research and applications."),
+        ("Glucose", "is broken down into", "Pyruvate", "During glycolysis, glucose is broken down into pyruvate, producing ATP."),
+        ("Pyruvate", "is converted into", "Acetyl-CoA", "Pyruvate undergoes decarboxylation to form Acetyl-CoA in the mitochondria."),
+        ("Acetyl-CoA", "enters", "Krebs Cycle", "Acetyl-CoA enters the Krebs cycle, where it undergoes oxidation."),
+        ("Krebs Cycle", "produces", "ATP", "The Krebs cycle produces ATP, NADH, and FADH2 as energy carriers."),
     ]
+
 
 
     qa_pair = generate_multihop_question(client, path)
