@@ -53,8 +53,8 @@ class GraphExplorer:
                 print(description)
                 if len(description)>0:
                     for key,value in description.items():
-                        relation = value.get('description')
-                        text = value.get('text')
+                        relation = value[-1].get('description')
+                        text = value[-1].get('text')
                 else:
                     continue
                 completed_path.append((node1, relation, node2, text))

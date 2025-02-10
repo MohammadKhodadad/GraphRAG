@@ -34,7 +34,7 @@ def graph_pipeline(directory, graph_directory, api_key):
         for chunk in chunks[:16]:
             try:
                 extracted_entities = entity_extractor.extract_entities(chunk)
-                verified_entities = verify_entities_from_text(extracted_entities)
+                verified_entities = verify_entities_from_text(chunk ,extracted_entities, api_key)
                 descriptions = extract_entity_descriptions(chunk, verified_entities, api_key)                
                 relations = extract_relations(chunk, verified_entities, api_key)
                 for entity, description in descriptions:
