@@ -26,6 +26,7 @@ def generate_relation_question(client, entity1, relation, entity2, text):
         f"Text: {text}\n\n"
         f"Your task is to generate a factual question about Entity 1 and its relation, where the answer is Entity1.\n"
         f"Ensure that the question is factual and can be answered solely based on the given text.\n"
+        f"Do not mention a specific part of the text such as 'Abstract', 'Table #1', or etc.\n"
         f"Return a dictionary without any code formatting, backticks, or markdown, with keys 'q' and 'a'."
     )
     
@@ -40,6 +41,7 @@ def generate_description_question(client, entity, description, text):
         f"Text: {text}\n\n"
         f"Your task is to generate a factual question about the entity that can be answered by a part of the description.\n"
         f"Ensure that the question is factual and can be answered solely based on the given text.\n"
+        f"Do not mention a specific part of the text such as 'Abstract', 'Table #1', or etc.\n"
         f"Return a dictionary without any code formatting, backticks, or markdown, with keys 'q' and 'a'."
     )
     
@@ -63,9 +65,11 @@ def generate_multihop_question(client, path):
 
         # Generate individual questions for each relation in the path
         qa_pairs = []
+        completed_path=[]
         for entity1, relation, entity2, text in path:
             qa = generate_relation_question(client, entity1, relation, entity2, text)
             qa_pairs.append(qa)
+            completed_path.append([entity1, relation, entity2, text,qa['q'],qa['a']])
 
         # Extract only questions and answers from the generated QAs
         formatted_qas = "\n".join([f"Q{i+1}: {qa['q']}\nA{i+1}: {qa['a']}" for i, qa in enumerate(qa_pairs)])
@@ -93,7 +97,7 @@ def generate_multihop_question(client, path):
             f"Ensure that the (only) answer is the answer to the frist question, and the question naturally follows from the facts given.\n"
             f"You have to start from the last generated question and build up a single multi-hop question so it aggregates them all "
             f"and the answer is the answer to the first question.\n"
-            f"No entity except for the second entity of the last relation should be in the question.\n\n"
+            f"None of the answers to any of the questions should be in the generated question.\n\n"
             f"Here is an example:\n{example}\n\n"
             f"Here are the generated questions and answers:\n{formatted_qas}\n\n"
             f"Return a python dictionary without any code formatting, backticks, or markdown, with keys 'q' (multi-hop question) and 'a' (final answer)."
@@ -101,7 +105,9 @@ def generate_multihop_question(client, path):
 
         # Get the final multi-hop question
         multi_hop_qa = eval(ask_openai(client, prompt))
-        multi_hop_qa['path']=path
+        
+        
+        multi_hop_qa['path']=completed_path
     except Exception as e:
         print(e)
         multi_hop_qa={}

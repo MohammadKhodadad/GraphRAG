@@ -39,9 +39,12 @@ class EntityExtractor:
 
             # If it's the start of a new entity
             if entity_type.startswith("B"):
-                if current_entity:
-                    entities.append(current_entity.lower())  # Store previous entity
-                current_entity = word  # Start new entity
+                if start==last_end:
+                    current_entity += word 
+                else:
+                    if current_entity:
+                        entities.append(current_entity.lower())  # Store previous entity
+                    current_entity = word  # Start new entity
             
             # If it's a continuation (Inside)
             elif entity_type.startswith("I") and current_entity:

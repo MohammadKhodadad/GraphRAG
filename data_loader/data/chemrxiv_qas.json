@@ -1,85 +1,105 @@
 [
     {
-        "q": "What widely available building block undergoes an electrochemically enabled nickel-catalyzed crosscoupling with (hetero)aryl halides to furnish a key intermediate that can be further transformed via a direct Pd-catalyzed Buchwald–Hartwig C–N cross-coupling reaction?",
-        "a": "bromoglutarimide",
+        "q": "What functional group, noted for its versatility in natural products, pharmaceuticals, and synthetic intermediates, serves as a key synthetic handle for transformations into a compound that is constructed using aromatic boronic acids in the Petasis boron–Mannich reaction?",
+        "a": "nitrile moiety",
         "path": [
             [
-                "bromoglutarimide",
-                "nickelcatalyzed crosscoupling with",
-                "(hetero)aryl halides",
-                "A far \nmore direct and inexpensive approach would enlist a\nbromoglutarimide 1, a widely available building block, in a cross\ncoupling with (hetero)aryl halides. The capricious nature of unpro\ntected 1 makes it virtually unusable in crosscoupling approaches \nand no metalmediated crosscoupling of 1 have been reported to \ndate. In our hands, all known crosscoupling methods failed to react \n1 with pyridine 2 in more than traces (chemical, photochemical, or \nelectrochemical).7, 8 Herein we report a direct, electrochemically \nenabled nickelcatalyzed crosscoupling of unprotected a\nbromoglutarimide with various (hetero)aryl halides to forge the \nessential C3(sp3)C(sp2) glutarimide linkage (Figure 1B2). This \nradical crosscoupling strategy succeeds when other cuttingedge \nmethods fail and is characterized by operational simplicity, intuitive \nretrosynthesis, and high chemoselectivity, enabling the modular \nsynthesis of targeted protein degraders."
+                "nitrile moiety",
+                "transforms into",
+                "amines",
+                "INTRODUCTION \nThe nitrile moiety, a cornerstone of modern organic chemistry and material science, is integral \nto natural products, pharmaceuticals and synthetic intermediates due to its exceptional \nversatility and reactivity.16 It serves as a key synthetic handle for transformations into \ncarboxylic acids, amines, and aldehydes, while also enhancing reactivity at neighboring sites \nof molecules.79 The hydrocyanation of readily available alkynes represents a straightforward \nhttpsdoi.org10.26434chemrxiv2025qhvvj ORCID httpsorcid.org0000000347662135 Content not peerreviewed by ChemRxiv.",
+                "What functional group, noted for its versatility in natural products, pharmaceuticals, and synthetic intermediates, serves as a key synthetic handle for transformations into amines?",
+                "nitrile moiety"
             ],
             [
-                "(hetero)aryl halides",
+                "amines",
                 "is synthesized from",
-                "N(hetero)aryl glutarimides",
-                "An ap\nproach that leverages readily available starting materials and \nintuitive retrosynthetic logic would enable access to a broader \nscope of potential CBMs, which in turn further enables de\ngrader drug discovery campaigns. In this work, a direct Pdcatalyzed BuchwaldHartwig \nCN crosscoupling of a wide range of (hetero)aryl halides with \na simple unprotected amino glutarimide is realized via high\nthroughput experimentation (HTE), thus offering medicinal \nchemists a reliable tool to expedite the CBM SAR exploration \nfrom commercially available starting materials in a single step \n(Figure 1C). Figure 1 A) Cereblon binding motifs represent an important \nstructural variable in degrader drug discovery. B) Current ap\nproaches to N(hetero)aryl glutarimides lack generality or suf\nfer from lengthy synthetic sequences."
+                "aromatic boronic acids",
+                "While these methods offer access to simple alkyl amines, they pose \nchallenges in rapidly synthesizing more complex aliphatic amines and constructing amine libraries \nfor structure activity relationship (SAR) studies12. In recent decades, the versatility of imines has \nled to a significant progress in the development of multicomponent reactions as flexible routes to \namine synthesis13, 14, such as azaMoritaBaylisHillman15, Mannich16, Petasis boronMannich \n(PBM)17 and Strecker18 reacion. Among these, the threecomponent PBM reaction, first reported \nin 1993 19, has been an attractive method for medicinal chemists due to its ability to use widely \navailable building blocks including amines, aldehydes, and aromatic boronic acids to rapidly \naccess diverse C(sp2)rich chemical space17.",
+                "According to the text, which compound is synthesized using aromatic boronic acids as one of the building blocks in the Petasis boron–Mannich reaction?",
+                "amines"
             ]
         ]
     },
     {
-        "q": "Which type of halides engage in redox‐neutral cross‐coupling reactions with sulfonyl hydrazides, the versatile radical precursor used to forge C(sp3)–C(sp) bonds, as described in the abstract?",
-        "a": "alkynyl halides",
+        "q": "What is the nickel catalyst reported in the text that reacts with the compound used to react with propane in the reaction setup involving a synergistic combination of a nickel complex and TBADT?",
+        "a": "NiBr2(dtbbpy)",
         "path": [
             [
-                "alkynyl halides",
+                "NiBr2(dtbbpy)",
                 "reacts with",
-                "sulfonyl hydrazides",
-                "These authors contributed equally to this work. Correspondence to pbaranscripps.edu \n \nAbstract \nSulfonyl hydrazides are disclosed as versatile radical precursors as exemplified with seven new \nCC bond forming, redoxneutral crosscouplings with (1) activated olefins, (2) alkyl halides, (3) \nredox active esters, (4) aryl halides, (5) alkenyl halides, (6) alkynyl halides, and (7) a \ntrifluoromethylating reagent to forge C(sp3)C(sp3), C(sp3)C(sp2), and C(sp3)C(sp) bonds. Sulfonyl hydrazides are stable and usually crystalline substances that can be accessed in a variety \nof ways including transiently from hydrazones to achieve a net reductive arylation of carbonyl \ncompounds. Exogenous redox (chemical, photoelectrochemical) additives are not necessary as \nthese functional groups serve the dual role of radical precursor and electron donor."
+                "aryl bromide",
+                "Example Stateoftheart conditions fail with a simple heteroaryl bromide\n4CzIPNhv\nRef 18\nHEhv\nRef 17\nZnNi\nRef 16\nConditions\nAlkyl\nNHPI (1a)\nNHPI (1a)\nOH (1b)\nNiBr2(dme) (7)\ntBuBpyCamCN (7) or\npydicarboxamidine (7)\nZn, DMA\nNiBr2(dtbbpy) (20)\nHE (2 equiv.) NaHCO3 (4 equiv.) DMA, 390 nm\n4CzIPN (1)\nNi(TMHD)2 (5)\nTBACl (1.2 equiv.) BTMG (1.5 equiv.) DMSO, 427 nm\nStrained \nCycloalkanes\nOnly Propellanes\nStrained\nCycloalkanes,\nHeteroatom\nY\n\nO\nY\nBr\nN\nN\nknown conditions 09 yield\nAryl\nArenes and\nHeteroarenes\nOnly Electrondeficient\n(Hetero)arenes\nOnly Benzenes\nB. Decarboxylative arylation improving a powerful synthetic tool for quaternary centers\nR2\nR1\nR3\nR2\nR1\nR1\nPrimary Radical\nSecondary Radical\nTertiary Radical\nX\nHet\nHet\nR2\nR1\nR3\nModular Access to Quaternary Carbons via Decarboxylative Arylation\nA.",
+                "Which nickel catalyst known to react with aryl bromide is reported in the text?",
+                "NiBr2(dtbbpy)"
             ],
             [
-                "sulfonyl hydrazides",
-                "produces",
-                "C(sp3)C(sp)",
-                "These authors contributed equally to this work. Correspondence to pbaranscripps.edu \n \nAbstract \nSulfonyl hydrazides are disclosed as versatile radical precursors as exemplified with seven new \nCC bond forming, redoxneutral crosscouplings with (1) activated olefins, (2) alkyl halides, (3) \nredox active esters, (4) aryl halides, (5) alkenyl halides, (6) alkynyl halides, and (7) a \ntrifluoromethylating reagent to forge C(sp3)C(sp3), C(sp3)C(sp2), and C(sp3)C(sp) bonds. Sulfonyl hydrazides are stable and usually crystalline substances that can be accessed in a variety \nof ways including transiently from hydrazones to achieve a net reductive arylation of carbonyl \ncompounds. Exogenous redox (chemical, photoelectrochemical) additives are not necessary as \nthese functional groups serve the dual role of radical precursor and electron donor."
+                "aryl bromide",
+                "reacts with",
+                "propane",
+                "c A fresh solution of TBADT 2.5 mol in 1.5 mL of the reaction mixture was added before the second \nrun. d 2a2b ratio determined to be 21 . See Supplementary Information for experimental details. Our optimization efforts commenced by reacting aryl bromide 1 with propane, employing a \nsynergistic combination of Ni complex I and tetrabutylammonium decatungstate (TBADT) as \nthe Hydrogen Atom Transfer photocatalyst. CD3CN was selected as the solvent due to \nTBADTs wellknown propensity to abstract hydrogen atoms from CH3CN under the \ndemanding conditions necessary to activate gaseous reagents.25 A gastoliquid ratio (GL) of \n201 (8 equiv.) was employed, with 2,6lutidine used to quench the hydrobromic acid formed \nduring the reaction.",
+                "According to the described reaction setup, which compound is used to react with propane using a synergistic combination of a Ni complex and TBADT?",
+                "arylbromide"
             ]
         ]
     },
     {
-        "q": "What is generated under AP electrolysis from a ubiquitous chemical feedstock that is used with another reagent in a regioselective quaternization process ultimately involving carbon as revealed by an X‑ray crystal structure?",
-        "a": "C-centered radicals",
+        "q": "What reagent, recognized for its nonnucleophilic conjugate base, is used to smoothly add to basic nucleophilic derivatives that are formed from the very amines which participate in reactions such as the Petasis boron–Mannich reaction and undergo reductive amination?",
+        "a": "TfOH",
         "path": [
             [
-                "C-centered radicals",
-                "generate",
-                "carboxylic acids",
-                "AP \nelectrolysis was recently employed to selectively generate Ccentered radicals from carboxylic acids and applied it \nto obtain a heteroKolbe coupling of acids in moderate yields (33). Consequently, our group recently utilized AP \nelectrolysis to enable efficient aryl radical generation from organoboron reagents (30). In this previous study, we \ndemonstrated that under AP electrolysis, which reverses the polarity of the electrodes at controlled intervals, one \ncan effectively reduce radical accumulation and minimize electrode surface grafting. This enhancement is evident \nfrom significantly higher conversion to radical based products (e.g., homocoupling) compared to conventional \ndirect constant current electrolysis (DC). When our reaction is performed under AP electrolysis, the desired cross\ncoupling products were observed in trace yields (Figure 2B; see also Table S1)."
+                "TfOH",
+                "added in",
+                "alkyl amines",
+                "AcOH).8 With this data in \nmind, two sets of conditions were employed depending on \nthe pKa of the nucleophile (1) acidic nucleophiles e.g. car\nboxylic acids, phenols, thiophenols, and phosphates were \nadded in directly (THF at rt) or (2) basic nucleophiles such \nas anilines, alcohols, and alkyl amines added in smoothly \nwith the addition of TfOH (0.91 equiv, CH3CN or toluene, \n78 to 40 C followed by stirring at rt). TfOH was chosen due \nto its nonnucleophilic conjugate base.",
+                "Which reagent, recognized for its nonnucleophilic conjugate base, is added smoothly with alkyl amines as basic nucleophiles?",
+                "TfOH"
             ],
             [
-                "carboxylic acids",
+                "alkyl amines",
                 "is synthesized from",
-                "carbon",
-                "The cross coupling between two different redox active esters has \nalso been reported but is not generally applicable to quaternary center synthesis.8, 9 Here we show \nhow a single catalyst can mediate regioselective quaternization of carbon using ubiquitous \nchemical feedstocks olefins and carboxylic acids (Figure 1B). An inexpensive Febased catalyst \nin the presence of simple reducing agents can effectively achieve this powerful transformation in \na chemoselective fashion with broad substrate scope through a similar mechanistic pathway. It is \nparticularly striking that a single catalyst can both activate distinct functional groups (RAEs and \nolefins) and mediate bond formation between them."
+                "amines",
+                "R1\nH\nO\nH\nR6\nR4\nR5\n11\n12\n15\nR5\nR6\nR4\nR1\nR2\nR3\nN\nH\nR4\nR6 R5\n16\n17\n18\nNalkylation\nreductive amination\nnucleophilic addition\n10\n1e or 2e\n21\nC Rapid construction of alkyl amines  Petasis boronMannich (PBM) reaction \n (3dimensional library, m  n  p products)\nR2\nN R3\nR1\nH\nO\nR1\nR2\nR3\nN\nR4\nR4\nB\nH\n11\n(m aldehydes)\n12\n(n amines)\n13\n(p boron species)\n14\n(m  n  p amines)\nTransformation\nClassical PBM\nAlkylPBM\n(this work)\nDirecting group \n(in 11)\nrequired\nnot required\nBoron species B\n(in 13)\nB(OH)2, BPin, BF3K\nB(OH)2\nSubstituent R4\n(in 13)\naryl, vinyl\n1o, 2o, 3o alkyls\nPBM\nReaction\nMechanism\n2electron\n1electron\n8\n9\nH\nN\nMeO2C\nmethylphenidate\nCNS stimulant\n3\nO\nN\nN\n4\naripiprazole\nantipsychotic\nH\nN\nO\nR\nB\nO\nO\nHO\nB\nO\nO\nR\nLi\n0 V\n0.31 V\n0.49 V\n0.81V\n0.78 V\n1.5 V\nB\nR\nOH\nOH\nB\nR\nO\nO\nB\nR\nO\nO\nO\nK\nR\nB\nO\nO\nLB\nLB  DMAP\nR\nB\nO\nO\nPh\nLi\nR B F\nF\nF\nK\n 2.0 V\naccessiable \noxidative potentials\n1.1 V\nprohibitively high \noxidative potentials\ndeborylation radical formation\nvs SCE\nB\nR\nX\nX\nX\nSET\nR  BX3\nCl\nCl\nh\nh\n19\n20\nhttpsdoi.org10.26434chemrxiv2024647cr ORCID httpsorcid.org0000000172253224 Content not peerreviewed by ChemRxiv.",
+                "Which compounds are synthesized from amines using the Petasis boron–Mannich reaction as described in the text?",
+                "alkyl amines"
             ],
             [
-                "carbon",
-                "is part of",
-                "compound 70",
-                "Reaction conditions (f) POCl3, KPF6, DMF, 90 C, 2 h; (g) 61b63b N2H4H2O, EtOH, \nreflux, 12 h; 64b N2H4H2O, MeONa, MeOH, 70 C, 12 h; (h) guanidine acetate, Py, 100 C, 12 h. Group D. Comparison of approaches to pyrimidines 14c and \n18b. Group E. Reaction conditions (i) bisnucleophiles, Py, 90 C, 12 h. Xray crystal structure of compound 70 (carbon  white, oxygen  red, sulfur  green, \nbromine  orange, nitrogen  blue). Ellipsoids are shown at 30 probability level. httpsdoi.org10.26434chemrxiv20243lxgq Content not peerreviewed by ChemRxiv. License CC BY 4.0\n\n \n \n \n \n \nComparison with other methods. The reagent 1 developed \nherein can be used not only to make new sulfones, but also to \nsimplify the synthesis of the existing ones. The synthesis of \npyrazole 2 was already discussed earlier (Scheme 1)."
+                "amines",
+                "undergo",
+                "reductive amination",
+                "R1\nH\nO\nH\nR6\nR4\nR5\n11\n12\n15\nR5\nR6\nR4\nR1\nR2\nR3\nN\nH\nR4\nR6 R5\n16\n17\n18\nNalkylation\nreductive amination\nnucleophilic addition\n10\n1e or 2e\n21\nC Rapid construction of alkyl amines  Petasis boronMannich (PBM) reaction \n (3dimensional library, m  n  p products)\nR2\nN R3\nR1\nH\nO\nR1\nR2\nR3\nN\nR4\nR4\nB\nH\n11\n(m aldehydes)\n12\n(n amines)\n13\n(p boron species)\n14\n(m  n  p amines)\nTransformation\nClassical PBM\nAlkylPBM\n(this work)\nDirecting group \n(in 11)\nrequired\nnot required\nBoron species B\n(in 13)\nB(OH)2, BPin, BF3K\nB(OH)2\nSubstituent R4\n(in 13)\naryl, vinyl\n1o, 2o, 3o alkyls\nPBM\nReaction\nMechanism\n2electron\n1electron\n8\n9\nH\nN\nMeO2C\nmethylphenidate\nCNS stimulant\n3\nO\nN\nN\n4\naripiprazole\nantipsychotic\nH\nN\nO\nR\nB\nO\nO\nHO\nB\nO\nO\nR\nLi\n0 V\n0.31 V\n0.49 V\n0.81V\n0.78 V\n1.5 V\nB\nR\nOH\nOH\nB\nR\nO\nO\nB\nR\nO\nO\nO\nK\nR\nB\nO\nO\nLB\nLB  DMAP\nR\nB\nO\nO\nPh\nLi\nR B F\nF\nF\nK\n 2.0 V\naccessiable \noxidative potentials\n1.1 V\nprohibitively high \noxidative potentials\ndeborylation radical formation\nvs SCE\nB\nR\nX\nX\nX\nSET\nR  BX3\nCl\nCl\nh\nh\n19\n20\nhttpsdoi.org10.26434chemrxiv2024647cr ORCID httpsorcid.org0000000172253224 Content not peerreviewed by ChemRxiv.",
+                "Which compounds are known to undergo reductive amination as illustrated in the reaction process?",
+                "amines"
             ]
         ]
     },
     {
-        "q": "What compound is produced when a substance obtained from pyridine is further processed into an intermediate that is subsequently used in the synthesis of a medication?",
-        "a": "urea",
+        "q": "In preparing the stock solution, which substance is used to dissolve the compound that, when dissolved in water to form a dianion, plays a role in an optimized reaction protocol where water is employed as one part of a solvent mixture alongside MTBE and acetone reacting with benzyl 3-hydroxypyrrolidine1carboxylate?",
+        "a": "ethanol",
         "path": [
             [
-                "chlorpropamide",
-                "is synthesized from",
-                "urea",
-                "Examples \ninclude ROY, Olanzapine, Galunisertib, Axitinib, Chlorpropamide, Flufenamic acid, and \nPiroxicam. Accurate prediction for these molecules requires CSP methods to produce a diversity \nof molecular packing solutions for each molecule and achieve accurate relative energy \nevaluations. The dataset was further enriched by molecules with previously published CSP and experimental \nresults with relevance to smallmolecule pharmaceuticals. The final dataset, comprising 66 \nmolecules, covers a diversity of functional groups, including polar groups such as amide, urea, \npyridine, sulfonamide, hydroxyl, nitro, carboxylate, cyano, nonpolar groups such as phenyl and \nalkane chains, and various substituted aromatic and nonaromatic rings. The functional group \ndiversity present in the dataset requires high accuracy of the energy models across chemical \nspace, particularly as it applies to intra and intermolecular interactions relevant for molecular \ncrystal packing."
+                "ethanol",
+                "dissolves in",
+                "salicylic acid",
+                "License CC BY 4.0\n\nEffect of Temperature on the Concentration of Salicylic Acid in Acetylsalicylic Acid \n \n5 \nApparatus \n \nHot plate (1C), 1 \n \nElectronic balance (0.01g), 1 \n \nSpectrophotometer (0.001 for absorbance), 1 \n \nDigital thermometer (0.1C), 1 \n \nRuler (0.05cm), 1 \n \nTimer (001), 1 \n \nGlass cuvette, 1 \n \n50mL beaker, 26 \n \n100mL beaker, 20 \n \n25mL graduated cylinder (0.1mL), 26 \n \n10mL graduated cylinder (0.05mL), 26 \n \nStirring rod, 21 \n \nScoopula, 21 \n \nPipette, 25 \n \nFunnel, 25 \n \nWeighing boat, 21 \n \nFigure 2 Depicted process of making and measuring the absorbance of each solution \nProcedure \nPreparation of Salicylic Acid Stock Solution \n1. 5.00cm3 of ethanol was added to 15.0cm3 of pH7 buffer solution in a 50mL beaker. 2. 0.07g of salicylic acid was mixed into the solution to make salicylic acid solution. 3.",
+                "In the procedure for preparing the salicylic acid stock solution, what substance is used to dissolve salicylic acid?",
+                "ethanol"
             ],
             [
-                "urea",
-                "is synthesized from",
-                "piroxicam",
-                "Examples \ninclude ROY, Olanzapine, Galunisertib, Axitinib, Chlorpropamide, Flufenamic acid, and \nPiroxicam. Accurate prediction for these molecules requires CSP methods to produce a diversity \nof molecular packing solutions for each molecule and achieve accurate relative energy \nevaluations. The dataset was further enriched by molecules with previously published CSP and experimental \nresults with relevance to smallmolecule pharmaceuticals. The final dataset, comprising 66 \nmolecules, covers a diversity of functional groups, including polar groups such as amide, urea, \npyridine, sulfonamide, hydroxyl, nitro, carboxylate, cyano, nonpolar groups such as phenyl and \nalkane chains, and various substituted aromatic and nonaromatic rings. The functional group \ndiversity present in the dataset requires high accuracy of the energy models across chemical \nspace, particularly as it applies to intra and intermolecular interactions relevant for molecular \ncrystal packing."
+                "salicylic acid",
+                "dissolves in",
+                "water",
+                "This leads to the hypothesis that the concentration of produced salicylic acid \nincreases as temperature increases. Since temperature and rate of reaction have an exponential relationship, it would be \nexpected for the increase in concentration of salicylic acid to occur exponentially as well (Arrhenius Kinetics Analysis, \nn.d.). Once salicylic acid, 763, is dissolved in water, it produces, with a 11 mole ratio, the salicylate dianion, \n7432, which is the conjugate base of salicylic acid. When iron (III) nitrate, (3)3, dissolves in water, it \ndisassociates into 3 and 3 ions. The iron (III) ions then react with the water to produce the hexaaquairon \n(III) ion, (2)6\n3, again with a 11 mole ratio.",
+                "Which compound, when dissolved in water, produces the salicylate dianion as described in the text?",
+                "salicylic acid"
             ],
             [
-                "piroxicam",
-                "is synthesized from",
-                "pyridine",
-                "Examples \ninclude ROY, Olanzapine, Galunisertib, Axitinib, Chlorpropamide, Flufenamic acid, and \nPiroxicam. Accurate prediction for these molecules requires CSP methods to produce a diversity \nof molecular packing solutions for each molecule and achieve accurate relative energy \nevaluations. The dataset was further enriched by molecules with previously published CSP and experimental \nresults with relevance to smallmolecule pharmaceuticals. The final dataset, comprising 66 \nmolecules, covers a diversity of functional groups, including polar groups such as amide, urea, \npyridine, sulfonamide, hydroxyl, nitro, carboxylate, cyano, nonpolar groups such as phenyl and \nalkane chains, and various substituted aromatic and nonaromatic rings. The functional group \ndiversity present in the dataset requires high accuracy of the energy models across chemical \nspace, particularly as it applies to intra and intermolecular interactions relevant for molecular \ncrystal packing."
+                "water",
+                "reacts with",
+                "benzyl 3 hydroxypyrrolidine1carboxylate",
+                "Extensive \noptimization \nrevealed \nthat \nmixing \nbenzyl \n3\nhydroxypyrrolidine1carboxylate (1) with NHCJ (1.2 equiv) and \npyridine (1.5 equiv) in methyl tertbutyl ether (MTBE) 0.1M \nfollowed by filtration and subsequent irradiation with 450 nm light in \nthe presence of tosyl cyanide 9 (1.5 equiv), 4CzPN 4 (2 mol), \nbenzoyl peroxide (Bz2O2,1 equiv), and 2,4,6trimethylpyridine \n(Me3Pyr) in a solvent mixture of MTBEacetonewater (15151) \n0.017 M afforded the desired cyanation product in 54 yield (Table \n1, entry 1). Control experiments demonstrated that additional air is \ndetrimental to the reaction (entry 2). The use of oxygen as the oxidant \nor performing the reaction in the absence of an oxidant is also \ndetrimental (entries 34).",
+                "In the optimized reaction protocol, which component of the solvent mixture that reacts with benzyl 3-hydroxypyrrolidine1carboxylate is used along with MTBE and acetone?",
+                "water"
             ]
         ]
     }
