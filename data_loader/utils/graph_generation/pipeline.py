@@ -2,6 +2,7 @@ import os
 import sys
 import tqdm
 import json
+import pandas as pd
 # Ensure the script runs correctly when executed directly
 if __name__ == "__main__" and __package__ is None:
     sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -17,13 +18,22 @@ else:
 
 def graph_pipeline(directory, graph_directory, api_key):
     G=GraphManager()
+    if os.path.exists(graph_directory):
+        G.load_graph(graph_directory)
     entity_extractor = EntityExtractor()
     names=os.listdir(directory)
     for name in tqdm.tqdm(names):
         
         address=os.path.join(directory,name)
         try:
-            text=extract_text_from_pdf(address)
+            if '.pdf' in address:
+                text=extract_text_from_pdf(address)
+            elif '.jsonl' in address:
+                raise Exception('Not Implemented.')
+            elif '.csv' in address:
+                raise Exception('Not Implemented.')
+            else:
+                raise Exception('No supported input.')
             cleaned_text= clean_text(text)
         except Exception as e:
             print(f'Error: {e}')
@@ -32,6 +42,44 @@ def graph_pipeline(directory, graph_directory, api_key):
         chunks = split_text(cleaned_text,max_words=128)
         print(f'Num chunks: {len(chunks)}')
         for chunk in chunks[:16]:
+            try:
+                extracted_entities = entity_extractor.extract_entities(chunk)
+                verified_entities = verify_entities_from_text(chunk ,extracted_entities, api_key)
+                descriptions = extract_entity_descriptions(chunk, verified_entities, api_key)                
+                relations = extract_relations(chunk, verified_entities, api_key)
+                for entity, description in descriptions:
+                    G.add_node(entity, name, description, chunk)
+                for entity1, relation, entity2 in relations:
+                    G.add_node(entity1, name, "")
+                    G.add_node(entity2, name, "")
+                    G.add_edge(entity1, entity2, name, relation, chunk)
+            except Exception as e:
+                print('Error:',e)
+                print(chunk)
+        # except Exception as e:
+        #     print(e)
+        G.save_graph(graph_directory)
+
+
+def graph_pipeline_from_csv(file_address, graph_directory, api_key,source_column='source',text_column='text'):
+    G=GraphManager()
+    if os.path.exists(graph_directory):
+        G.load_graph(graph_directory)
+    entity_extractor = EntityExtractor()
+    data = pd.read_csv(file_address)
+    print('Num Records: ',len(data))
+    data=data.iloc[:500]
+    for index, row in tqdm.tqdm(data.iterrows()):
+        try:
+            cleaned_text= clean_text(row[text_column])
+            name = row[source_column]
+        except Exception as e:
+            print(f'Error: {e}')
+            break
+    
+        chunks = split_text(cleaned_text,max_words=128)
+        print(f'Num chunks: {len(chunks)}')
+        for chunk in chunks:
             try:
                 extracted_entities = entity_extractor.extract_entities(chunk)
                 verified_entities = verify_entities_from_text(chunk ,extracted_entities, api_key)

@@ -113,30 +113,29 @@ def verify_entities_from_text(text, entities, api_key, model="gpt-4o"):
         return []
 
     prompt = f"""
-        You are a chemistry expert. Your task is to verify if the extracted entities 
-        are meaningful chemical entities within the given text. Remove any irrelevant terms.
+You are a chemistry expert specializing in entity recognition. Your task is to **validate and filter** the extracted entities, ensuring they are **chemically meaningful** based on the provided text. Remove any irrelevant terms, including general descriptors, numerical values, reaction conditions, and vague terms.
 
-        ### **Entities Extracted by NER:**  
-        {entities}
+### **Entities Extracted by NER:**  
+{entities}
 
-        ### **Text:**  
-        {text}
+### **Text for Context:**  
+{text}
 
-        ### **Example of Valid Entities:**  
-        ✅ "HCl"  
-        ✅ "Sodium hydroxide"  
-        ✅ "Ethanol"  
-        ✅ "Benzene"  
+### **Criteria for Valid Entities:**  
+✅ Chemical compounds (e.g., "HCl", "Sodium hydroxide", "Ethanol", "Benzene")  
+✅ Chemical elements (e.g., "Carbon", "Oxygen", "Cesium")  
+✅ Specific catalysts, solvents, reagents (e.g., "Cs₂CO₃", "Toluene", "Palladium")  
 
-        ### **Example of Invalid Entities (Remove these):**  
-        🚫 "Reaction"  
-        🚫 "Temperature"  
-        🚫 "Strong acid"  
-        🚫 "Solution"  
+### **Remove the Following Types of Entities:**  
+🚫 Generic terms (e.g., "Reaction", "Solvent", "Acid", "Base", "Solution")  
+🚫 Experimental conditions (e.g., "pH", "Temperature", "2 M", "Strong acid")  
+🚫 Measurement terms (e.g., "X-ray diffraction", "NMR")  
+🚫 General descriptors (e.g., "High concentration", "Low efficiency")  
 
-        Provide the output as a **Python list**, containing only the valid chemical entities.
-        Do NOT include any markdown, formatting, or explanations.
+### **Output Format:**  
+Return only a **Python list** of valid chemical entities, with no explanations, markdown, or extra formatting.
     """
+
 
     response = client.chat.completions.create(
         messages=[{"role": "user", "content": prompt}],
@@ -155,8 +154,9 @@ def extract_relations(text, entities, api_key, model="gpt-4o", max_facts=20):
         ### **Guidelines for Relation Extraction:**
         1. **Entity Matching:** Consider only the entities provided in the given set. If an entity appears in the text but has no meaningful chemical relationship with another entity in the set, ignore it.
         2. **Chemically Significant Relations Only:** Extract relations that describe actual **chemical interactions, transformations, or properties** (e.g., "reacts with," "catalyzes," "dissolves in," "produces").
-        3. **Tuple Format:** Output extracted facts in the form of **(entity1, relation, entity2)**.
-        4. **Avoid Generic Relations:** Exclude weak relations like "is," "are," "exists," "relates to." Focus on **specific interactions**.
+        3. **Factual Relations** Only extract factual relations. Avoid observations, opinions, and findings.
+        4. **Tuple Format:** Output extracted facts in the form of **(entity1, relation, entity2)**.
+        5. **Avoid Generic Relations:** Exclude weak relations like "is," "are," "exists," "relates to." Focus on **specific interactions**.
 
         ### **Valid Relation Types (Examples)**
         ✅ "reacts with"  
@@ -210,9 +210,10 @@ def extract_entity_descriptions(text, entities, api_key, model="gpt-4o", max_des
         1. **Entity Matching:** Extract descriptions **only** for the entities listed in the provided set. Ignore any entity that is not explicitly mentioned in the set.
         2. **Concise & Relevant Descriptions:** Each description should be **factual, chemically relevant, and no longer than a sentence or two**. Avoid unnecessary explanations.
         3. **Meaningful Chemical Properties:** Focus on essential chemical **properties, behaviors, or roles** (e.g., acidity, solubility, reactivity, catalytic function).
-        4. **Tuple Format:** Output extracted facts as a Python list of tuples in the form of **(entity, description)**.
-        5. **Avoid General/Vague Information:** Descriptions should be precise and **chemically informative** rather than generic (e.g., "is a compound" is too weak).
-        6. **Only Output from the Given Text:** Descriptions have to come from the text. If there is no description for an entity, don't output anything for that entity.
+        3. **Factual Descriptions** Only extract factual descriptions. Avoid observations, opinions, and findings.
+        5. **Tuple Format:** Output extracted facts as a Python list of tuples in the form of **(entity, description)**.
+        6. **Avoid General/Vague Information:** Descriptions should be precise and **chemically informative** rather than generic (e.g., "is a compound" is too weak).
+        7. **Only Output from the Given Text:** Descriptions have to come from the text. If there is no description for an entity, don't output anything for that entity.
         
         ### **Examples of Valid Descriptions:**
         ✅ ("HCl", "A strong acid that ionizes completely in water.")  
@@ -255,11 +256,13 @@ if __name__=='__main__':
     dotenv.load_dotenv()
     api_key = os.environ.get("OPENAI_API_KEY")  # Ensure this is set in your environment
     extractor = EntityExtractor()
-    text = "Aspirin (C9H8O4) is widely used as an anti-inflammatory drug. Acetic anhydride reacts with salicylic acid to form it."
-    # text = "Aspirin and ibuprofen are common nonsteroidal anti-inflammatory drugs (NSAIDs)."
-    # text = '2-Benzyl-1-(4-methylphenyl)-3-(4-prop-2-enoxyphenyl)guanidine.'
-    # text = 'N,N-Dimethylformamide'
-    text = "Hydrochloric acid (HCl) reacts with sodium hydroxide (NaOH) to form water and salt."
+    text = """Cesium carbonate (Cs₂CO₃) is a widely used inorganic base in organic synthesis. It dissolves in water and is often used as a mild base in various catalytic reactions. In Suzuki coupling reactions, Cs₂CO₃ acts as a catalyst by facilitating the deprotonation of boronic acids. However, its efficiency is questionable, as many researchers prefer stronger bases like potassium tert-butoxide (t-BuOK).
+
+Additionally, Cs₂CO₃ precipitates at concentrations above 8 M, limiting its application in high-concentration reactions. While some scientists believe it is an inferior catalyst compared to organic bases, others argue that its solubility advantages outweigh its lower catalytic efficiency.
+
+Moreover, Cs₂CO₃ is a better choice than K₂CO₃ in reactions that require higher solubility in polar solvents. However, in my experience, reactions catalyzed by Cs₂CO₃ take much longer to complete, making it an impractical choice for time-sensitive experiments.
+
+Interestingly, a recent study found that Cs₂CO₃ accelerates some esterification reactions in dimethyl sulfoxide (DMSO), but its role as a catalyst in these systems is still debated. Some researchers claim that Cs₂CO₃ plays no direct role and that the solvent itself may be responsible for the acceleration."""
     # entities = ["HCl", "Sodium hydroxide", "Reaction", "Solution", "Water"]
     extracted_entities = extractor.extract_entities(text)
     print("Extracted Entities:", extracted_entities)

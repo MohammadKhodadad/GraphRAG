@@ -7,8 +7,12 @@ import os
 import fitz  # PyMuPDF
 import re
 import pandas as pd
+if __name__=='__main__':
+    from graph_generation.text_extraction import extract_text_from_pdf, clean_text, split_text
+else:
+    from .graph_generation.text_extraction import extract_text_from_pdf, clean_text, split_text
 
-def chemrxiv_fetch_all_papers_from_2024(output_file="chemrxiv_data.json",total=50):
+def chemrxiv_fetch_all_papers(output_file="chemrxiv_data.json",total=50):
     """
     Fetch all papers from ChemRxiv starting from 2024 and save them to a JSON file.
 
@@ -112,10 +116,34 @@ def chemrxiv_download_papers(all_papers, output_folder="chemrxiv_papers"):
                 time.sleep(5)
 
 
+def chemrxiv_embed_and_store(pipeline,data_folder):
+    texts = []
+    ids = []
+    names=os.listdir(data_folder)
+    for name in tqdm.tqdm(names):
+        address=os.path.join(data_folder,name)
+        try:
+            if '.pdf' in address:
+                text=extract_text_from_pdf(address)
+            elif '.jsonl' in address:
+                raise Exception('Not Implemented.')
+            elif '.csv' in address:
+                raise Exception('Not Implemented.')
+            else:
+                raise Exception('No supported input.')
+            cleaned_text= clean_text(text)
+            texts.append(cleaned_text)
+            ids.append(name)
+        except Exception as e:
+            print(f'Error: {e}')
+            continue
+
+    pipeline.cot.retriever.embed_and_store(texts, ids)
+
 # Example usage
 if __name__=='__main__':
 
-    all_papers=chemrxiv_fetch_all_papers_from_2024(output_file="../data/chemrxiv_data_2024.json")
+    all_papers=chemrxiv_fetch_all_papers(output_file="../data/chemrxiv_data_2024.json")
     with open('../data/chemrxiv_data_2024.json','rb') as f:
         all_papers=json.load(f)
     chemrxiv_download_papers(all_papers,)

@@ -135,7 +135,7 @@ class Retriever:
         return entities
 
     
-    def split_text(self, text, max_words=200):
+    def split_text(self, text, max_words=128):
         """Splits text into chunks by grouping sentences while keeping each chunk under `max_words`."""
         sentences = sent_tokenize(text)  # Tokenize into sentences
         chunks = []
@@ -161,7 +161,7 @@ class Retriever:
 
         return chunks
 
-    def extract_paragraphs(self, documents, max_words=200):
+    def extract_paragraphs(self, documents, max_words=128):
         """
         Extracts and improves paragraphization of documents by splitting text into controlled chunks.
         
@@ -179,7 +179,7 @@ class Retriever:
         
         for doc in documents['documents']:
             if not isinstance(doc, str):
-                print(f"Skipping invalid document: {doc}")
+                # print(f"Skipping invalid document: {doc}")
                 continue
             
             paragraphs = self.split_text(doc, max_words=max_words)

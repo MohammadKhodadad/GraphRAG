@@ -69,7 +69,7 @@ def generate_multihop_question(client, path):
         for entity1, relation, entity2, text in path:
             qa = generate_relation_question(client, entity1, relation, entity2, text)
             qa_pairs.append(qa)
-            completed_path.append([entity1, relation, entity2, text,qa['q'],qa['a']])
+            completed_path.append({'entity1':entity1, 'relation':relation, 'entity2': entity2, 'text': text,'q':qa['q'],'a':qa['a']})
 
         # Extract only questions and answers from the generated QAs
         formatted_qas = "\n".join([f"Q{i+1}: {qa['q']}\nA{i+1}: {qa['a']}" for i, qa in enumerate(qa_pairs)])
@@ -129,6 +129,64 @@ def generate_questions_from_paths(paths, api_key, save_address=None):
     return sampled_qas
 
 
+def is_factual_chemistry_question(client, question, answer, path):
+    """
+    Determines whether a question is a factual chemistry question by checking its validity against the given path using an LLM.
+
+    Parameters:
+        client: OpenAI client for querying the LLM.
+        question (str): The chemistry-related question to evaluate.
+        answer (str): The expected answer to the question.
+        path (list): List of dictionaries containing entities, relations, and text.
+
+    Returns:
+        str: 'yes' if the question is factual in chemistry, 'no' otherwise.
+    """
+    try:
+        if not question or not answer or not path:
+            return 'no'
+        
+        # Format the path for LLM input
+        path_text = "\n".join([f"{entry[0]} {entry[1]} {entry[2]}: {entry[3]}" for entry in path])
+        
+        # Prompt for LLM
+        prompt = f"""
+        You are a chemistry expert. Your task is to determine if the given question is a factual chemistry question based on the provided path.
+        
+        ### Path Information:
+        {path_text}
+        
+        ### Question:
+        {question}
+        
+        ### Answer:
+        {answer}
+        
+        Please analyze the path and verify if the question is a factual chemistry question. A factual question must be based on actual chemical properties, reactions, or experimentally verified principles. If the question is factual, return 'yes'. If it contains speculation, opinions, or lacks verifiable chemical grounding, return 'no'.
+        
+        ### Examples of Factual Chemistry Questions:
+        ✅ "What dissolves in water?"
+        ✅ "What catalyst is used in the reaction between A and B?"
+        ✅ "Which compound undergoes oxidation in this reaction?"
+        ✅ "What product is formed when sodium reacts with chlorine?"
+        
+        ### Examples of Non-Factual Chemistry Questions:
+        🚫 "Why do some scientists think this reaction is inefficient?"
+        🚫 "What is the best solvent for this reaction?"
+        🚫 "Is this reaction useful in industry?"
+        🚫 "Do you think this compound is a good catalyst?"
+
+        Provide only 'yes' or 'no' as your response.
+        """
+        
+        # Query the LLM
+        response = ask_openai(client,prompt)
+        
+        return response
+    
+    except Exception as e:
+        print(f"Error: {e}")
+        return 'no'
 
 
 if __name__ == "__main__":
@@ -162,3 +220,4 @@ if __name__ == "__main__":
 
     qa_pair = generate_multihop_question(client, path)
     print(qa_pair)
+    print(is_factual_chemistry_question(client, qa_pair['q'], qa_pair['a'], path))

@@ -13,53 +13,58 @@ class GraphExplorer:
         """Initializes the GraphExplorer with an instance of GraphManager."""
         self.graph_manager = graph_manager
 
-    def find_all_paths_of_length_n(self, length):
-        """Finds all paths of exact length `length` from all nodes using BFS."""
-        all_paths = []
+    def sample_random_paths(self, length, num_samples=5):
+        """Randomly samples paths of the given length using streaming BFS instead of loading all paths."""
+        sampled_paths = []
+        nodes = list(self.graph_manager.graph.nodes)
 
-        for start in tqdm.tqdm(self.graph_manager.graph.nodes):
+        if not nodes:
+            print("Graph is empty. No nodes to explore.")
+            return []
+
+        while len(sampled_paths) < num_samples:
+            start = random.choice(nodes)  # Pick a random starting node
             queue = deque([(start, [start])])  # (current node, path taken)
 
             while queue:
                 node, path = queue.popleft()
 
-                # If we have reached the exact required length, add to results
+                # If the exact length is reached, consider it for sampling
                 if len(path) == length + 1:
-                    all_paths.append(path)
-                    continue  # Don't expand this path further
+                    sampled_paths.append(path)
+                    if len(sampled_paths) >= num_samples:
+                        break  # Stop when enough samples are collected
+                    continue  # Do not expand further
 
                 # Expand neighbors while avoiding cycles
                 for neighbor in self.graph_manager.graph.neighbors(node):
-                    if neighbor not in path:  # Ensures simple paths
+                    if neighbor not in path:  # Ensures simple paths (no cycles)
                         queue.append((neighbor, path + [neighbor]))
 
-        return all_paths
-
-    def sample_random_paths(self, length, num_samples=5):
-        """Randomly samples paths of the given length from all possible paths."""
-        paths = self.find_all_paths_of_length_n(length)
-        if not paths:
+        if not sampled_paths:
             print(f"No paths of length {length} found.")
             return []
-        
-        sampled_paths = random.sample(paths, min(num_samples, len(paths)))
-        completed_sampled_paths=[]
-        
+
+        return self._format_paths(sampled_paths)
+
+    def _format_paths(self, sampled_paths):
+        """Formats paths by retrieving edge descriptions."""
+        formatted_paths = []
         for path in sampled_paths:
-            completed_path=[]
+            completed_path = []
             for i in range(len(path) - 1):
                 node1, node2 = path[i], path[i + 1]
-                description = self.graph_manager.graph.edges[node1, node2].get("description")
-                print(description)
-                if len(description)>0:
-                    for key,value in description.items():
-                        relation = value[-1].get('description')
-                        text = value[-1].get('text')
-                else:
-                    continue
-                completed_path.append((node1, relation, node2, text))
-            completed_sampled_paths.append(completed_path)
-        return completed_sampled_paths
+                edge_data = self.graph_manager.graph.edges.get((node1, node2), {})
+                description = edge_data.get("description", {})
+
+                if description:
+                    for key, value in description.items():
+                        relation = value[-1].get('description', 'Unknown')
+                        text = value[-1].get('text', '')
+                        completed_path.append((node1, relation, node2, text))
+            
+            formatted_paths.append(completed_path)
+        return formatted_paths
 
     def display_path(self, path):
 
@@ -95,4 +100,4 @@ if __name__ == "__main__":
 
     path_length = 2
     num_samples = 3
-    explorer.display_random_paths(path_length, num_samples)
+    print(explorer.sample_random_paths(2))
