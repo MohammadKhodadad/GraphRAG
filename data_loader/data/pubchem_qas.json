@@ -1,0 +1,1046 @@
+[
+    {
+        "q": "What metabolic process essential for energy production involves the processing of a molecule that, when undergoing beta oxidation, yields eight AcetylCoA chains contributing to the TCA cycle?",
+        "a": "metabolism of fatty acids",
+        "path": [
+            {
+                "entity1": "metabolism of fatty acids",
+                "relation": "involved in",
+                "entity2": "palmitoylcarnitine",
+                "text": "Title Palmitoylcarnitine\nwikipedia Palmitoylcarnitine is an ester derivative of carnitine involved in the metabolism of fatty acids. During the tricarboxylic acid cycle (TCA), fatty acids undergo a process known as oxidation to produce energy in the form of ATP. oxidation occurs primarily within mitochondria, however the mitochondrial membrane prevents the entry of long chain fatty acids (C10), so the conversion of fatty acids such as palmitic acid is key. Palmitic acid is brought to the cell and once inside the cytoplasm is first converted to PalmitoylCoA. PalmitoylCoA has the ability to freely pass the outer mitochondrial membrane, but the inner membrane is impermeable to the AcylCoA and thioester forms of various longchain fatty acids such as palmitic acid.",
+                "q": "Palmitoylcarnitine participates in which metabolic process essential for energy production?",
+                "a": "metabolism of fatty acids"
+            },
+            {
+                "entity1": "palmitoylcarnitine",
+                "relation": "yields",
+                "entity2": "acetylcoa",
+                "text": "Function \n\nEnergy Generation Palmitoylcarnitine is one molecule in a family of ester derivatives of carnitine that are utilized in the TCA cycle to generate energy. The beta oxidation yields 7 NADH, 7 FADH2, and 8 AcetylCoA chains. This AcetylCoA generates 3 NADH, 1 FADH2, and 1 GTP for every molecule in the TCA cycle. Each NADH generates 2.5 ATP in the ETC and FADH2 generates 1.5 ATP. This totals to 108 ATP, but 2 ATP are consumed to generate the initial PalmitoylCoA, leaving a net gain of 106 ATP. Clinical Significance Palmitoylcarnitine has demonstrated potential as a diagnostic marker in newborns for the medical condition of primary carnitine deficiency.",
+                "q": "Which molecule, when processed via beta oxidation, yields eight AcetylCoA chains contributing to the TCA cycle for energy generation?",
+                "a": "palmitoylcarnitine"
+            }
+        ]
+    },
+    {
+        "q": "What ester derivative of carnitine, which facilitates the transfer of long-chain fatty acids into the mitochondria and has been associated with effects of dihydrotestosterone in prostate cancer models, is involved in fatty acid metabolism?",
+        "a": "Palmitoylcarnitine",
+        "path": [
+            {
+                "entity1": "metabolism of fatty acids",
+                "relation": "involved in",
+                "entity2": "palmitoylcarnitine",
+                "text": "Title Palmitoylcarnitine\nwikipedia Palmitoylcarnitine is an ester derivative of carnitine involved in the metabolism of fatty acids. During the tricarboxylic acid cycle (TCA), fatty acids undergo a process known as oxidation to produce energy in the form of ATP. oxidation occurs primarily within mitochondria, however the mitochondrial membrane prevents the entry of long chain fatty acids (C10), so the conversion of fatty acids such as palmitic acid is key. Palmitic acid is brought to the cell and once inside the cytoplasm is first converted to PalmitoylCoA. PalmitoylCoA has the ability to freely pass the outer mitochondrial membrane, but the inner membrane is impermeable to the AcylCoA and thioester forms of various longchain fatty acids such as palmitic acid.",
+                "q": "What ester derivative of carnitine is involved in the metabolism of fatty acids?",
+                "a": "Palmitoylcarnitine"
+            },
+            {
+                "entity1": "palmitoylcarnitine",
+                "relation": "is synthesized from",
+                "entity2": "carnitine",
+                "text": "Levels of palmitoylcarnitine (palcar) demonstrated significant correlation with dihydrotestosterone (DHT) and its effects in prostate cancer models, suggesting a similar role between the two molecules. See also Carnitine Opalmitoyltransferase\n\n\n References \n\n\n pubchem\nOpalmitoylcarnitine is an Oacylcarnitine having palmitoyl (hexadecanoyl) as the acyl substituent. It has a role as a metabolite. It is functionally related to a hexadecanoic acid. Palmitoylcarnitine has been reported in Drosophila melanogaster with data available. A longchain fatty acid ester of carnitine which facilitates the transfer of longchain fatty acids from cytoplasm into mitochondria during the oxidation of fatty acids.",
+                "q": "Which long-chain fatty acid ester, synthesized from carnitine, facilitates the transfer of long-chain fatty acids into the mitochondria and has been correlated with dihydrotestosterone effects in prostate cancer models?",
+                "a": "palmitoylcarnitine"
+            }
+        ]
+    },
+    {
+        "q": "What metabolic process is associated with the molecule that yields NADH during beta oxidation and is an ester derivative of carnitine involved in the TCA cycle?",
+        "a": "metabolism of fatty acids",
+        "path": [
+            {
+                "entity1": "metabolism of fatty acids",
+                "relation": "involved in",
+                "entity2": "palmitoylcarnitine",
+                "text": "Title Palmitoylcarnitine\nwikipedia Palmitoylcarnitine is an ester derivative of carnitine involved in the metabolism of fatty acids. During the tricarboxylic acid cycle (TCA), fatty acids undergo a process known as oxidation to produce energy in the form of ATP. oxidation occurs primarily within mitochondria, however the mitochondrial membrane prevents the entry of long chain fatty acids (C10), so the conversion of fatty acids such as palmitic acid is key. Palmitic acid is brought to the cell and once inside the cytoplasm is first converted to PalmitoylCoA. PalmitoylCoA has the ability to freely pass the outer mitochondrial membrane, but the inner membrane is impermeable to the AcylCoA and thioester forms of various longchain fatty acids such as palmitic acid.",
+                "q": "Palmitoylcarnitine is known to be involved in which metabolic process?",
+                "a": "metabolism of fatty acids"
+            },
+            {
+                "entity1": "palmitoylcarnitine",
+                "relation": "yields",
+                "entity2": "nadh",
+                "text": "Function \n\nEnergy Generation Palmitoylcarnitine is one molecule in a family of ester derivatives of carnitine that are utilized in the TCA cycle to generate energy. The beta oxidation yields 7 NADH, 7 FADH2, and 8 AcetylCoA chains. This AcetylCoA generates 3 NADH, 1 FADH2, and 1 GTP for every molecule in the TCA cycle. Each NADH generates 2.5 ATP in the ETC and FADH2 generates 1.5 ATP. This totals to 108 ATP, but 2 ATP are consumed to generate the initial PalmitoylCoA, leaving a net gain of 106 ATP. Clinical Significance Palmitoylcarnitine has demonstrated potential as a diagnostic marker in newborns for the medical condition of primary carnitine deficiency.",
+                "q": "Which molecule, an ester derivative of carnitine involved in the TCA cycle, yields NADH during beta oxidation?",
+                "a": "palmitoylcarnitine"
+            }
+        ]
+    },
+    {
+        "q": "Based on the text, which metabolic process is linked to the molecule that contains the saturated fatty acid known as palmitic acid?",
+        "a": "metabolism of fatty acids",
+        "path": [
+            {
+                "entity1": "metabolism of fatty acids",
+                "relation": "involved in",
+                "entity2": "palmitoylcarnitine",
+                "text": "Title Palmitoylcarnitine\nwikipedia Palmitoylcarnitine is an ester derivative of carnitine involved in the metabolism of fatty acids. During the tricarboxylic acid cycle (TCA), fatty acids undergo a process known as oxidation to produce energy in the form of ATP. oxidation occurs primarily within mitochondria, however the mitochondrial membrane prevents the entry of long chain fatty acids (C10), so the conversion of fatty acids such as palmitic acid is key. Palmitic acid is brought to the cell and once inside the cytoplasm is first converted to PalmitoylCoA. PalmitoylCoA has the ability to freely pass the outer mitochondrial membrane, but the inner membrane is impermeable to the AcylCoA and thioester forms of various longchain fatty acids such as palmitic acid.",
+                "q": "Based on the text, palmitoylcarnitine is associated with which metabolic process?",
+                "a": "metabolism of fatty acids"
+            },
+            {
+                "entity1": "palmitoylcarnitine",
+                "relation": "contains",
+                "entity2": "palmitic acid",
+                "text": "The palmitoylCoA is then enzymatically transformed into palmitoylcarnitine via the Carnitine Opalmitoyltransferase family. The palmitoylcarnitine is then actively transferred into the inner membrane of the mitochondria via the carnitineacylcarnitine translocase. Once inside the inner mitochondrial membrane, the same Carnitine Opalmitoyltransferase family is then responsible for transforming the palmitoylcarnitine back to the palmitoylCoA form. Structure Palmitoylcarnitine contains the saturated fatty acid known as palmitic acid (C160) which is bound to the hydroxy group of the carnitine. The core carnitine structure, consisting of butanoate with a quaternary ammonium attached to C4 and hydroxy group at C3, is a common molecular backbone for the transfer of multiple long chain fatty acids in the TCA cycle.",
+                "q": "Which molecule, as described in the text, contains the saturated fatty acid known as palmitic acid?",
+                "a": "palmitoylcarnitine"
+            }
+        ]
+    },
+    {
+        "q": "Which metabolic process results in the synthesis of the ester derivative made from palmitoylcoa that participates in the TCA cycle and is being evaluated as a diagnostic marker for primary carnitine deficiency?",
+        "a": "metabolism of fatty acids",
+        "path": [
+            {
+                "entity1": "metabolism of fatty acids",
+                "relation": "involved in",
+                "entity2": "palmitoylcarnitine",
+                "text": "Title Palmitoylcarnitine\nwikipedia Palmitoylcarnitine is an ester derivative of carnitine involved in the metabolism of fatty acids. During the tricarboxylic acid cycle (TCA), fatty acids undergo a process known as oxidation to produce energy in the form of ATP. oxidation occurs primarily within mitochondria, however the mitochondrial membrane prevents the entry of long chain fatty acids (C10), so the conversion of fatty acids such as palmitic acid is key. Palmitic acid is brought to the cell and once inside the cytoplasm is first converted to PalmitoylCoA. PalmitoylCoA has the ability to freely pass the outer mitochondrial membrane, but the inner membrane is impermeable to the AcylCoA and thioester forms of various longchain fatty acids such as palmitic acid.",
+                "q": "What metabolic process is palmitoylcarnitine involved in?",
+                "a": "metabolism of fatty acids"
+            },
+            {
+                "entity1": "palmitoylcarnitine",
+                "relation": "is synthesized from",
+                "entity2": "palmitoylcoa",
+                "text": "Function \n\nEnergy Generation Palmitoylcarnitine is one molecule in a family of ester derivatives of carnitine that are utilized in the TCA cycle to generate energy. The beta oxidation yields 7 NADH, 7 FADH2, and 8 AcetylCoA chains. This AcetylCoA generates 3 NADH, 1 FADH2, and 1 GTP for every molecule in the TCA cycle. Each NADH generates 2.5 ATP in the ETC and FADH2 generates 1.5 ATP. This totals to 108 ATP, but 2 ATP are consumed to generate the initial PalmitoylCoA, leaving a net gain of 106 ATP. Clinical Significance Palmitoylcarnitine has demonstrated potential as a diagnostic marker in newborns for the medical condition of primary carnitine deficiency.",
+                "q": "What molecule, synthesized from palmitoylcoa, serves as an ester derivative of carnitine involved in the TCA cycle and is being considered as a diagnostic marker for primary carnitine deficiency?",
+                "a": "palmitoylcarnitine"
+            }
+        ]
+    },
+    {
+        "q": "What is the essential biological process that involves an ester derivative of carnitine, which, during beta oxidation, yields FADH2 and plays a key role in converting fatty acids into energy?",
+        "a": "metabolism of fatty acids",
+        "path": [
+            {
+                "entity1": "metabolism of fatty acids",
+                "relation": "involved in",
+                "entity2": "palmitoylcarnitine",
+                "text": "Title Palmitoylcarnitine\nwikipedia Palmitoylcarnitine is an ester derivative of carnitine involved in the metabolism of fatty acids. During the tricarboxylic acid cycle (TCA), fatty acids undergo a process known as oxidation to produce energy in the form of ATP. oxidation occurs primarily within mitochondria, however the mitochondrial membrane prevents the entry of long chain fatty acids (C10), so the conversion of fatty acids such as palmitic acid is key. Palmitic acid is brought to the cell and once inside the cytoplasm is first converted to PalmitoylCoA. PalmitoylCoA has the ability to freely pass the outer mitochondrial membrane, but the inner membrane is impermeable to the AcylCoA and thioester forms of various longchain fatty acids such as palmitic acid.",
+                "q": "Which biological process, essential for converting fatty acids into energy, does palmitoylcarnitine play a role in?",
+                "a": "metabolism of fatty acids"
+            },
+            {
+                "entity1": "palmitoylcarnitine",
+                "relation": "yields",
+                "entity2": "fadh2",
+                "text": "Function \n\nEnergy Generation Palmitoylcarnitine is one molecule in a family of ester derivatives of carnitine that are utilized in the TCA cycle to generate energy. The beta oxidation yields 7 NADH, 7 FADH2, and 8 AcetylCoA chains. This AcetylCoA generates 3 NADH, 1 FADH2, and 1 GTP for every molecule in the TCA cycle. Each NADH generates 2.5 ATP in the ETC and FADH2 generates 1.5 ATP. This totals to 108 ATP, but 2 ATP are consumed to generate the initial PalmitoylCoA, leaving a net gain of 106 ATP. Clinical Significance Palmitoylcarnitine has demonstrated potential as a diagnostic marker in newborns for the medical condition of primary carnitine deficiency.",
+                "q": "Which molecule, as an ester derivative of carnitine involved in energy generation, yields FADH2 during beta oxidation?",
+                "a": "palmitoylcarnitine"
+            }
+        ]
+    },
+    {
+        "q": "Which mitochondrial metabolic process involves the molecule synthesized from opalmitoylcarnitine that plays a role in transferring long-chain fatty acids into the mitochondria?",
+        "a": "metabolism of fatty acids",
+        "path": [
+            {
+                "entity1": "metabolism of fatty acids",
+                "relation": "involved in",
+                "entity2": "palmitoylcarnitine",
+                "text": "Title Palmitoylcarnitine\nwikipedia Palmitoylcarnitine is an ester derivative of carnitine involved in the metabolism of fatty acids. During the tricarboxylic acid cycle (TCA), fatty acids undergo a process known as oxidation to produce energy in the form of ATP. oxidation occurs primarily within mitochondria, however the mitochondrial membrane prevents the entry of long chain fatty acids (C10), so the conversion of fatty acids such as palmitic acid is key. Palmitic acid is brought to the cell and once inside the cytoplasm is first converted to PalmitoylCoA. PalmitoylCoA has the ability to freely pass the outer mitochondrial membrane, but the inner membrane is impermeable to the AcylCoA and thioester forms of various longchain fatty acids such as palmitic acid.",
+                "q": "Which metabolic process, primarily occurring in mitochondria, is palmitoylcarnitine involved in?",
+                "a": "metabolism of fatty acids"
+            },
+            {
+                "entity1": "palmitoylcarnitine",
+                "relation": "is synthesized from",
+                "entity2": "opalmitoylcarnitine",
+                "text": "Levels of palmitoylcarnitine (palcar) demonstrated significant correlation with dihydrotestosterone (DHT) and its effects in prostate cancer models, suggesting a similar role between the two molecules. See also Carnitine Opalmitoyltransferase\n\n\n References \n\n\n pubchem\nOpalmitoylcarnitine is an Oacylcarnitine having palmitoyl (hexadecanoyl) as the acyl substituent. It has a role as a metabolite. It is functionally related to a hexadecanoic acid. Palmitoylcarnitine has been reported in Drosophila melanogaster with data available. A longchain fatty acid ester of carnitine which facilitates the transfer of longchain fatty acids from cytoplasm into mitochondria during the oxidation of fatty acids.",
+                "q": "Which molecule, involved in the transfer of long-chain fatty acids into the mitochondria, is synthesized from opalmitoylcarnitine?",
+                "a": "palmitoylcarnitine"
+            }
+        ]
+    },
+    {
+        "q": "What is the energy-yielding process that involves the oxidation of fatty acids and relies on a molecule that transfers long-chain fatty acids from the cytoplasm into the mitochondria?",
+        "a": "metabolism of fatty acids",
+        "path": [
+            {
+                "entity1": "metabolism of fatty acids",
+                "relation": "involved in",
+                "entity2": "palmitoylcarnitine",
+                "text": "Title Palmitoylcarnitine\nwikipedia Palmitoylcarnitine is an ester derivative of carnitine involved in the metabolism of fatty acids. During the tricarboxylic acid cycle (TCA), fatty acids undergo a process known as oxidation to produce energy in the form of ATP. oxidation occurs primarily within mitochondria, however the mitochondrial membrane prevents the entry of long chain fatty acids (C10), so the conversion of fatty acids such as palmitic acid is key. Palmitic acid is brought to the cell and once inside the cytoplasm is first converted to PalmitoylCoA. PalmitoylCoA has the ability to freely pass the outer mitochondrial membrane, but the inner membrane is impermeable to the AcylCoA and thioester forms of various longchain fatty acids such as palmitic acid.",
+                "q": "Which process that produces energy via fatty acid oxidation involves palmitoylcarnitine?",
+                "a": "metabolism of fatty acids"
+            },
+            {
+                "entity1": "palmitoylcarnitine",
+                "relation": "facilitates the transfer of",
+                "entity2": "longchain fatty acids",
+                "text": "Levels of palmitoylcarnitine (palcar) demonstrated significant correlation with dihydrotestosterone (DHT) and its effects in prostate cancer models, suggesting a similar role between the two molecules. See also Carnitine Opalmitoyltransferase\n\n\n References \n\n\n pubchem\nOpalmitoylcarnitine is an Oacylcarnitine having palmitoyl (hexadecanoyl) as the acyl substituent. It has a role as a metabolite. It is functionally related to a hexadecanoic acid. Palmitoylcarnitine has been reported in Drosophila melanogaster with data available. A longchain fatty acid ester of carnitine which facilitates the transfer of longchain fatty acids from cytoplasm into mitochondria during the oxidation of fatty acids.",
+                "q": "Which molecule facilitates the transfer of longchain fatty acids from the cytoplasm into mitochondria during fatty acid oxidation?",
+                "a": "palmitoylcarnitine"
+            }
+        ]
+    },
+    {
+        "q": "What reagents react with the compound, which is both oxidized to produce acetic acid and functions as a versatile solvent miscible with acetic acid, via an SN2 mechanism to yield ethyl halides?",
+        "a": "hydrogen halides",
+        "path": [
+            {
+                "entity1": "hydrogen halides",
+                "relation": "reacts with",
+                "entity2": "ethanol",
+                "text": "Ethanol reacts with hydrogen halides to produce ethyl halides such as ethyl chloride and ethyl bromide via an SN2 reaction\n\nCH3CH2OH  HCl  CH3CH2Cl  H2O\nHCl requires a catalyst such as zinc chloride. HBr requires refluxing with a sulfuric acid catalyst. Ethyl halides can, in principle, also be produced by treating ethanol with more specialized halogenating agents, such as thionyl chloride or phosphorus tribromide. CH3CH2OH  SOCl2  CH3CH2Cl  SO2  HCl\nUpon treatment with halogens in the presence of base, ethanol gives the corresponding haloform (CHX3, where X  Cl, Br, I). This conversion is called the haloform reaction.",
+                "q": "What reagents react with ethanol to produce ethyl halides via an SN2 reaction?",
+                "a": "hydrogen halides"
+            },
+            {
+                "entity1": "ethanol",
+                "relation": "is produced from",
+                "entity2": "acetic acid",
+                "text": "However, the concentration of free acetic acid in cells is kept at a low level to avoid disrupting the control of the pH of the cell contents. Acetic acid is produced and excreted by certain bacteria, notably the Acetobacter genus and Clostridium acetobutylicum. These bacteria are found universally in foodstuffs, water, and soil, and acetic acid is produced naturally as fruits and some other foods spoil. Acetic acid is also a component of the vaginal lubrication of humans and other primates, where it appears to serve as a mild antibacterial agent. Product of the oxidation of ethanol and of the destructive distillation of wood. It is used locally, occasionally internally, as a counterirritant and also as a reagent.",
+                "q": "Which compound is oxidized to produce acetic acid according to the text?",
+                "a": "ethanol"
+            },
+            {
+                "entity1": "ethanol",
+                "relation": "miscible with",
+                "entity2": "acetic acid",
+                "text": "Ethanols adiabatic flame temperature for combustion in air is 2082 C or 3779 F.\nEthanol is slightly more refractive than water, having a refractive index of 1.36242 (at 589.3 nm and 18.35 C or 65.03 F). The triple point for ethanol is 150  20 K.\n\nSolvent properties Ethanol is a versatile solvent, miscible with water and with many organic solvents, including acetic acid, acetone, benzene, carbon tetrachloride, chloroform, diethyl ether, ethylene glycol, glycerol, nitromethane, pyridine, and toluene. Its main use as a solvent is in making tincture of iodine, cough syrups, etc. It is also miscible with light aliphatic hydrocarbons, such as pentane and hexane, and with aliphatic chlorides such as trichloroethane and tetrachloroethylene.",
+                "q": "According to the text, which versatile solvent is noted for being miscible with acetic acid?",
+                "a": "ethanol"
+            }
+        ]
+    },
+    {
+        "q": "What type of halide compounds react with the compound that, once metabolized into acetyl CoA, serves as an energy-providing carbohydrate nutrient in the human body, to form ethyl halides via an SN2 reaction?",
+        "a": "hydrogen halides",
+        "path": [
+            {
+                "entity1": "hydrogen halides",
+                "relation": "reacts with",
+                "entity2": "ethanol",
+                "text": "Ethanol reacts with hydrogen halides to produce ethyl halides such as ethyl chloride and ethyl bromide via an SN2 reaction\n\nCH3CH2OH  HCl  CH3CH2Cl  H2O\nHCl requires a catalyst such as zinc chloride. HBr requires refluxing with a sulfuric acid catalyst. Ethyl halides can, in principle, also be produced by treating ethanol with more specialized halogenating agents, such as thionyl chloride or phosphorus tribromide. CH3CH2OH  SOCl2  CH3CH2Cl  SO2  HCl\nUpon treatment with halogens in the presence of base, ethanol gives the corresponding haloform (CHX3, where X  Cl, Br, I). This conversion is called the haloform reaction.",
+                "q": "Which type of halide compounds react with ethanol to form ethyl halides via an SN2 reaction?",
+                "a": "hydrogen halides"
+            },
+            {
+                "entity1": "ethanol",
+                "relation": "is metabolized into",
+                "entity2": "acetyl coa",
+                "text": "Levels of even less than 0.1 can cause intoxication, with unconsciousness often occurring at 0.30.4 . Ethanol is metabolized by the body as an energyproviding carbohydrate nutrient, as it metabolizes into acetyl CoA, an intermediate common with glucose metabolism, that can be used for energy in the citric acid cycle or for biosynthesis. Ethanol within the human body is converted into acetaldehyde by alcohol dehydrogenase and then into acetic acid by acetaldehyde dehydrogenase. The product of the first step of this breakdown, acetaldehyde, is more toxic than ethanol. Acetaldehyde is linked to most of the clinical effects of alcohol. It has been shown to increase the risk of developing cirrhosis of the liver,77 multiple forms of cancer, and alcoholism.",
+                "q": "What compound, used by the human body as an energy-providing carbohydrate nutrient, is metabolized into acetyl CoA?",
+                "a": "ethanol"
+            }
+        ]
+    },
+    {
+        "q": "When acetic acid is heated above 440°C, one decomposition pathway produces a compound that, when interacting with a metal that generally forms a passivated oxide layer to slow its reaction with water, can, under high pH conditions (and particularly when alloyed with gallium), generate hydrogen—what is the metal that exhibits this behavior?",
+        "a": "aluminium",
+        "path": [
+            {
+                "entity1": "oxide coatings",
+                "relation": "forms",
+                "entity2": "aluminium",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "Which metal forms passivated oxide coatings that slow its reaction with water?",
+                "a": "aluminium"
+            },
+            {
+                "entity1": "aluminium",
+                "relation": "reacts with",
+                "entity2": "water",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "Which metal, known for forming a passivated oxide coating that normally slows its reaction with water, can produce hydrogen when reacted with water under high pH conditions, particularly when alloyed with gallium?",
+                "a": "aluminium"
+            },
+            {
+                "entity1": "water",
+                "relation": "decomposes to produce",
+                "entity2": "acetic acid",
+                "text": "Esters of acetic acid can likewise be formed via Fischer esterification, and amides can be formed. When heated above 440 C (824 F), acetic acid decomposes to produce carbon dioxide and methane, or to produce ketene and water\n\nCH3COOH  CH4  CO2\nCH3COOH  CH2CO  H2O\n\nReactions with inorganic compounds Acetic acid is mildly corrosive to metals including iron, magnesium, and zinc, forming hydrogen gas and salts called acetates\n\nMg  2 CH3COOH  (CH3COO)2Mg  H2\nBecause aluminium forms a passivating acidresistant film of aluminium oxide, aluminium tanks are used to transport acetic acid. Containers lined with glass, stainless steel or polyethylene are also used for this purpose.",
+                "q": "According to the text, when acetic acid is heated above 440°C, one decomposition route produces ketene and which compound?",
+                "a": "water"
+            }
+        ]
+    },
+    {
+        "q": "What is formed on the surface of a metal that, despite forming a protective layer which slows its reaction with a substance used in processes such as power-to-methane production, thermochemical cycles, and even high-pressure breakdown in planetary interiors, can react with that substance under high pH conditions when alloyed with gallium to generate hydrogen gas?",
+        "a": "oxide coatings",
+        "path": [
+            {
+                "entity1": "oxide coatings",
+                "relation": "forms",
+                "entity2": "aluminium",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "What is formed on the surface of aluminium, providing a protective layer that slows its reaction with water?",
+                "a": "oxide coatings"
+            },
+            {
+                "entity1": "aluminium",
+                "relation": "reacts with",
+                "entity2": "water",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "Which metal, despite its tendency to form a passivated oxide coating that slows its reaction, can react with water (especially when alloyed with gallium) to produce hydrogen gas under high pH conditions?",
+                "a": "aluminium"
+            },
+            {
+                "entity1": "water",
+                "relation": "is synthesized from",
+                "entity2": "hydrogen",
+                "text": "An example of largescale coaltomethane gasification is the Great Plains Synfuels plant, started in 1984 in Beulah, North Dakota as a way to develop abundant local resources of lowgrade lignite, a resource that is otherwise difficult to transport for its weight, ash content, low calorific value and propensity to spontaneous combustion during storage and transport. A number of similar plants exist around the world, although mostly these plants are targeted towards the production of long chain alkanes for use as gasoline, diesel, or feedstock to other processes. Power to methane is a technology that uses electrical power to produce hydrogen from water by electrolysis and uses the Sabatier reaction to combine hydrogen with carbon dioxide to produce methane.",
+                "q": "According to the described power-to-methane process, hydrogen is synthesized from which substance?",
+                "a": "water"
+            },
+            {
+                "entity1": "water",
+                "relation": "is produced from",
+                "entity2": "hydrogen",
+                "text": "Many of these cycles such as the iron oxide cycle, cerium(IV) oxidecerium(III) oxide cycle, zinc zincoxide cycle, sulfuriodine cycle, copperchlorine cycle and hybrid sulfur cycle have been evaluated for their commercial potential to produce hydrogen and oxygen from water and heat without using electricity. A number of labs (including in France, Germany, Greece, Japan, and the United States) are developing thermochemical methods to produce hydrogen from solar energy and water. Laboratory methods H2 is produced in labs, often as a byproduct of other reactions. Many metals react with water to produce H2, but the rate of hydrogen evolution depends on the metal, the pH, and the presence of alloying agents. Most often, hydrogen evolution is induced by acids.",
+                "q": "According to the text, hydrogen is produced from which substance using methods such as thermochemical cycles?",
+                "a": "water"
+            },
+            {
+                "entity1": "water",
+                "relation": "breaks down into",
+                "entity2": "hydrogen",
+                "text": "Ceres\nJupiters moons Europas surface and also that of Ganymede and Callisto\nSaturn in the planets ring system and on the surface and mantle of Titan and Enceladus\nPlutoCharon system\nComets and other related Kuiper belt and Oort cloud objects\nAnd is also likely present on\n\nMercurys poles\nTethys\n\nExotic forms Water and other volatiles probably comprise much of the internal structures of Uranus and Neptune and the water in the deeper layers may be in the form of ionic water in which the molecules break down into a soup of hydrogen and oxygen ions, and deeper still as superionic water in which the oxygen crystallizes, but the hydrogen ions float about freely within the oxygen lattice.",
+                "q": "What substance is described as breaking down into a soup of hydrogen ions and oxygen ions under high-pressure conditions in planetary interiors?",
+                "a": "water"
+            }
+        ]
+    },
+    {
+        "q": "Considering that water acts as a common solvent that dissolves polar compounds such as ammonia and is used to produce aqueous ammonia, and that a certain metal noted for its slow reaction with water due to a passivated surface can produce hydrogen when alloyed with gallium under high pH conditions, what substance forms on that metal to slow its reaction with water by creating a protective layer?",
+        "a": "oxide coatings",
+        "path": [
+            {
+                "entity1": "oxide coatings",
+                "relation": "forms",
+                "entity2": "aluminium",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "What forms on aluminium that slows its reaction with water by creating a protective layer?",
+                "a": "oxide coatings"
+            },
+            {
+                "entity1": "aluminium",
+                "relation": "reacts with",
+                "entity2": "water",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "Which metal in the text is noted for its slow reaction with water due to a passivated oxide coating, yet when alloyed with gallium at high pH it can produce hydrogen?",
+                "a": "aluminium"
+            },
+            {
+                "entity1": "water",
+                "relation": "dissolves in",
+                "entity2": "ammonia",
+                "text": "This odor is familiar to many people because ammonia is used in smelling salts, many household and industrial cleaners, and windowcleaning products. Ammonia gas can be dissolved in water. This kind of ammonia is called liquid ammonia or aqueous ammonia. Once exposed to open air, liquid ammonia quickly turns into a gas. Ammonia is applied directly into soil on farm fields, and is used to make fertilizers for farm crops, lawns, and plants. Many household and industrial cleaners contain ammonia. Ammonia solutions (containing more than 35 but not more than 50 ammonia) appears as a clear colorless liquid consisting of ammonia dissolved in water. Corrosive to tissue and metals. Although ammonia is lighter than air, the vapors from a leak will initially hug the ground.",
+                "q": "Which liquid is used to dissolve ammonia, forming aqueous ammonia?",
+                "a": "water"
+            },
+            {
+                "entity1": "water",
+                "relation": "dissolves in",
+                "entity2": "ammonia",
+                "text": "With physical exertion and heat exposure, water loss will increase and daily fluid needs may increase as well. Humans require water with few impurities. Common impurities include metal salts and oxides, including copper, iron, calcium and lead, and harmful bacteria, such as Vibrio. Some solutes are acceptable and even desirable for taste enhancement and to provide needed electrolytes. The single largest (by volume) freshwater resource suitable for drinking is Lake Baikal in Siberia. Washing \n\nTransportation \n\nChemical uses Water is widely used in chemical reactions as a solvent or reactant and less commonly as a solute or catalyst. In inorganic reactions, water is a common solvent, dissolving many ionic compounds, as well as other polar compounds such as ammonia and compounds closely related to water.",
+                "q": "According to the text, which substance acts as a common solvent that dissolves polar compounds such as ammonia in inorganic reactions?",
+                "a": "water"
+            }
+        ]
+    },
+    {
+        "q": "Which metal, known for forming passivated oxide coatings that slow its reaction with a common solvent in which benzene dissolves slightly, reacts with that very solvent under high pH conditions to produce hydrogen gas?",
+        "a": "aluminium",
+        "path": [
+            {
+                "entity1": "oxide coatings",
+                "relation": "forms",
+                "entity2": "aluminium",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "According to the passage, which metal forms passivated oxide coatings that slow down its reaction with water?",
+                "a": "aluminium"
+            },
+            {
+                "entity1": "aluminium",
+                "relation": "reacts with",
+                "entity2": "water",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "Based on the passage, what substance does aluminium react with to produce hydrogen gas under high pH conditions?",
+                "a": "water"
+            },
+            {
+                "entity1": "water",
+                "relation": "dissolves slightly in",
+                "entity2": "benzene",
+                "text": "See also BTEX\n1,2,3Cyclohexatriene\nIndustrial Union Department v. American Petroleum Institute\nSixmembered aromatic rings with one carbon replaced by another element borabenzene, silabenzene, germabenzene, stannabenzene, pyridine, phosphorine, arsabenzene, bismabenzene, pyrylium, thiopyrylium, selenopyrylium, telluropyrylium\n\nExplanatory notes \n\nReferences \n\nExternal links \nBenzene at The Periodic Table of Videos (University of Nottingham)\nInternational Chemical Safety Card 0015\nUSEPA Summary of Benzene Toxicity\nNIOSH Pocket Guide to Chemical Hazards\nBenzene from PubChem\nDept. of Health and Human Services TR289 Toxicology and Carcinogenesis Studies of Benzene\nVideo Recording of Sir John Cadogan giving a lecture on Benzene at the Royal Institution, 22nd September 1991\nSubstance profile\nNLM Hazardous Substances Databank  Benzene\n\n\n pubchem\nBenzene is a colorless liquid with a sweet odor. It evaporates into the air very quickly and dissolves slightly in water.",
+                "q": "According to the text, benzene dissolves slightly in which substance?",
+                "a": "water"
+            }
+        ]
+    },
+    {
+        "q": "According to the text, what is the protective layer that forms on the metal which reacts slowly with water because of this layer, a metal that can produce hydrogen gas at high pH or when alloyed with gallium and is mentioned alongside a metabolic pathway where a key compound is generated?",
+        "a": "oxide coatings",
+        "path": [
+            {
+                "entity1": "oxide coatings",
+                "relation": "forms",
+                "entity2": "aluminium",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "According to the text, what protective layer does aluminium form that slows down its reaction with water?",
+                "a": "oxide coatings"
+            },
+            {
+                "entity1": "aluminium",
+                "relation": "reacts with",
+                "entity2": "water",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "Which metal mentioned in the text is known to react with water—albeit slowly due to a passivating oxide layer—but can produce hydrogen gas at high pH or when alloyed with gallium?",
+                "a": "aluminium"
+            },
+            {
+                "entity1": "water",
+                "relation": "produces",
+                "entity2": "2,3dihydroxy3methylpentanoate",
+                "text": "Title 2,3Dihydroxy3methylpentanoic acid\nwikipedia 2,3Dihydroxy3methylpentanoic acid is an intermediate in the metabolism of isoleucine. Metabolism 2,3Dihydroxy3methylpentanoate is synthesized by the action of acetolactate mutase with subsequent reduction from acetohydroxybutyrate through 3hydroxy2keto3methylpentanoate\n\nacetohydroxybutyrate  3hydroxy2keto3methylpentanoate\n3hydroxy2keto3methylpentanoate  NAD(P)H  2,3dihydroxy3methylpentanoate  NAD(P)\nIt is then processed by the action of dihydroxyacid dehydratase, which results in 2keto3methylvalerate and water\n\n2,3dihydroxy3methylpentanoate  2keto3methylvalerate  H2O\nTransamination of 2keto3methylvalerate yields isoleucine. References \n\n\n pubchem\n2,3Dihydroxy3methylpentanoate is a hydroxy fatty acid.",
+                "q": "In the metabolism of isoleucine, which compound is produced alongside 2-keto-3-methylvalerate by the action of dihydroxyacid dehydratase?",
+                "a": "water"
+            }
+        ]
+    },
+    {
+        "q": "Which metal, known to react slowly with water because it forms a passivating oxide layer and that when alloyed with gallium can produce hydrogen in water—the common solvent in which ethylene chlorohydrin is soluble—fits this description?",
+        "a": "aluminium",
+        "path": [
+            {
+                "entity1": "oxide coatings",
+                "relation": "forms",
+                "entity2": "aluminium",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "Which metal is cited as reacting slowly with water due to its formation of passivated oxide coatings?",
+                "a": "aluminium"
+            },
+            {
+                "entity1": "aluminium",
+                "relation": "reacts with",
+                "entity2": "water",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "Which metal, known for its slow reaction with water due to a passivated oxide coating but capable of producing hydrogen when alloyed with gallium, is mentioned in the text?",
+                "a": "aluminium"
+            },
+            {
+                "entity1": "water",
+                "relation": "is soluble in",
+                "entity2": "ethylene chlorohydrin",
+                "text": "In regards to dermal exposure to 2chloroethanol, the Occupational Safety and Health Administration has set a permissible exposure limit of 5 ppm (16 mgm3) over an eighthour timeweighted average, while the National Institute for Occupational Safety and Health has a more protective recommended exposure limit of a 1 ppm (3 mgm3) exposure ceiling. It is classified as an extremely hazardous substance in the United States as defined in Section 302 of the U.S. Emergency Planning and Community RighttoKnow Act (42 U.S.C. 11002), and is subject to strict reporting requirements by facilities which produce, store, or use it in significant quantities. References \n\n\n pubchem\nEthylene chlorohydrin is a colorless liquid with an etherlike odor. It is soluble in water and is also a combustible liquid.",
+                "q": "Which common solvent does the text state that ethylene chlorohydrin is soluble in?",
+                "a": "water"
+            }
+        ]
+    },
+    {
+        "q": "What is the metal that forms a passivated oxide coating which slows its reaction with water—a substance that, when reacting with ethylene oxide, produces an important industrial compound—and under high pH conditions (especially when alloyed with gallium) still manages to yield hydrogen?",
+        "a": "aluminium",
+        "path": [
+            {
+                "entity1": "oxide coatings",
+                "relation": "forms",
+                "entity2": "aluminium",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "According to the text, which metal forms passivated oxide coatings that contribute to its slow reaction with water?",
+                "a": "aluminium"
+            },
+            {
+                "entity1": "aluminium",
+                "relation": "reacts with",
+                "entity2": "water",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "Which metal, known for developing a protective oxide coating that slows its reaction with water, can still produce hydrogen at high pH (especially when alloyed with gallium)?",
+                "a": "aluminium"
+            },
+            {
+                "entity1": "water",
+                "relation": "reacts with",
+                "entity2": "ethylene oxide",
+                "text": "Title Ethylene Glycol\nwikipedia Ethylene glycol (IUPAC name ethane1,2diol) is an organic compound (a vicinal diol) with the formula (CH2OH)2. It is mainly used for two purposes as a raw material in the manufacture of polyester fibers and for antifreeze formulations. It is an odorless, colorless, flammable, viscous liquid. It has a sweet taste, but is toxic in high concentrations. This molecule has been observed in outer space. Production \n\nIndustrial routes Ethylene glycol is produced from ethylene (ethene), via the intermediate ethylene oxide. Ethylene oxide reacts with water to produce ethylene glycol according to the chemical equation\n\nC2H4O  H2O  HOCH2CH2OH\nThis reaction can be catalyzed by either acids or bases, or can occur at neutral pH under elevated temperatures.",
+                "q": "Which substance reacts with ethylene oxide to produce ethylene glycol?",
+                "a": "water"
+            }
+        ]
+    },
+    {
+        "q": "What type of surface layer is formed by the metal that, under high pH conditions, produces hydrogen gas when reacting with water—a substance that is also combined with ethylene glycol to depress freezing point?",
+        "a": "oxide coatings",
+        "path": [
+            {
+                "entity1": "oxide coatings",
+                "relation": "forms",
+                "entity2": "aluminium",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "According to the text, what type of surface layer does aluminium form that slows its reaction with water?",
+                "a": "oxide coatings"
+            },
+            {
+                "entity1": "aluminium",
+                "relation": "reacts with",
+                "entity2": "water",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "Based on the text, which metal is described as having a passivated oxide layer that slows its reaction with water but can produce hydrogen gas under high pH conditions?",
+                "a": "aluminium"
+            },
+            {
+                "entity1": "water",
+                "relation": "mixes with",
+                "entity2": "ethylene glycol",
+                "text": "Table of thermal and physical properties of saturated liquid ethylene glycol\n\nAntifreeze Pure ethylene glycol freezes at about 12 C (10.4 F) but, when mixed with water, the mixture freezes at a lower temperature. For example, a mixture of 60 ethylene glycol and 40 water freezes at 45 C (49 F). Diethylene glycol behaves similarly. The freezing point depression of some mixtures can be explained as a colligative property of solutions but, in highly concentrated mixtures such as the example, deviations from ideal solution behavior are expected due to the influence of intermolecular forces.",
+                "q": "Which substance is mixed with ethylene glycol to lower the freezing point of the resulting solution?",
+                "a": "water"
+            }
+        ]
+    },
+    {
+        "q": "Which metal forms a passivated oxide coating that slows its reaction with a ubiquitous liquid—a substance that, when its interaction with the metal is enhanced by an alloying element or high pH conditions, produces hydrogen gas and is also present in glacial acetic acid where trace amounts affect its melting point?",
+        "a": "aluminium",
+        "path": [
+            {
+                "entity1": "oxide coatings",
+                "relation": "forms",
+                "entity2": "aluminium",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "Which metal is mentioned in the text as forming passivated oxide coatings that slow its reaction with water?",
+                "a": "aluminium"
+            },
+            {
+                "entity1": "aluminium",
+                "relation": "reacts with",
+                "entity2": "water",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "According to the text, which substance does aluminium react with—especially noting that an alloy with gallium or high pH conditions can facilitate the reaction—to produce hydrogen gas?",
+                "a": "water"
+            },
+            {
+                "entity1": "water",
+                "relation": "contains",
+                "entity2": "glacial acetic acid",
+                "text": "Acetic acid can never be truly waterfree in an atmosphere that contains water, so the presence of 0.1 water in glacial acetic acid lowers its melting point by 0.2 C.\nA common symbol for acetic acid is AcOH (or HOAc), where Ac is the pseudoelement symbol representing the acetyl group CH3C(O); the conjugate base, acetate (CH3COO), is thus represented as AcO. Acetate is the ion resulting from loss of H from acetic acid. The name acetate can also refer to a salt containing this anion, or an ester of acetic acid. (The symbol Ac for the acetyl functional group is not to be confused with the symbol Ac for the element actinium; context prevents confusion among organic chemists).",
+                "q": "According to the passage, which substance is invariably present in glacial acetic acid and is noted for lowering its melting point by 0.2 °C when found at a concentration of 0.1?",
+                "a": "water"
+            }
+        ]
+    },
+    {
+        "q": "Which metal, known for its passivated oxide coating that slows its reaction with water and that can generate hydrogen gas when alloyed with gallium at high pH, is related to a reaction sequence where a compound reacting with acetylene in a mercury(II)-catalyzed process ultimately yields acetaldehyde?",
+        "a": "aluminium",
+        "path": [
+            {
+                "entity1": "oxide coatings",
+                "relation": "forms",
+                "entity2": "aluminium",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "Which metal is noted for forming passivated oxide coatings that slow its reaction with water?",
+                "a": "aluminium"
+            },
+            {
+                "entity1": "aluminium",
+                "relation": "reacts with",
+                "entity2": "water",
+                "text": "The alkali and alkaline earth metals, aluminium, zinc, manganese, and iron react readily with aqueous acids. This reaction is the basis of the Kipps apparatus, which once was used as a laboratory gas source\n\nZn  2 H  Zn2  H2\nIn the absence of acid, the evolution of H2 is slower. Because iron is widely used structural material, its anaerobic corrosion is of technological significance\n\nFe  2 H2O  Fe(OH)2  H2\nMany metals, such as aluminium, are slow to react with water because they form passivated oxide coatings of oxides. An alloy of aluminium and gallium, however, does react with water. At high pH, aluminium can produce H2\n\n2 Al  6 H2O  2 OH  2 Al(OH)4  3 H2\nSome metalcontaining compounds react with acids to evolve H2.",
+                "q": "Which metal, known for being slow to react with water due to its passivating oxide coating but able to produce hydrogen gas when alloyed with gallium at high pH, is the subject of the reaction described in the text?",
+                "a": "aluminium"
+            },
+            {
+                "entity1": "water",
+                "relation": "reacts with",
+                "entity2": "acetylene",
+                "text": "Other methods \n\nHydration of acetylene Prior to the Wacker process and the availability of cheap ethylene, acetaldehyde was produced by the hydration of acetylene. This reaction is catalyzed by mercury(II) salts\n\nC2H2  Hg2  H2O  CH3CHO  Hg\nThe mechanism involves the intermediacy of vinyl alcohol, which tautomerizes to acetaldehyde. The reaction is conducted at 9095 C (194203 F), and the acetaldehyde formed is separated from water and mercury and cooled to 2530 C (7786 F). In the wet oxidation process, iron(III) sulfate is used to reoxidize the mercury back to the mercury(II) salt. The resulting iron(II) sulfate is oxidized in a separate reactor with nitric acid. The enzyme Acetylene hydratase discovered in the strictly anaerobic bacterium Pelobacter acetylenicus can catalyze an analogous reaction without involving any compounds of mercury.",
+                "q": "In the mercury(II)-catalyzed hydration of acetylene, which compound reacts with acetylene to eventually yield acetaldehyde?",
+                "a": "water"
+            }
+        ]
+    },
+    {
+        "q": "Considering that acetic acid serves as the unsubstituted foundation for a nicotine metabolite formed when its structure is modified by a pyridin-3-yl group, that the same acetic acid decomposes above 440°C to yield carbon dioxide and a particular gas, and that an electron acceptance by the methyl group of acetic acid produces that same gas, how does this connect to the reaction in which methane is converted into another substance?",
+        "a": "C",
+        "path": [
+            {
+                "entity1": "C",
+                "relation": "is synthesized from",
+                "entity2": "methane",
+                "text": "The reaction is moderately endothermic as shown in the reaction equation below. CH4(g)  C(s)  2 H2(g)\n(H  74.8 kJmol)\n\nRefrigerant As a refrigerant, methane has the ASHRAE designation R50. Generation Methane can be generated through geological, biological or industrial routes. Geological routes The two main routes for geological methane generation are (i) organic (thermally generated, or thermogenic) and (ii) inorganic (abiotic). Thermogenic methane occurs due to the breakup of organic matter at elevated temperatures and pressures in deep sedimentary strata. Most methane in sedimentary basins is thermogenic; therefore, thermogenic methane is the most important source of natural gas. Thermogenic methane components are typically considered to be relic (from an earlier time). Generally, formation of thermogenic methane (at depth) can occur through organic matter breakup, or organic synthesis.",
+                "q": "According to the reaction CH4(g) → C(s) + 2 H2(g), which substance is synthesized from methane?",
+                "a": "C"
+            },
+            {
+                "entity1": "methane",
+                "relation": "produces",
+                "entity2": "acetic acid",
+                "text": "One electron is transferred from the carbonyl function (e donor) of the carboxylic group to the methyl group (e acceptor) of acetic acid to respectively produce CO2 and methane gas. Structures \n\nSee also Acetylation\nCellulose acetate\nCopper(II) acetate\nFermentation (biochemistry)\nSodium acetate\nMixed acid fermentation\nAcetic acid\nAcetyl chloride\nZinc acetate\n\nReferences \n\n External links \n\n\n pubchem\nAcetate is a monocarboxylic acid anion resulting from the removal of a proton from the carboxy group of acetic acid. It has a role as a human metabolite and a Saccharomyces cerevisiae metabolite. It is a conjugate base of an acetic acid. Acetate is salt or ester form of acetic acid. Acetate is the most common building block for biosynthesis, such as fatty acids. Derivatives of ACETIC ACID.",
+                "q": "In the reaction described, an electron is accepted by the methyl group of acetic acid, leading to the production of two compounds. Which gas is formed as one of the products?",
+                "a": "methane"
+            },
+            {
+                "entity1": "methane",
+                "relation": "decomposes to produce",
+                "entity2": "acetic acid",
+                "text": "Esters of acetic acid can likewise be formed via Fischer esterification, and amides can be formed. When heated above 440 C (824 F), acetic acid decomposes to produce carbon dioxide and methane, or to produce ketene and water\n\nCH3COOH  CH4  CO2\nCH3COOH  CH2CO  H2O\n\nReactions with inorganic compounds Acetic acid is mildly corrosive to metals including iron, magnesium, and zinc, forming hydrogen gas and salts called acetates\n\nMg  2 CH3COOH  (CH3COO)2Mg  H2\nBecause aluminium forms a passivating acidresistant film of aluminium oxide, aluminium tanks are used to transport acetic acid. Containers lined with glass, stainless steel or polyethylene are also used for this purpose.",
+                "q": "According to the text, acetic acid when heated above 440°C decomposes to produce carbon dioxide and which gas?",
+                "a": "methane"
+            },
+            {
+                "entity1": "acetic acid",
+                "relation": "is synthesized from",
+                "entity2": "3pyridylacetic acid",
+                "text": "Title 3Pyridineacetic acid\nwikipedia \n pubchem\n3pyridylacetic acid is a monocarboxylic acid that is acetic acid substituted by a (pyridin3yl) group. It is a metabolite of nicotine and other tobacco alkaloids. It has a role as a human xenobiotic metabolite. It is a member of pyridines and a monocarboxylic acid.",
+                "q": "Which simple monocarboxylic acid serves as the unsubstituted foundation for 3pyridylacetic acid, as it is described as being acetic acid modified by a pyridin-3-yl group?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "3pyridylacetic acid",
+                "relation": "is a metabolite of",
+                "entity2": "nicotine",
+                "text": "Title 3Pyridineacetic acid\nwikipedia \n pubchem\n3pyridylacetic acid is a monocarboxylic acid that is acetic acid substituted by a (pyridin3yl) group. It is a metabolite of nicotine and other tobacco alkaloids. It has a role as a human xenobiotic metabolite. It is a member of pyridines and a monocarboxylic acid.",
+                "q": "Which compound, described as a monocarboxylic acid where acetic acid is substituted by a (pyridin3yl) group and playing a role as a human xenobiotic metabolite, is known to be a metabolite of nicotine?",
+                "a": "3pyridylacetic acid"
+            }
+        ]
+    },
+    {
+        "q": "Starting with the reduction of 4hydroxymandelic acid—which yields a compound that is functionally connected to a simple carboxylic acid that, when heated above 440 °C, decomposes and releases a gas—consider that this gas is also produced in an electron transfer process linked to acetic acid production, and note that this gas is subsequently used in a reaction where methane is converted into a solid and hydrogen gas. What is the substance obtained from methane in that reaction?",
+        "a": "C",
+        "path": [
+            {
+                "entity1": "C",
+                "relation": "is synthesized from",
+                "entity2": "methane",
+                "text": "The reaction is moderately endothermic as shown in the reaction equation below. CH4(g)  C(s)  2 H2(g)\n(H  74.8 kJmol)\n\nRefrigerant As a refrigerant, methane has the ASHRAE designation R50. Generation Methane can be generated through geological, biological or industrial routes. Geological routes The two main routes for geological methane generation are (i) organic (thermally generated, or thermogenic) and (ii) inorganic (abiotic). Thermogenic methane occurs due to the breakup of organic matter at elevated temperatures and pressures in deep sedimentary strata. Most methane in sedimentary basins is thermogenic; therefore, thermogenic methane is the most important source of natural gas. Thermogenic methane components are typically considered to be relic (from an earlier time). Generally, formation of thermogenic methane (at depth) can occur through organic matter breakup, or organic synthesis.",
+                "q": "Which substance is synthesized from methane as shown in the reaction equation CH4(g) producing C(s) and H2(g)?",
+                "a": "C"
+            },
+            {
+                "entity1": "methane",
+                "relation": "produces",
+                "entity2": "acetic acid",
+                "text": "One electron is transferred from the carbonyl function (e donor) of the carboxylic group to the methyl group (e acceptor) of acetic acid to respectively produce CO2 and methane gas. Structures \n\nSee also Acetylation\nCellulose acetate\nCopper(II) acetate\nFermentation (biochemistry)\nSodium acetate\nMixed acid fermentation\nAcetic acid\nAcetyl chloride\nZinc acetate\n\nReferences \n\n External links \n\n\n pubchem\nAcetate is a monocarboxylic acid anion resulting from the removal of a proton from the carboxy group of acetic acid. It has a role as a human metabolite and a Saccharomyces cerevisiae metabolite. It is a conjugate base of an acetic acid. Acetate is salt or ester form of acetic acid. Acetate is the most common building block for biosynthesis, such as fatty acids. Derivatives of ACETIC ACID.",
+                "q": "In the electron transfer process described, the reaction leads to the formation of a gas that is associated with acetic acid production. Which compound, known for producing acetic acid (as indicated by its relation 'produces'), is generated in this reaction?",
+                "a": "methane"
+            },
+            {
+                "entity1": "methane",
+                "relation": "decomposes to produce",
+                "entity2": "acetic acid",
+                "text": "Esters of acetic acid can likewise be formed via Fischer esterification, and amides can be formed. When heated above 440 C (824 F), acetic acid decomposes to produce carbon dioxide and methane, or to produce ketene and water\n\nCH3COOH  CH4  CO2\nCH3COOH  CH2CO  H2O\n\nReactions with inorganic compounds Acetic acid is mildly corrosive to metals including iron, magnesium, and zinc, forming hydrogen gas and salts called acetates\n\nMg  2 CH3COOH  (CH3COO)2Mg  H2\nBecause aluminium forms a passivating acidresistant film of aluminium oxide, aluminium tanks are used to transport acetic acid. Containers lined with glass, stainless steel or polyethylene are also used for this purpose.",
+                "q": "Which compound, when heated above 440 °C, decomposes to produce methane among other products?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "acetic acid",
+                "relation": "is functionally related to",
+                "entity2": "4hydroxyphenylacetic acid",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "Which simple carboxylic acid is functionally related to 4hydroxyphenylacetic acid as described in the text?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "4hydroxyphenylacetic acid",
+                "relation": "is obtained by reducing",
+                "entity2": "4hydroxymandelic acid",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "What compound is produced by reducing 4hydroxymandelic acid with elemental phosphorus and iodine?",
+                "a": "4hydroxyphenylacetic acid"
+            },
+            {
+                "entity1": "4hydroxyphenylacetic acid",
+                "relation": "reduces to",
+                "entity2": "4hydroxymandelic acid",
+                "text": "Phenol derivatives In general, glyoxylic acid undergoes an electrophilic aromatic substitution reaction with phenols, a versatile step in the synthesis of several other compounds. The immediate product with phenol itself is 4hydroxymandelic acid. This species reacts with ammonia to give hydroxyphenylglycine, a precursor to the drug amoxicillin. Reduction of the 4hydroxymandelic acid gives 4hydroxyphenylacetic acid, a precursor to the drug atenolol. The sequence of reactions, in which glyoxylic acid reacts with guaiacol the phenolic component followed by oxidation and decarboxylation, provides a route to vanillin as a net formylation process. Hopkins Cole reaction Glyoxylic acid is a component of the HopkinsCole reaction, used to check for the presence of tryptophan in proteins. Hairstrengthening cosmetics Glyoxylic acid enters the composition of cosmetic creams used for Brazilian hairstraightening treatment.",
+                "q": "According to the text, what compound results from the reduction of 4hydroxymandelic acid?",
+                "a": "4hydroxyphenylacetic acid"
+            }
+        ]
+    },
+    {
+        "q": "Considering that acetic acid donates its methyl group after electron transfer to yield methane, that acetic acid decomposes above 440°C to produce methane, and that the derivative obtained by reducing 4-hydroxymandelic acid with elemental phosphorus and iodine is functionally related to acetic acid, what substance is synthesized from methane in the reaction where methane decomposes into a solid and hydrogen gas?",
+        "a": "C",
+        "path": [
+            {
+                "entity1": "C",
+                "relation": "is synthesized from",
+                "entity2": "methane",
+                "text": "The reaction is moderately endothermic as shown in the reaction equation below. CH4(g)  C(s)  2 H2(g)\n(H  74.8 kJmol)\n\nRefrigerant As a refrigerant, methane has the ASHRAE designation R50. Generation Methane can be generated through geological, biological or industrial routes. Geological routes The two main routes for geological methane generation are (i) organic (thermally generated, or thermogenic) and (ii) inorganic (abiotic). Thermogenic methane occurs due to the breakup of organic matter at elevated temperatures and pressures in deep sedimentary strata. Most methane in sedimentary basins is thermogenic; therefore, thermogenic methane is the most important source of natural gas. Thermogenic methane components are typically considered to be relic (from an earlier time). Generally, formation of thermogenic methane (at depth) can occur through organic matter breakup, or organic synthesis.",
+                "q": "According to the reaction where methane decomposes into solid C and hydrogen gas, which substance is synthesized from methane?",
+                "a": "C"
+            },
+            {
+                "entity1": "methane",
+                "relation": "produces",
+                "entity2": "acetic acid",
+                "text": "One electron is transferred from the carbonyl function (e donor) of the carboxylic group to the methyl group (e acceptor) of acetic acid to respectively produce CO2 and methane gas. Structures \n\nSee also Acetylation\nCellulose acetate\nCopper(II) acetate\nFermentation (biochemistry)\nSodium acetate\nMixed acid fermentation\nAcetic acid\nAcetyl chloride\nZinc acetate\n\nReferences \n\n External links \n\n\n pubchem\nAcetate is a monocarboxylic acid anion resulting from the removal of a proton from the carboxy group of acetic acid. It has a role as a human metabolite and a Saccharomyces cerevisiae metabolite. It is a conjugate base of an acetic acid. Acetate is salt or ester form of acetic acid. Acetate is the most common building block for biosynthesis, such as fatty acids. Derivatives of ACETIC ACID.",
+                "q": "In the reaction described, which compound donates the methyl group that, after electron transfer, results in the production of methane gas?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "methane",
+                "relation": "decomposes to produce",
+                "entity2": "acetic acid",
+                "text": "Esters of acetic acid can likewise be formed via Fischer esterification, and amides can be formed. When heated above 440 C (824 F), acetic acid decomposes to produce carbon dioxide and methane, or to produce ketene and water\n\nCH3COOH  CH4  CO2\nCH3COOH  CH2CO  H2O\n\nReactions with inorganic compounds Acetic acid is mildly corrosive to metals including iron, magnesium, and zinc, forming hydrogen gas and salts called acetates\n\nMg  2 CH3COOH  (CH3COO)2Mg  H2\nBecause aluminium forms a passivating acidresistant film of aluminium oxide, aluminium tanks are used to transport acetic acid. Containers lined with glass, stainless steel or polyethylene are also used for this purpose.",
+                "q": "What gas is produced when acetic acid is decomposed at temperatures above 440°C?",
+                "a": "methane"
+            },
+            {
+                "entity1": "acetic acid",
+                "relation": "is functionally related to",
+                "entity2": "4hydroxyphenylacetic acid",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "4hydroxyphenylacetic acid is described as acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. Which chemical, therefore, serves as the parent compound functionally related to 4hydroxyphenylacetic acid?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "4hydroxyphenylacetic acid",
+                "relation": "is obtained by reducing",
+                "entity2": "phosphorus",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "Which chemical compound is obtained by reducing 4-hydroxymandelic acid with elemental phosphorus and iodine, and is also used as an intermediate in the synthesis of atenolol?",
+                "a": "4hydroxyphenylacetic acid"
+            }
+        ]
+    },
+    {
+        "q": "Starting from a compound obtained by reducing 4‐hydroxymandelic acid with elemental phosphorus and iodine, which yields a substance that is functionally related to a monocarboxylic acid whose methyl group, upon undergoing both an electron transfer reaction and high-temperature decomposition, produces a specific gaseous hydrocarbon, what substance is synthesized from that gaseous hydrocarbon in the overall reaction sequence?",
+        "a": "C",
+        "path": [
+            {
+                "entity1": "C",
+                "relation": "is synthesized from",
+                "entity2": "methane",
+                "text": "The reaction is moderately endothermic as shown in the reaction equation below. CH4(g)  C(s)  2 H2(g)\n(H  74.8 kJmol)\n\nRefrigerant As a refrigerant, methane has the ASHRAE designation R50. Generation Methane can be generated through geological, biological or industrial routes. Geological routes The two main routes for geological methane generation are (i) organic (thermally generated, or thermogenic) and (ii) inorganic (abiotic). Thermogenic methane occurs due to the breakup of organic matter at elevated temperatures and pressures in deep sedimentary strata. Most methane in sedimentary basins is thermogenic; therefore, thermogenic methane is the most important source of natural gas. Thermogenic methane components are typically considered to be relic (from an earlier time). Generally, formation of thermogenic methane (at depth) can occur through organic matter breakup, or organic synthesis.",
+                "q": "Which substance is synthesized from methane according to the reaction described?",
+                "a": "C"
+            },
+            {
+                "entity1": "methane",
+                "relation": "produces",
+                "entity2": "acetic acid",
+                "text": "One electron is transferred from the carbonyl function (e donor) of the carboxylic group to the methyl group (e acceptor) of acetic acid to respectively produce CO2 and methane gas. Structures \n\nSee also Acetylation\nCellulose acetate\nCopper(II) acetate\nFermentation (biochemistry)\nSodium acetate\nMixed acid fermentation\nAcetic acid\nAcetyl chloride\nZinc acetate\n\nReferences \n\n External links \n\n\n pubchem\nAcetate is a monocarboxylic acid anion resulting from the removal of a proton from the carboxy group of acetic acid. It has a role as a human metabolite and a Saccharomyces cerevisiae metabolite. It is a conjugate base of an acetic acid. Acetate is salt or ester form of acetic acid. Acetate is the most common building block for biosynthesis, such as fatty acids. Derivatives of ACETIC ACID.",
+                "q": "In the electron transfer reaction described, which gas is formed when the methyl group of acetic acid accepts an electron, resulting in the production of CO2 and this gas?",
+                "a": "methane"
+            },
+            {
+                "entity1": "methane",
+                "relation": "decomposes to produce",
+                "entity2": "acetic acid",
+                "text": "Esters of acetic acid can likewise be formed via Fischer esterification, and amides can be formed. When heated above 440 C (824 F), acetic acid decomposes to produce carbon dioxide and methane, or to produce ketene and water\n\nCH3COOH  CH4  CO2\nCH3COOH  CH2CO  H2O\n\nReactions with inorganic compounds Acetic acid is mildly corrosive to metals including iron, magnesium, and zinc, forming hydrogen gas and salts called acetates\n\nMg  2 CH3COOH  (CH3COO)2Mg  H2\nBecause aluminium forms a passivating acidresistant film of aluminium oxide, aluminium tanks are used to transport acetic acid. Containers lined with glass, stainless steel or polyethylene are also used for this purpose.",
+                "q": "Which gaseous hydrocarbon is produced when acetic acid decomposes at temperatures above 440°C?",
+                "a": "methane"
+            },
+            {
+                "entity1": "acetic acid",
+                "relation": "is functionally related to",
+                "entity2": "4hydroxyphenylacetic acid",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "Which monocarboxylic acid, whose structure is modified by substituting one of its methyl hydrogens with a 4hydroxyphenyl group to form 4hydroxyphenylacetic acid, is functionally related to 4hydroxyphenylacetic acid?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "4hydroxyphenylacetic acid",
+                "relation": "is obtained by reducing",
+                "entity2": "iodine",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "Which compound is obtained by reducing 4-hydroxymandelic acid with elemental phosphorus and iodine?",
+                "a": "4hydroxyphenylacetic acid"
+            }
+        ]
+    },
+    {
+        "q": "What is the substance synthesized in a reaction involving methane, considering that methane is also the gas produced both through an electron transfer process where the methyl group of acetic acid serves as an electron acceptor and when acetic acid is heated above 440°C to yield a gas along with carbon dioxide, and taking into account that acetic acid can be modified by replacing one of its methyl hydrogens with a 4hydroxyphenyl group to form a compound which serves as an intermediate in the industrial synthesis of atenolol and is also obtained by reducing 4hydroxymandelic acid?",
+        "a": "C",
+        "path": [
+            {
+                "entity1": "C",
+                "relation": "is synthesized from",
+                "entity2": "methane",
+                "text": "The reaction is moderately endothermic as shown in the reaction equation below. CH4(g)  C(s)  2 H2(g)\n(H  74.8 kJmol)\n\nRefrigerant As a refrigerant, methane has the ASHRAE designation R50. Generation Methane can be generated through geological, biological or industrial routes. Geological routes The two main routes for geological methane generation are (i) organic (thermally generated, or thermogenic) and (ii) inorganic (abiotic). Thermogenic methane occurs due to the breakup of organic matter at elevated temperatures and pressures in deep sedimentary strata. Most methane in sedimentary basins is thermogenic; therefore, thermogenic methane is the most important source of natural gas. Thermogenic methane components are typically considered to be relic (from an earlier time). Generally, formation of thermogenic methane (at depth) can occur through organic matter breakup, or organic synthesis.",
+                "q": "Which substance is synthesized from methane as indicated by the reaction equation?",
+                "a": "C"
+            },
+            {
+                "entity1": "methane",
+                "relation": "produces",
+                "entity2": "acetic acid",
+                "text": "One electron is transferred from the carbonyl function (e donor) of the carboxylic group to the methyl group (e acceptor) of acetic acid to respectively produce CO2 and methane gas. Structures \n\nSee also Acetylation\nCellulose acetate\nCopper(II) acetate\nFermentation (biochemistry)\nSodium acetate\nMixed acid fermentation\nAcetic acid\nAcetyl chloride\nZinc acetate\n\nReferences \n\n External links \n\n\n pubchem\nAcetate is a monocarboxylic acid anion resulting from the removal of a proton from the carboxy group of acetic acid. It has a role as a human metabolite and a Saccharomyces cerevisiae metabolite. It is a conjugate base of an acetic acid. Acetate is salt or ester form of acetic acid. Acetate is the most common building block for biosynthesis, such as fatty acids. Derivatives of ACETIC ACID.",
+                "q": "Based on the electron transfer process described, where the methyl group of acetic acid acts as an electron acceptor, which gas is produced?",
+                "a": "methane"
+            },
+            {
+                "entity1": "methane",
+                "relation": "decomposes to produce",
+                "entity2": "acetic acid",
+                "text": "Esters of acetic acid can likewise be formed via Fischer esterification, and amides can be formed. When heated above 440 C (824 F), acetic acid decomposes to produce carbon dioxide and methane, or to produce ketene and water\n\nCH3COOH  CH4  CO2\nCH3COOH  CH2CO  H2O\n\nReactions with inorganic compounds Acetic acid is mildly corrosive to metals including iron, magnesium, and zinc, forming hydrogen gas and salts called acetates\n\nMg  2 CH3COOH  (CH3COO)2Mg  H2\nBecause aluminium forms a passivating acidresistant film of aluminium oxide, aluminium tanks are used to transport acetic acid. Containers lined with glass, stainless steel or polyethylene are also used for this purpose.",
+                "q": "According to the text, which gas is formed along with carbon dioxide when acetic acid is heated above 440°C?",
+                "a": "methane"
+            },
+            {
+                "entity1": "acetic acid",
+                "relation": "is functionally related to",
+                "entity2": "4hydroxyphenylacetic acid",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "Which monocarboxylic acid has one of its methyl hydrogens replaced by a 4hydroxyphenyl group to form 4hydroxyphenylacetic acid?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "4hydroxyphenylacetic acid",
+                "relation": "is used to synthesize",
+                "entity2": "atenolol",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "What compound is used as an intermediate in the industrial synthesis of atenolol?",
+                "a": "4hydroxyphenylacetic acid"
+            },
+            {
+                "entity1": "4hydroxyphenylacetic acid",
+                "relation": "is a precursor to",
+                "entity2": "atenolol",
+                "text": "Phenol derivatives In general, glyoxylic acid undergoes an electrophilic aromatic substitution reaction with phenols, a versatile step in the synthesis of several other compounds. The immediate product with phenol itself is 4hydroxymandelic acid. This species reacts with ammonia to give hydroxyphenylglycine, a precursor to the drug amoxicillin. Reduction of the 4hydroxymandelic acid gives 4hydroxyphenylacetic acid, a precursor to the drug atenolol. The sequence of reactions, in which glyoxylic acid reacts with guaiacol the phenolic component followed by oxidation and decarboxylation, provides a route to vanillin as a net formylation process. Hopkins Cole reaction Glyoxylic acid is a component of the HopkinsCole reaction, used to check for the presence of tryptophan in proteins. Hairstrengthening cosmetics Glyoxylic acid enters the composition of cosmetic creams used for Brazilian hairstraightening treatment.",
+                "q": "Which compound, produced by reducing 4hydroxymandelic acid, serves as a precursor to atenolol?",
+                "a": "4hydroxyphenylacetic acid"
+            }
+        ]
+    },
+    {
+        "q": "Starting from a reaction where a specific gaseous compound is converted into a particular substance, and considering that this gaseous compound is described as producing an organic acid in a reaction involving electron transfer from a carboxyl group — with that organic acid in turn decomposing when heated above 440°C to regenerate the gaseous compound — and given that a derivative of this organic acid, formed by substituting one of its methyl hydrogens with a 4-hydroxyphenyl group, is functionally related to it and used as an intermediate in the synthesis of a dihydroxy-substituted phenylacetic acid via aerobic biotransformation using Arthrobacter protophormiae, what is the substance synthesized from the gaseous compound as indicated by the reaction?",
+        "a": "C",
+        "path": [
+            {
+                "entity1": "C",
+                "relation": "is synthesized from",
+                "entity2": "methane",
+                "text": "The reaction is moderately endothermic as shown in the reaction equation below. CH4(g)  C(s)  2 H2(g)\n(H  74.8 kJmol)\n\nRefrigerant As a refrigerant, methane has the ASHRAE designation R50. Generation Methane can be generated through geological, biological or industrial routes. Geological routes The two main routes for geological methane generation are (i) organic (thermally generated, or thermogenic) and (ii) inorganic (abiotic). Thermogenic methane occurs due to the breakup of organic matter at elevated temperatures and pressures in deep sedimentary strata. Most methane in sedimentary basins is thermogenic; therefore, thermogenic methane is the most important source of natural gas. Thermogenic methane components are typically considered to be relic (from an earlier time). Generally, formation of thermogenic methane (at depth) can occur through organic matter breakup, or organic synthesis.",
+                "q": "Based on the reaction provided, what substance is synthesized from methane?",
+                "a": "C"
+            },
+            {
+                "entity1": "methane",
+                "relation": "produces",
+                "entity2": "acetic acid",
+                "text": "One electron is transferred from the carbonyl function (e donor) of the carboxylic group to the methyl group (e acceptor) of acetic acid to respectively produce CO2 and methane gas. Structures \n\nSee also Acetylation\nCellulose acetate\nCopper(II) acetate\nFermentation (biochemistry)\nSodium acetate\nMixed acid fermentation\nAcetic acid\nAcetyl chloride\nZinc acetate\n\nReferences \n\n External links \n\n\n pubchem\nAcetate is a monocarboxylic acid anion resulting from the removal of a proton from the carboxy group of acetic acid. It has a role as a human metabolite and a Saccharomyces cerevisiae metabolite. It is a conjugate base of an acetic acid. Acetate is salt or ester form of acetic acid. Acetate is the most common building block for biosynthesis, such as fatty acids. Derivatives of ACETIC ACID.",
+                "q": "According to the text, which gaseous compound is described as producing acetic acid in the reaction involving an electron transfer from the carboxylic group?",
+                "a": "methane"
+            },
+            {
+                "entity1": "methane",
+                "relation": "decomposes to produce",
+                "entity2": "acetic acid",
+                "text": "Esters of acetic acid can likewise be formed via Fischer esterification, and amides can be formed. When heated above 440 C (824 F), acetic acid decomposes to produce carbon dioxide and methane, or to produce ketene and water\n\nCH3COOH  CH4  CO2\nCH3COOH  CH2CO  H2O\n\nReactions with inorganic compounds Acetic acid is mildly corrosive to metals including iron, magnesium, and zinc, forming hydrogen gas and salts called acetates\n\nMg  2 CH3COOH  (CH3COO)2Mg  H2\nBecause aluminium forms a passivating acidresistant film of aluminium oxide, aluminium tanks are used to transport acetic acid. Containers lined with glass, stainless steel or polyethylene are also used for this purpose.",
+                "q": "According to the text, which compound decomposes when heated above 440°C to produce methane?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "acetic acid",
+                "relation": "is functionally related to",
+                "entity2": "4hydroxyphenylacetic acid",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "4hydroxyphenylacetic acid is described as acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. Which compound is therefore functionally related to 4hydroxyphenylacetic acid?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "4hydroxyphenylacetic acid",
+                "relation": "is used to synthesize",
+                "entity2": "3,4dihydroxyphenylacetic acid",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "Which compound is used as an intermediate to synthesize 3,4dihydroxyphenylacetic acid?",
+                "a": "4hydroxyphenylacetic acid"
+            },
+            {
+                "entity1": "4hydroxyphenylacetic acid",
+                "relation": "is synthesized into",
+                "entity2": "3,4dihydroxyphenylacetic acid",
+                "text": "Title 3,4Dihydroxyphenylacetic acid\nwikipedia 3,4Dihydroxyphenylacetic acid (DOPAC) is a metabolite of the neurotransmitter dopamine. Dopamine can be metabolized into one of three substances. One such substance is DOPAC. Another is 3methoxytyramine (3MT). Both of these substances are degraded to form homovanillic acid (HVA). Both degradations involve the enzymes monoamine oxidase (MAO) and catecholOmethyl transferase (COMT), albeit in reverse order MAO catalyzes dopamine to DOPAC, and COMT catalyzes DOPAC to HVA; whereas COMT catalyzes dopamine to 3MT and MAO catalyzes 3MT to HVA. The third metabolic endproduct of dopamine is norepinephrine (noradrenaline). It can also be found in the bark of Eucalyptus globulus. This product has been synthesized (52 yield) from 4hydroxyphenylacetic acid via aerobic biotransformation using whole cell cultures of Arthrobacter protophormiae.",
+                "q": "Which compound is used as the starting material in the synthesis of 3,4-dihydroxyphenylacetic acid via aerobic biotransformation using Arthrobacter protophormiae?",
+                "a": "4hydroxyphenylacetic acid"
+            }
+        ]
+    },
+    {
+        "q": "In a reaction network where acetic acid decomposes at high temperatures to produce a gas that is then involved in an electron transfer reaction as a methyl group donor, and where acetic acid also serves as the parent compound for a derivative used as an intermediate in coclaurine synthesis, what substance is eventually synthesized from the gas produced in the decomposition step?",
+        "a": "C",
+        "path": [
+            {
+                "entity1": "C",
+                "relation": "is synthesized from",
+                "entity2": "methane",
+                "text": "The reaction is moderately endothermic as shown in the reaction equation below. CH4(g)  C(s)  2 H2(g)\n(H  74.8 kJmol)\n\nRefrigerant As a refrigerant, methane has the ASHRAE designation R50. Generation Methane can be generated through geological, biological or industrial routes. Geological routes The two main routes for geological methane generation are (i) organic (thermally generated, or thermogenic) and (ii) inorganic (abiotic). Thermogenic methane occurs due to the breakup of organic matter at elevated temperatures and pressures in deep sedimentary strata. Most methane in sedimentary basins is thermogenic; therefore, thermogenic methane is the most important source of natural gas. Thermogenic methane components are typically considered to be relic (from an earlier time). Generally, formation of thermogenic methane (at depth) can occur through organic matter breakup, or organic synthesis.",
+                "q": "Based on the reaction described, which substance is synthesized from methane?",
+                "a": "C"
+            },
+            {
+                "entity1": "methane",
+                "relation": "produces",
+                "entity2": "acetic acid",
+                "text": "One electron is transferred from the carbonyl function (e donor) of the carboxylic group to the methyl group (e acceptor) of acetic acid to respectively produce CO2 and methane gas. Structures \n\nSee also Acetylation\nCellulose acetate\nCopper(II) acetate\nFermentation (biochemistry)\nSodium acetate\nMixed acid fermentation\nAcetic acid\nAcetyl chloride\nZinc acetate\n\nReferences \n\n External links \n\n\n pubchem\nAcetate is a monocarboxylic acid anion resulting from the removal of a proton from the carboxy group of acetic acid. It has a role as a human metabolite and a Saccharomyces cerevisiae metabolite. It is a conjugate base of an acetic acid. Acetate is salt or ester form of acetic acid. Acetate is the most common building block for biosynthesis, such as fatty acids. Derivatives of ACETIC ACID.",
+                "q": "In the electron transfer reaction described, the methyl group that acts as the electron acceptor comes from which compound that subsequently relates to methane production?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "methane",
+                "relation": "decomposes to produce",
+                "entity2": "acetic acid",
+                "text": "Esters of acetic acid can likewise be formed via Fischer esterification, and amides can be formed. When heated above 440 C (824 F), acetic acid decomposes to produce carbon dioxide and methane, or to produce ketene and water\n\nCH3COOH  CH4  CO2\nCH3COOH  CH2CO  H2O\n\nReactions with inorganic compounds Acetic acid is mildly corrosive to metals including iron, magnesium, and zinc, forming hydrogen gas and salts called acetates\n\nMg  2 CH3COOH  (CH3COO)2Mg  H2\nBecause aluminium forms a passivating acidresistant film of aluminium oxide, aluminium tanks are used to transport acetic acid. Containers lined with glass, stainless steel or polyethylene are also used for this purpose.",
+                "q": "According to the text, which gas is produced when acetic acid decomposes at high temperatures?",
+                "a": "methane"
+            },
+            {
+                "entity1": "acetic acid",
+                "relation": "is functionally related to",
+                "entity2": "4hydroxyphenylacetic acid",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "Which carboxylic acid serves as the parent compound for 4hydroxyphenylacetic acid, in which one of the methyl hydrogens is substituted by a 4-hydroxyphenyl group, thereby making them functionally related?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "4hydroxyphenylacetic acid",
+                "relation": "is used to synthesize",
+                "entity2": "coclaurine",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "Which chemical compound serves as the intermediate for synthesizing coclaurine?",
+                "a": "4hydroxyphenylacetic acid"
+            }
+        ]
+    },
+    {
+        "q": "Considering that acetic acid decomposes at temperatures above 440°C to produce a specific gas and that an electron transfer to its methyl group also yields that same gas, and knowing that replacing one methyl hydrogen in acetic acid with a 4hydroxyphenyl group produces a derivative which is functionally related as the conjugate acid of 4hydroxyphenylacetate, what substance is synthesized from the gas described in these reaction sequences?",
+        "a": "C",
+        "path": [
+            {
+                "entity1": "C",
+                "relation": "is synthesized from",
+                "entity2": "methane",
+                "text": "The reaction is moderately endothermic as shown in the reaction equation below. CH4(g)  C(s)  2 H2(g)\n(H  74.8 kJmol)\n\nRefrigerant As a refrigerant, methane has the ASHRAE designation R50. Generation Methane can be generated through geological, biological or industrial routes. Geological routes The two main routes for geological methane generation are (i) organic (thermally generated, or thermogenic) and (ii) inorganic (abiotic). Thermogenic methane occurs due to the breakup of organic matter at elevated temperatures and pressures in deep sedimentary strata. Most methane in sedimentary basins is thermogenic; therefore, thermogenic methane is the most important source of natural gas. Thermogenic methane components are typically considered to be relic (from an earlier time). Generally, formation of thermogenic methane (at depth) can occur through organic matter breakup, or organic synthesis.",
+                "q": "Which substance is synthesized from methane in the reaction described?",
+                "a": "C"
+            },
+            {
+                "entity1": "methane",
+                "relation": "produces",
+                "entity2": "acetic acid",
+                "text": "One electron is transferred from the carbonyl function (e donor) of the carboxylic group to the methyl group (e acceptor) of acetic acid to respectively produce CO2 and methane gas. Structures \n\nSee also Acetylation\nCellulose acetate\nCopper(II) acetate\nFermentation (biochemistry)\nSodium acetate\nMixed acid fermentation\nAcetic acid\nAcetyl chloride\nZinc acetate\n\nReferences \n\n External links \n\n\n pubchem\nAcetate is a monocarboxylic acid anion resulting from the removal of a proton from the carboxy group of acetic acid. It has a role as a human metabolite and a Saccharomyces cerevisiae metabolite. It is a conjugate base of an acetic acid. Acetate is salt or ester form of acetic acid. Acetate is the most common building block for biosynthesis, such as fatty acids. Derivatives of ACETIC ACID.",
+                "q": "According to the text, which gas is generated when an electron is transferred to the methyl group of acetic acid, resulting in its production?",
+                "a": "methane"
+            },
+            {
+                "entity1": "methane",
+                "relation": "decomposes to produce",
+                "entity2": "acetic acid",
+                "text": "Esters of acetic acid can likewise be formed via Fischer esterification, and amides can be formed. When heated above 440 C (824 F), acetic acid decomposes to produce carbon dioxide and methane, or to produce ketene and water\n\nCH3COOH  CH4  CO2\nCH3COOH  CH2CO  H2O\n\nReactions with inorganic compounds Acetic acid is mildly corrosive to metals including iron, magnesium, and zinc, forming hydrogen gas and salts called acetates\n\nMg  2 CH3COOH  (CH3COO)2Mg  H2\nBecause aluminium forms a passivating acidresistant film of aluminium oxide, aluminium tanks are used to transport acetic acid. Containers lined with glass, stainless steel or polyethylene are also used for this purpose.",
+                "q": "Which substance decomposes at temperatures above 440°C to produce methane, as mentioned in the text?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "acetic acid",
+                "relation": "is functionally related to",
+                "entity2": "4hydroxyphenylacetic acid",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "What is the parent chemical compound that, when one of its methyl hydrogens is replaced by a 4hydroxyphenyl group, forms 4hydroxyphenylacetic acid and is functionally related to it?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "4hydroxyphenylacetic acid",
+                "relation": "is a conjugate acid of",
+                "entity2": "4hydroxyphenylacetate",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "Which compound mentioned in the text is the conjugate acid of 4hydroxyphenylacetate?",
+                "a": "4hydroxyphenylacetic acid"
+            }
+        ]
+    },
+    {
+        "q": "Starting from the fact that a compound synthesized from C8H8O3 is reported in Epichloe typhina, Oenothera glazioviana, and Saccharomyces cerevisiae, and noting that this compound is formed by substituting a methyl hydrogen in the simple monocarboxylic acid that forms its backbone, consider that this same acid, when heated above 440°C or undergoing an electron transfer from its carboxylic group to its methyl group, produces methane (along with carbon dioxide). If methane subsequently reacts in a process that leads to the formation of another substance, what is the substance produced from methane?",
+        "a": "C",
+        "path": [
+            {
+                "entity1": "C",
+                "relation": "is synthesized from",
+                "entity2": "methane",
+                "text": "The reaction is moderately endothermic as shown in the reaction equation below. CH4(g)  C(s)  2 H2(g)\n(H  74.8 kJmol)\n\nRefrigerant As a refrigerant, methane has the ASHRAE designation R50. Generation Methane can be generated through geological, biological or industrial routes. Geological routes The two main routes for geological methane generation are (i) organic (thermally generated, or thermogenic) and (ii) inorganic (abiotic). Thermogenic methane occurs due to the breakup of organic matter at elevated temperatures and pressures in deep sedimentary strata. Most methane in sedimentary basins is thermogenic; therefore, thermogenic methane is the most important source of natural gas. Thermogenic methane components are typically considered to be relic (from an earlier time). Generally, formation of thermogenic methane (at depth) can occur through organic matter breakup, or organic synthesis.",
+                "q": "According to the reaction provided, which substance is synthesized from methane?",
+                "a": "C"
+            },
+            {
+                "entity1": "methane",
+                "relation": "produces",
+                "entity2": "acetic acid",
+                "text": "One electron is transferred from the carbonyl function (e donor) of the carboxylic group to the methyl group (e acceptor) of acetic acid to respectively produce CO2 and methane gas. Structures \n\nSee also Acetylation\nCellulose acetate\nCopper(II) acetate\nFermentation (biochemistry)\nSodium acetate\nMixed acid fermentation\nAcetic acid\nAcetyl chloride\nZinc acetate\n\nReferences \n\n External links \n\n\n pubchem\nAcetate is a monocarboxylic acid anion resulting from the removal of a proton from the carboxy group of acetic acid. It has a role as a human metabolite and a Saccharomyces cerevisiae metabolite. It is a conjugate base of an acetic acid. Acetate is salt or ester form of acetic acid. Acetate is the most common building block for biosynthesis, such as fatty acids. Derivatives of ACETIC ACID.",
+                "q": "In the reaction described, an electron transfer from the carboxylic group to the methyl group of acetic acid leads to the production of two gaseous products. One of these products is CO2. Which gaseous compound, linked through this process to acetic acid, is produced?",
+                "a": "methane"
+            },
+            {
+                "entity1": "methane",
+                "relation": "decomposes to produce",
+                "entity2": "acetic acid",
+                "text": "Esters of acetic acid can likewise be formed via Fischer esterification, and amides can be formed. When heated above 440 C (824 F), acetic acid decomposes to produce carbon dioxide and methane, or to produce ketene and water\n\nCH3COOH  CH4  CO2\nCH3COOH  CH2CO  H2O\n\nReactions with inorganic compounds Acetic acid is mildly corrosive to metals including iron, magnesium, and zinc, forming hydrogen gas and salts called acetates\n\nMg  2 CH3COOH  (CH3COO)2Mg  H2\nBecause aluminium forms a passivating acidresistant film of aluminium oxide, aluminium tanks are used to transport acetic acid. Containers lined with glass, stainless steel or polyethylene are also used for this purpose.",
+                "q": "When acetic acid is heated above 440°C, it decomposes to produce carbon dioxide and another compound. Which compound is that?",
+                "a": "methane"
+            },
+            {
+                "entity1": "acetic acid",
+                "relation": "is functionally related to",
+                "entity2": "4hydroxyphenylacetic acid",
+                "text": "Title 4Hydroxyphenylacetic acid\nwikipedia 4Hydroxyphenylacetic acid is a chemical compound found in olive oil and beer. Synthesis 4Hydroxyphenylacetic acid is obtained by reducing 4hydroxymandelic acid with elemental phosphorus and iodine. Uses In industry, 4hydroxyphenylacetic acid is an intermediate used to synthesize atenolol, 3,4dihydroxyphenylacetic acid, and coclaurine. References \n\n\n pubchem\n4hydroxyphenylacetic acid is a monocarboxylic acid that is acetic acid in which one of the methyl hydrogens is substituted by a 4hydroxyphenyl group. It has a role as a plant metabolite, a fungal metabolite, a human metabolite and a mouse metabolite. It is a monocarboxylic acid and a member of phenols. It is functionally related to an acetic acid. It is a conjugate acid of a 4hydroxyphenylacetate.",
+                "q": "Which simple monocarboxylic acid forms the backbone of 4hydroxyphenylacetic acid by substituting one of its methyl hydrogens with a 4hydroxyphenyl group, thereby showing a functional relation?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "4hydroxyphenylacetic acid",
+                "relation": "is synthesized from",
+                "entity2": "c8h8o3",
+                "text": "4Hydroxyphenylacetic acid has been reported in Epichloe typhina, Oenothera glazioviana, and other organisms with data available. 4Hydroxyphenylacetic acid is a metabolite found in or produced by Saccharomyces cerevisiae. safety Irritant\nsmiles C1CC(CCC1CC(O)O)O\nforumla C8H8O3\nchemproperties Molecular Weight 152.15 gmol\nXLogP3 0.8\nHydrogen Bond Donor Count 2\nHydrogen Bond Acceptor Count 3\nRotatable Bond Count 2\nExact Mass 152.047344113 Da\nMonoisotopic Mass 152.047344113 Da\nTopological Polar Surface Area 57.5\nHeavy Atom Count 11\nFormal Charge 0\nComplexity 136\nIsotope Atom Count 0\nDefined Atom Stereocenter Count 0\nUndefined Atom Stereocenter Count 0\nDefined Bond Stereocenter Count 0\nUndefined Bond Stereocenter Count 0\nCovalentlyBonded Unit Count 1\nCompound Is Canonicalized Yes",
+                "q": "Which compound, reported in Epichloe typhina, Oenothera glazioviana, and Saccharomyces cerevisiae, is synthesized from C8H8O3?",
+                "a": "4hydroxyphenylacetic acid"
+            }
+        ]
+    },
+    {
+        "q": "In a series of interconnected reactions, a simple gaseous hydrocarbon is first converted into a particular compound. In a follow‐up electron transfer process, the methyl group of a common short‐chain carboxylic acid functions as an electron acceptor to yield a simple hydrocarbon gas, which is also produced when that very acid thermally decomposes at high temperature along with carbon dioxide. Furthermore, this carboxylic acid—recognized as the conjugate acid of a widespread metabolic anion involved in biosynthetic and acetylation processes, noted for a pungent odor in food additives and petroleum production, and which forms a salt with bases as seen in compounds like aluminium salts—is part of the reaction network. Based on these steps, which substance is formed originally from the gaseous hydrocarbon?",
+        "a": "C",
+        "path": [
+            {
+                "entity1": "C",
+                "relation": "is synthesized from",
+                "entity2": "methane",
+                "text": "The reaction is moderately endothermic as shown in the reaction equation below. CH4(g)  C(s)  2 H2(g)\n(H  74.8 kJmol)\n\nRefrigerant As a refrigerant, methane has the ASHRAE designation R50. Generation Methane can be generated through geological, biological or industrial routes. Geological routes The two main routes for geological methane generation are (i) organic (thermally generated, or thermogenic) and (ii) inorganic (abiotic). Thermogenic methane occurs due to the breakup of organic matter at elevated temperatures and pressures in deep sedimentary strata. Most methane in sedimentary basins is thermogenic; therefore, thermogenic methane is the most important source of natural gas. Thermogenic methane components are typically considered to be relic (from an earlier time). Generally, formation of thermogenic methane (at depth) can occur through organic matter breakup, or organic synthesis.",
+                "q": "According to the reaction provided, which substance is synthesized from methane?",
+                "a": "C"
+            },
+            {
+                "entity1": "methane",
+                "relation": "produces",
+                "entity2": "acetic acid",
+                "text": "One electron is transferred from the carbonyl function (e donor) of the carboxylic group to the methyl group (e acceptor) of acetic acid to respectively produce CO2 and methane gas. Structures \n\nSee also Acetylation\nCellulose acetate\nCopper(II) acetate\nFermentation (biochemistry)\nSodium acetate\nMixed acid fermentation\nAcetic acid\nAcetyl chloride\nZinc acetate\n\nReferences \n\n External links \n\n\n pubchem\nAcetate is a monocarboxylic acid anion resulting from the removal of a proton from the carboxy group of acetic acid. It has a role as a human metabolite and a Saccharomyces cerevisiae metabolite. It is a conjugate base of an acetic acid. Acetate is salt or ester form of acetic acid. Acetate is the most common building block for biosynthesis, such as fatty acids. Derivatives of ACETIC ACID.",
+                "q": "In the electron transfer process described, the methyl group of acetic acid acts as the electron acceptor to yield which gaseous product?",
+                "a": "methane"
+            },
+            {
+                "entity1": "methane",
+                "relation": "decomposes to produce",
+                "entity2": "acetic acid",
+                "text": "Esters of acetic acid can likewise be formed via Fischer esterification, and amides can be formed. When heated above 440 C (824 F), acetic acid decomposes to produce carbon dioxide and methane, or to produce ketene and water\n\nCH3COOH  CH4  CO2\nCH3COOH  CH2CO  H2O\n\nReactions with inorganic compounds Acetic acid is mildly corrosive to metals including iron, magnesium, and zinc, forming hydrogen gas and salts called acetates\n\nMg  2 CH3COOH  (CH3COO)2Mg  H2\nBecause aluminium forms a passivating acidresistant film of aluminium oxide, aluminium tanks are used to transport acetic acid. Containers lined with glass, stainless steel or polyethylene are also used for this purpose.",
+                "q": "When acetic acid is heated above 440°C and decomposes, one of the gaseous products formed is carbon dioxide. Which other gas is produced in this reaction?",
+                "a": "methane"
+            },
+            {
+                "entity1": "acetic acid",
+                "relation": "is synthesized from",
+                "entity2": "acetate",
+                "text": "One electron is transferred from the carbonyl function (e donor) of the carboxylic group to the methyl group (e acceptor) of acetic acid to respectively produce CO2 and methane gas. Structures \n\nSee also Acetylation\nCellulose acetate\nCopper(II) acetate\nFermentation (biochemistry)\nSodium acetate\nMixed acid fermentation\nAcetic acid\nAcetyl chloride\nZinc acetate\n\nReferences \n\n External links \n\n\n pubchem\nAcetate is a monocarboxylic acid anion resulting from the removal of a proton from the carboxy group of acetic acid. It has a role as a human metabolite and a Saccharomyces cerevisiae metabolite. It is a conjugate base of an acetic acid. Acetate is salt or ester form of acetic acid. Acetate is the most common building block for biosynthesis, such as fatty acids. Derivatives of ACETIC ACID.",
+                "q": "Which acid, known as the conjugate acid whose deprotonation forms the common metabolite acetate used in various biosynthetic and acetylation processes, is synthesized from acetate?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "acetic acid",
+                "relation": "is a conjugate acid of",
+                "entity2": "acetate",
+                "text": "Used to make other chemicals, as a food additive, and in petroleum production. Acetic acid, solution, more than 10 but not more than 80 acid appears as a colorless aqueous solution. Smells like vinegar. Corrosive to metals and tissue. Acetic acid, solution, more than 80 acid is a clear colorless aqueous solution with a pungent odor. Acetic acid is a simple monocarboxylic acid containing two carbons. It has a role as a protic solvent, a food acidity regulator, an antimicrobial food preservative and a Daphnia magna metabolite. It is a conjugate acid of an acetate. Acetic acid is a product of the oxidation of ethanol and of the destructive distillation of wood. It is used locally, occasionally internally, as a counterirritant and also as a reagent.",
+                "q": "Which substance, known for its pungent odor and use as a food additive and in petroleum production, acts as a conjugate acid of acetate?",
+                "a": "acetic acid"
+            },
+            {
+                "entity1": "acetate",
+                "relation": "is formed by the combination of",
+                "entity2": "aluminium",
+                "text": "Title Acetate\nwikipedia An acetate is a salt formed by the combination of acetic acid with a base (e.g. alkaline, earthy, metallic, nonmetallic or radical base). Acetate also describes the conjugate base or ion (specifically, the negatively charged ion called an anion) typically found in aqueous solution and written with the chemical formula C2H3O2. The neutral molecules formed by the combination of the acetate ion and a positive ion (called a cation) are also commonly called acetates (hence, acetate of lead, acetate of aluminium, etc.). The simplest of these is hydrogen acetate (called acetic acid) with corresponding salts, esters, and the polyatomic anion CH3CO2, or CH3COO.",
+                "q": "Which compound, commonly seen in names like 'acetate of aluminium', is formed by the combination of acetic acid and a base?",
+                "a": "acetate"
+            }
+        ]
+    }
+]

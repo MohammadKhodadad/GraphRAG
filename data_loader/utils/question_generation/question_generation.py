@@ -26,7 +26,8 @@ def generate_relation_question(client, entity1, relation, entity2, text):
         f"Text: {text}\n\n"
         f"Your task is to generate a factual question about Entity 1 and its relation, where the answer is Entity1.\n"
         f"Ensure that the question is factual and can be answered solely based on the given text.\n"
-        f"Do not mention a specific part of the text such as 'Abstract', 'Table #1', or etc.\n"
+        f"Do not mention a specific part of the text such as 'Abstract', 'Table #1', 'in the text', or etc.\n"
+        f"If the entity and relation is not specific enough, try to add descriptions FROM THE TEXT to make it specifc.\n"
         f"Return a dictionary without any code formatting, backticks, or markdown, with keys 'q' and 'a'."
     )
     
@@ -66,7 +67,7 @@ def generate_multihop_question(client, path):
         # Generate individual questions for each relation in the path
         qa_pairs = []
         completed_path=[]
-        for entity1, relation, entity2, text in path:
+        for entity1, relation, entity2, text, source in path:
             qa = generate_relation_question(client, entity1, relation, entity2, text)
             qa_pairs.append(qa)
             completed_path.append({'entity1':entity1, 'relation':relation, 'entity2': entity2, 'text': text,'q':qa['q'],'a':qa['a']})
@@ -147,11 +148,11 @@ def is_factual_chemistry_question(client, question, answer, path):
             return 'no'
         
         # Format the path for LLM input
-        path_text = "\n".join([f"{entry[0]} {entry[1]} {entry[2]}: {entry[3]}" for entry in path])
+        path_text = "\n".join([f"{entry['entity1']} {entry['relation']} {entry['entity2']}: {entry['text']}" for entry in path])
         
         # Prompt for LLM
         prompt = f"""
-        You are a chemistry expert. Your task is to determine if the given question is a factual chemistry question based on the provided path.
+        You are a chemistry expert. Your task is to determine if the given question is a factual chemistry question and answerable based on the provided path.
         
         ### Path Information:
         {path_text}
@@ -162,7 +163,7 @@ def is_factual_chemistry_question(client, question, answer, path):
         ### Answer:
         {answer}
         
-        Please analyze the path and verify if the question is a factual chemistry question. A factual question must be based on actual chemical properties, reactions, or experimentally verified principles. If the question is factual, return 'yes'. If it contains speculation, opinions, or lacks verifiable chemical grounding, return 'no'.
+        Please analyze the path and verify if the question is a factual chemistry question and can be answered based on the given path. A factual question must be based on actual chemical properties, reactions, or experimentally verified principles. An answerable question should be solvable based on the give path. If the question is factual and answerable, return 'yes'. If it contains speculation, opinions, or lacks verifiable chemical grounding, or it is not solvable, return 'no'.
         
         ### Examples of Factual Chemistry Questions:
         ✅ "What dissolves in water?"
@@ -188,6 +189,20 @@ def is_factual_chemistry_question(client, question, answer, path):
         print(f"Error: {e}")
         return 'no'
 
+def evaluate_questions(questions_address, verified_questions_address, api_key):
+    selected_questions = []
+    count = 0
+    client = OpenAI(api_key=api_key)
+    with open(questions_address,'rb') as f:
+        questions=json.load(f)
+    for question_item in questions:
+        acceptable = is_factual_chemistry_question(client, question_item['q'],question_item['a'],question_item['path'])
+        if acceptable.lower().strip()=='yes':
+            selected_questions.append(question_item)
+            count+=1
+    with open(verified_questions_address, "w", encoding="utf-8") as f:
+        json.dump(selected_questions, f, ensure_ascii=False, indent=4)
+    print(f'{count} out of {len(questions)} were acceptable.')
 
 if __name__ == "__main__":
     import dotenv

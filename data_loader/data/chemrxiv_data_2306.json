@@ -157,7 +157,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 80325
+                    "value": 80395
                 },
                 {
                     "description": "Citations",
@@ -165,7 +165,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 1390
+                    "value": 1393
                 }
             ],
             "version": "4",
@@ -404,7 +404,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 48091
+                    "value": 48163
                 },
                 {
                     "description": "Citations",
@@ -412,7 +412,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 13301
+                    "value": 13360
                 }
             ],
             "version": "3",
@@ -593,7 +593,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 17250
+                    "value": 17257
                 },
                 {
                     "description": "Citations",
@@ -601,7 +601,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 10338
+                    "value": 10344
                 }
             ],
             "version": "2",
@@ -835,7 +835,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 14705
+                    "value": 14709
                 },
                 {
                     "description": "Citations",
@@ -1184,7 +1184,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 13761
+                    "value": 13846
                 },
                 {
                     "description": "Citations",
@@ -1192,7 +1192,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 9283
+                    "value": 9344
                 }
             ],
             "version": "1",
@@ -1381,7 +1381,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 11686
+                    "value": 11754
                 },
                 {
                     "description": "Citations",
@@ -1389,7 +1389,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 6553
+                    "value": 6602
                 }
             ],
             "version": "3",
@@ -1610,7 +1610,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 10517
+                    "value": 10538
                 },
                 {
                     "description": "Citations",
@@ -1618,7 +1618,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 5595
+                    "value": 5625
                 }
             ],
             "version": "1",
@@ -1731,7 +1731,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 9517
+                    "value": 9527
                 },
                 {
                     "description": "Citations",
@@ -1739,7 +1739,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 2190
+                    "value": 2196
                 }
             ],
             "version": "13",
@@ -2006,7 +2006,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 8540
+                    "value": 8561
                 },
                 {
                     "description": "Citations",
@@ -2014,7 +2014,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 6403
+                    "value": 6410
                 }
             ],
             "version": "1",
@@ -2380,7 +2380,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 8112
+                    "value": 8125
                 },
                 {
                     "description": "Citations",
@@ -2388,7 +2388,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 3061
+                    "value": 3063
                 }
             ],
             "version": "3",
@@ -2631,7 +2631,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 8093
+                    "value": 8124
                 },
                 {
                     "description": "Citations",
@@ -2639,7 +2639,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 5084
+                    "value": 5106
                 }
             ],
             "version": "1",
@@ -2960,7 +2960,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 7406
+                    "value": 7408
                 },
                 {
                     "description": "Citations",
@@ -2968,7 +2968,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 5682
+                    "value": 5705
                 }
             ],
             "version": "3",
@@ -3330,7 +3330,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 7301
+                    "value": 7317
                 },
                 {
                     "description": "Citations",
@@ -3338,7 +3338,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 4144
+                    "value": 4156
                 }
             ],
             "version": "4",
@@ -3407,6 +3407,345 @@
             "versionNote": "- Corrected numbers of total training spectra, which were slightly off due to addition error across subsets. They remain qualitatively the same.\n- Added Christoph Krettler and Joseph Davison as authors\n- Assigned co-first authorship to Brian Bargh and Rose Lightheart",
             "latestComments": [],
             "commentsCount": 0,
+            "isLatestVersion": true,
+            "legacyId": null
+        }
+    },
+    {
+        "item": {
+            "id": "672a91bd7be152b1d01a926b",
+            "doi": "10.26434/chemrxiv-2024-6dbwv-v2",
+            "vor": null,
+            "title": "Practically significant method comparison protocols for machine learning in small molecule drug discovery.",
+            "abstract": "Machine Learning (ML) methods that relate molecular structure to properties are frequently proposed as in-silico surrogates for expensive or time-consuming experiments. In small molecule drug discovery, such methods inform high-stakes decisions like compound synthesis and in-vivo studies. This application lies at the intersection of multiple scientific disciplines. When comparing new ML methods\nto baseline or state-of-the-art approaches, statistically rigorous method comparison protocols and domain-appropriate performance metrics are essential to\nensure replicability and ultimately the adoption of ML in small molecule drug discovery. This paper proposes a set of guidelines to incentivize rigorous and domain-appropriate techniques for method comparison tailored to small molecule property modeling. These guidelines, accompanied by annotated examples and open-source software tools, lay a foundation for robust ML benchmarking and thus the development of more impactful methods.",
+            "contentType": {
+                "id": "5ce663395846762193c9c430",
+                "name": "Working Paper"
+            },
+            "categories": [
+                {
+                    "id": "605c72ef153207001f6470ce",
+                    "name": "Theoretical and Computational Chemistry",
+                    "description": "Research on Theoretical and Computational Chemistry"
+                },
+                {
+                    "id": "605c72ef153207001f6470d0",
+                    "name": "Biological and Medicinal Chemistry",
+                    "description": "Research on Biological and Medicinal Chemistry"
+                },
+                {
+                    "id": "60adf37803f321001cb1052c",
+                    "name": "Drug Discovery and Drug Delivery Systems",
+                    "description": "Research on Drug Discovery and Drug Delivery Systems"
+                },
+                {
+                    "id": "60adf37803f321001cb10530",
+                    "name": "Computational Chemistry and Modeling",
+                    "description": "Research on Computational Chemistry and Modeling"
+                },
+                {
+                    "id": "60adf37803f321001cb10532",
+                    "name": "Machine Learning",
+                    "description": "Research on Machine Learning"
+                }
+            ],
+            "subject": {
+                "id": "5e68cb1bd1f19d49ce3ac739",
+                "name": "Chemistry",
+                "description": "Discover early research outputs such as working papers, posters and presentations in Chemistry."
+            },
+            "event": null,
+            "status": "PUBLISHED",
+            "statusDate": "2024-11-07T06:39:57.478Z",
+            "funders": [],
+            "authors": [
+                {
+                    "orcid": null,
+                    "title": "Dr",
+                    "firstName": "Jeremy R.",
+                    "lastName": "Ash",
+                    "institutions": [
+                        {
+                            "name": "Johnson & Johnson Innovative Medicine",
+                            "country": "",
+                            "rorId": ""
+                        }
+                    ]
+                },
+                {
+                    "orcid": "0009-0006-2742-4817",
+                    "title": "Mr",
+                    "firstName": "Cas",
+                    "lastName": "Wognum",
+                    "institutions": [
+                        {
+                            "name": "Valence Labs",
+                            "country": "",
+                            "rorId": ""
+                        },
+                        {
+                            "name": "Recursion Pharmaceuticals",
+                            "country": "",
+                            "rorId": ""
+                        }
+                    ]
+                },
+                {
+                    "orcid": null,
+                    "title": "Dr",
+                    "firstName": "Raquel ",
+                    "lastName": "Rodr\u00edguez-P\u00e9rez",
+                    "institutions": [
+                        {
+                            "name": "Novartis Pharma AG",
+                            "country": "",
+                            "rorId": ""
+                        }
+                    ]
+                },
+                {
+                    "orcid": "0000-0003-0019-8806",
+                    "title": "Dr",
+                    "firstName": "Matteo",
+                    "lastName": "Aldeghi",
+                    "institutions": [
+                        {
+                            "name": "Bayer Research and Innovation Center",
+                            "country": "",
+                            "rorId": ""
+                        }
+                    ]
+                },
+                {
+                    "orcid": "0000-0003-3645-172X",
+                    "title": "Dr",
+                    "firstName": "Alan C.",
+                    "lastName": "Cheng",
+                    "institutions": [
+                        {
+                            "name": "Merck & Co., Inc.",
+                            "country": "",
+                            "rorId": ""
+                        }
+                    ]
+                },
+                {
+                    "orcid": null,
+                    "title": "Dr",
+                    "firstName": "Djork-Arn\u00e9",
+                    "lastName": "Clevert",
+                    "institutions": [
+                        {
+                            "name": "Pfizer Research and Development",
+                            "country": "",
+                            "rorId": ""
+                        }
+                    ]
+                },
+                {
+                    "orcid": null,
+                    "title": "Prof",
+                    "firstName": "Ola",
+                    "lastName": "Engkvist",
+                    "institutions": [
+                        {
+                            "name": "Molecular AI, Discovery Sciences AstraZeneca R&D",
+                            "country": "",
+                            "rorId": ""
+                        },
+                        {
+                            "name": "Molecular AI, Discovery SciencesDepartment of Computer Science and Engineering, Chalmers University of Technology AstraZeneca R&D",
+                            "country": "",
+                            "rorId": ""
+                        }
+                    ]
+                },
+                {
+                    "orcid": "0000-0002-9767-2043",
+                    "title": "Dr",
+                    "firstName": "Cheng",
+                    "lastName": "Fang",
+                    "institutions": [
+                        {
+                            "name": "Blueprint Medicines Corporation",
+                            "country": "",
+                            "rorId": ""
+                        }
+                    ]
+                },
+                {
+                    "orcid": null,
+                    "title": "Dr",
+                    "firstName": "Daniel J.",
+                    "lastName": " Price",
+                    "institutions": [
+                        {
+                            "name": "Nimbus Therapeutics",
+                            "country": "",
+                            "rorId": ""
+                        }
+                    ]
+                },
+                {
+                    "orcid": null,
+                    "title": "Prof",
+                    "firstName": "Jacqueline M. ",
+                    "lastName": "Hughes-Oliver",
+                    "institutions": [
+                        {
+                            "name": "Department of Statistics, North Carolina State University.",
+                            "country": "",
+                            "rorId": ""
+                        }
+                    ]
+                },
+                {
+                    "orcid": "0000-0003-2860-7958",
+                    "title": "Dr",
+                    "firstName": "W. Patrick ",
+                    "lastName": "Walters",
+                    "institutions": [
+                        {
+                            "name": "Relay Therapeutics ",
+                            "country": "",
+                            "rorId": ""
+                        }
+                    ]
+                }
+            ],
+            "metrics": [
+                {
+                    "description": "Abstract Views",
+                    "value": 7284
+                },
+                {
+                    "description": "Citations",
+                    "value": 0
+                },
+                {
+                    "description": "Content Downloads",
+                    "value": 3985
+                }
+            ],
+            "version": "2",
+            "versionRefs": [
+                {
+                    "version": "1",
+                    "itemId": "6723cc305a82cea2faa7278a",
+                    "legacyId": null
+                },
+                {
+                    "version": "2",
+                    "itemId": "672a91bd7be152b1d01a926b",
+                    "legacyId": null
+                }
+            ],
+            "submittedDate": "2024-11-05T22:00:58.835Z",
+            "publishedDate": "2024-11-07T06:39:57.478Z",
+            "approvedDate": "2024-11-07T06:39:39.998Z",
+            "keywords": [
+                "Method Comparison",
+                "Practical Significance",
+                "Small Molecules",
+                "Performance Metrics",
+                "Machine Learning",
+                "Replicability",
+                "Statistical Testing",
+                "Cross Validation"
+            ],
+            "hasCompetingInterests": true,
+            "competingInterestsDeclaration": "Except for Professor Hughes-Oliver, all authors were employed by for-profit companies during the writing of this article. While there may be financial or non-financial interests related to their employer, the authors affirm their commitment to scientific integrity. The article is presented objectively, and steps were taken to minimize any potential influence from their employment. The corresponding author is available for further inquiries.",
+            "gainedEthicsApproval": "NOT_RELEVANT",
+            "suppItems": [],
+            "asset": {
+                "id": "672a94a4055335573b1d0626",
+                "mimeType": "application/pdf",
+                "fileName": "Polaris___Method_Comparison_Preprint_chemrxiv_v2 (1).pdf",
+                "fileSizeBytes": 3009673,
+                "smallThumbnail": {
+                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/672a91bd7be152b1d01a926b/smallThumb/practically-significant-method-comparison-protocols-for-machine-learning-in-small-molecule-drug-discovery.jpg"
+                },
+                "mediumThumbnail": {
+                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/672a91bd7be152b1d01a926b/mediumThumb/practically-significant-method-comparison-protocols-for-machine-learning-in-small-molecule-drug-discovery.jpg"
+                },
+                "largeThumbnail": {
+                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/672a91bd7be152b1d01a926b/largeThumb/practically-significant-method-comparison-protocols-for-machine-learning-in-small-molecule-drug-discovery.jpg"
+                },
+                "original": {
+                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/672a91bd7be152b1d01a926b/original/practically-significant-method-comparison-protocols-for-machine-learning-in-small-molecule-drug-discovery.pdf"
+                }
+            },
+            "license": {
+                "id": "601bf4e28d966b96c9bbbdf3",
+                "name": "CC BY NC 4.0",
+                "description": "This license will allow Site users to copy and redistribute the Content in any medium or format and remix, transform and build upon the Content. However, the Content may not be used for commercial purposes. There is a requirement to attribute the Author upon reuse of the Content.",
+                "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+            },
+            "webLinks": [
+                {
+                    "title": "Code",
+                    "description": "All code associated with this paper has been made available in this Github repository.",
+                    "url": "https://github.com/polaris-hub/polaris-method-comparison"
+                }
+            ],
+            "origin": "CHEMRXIV",
+            "termsAcceptance": true,
+            "versionNote": "We accidentally left out part of Appendix D. We also increased the quality of Figure 1 and 3 by using SVG. We improved the clarity of Figure 8. We clarified the caption of Figure 7. We added a relevant citation in the introduction. ",
+            "latestComments": [
+                {
+                    "id": "6751d4e67be152b1d0104742",
+                    "author": {
+                        "title": "",
+                        "firstName": "Jackson",
+                        "lastName": "Burns"
+                    },
+                    "createdAt": "2024-12-05T16:29:26.142Z",
+                    "number": 2,
+                    "content": "First, thanks for putting this together. Long overdue, and I am excited to move away from the dreaded bold table. I'm new to rigorous stats-world, so please forgive me if the below is totally off-base.\n\nMy question is related to the suggestion that repeated random sampling is undesirable. I prefer this method since (I believe) it rigorously permits parametric testing for comparisons and because it allows using more advanced splitting methods (fingerprint based clustering and partitioning, for example) without having to worry about rigorously 'striping' through the data.\n\nFrom section 3.1.2 (v2):\n\"Commonly used alternatives to CV like bootstrapping and repeated ran-\ndom splits of the data have also been shown to result in strong dependency between\nsamples and are generally not recommended [13].\"\n\nWhere reference 13 is \" Bates, S., Hastie, T. & Tibshirani, R. Cross-validation: What does it estimate\nand how well does it do it? Journal of the American Statistical Association 119,\n1434\u20131445 (2023). URL http://dx.doi.org/10.1080/01621459.2023.2197686\"\n\n(1) Where in this paper is this claim?\n\n(2) I find it unintuitive that repeated random splits would result in strong dependency, especially given the the suggested Repeated CV is very similar. Repeated random sampling is basically just Repeated CV (5x2) but without the x2 part (?).",
+                    "status": "LIVE",
+                    "replies": [
+                        {
+                            "id": "6760e331fa469535b9dbac2e",
+                            "author": {
+                                "title": "",
+                                "firstName": "Jeremy",
+                                "lastName": "Ash"
+                            },
+                            "createdAt": "2024-12-17T02:34:25.838Z",
+                            "number": null,
+                            "content": "Response here: https://github.com/polaris-hub/polaris-method-comparison/discussions/9",
+                            "status": "LIVE"
+                        }
+                    ]
+                },
+                {
+                    "id": "672fb8d2f9980725cfae595a",
+                    "author": {
+                        "title": "",
+                        "firstName": "Francois",
+                        "lastName": "Berenger"
+                    },
+                    "createdAt": "2024-11-09T19:32:34.516Z",
+                    "number": 1,
+                    "content": "Hello, I would be interested to know when this gets published somewhere.",
+                    "status": "LIVE",
+                    "replies": [
+                        {
+                            "id": "6730d85cf9980725cfbe91bc",
+                            "author": {
+                                "title": "",
+                                "firstName": "Cas",
+                                "lastName": "Wognum"
+                            },
+                            "createdAt": "2024-11-10T15:59:24.714Z",
+                            "number": null,
+                            "content": "Hey Francois, thanks for reaching out! We're sharing this work as a preprint to seek feedback from the community on the proposed guidelines. Afterwards we intend to submit the paper for publication to a peer-reviewed journal early next year. The best way to share your feedback would be as a Github Discussion here: https://github.com/polaris-hub/polaris-method-comparison/discussions . I hope that helps!",
+                            "status": "LIVE"
+                        }
+                    ]
+                }
+            ],
+            "commentsCount": 4,
             "isLatestVersion": true,
             "legacyId": null
         }
@@ -3755,7 +4094,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 7276
+                    "value": 7280
                 },
                 {
                     "description": "Citations",
@@ -3763,7 +4102,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 4832
+                    "value": 4833
                 }
             ],
             "version": "2",
@@ -3847,345 +4186,6 @@
             "versionNote": "Updated version of the manuscript with complete scope, applications, scale-up, and mechanistic experiments.",
             "latestComments": [],
             "commentsCount": 0,
-            "isLatestVersion": true,
-            "legacyId": null
-        }
-    },
-    {
-        "item": {
-            "id": "672a91bd7be152b1d01a926b",
-            "doi": "10.26434/chemrxiv-2024-6dbwv-v2",
-            "vor": null,
-            "title": "Practically significant method comparison protocols for machine learning in small molecule drug discovery.",
-            "abstract": "Machine Learning (ML) methods that relate molecular structure to properties are frequently proposed as in-silico surrogates for expensive or time-consuming experiments. In small molecule drug discovery, such methods inform high-stakes decisions like compound synthesis and in-vivo studies. This application lies at the intersection of multiple scientific disciplines. When comparing new ML methods\nto baseline or state-of-the-art approaches, statistically rigorous method comparison protocols and domain-appropriate performance metrics are essential to\nensure replicability and ultimately the adoption of ML in small molecule drug discovery. This paper proposes a set of guidelines to incentivize rigorous and domain-appropriate techniques for method comparison tailored to small molecule property modeling. These guidelines, accompanied by annotated examples and open-source software tools, lay a foundation for robust ML benchmarking and thus the development of more impactful methods.",
-            "contentType": {
-                "id": "5ce663395846762193c9c430",
-                "name": "Working Paper"
-            },
-            "categories": [
-                {
-                    "id": "605c72ef153207001f6470ce",
-                    "name": "Theoretical and Computational Chemistry",
-                    "description": "Research on Theoretical and Computational Chemistry"
-                },
-                {
-                    "id": "605c72ef153207001f6470d0",
-                    "name": "Biological and Medicinal Chemistry",
-                    "description": "Research on Biological and Medicinal Chemistry"
-                },
-                {
-                    "id": "60adf37803f321001cb1052c",
-                    "name": "Drug Discovery and Drug Delivery Systems",
-                    "description": "Research on Drug Discovery and Drug Delivery Systems"
-                },
-                {
-                    "id": "60adf37803f321001cb10530",
-                    "name": "Computational Chemistry and Modeling",
-                    "description": "Research on Computational Chemistry and Modeling"
-                },
-                {
-                    "id": "60adf37803f321001cb10532",
-                    "name": "Machine Learning",
-                    "description": "Research on Machine Learning"
-                }
-            ],
-            "subject": {
-                "id": "5e68cb1bd1f19d49ce3ac739",
-                "name": "Chemistry",
-                "description": "Discover early research outputs such as working papers, posters and presentations in Chemistry."
-            },
-            "event": null,
-            "status": "PUBLISHED",
-            "statusDate": "2024-11-07T06:39:57.478Z",
-            "funders": [],
-            "authors": [
-                {
-                    "orcid": null,
-                    "title": "Dr",
-                    "firstName": "Jeremy R.",
-                    "lastName": "Ash",
-                    "institutions": [
-                        {
-                            "name": "Johnson & Johnson Innovative Medicine",
-                            "country": "",
-                            "rorId": ""
-                        }
-                    ]
-                },
-                {
-                    "orcid": "0009-0006-2742-4817",
-                    "title": "Mr",
-                    "firstName": "Cas",
-                    "lastName": "Wognum",
-                    "institutions": [
-                        {
-                            "name": "Valence Labs",
-                            "country": "",
-                            "rorId": ""
-                        },
-                        {
-                            "name": "Recursion Pharmaceuticals",
-                            "country": "",
-                            "rorId": ""
-                        }
-                    ]
-                },
-                {
-                    "orcid": null,
-                    "title": "Dr",
-                    "firstName": "Raquel ",
-                    "lastName": "Rodr\u00edguez-P\u00e9rez",
-                    "institutions": [
-                        {
-                            "name": "Novartis Pharma AG",
-                            "country": "",
-                            "rorId": ""
-                        }
-                    ]
-                },
-                {
-                    "orcid": "0000-0003-0019-8806",
-                    "title": "Dr",
-                    "firstName": "Matteo",
-                    "lastName": "Aldeghi",
-                    "institutions": [
-                        {
-                            "name": "Bayer Research and Innovation Center",
-                            "country": "",
-                            "rorId": ""
-                        }
-                    ]
-                },
-                {
-                    "orcid": "0000-0003-3645-172X",
-                    "title": "Dr",
-                    "firstName": "Alan C.",
-                    "lastName": "Cheng",
-                    "institutions": [
-                        {
-                            "name": "Merck & Co., Inc.",
-                            "country": "",
-                            "rorId": ""
-                        }
-                    ]
-                },
-                {
-                    "orcid": null,
-                    "title": "Dr",
-                    "firstName": "Djork-Arn\u00e9",
-                    "lastName": "Clevert",
-                    "institutions": [
-                        {
-                            "name": "Pfizer Research and Development",
-                            "country": "",
-                            "rorId": ""
-                        }
-                    ]
-                },
-                {
-                    "orcid": null,
-                    "title": "Prof",
-                    "firstName": "Ola",
-                    "lastName": "Engkvist",
-                    "institutions": [
-                        {
-                            "name": "Molecular AI, Discovery Sciences AstraZeneca R&D",
-                            "country": "",
-                            "rorId": ""
-                        },
-                        {
-                            "name": "Molecular AI, Discovery SciencesDepartment of Computer Science and Engineering, Chalmers University of Technology AstraZeneca R&D",
-                            "country": "",
-                            "rorId": ""
-                        }
-                    ]
-                },
-                {
-                    "orcid": "0000-0002-9767-2043",
-                    "title": "Dr",
-                    "firstName": "Cheng",
-                    "lastName": "Fang",
-                    "institutions": [
-                        {
-                            "name": "Blueprint Medicines Corporation",
-                            "country": "",
-                            "rorId": ""
-                        }
-                    ]
-                },
-                {
-                    "orcid": null,
-                    "title": "Dr",
-                    "firstName": "Daniel J.",
-                    "lastName": " Price",
-                    "institutions": [
-                        {
-                            "name": "Nimbus Therapeutics",
-                            "country": "",
-                            "rorId": ""
-                        }
-                    ]
-                },
-                {
-                    "orcid": null,
-                    "title": "Prof",
-                    "firstName": "Jacqueline M. ",
-                    "lastName": "Hughes-Oliver",
-                    "institutions": [
-                        {
-                            "name": "Department of Statistics, North Carolina State University.",
-                            "country": "",
-                            "rorId": ""
-                        }
-                    ]
-                },
-                {
-                    "orcid": "0000-0003-2860-7958",
-                    "title": "Dr",
-                    "firstName": "W. Patrick ",
-                    "lastName": "Walters",
-                    "institutions": [
-                        {
-                            "name": "Relay Therapeutics ",
-                            "country": "",
-                            "rorId": ""
-                        }
-                    ]
-                }
-            ],
-            "metrics": [
-                {
-                    "description": "Abstract Views",
-                    "value": 7246
-                },
-                {
-                    "description": "Citations",
-                    "value": 0
-                },
-                {
-                    "description": "Content Downloads",
-                    "value": 3962
-                }
-            ],
-            "version": "2",
-            "versionRefs": [
-                {
-                    "version": "1",
-                    "itemId": "6723cc305a82cea2faa7278a",
-                    "legacyId": null
-                },
-                {
-                    "version": "2",
-                    "itemId": "672a91bd7be152b1d01a926b",
-                    "legacyId": null
-                }
-            ],
-            "submittedDate": "2024-11-05T22:00:58.835Z",
-            "publishedDate": "2024-11-07T06:39:57.478Z",
-            "approvedDate": "2024-11-07T06:39:39.998Z",
-            "keywords": [
-                "Method Comparison",
-                "Practical Significance",
-                "Small Molecules",
-                "Performance Metrics",
-                "Machine Learning",
-                "Replicability",
-                "Statistical Testing",
-                "Cross Validation"
-            ],
-            "hasCompetingInterests": true,
-            "competingInterestsDeclaration": "Except for Professor Hughes-Oliver, all authors were employed by for-profit companies during the writing of this article. While there may be financial or non-financial interests related to their employer, the authors affirm their commitment to scientific integrity. The article is presented objectively, and steps were taken to minimize any potential influence from their employment. The corresponding author is available for further inquiries.",
-            "gainedEthicsApproval": "NOT_RELEVANT",
-            "suppItems": [],
-            "asset": {
-                "id": "672a94a4055335573b1d0626",
-                "mimeType": "application/pdf",
-                "fileName": "Polaris___Method_Comparison_Preprint_chemrxiv_v2 (1).pdf",
-                "fileSizeBytes": 3009673,
-                "smallThumbnail": {
-                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/672a91bd7be152b1d01a926b/smallThumb/practically-significant-method-comparison-protocols-for-machine-learning-in-small-molecule-drug-discovery.jpg"
-                },
-                "mediumThumbnail": {
-                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/672a91bd7be152b1d01a926b/mediumThumb/practically-significant-method-comparison-protocols-for-machine-learning-in-small-molecule-drug-discovery.jpg"
-                },
-                "largeThumbnail": {
-                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/672a91bd7be152b1d01a926b/largeThumb/practically-significant-method-comparison-protocols-for-machine-learning-in-small-molecule-drug-discovery.jpg"
-                },
-                "original": {
-                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/672a91bd7be152b1d01a926b/original/practically-significant-method-comparison-protocols-for-machine-learning-in-small-molecule-drug-discovery.pdf"
-                }
-            },
-            "license": {
-                "id": "601bf4e28d966b96c9bbbdf3",
-                "name": "CC BY NC 4.0",
-                "description": "This license will allow Site users to copy and redistribute the Content in any medium or format and remix, transform and build upon the Content. However, the Content may not be used for commercial purposes. There is a requirement to attribute the Author upon reuse of the Content.",
-                "url": "https://creativecommons.org/licenses/by-nc/4.0/"
-            },
-            "webLinks": [
-                {
-                    "title": "Code",
-                    "description": "All code associated with this paper has been made available in this Github repository.",
-                    "url": "https://github.com/polaris-hub/polaris-method-comparison"
-                }
-            ],
-            "origin": "CHEMRXIV",
-            "termsAcceptance": true,
-            "versionNote": "We accidentally left out part of Appendix D. We also increased the quality of Figure 1 and 3 by using SVG. We improved the clarity of Figure 8. We clarified the caption of Figure 7. We added a relevant citation in the introduction. ",
-            "latestComments": [
-                {
-                    "id": "6751d4e67be152b1d0104742",
-                    "author": {
-                        "title": "",
-                        "firstName": "Jackson",
-                        "lastName": "Burns"
-                    },
-                    "createdAt": "2024-12-05T16:29:26.142Z",
-                    "number": 2,
-                    "content": "First, thanks for putting this together. Long overdue, and I am excited to move away from the dreaded bold table. I'm new to rigorous stats-world, so please forgive me if the below is totally off-base.\n\nMy question is related to the suggestion that repeated random sampling is undesirable. I prefer this method since (I believe) it rigorously permits parametric testing for comparisons and because it allows using more advanced splitting methods (fingerprint based clustering and partitioning, for example) without having to worry about rigorously 'striping' through the data.\n\nFrom section 3.1.2 (v2):\n\"Commonly used alternatives to CV like bootstrapping and repeated ran-\ndom splits of the data have also been shown to result in strong dependency between\nsamples and are generally not recommended [13].\"\n\nWhere reference 13 is \" Bates, S., Hastie, T. & Tibshirani, R. Cross-validation: What does it estimate\nand how well does it do it? Journal of the American Statistical Association 119,\n1434\u20131445 (2023). URL http://dx.doi.org/10.1080/01621459.2023.2197686\"\n\n(1) Where in this paper is this claim?\n\n(2) I find it unintuitive that repeated random splits would result in strong dependency, especially given the the suggested Repeated CV is very similar. Repeated random sampling is basically just Repeated CV (5x2) but without the x2 part (?).",
-                    "status": "LIVE",
-                    "replies": [
-                        {
-                            "id": "6760e331fa469535b9dbac2e",
-                            "author": {
-                                "title": "",
-                                "firstName": "Jeremy",
-                                "lastName": "Ash"
-                            },
-                            "createdAt": "2024-12-17T02:34:25.838Z",
-                            "number": null,
-                            "content": "Response here: https://github.com/polaris-hub/polaris-method-comparison/discussions/9",
-                            "status": "LIVE"
-                        }
-                    ]
-                },
-                {
-                    "id": "672fb8d2f9980725cfae595a",
-                    "author": {
-                        "title": "",
-                        "firstName": "Francois",
-                        "lastName": "Berenger"
-                    },
-                    "createdAt": "2024-11-09T19:32:34.516Z",
-                    "number": 1,
-                    "content": "Hello, I would be interested to know when this gets published somewhere.",
-                    "status": "LIVE",
-                    "replies": [
-                        {
-                            "id": "6730d85cf9980725cfbe91bc",
-                            "author": {
-                                "title": "",
-                                "firstName": "Cas",
-                                "lastName": "Wognum"
-                            },
-                            "createdAt": "2024-11-10T15:59:24.714Z",
-                            "number": null,
-                            "content": "Hey Francois, thanks for reaching out! We're sharing this work as a preprint to seek feedback from the community on the proposed guidelines. Afterwards we intend to submit the paper for publication to a peer-reviewed journal early next year. The best way to share your feedback would be as a Github Discussion here: https://github.com/polaris-hub/polaris-method-comparison/discussions . I hope that helps!",
-                            "status": "LIVE"
-                        }
-                    ]
-                }
-            ],
-            "commentsCount": 4,
             "isLatestVersion": true,
             "legacyId": null
         }
@@ -4432,7 +4432,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 7204
+                    "value": 7230
                 },
                 {
                     "description": "Citations",
@@ -4440,7 +4440,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 4062
+                    "value": 4072
                 }
             ],
             "version": "4",
@@ -4691,7 +4691,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 7186
+                    "value": 7189
                 },
                 {
                     "description": "Citations",
@@ -4699,7 +4699,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 2872
+                    "value": 2874
                 }
             ],
             "version": "3",
@@ -5182,7 +5182,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 7067
+                    "value": 7078
                 },
                 {
                     "description": "Citations",
@@ -5190,7 +5190,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 5534
+                    "value": 5585
                 }
             ],
             "version": "2",
@@ -5389,7 +5389,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6963
+                    "value": 6989
                 },
                 {
                     "description": "Citations",
@@ -5397,7 +5397,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 2646
+                    "value": 2659
                 }
             ],
             "version": "2",
@@ -5554,7 +5554,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6883
+                    "value": 6895
                 },
                 {
                     "description": "Citations",
@@ -5562,7 +5562,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 3262
+                    "value": 3273
                 }
             ],
             "version": "23",
@@ -5947,7 +5947,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6856
+                    "value": 6864
                 },
                 {
                     "description": "Citations",
@@ -5955,7 +5955,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 3522
+                    "value": 3528
                 }
             ],
             "version": "1",
@@ -6276,7 +6276,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6829
+                    "value": 6833
                 },
                 {
                     "description": "Citations",
@@ -6284,7 +6284,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 5139
+                    "value": 5142
                 }
             ],
             "version": "1",
@@ -6623,7 +6623,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6519
+                    "value": 6527
                 },
                 {
                     "description": "Citations",
@@ -6631,7 +6631,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 7419
+                    "value": 7422
                 }
             ],
             "version": "2",
@@ -6840,7 +6840,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6503
+                    "value": 6504
                 },
                 {
                     "description": "Citations",
@@ -6848,7 +6848,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 544
+                    "value": 546
                 }
             ],
             "version": "1",
@@ -7017,7 +7017,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6441
+                    "value": 6444
                 },
                 {
                     "description": "Citations",
@@ -7025,7 +7025,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 2354
+                    "value": 2360
                 }
             ],
             "version": "2",
@@ -7201,7 +7201,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6417
+                    "value": 6434
                 },
                 {
                     "description": "Citations",
@@ -7209,7 +7209,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 3858
+                    "value": 3863
                 }
             ],
             "version": "1",
@@ -7418,7 +7418,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6397
+                    "value": 6399
                 },
                 {
                     "description": "Citations",
@@ -7426,7 +7426,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 3384
+                    "value": 3388
                 }
             ],
             "version": "1",
@@ -7740,7 +7740,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6289
+                    "value": 6305
                 },
                 {
                     "description": "Citations",
@@ -7748,7 +7748,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 3219
+                    "value": 3229
                 }
             ],
             "version": "1",
@@ -8014,7 +8014,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6224
+                    "value": 6234
                 },
                 {
                     "description": "Citations",
@@ -8022,7 +8022,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 356
+                    "value": 360
                 }
             ],
             "version": "1",
@@ -8107,156 +8107,6 @@
             "origin": "CHEMRXIV",
             "termsAcceptance": true,
             "versionNote": "",
-            "latestComments": [],
-            "commentsCount": 0,
-            "isLatestVersion": true,
-            "legacyId": null
-        }
-    },
-    {
-        "item": {
-            "id": "662cf1d1418a5379b0deee4c",
-            "doi": "10.26434/chemrxiv-2024-z2z04-v2",
-            "vor": null,
-            "title": "Migratory Aryl Cross-Coupling ",
-            "abstract": "A fundamental property of cross-coupling reactions is regiospecificity, meaning that the site of bond formation is determined by the leaving group\u2019s location on the electrophile. Typically, to achieve a different substitution pattern requires synthesis of a new, corresponding starting-material isomer. As an alternative, we proposed the development of cross-coupling variants that afford access to multiple structural isomers from the same coupling partners. Here, we first demonstrate that a bulky palladium catalyst can facilitate efficient, reversible positional transposition of aryl halides by temporarily forming metal aryne species. Despite the nearly thermoneutral equilibrium governing this process, combining it with gradual addition of a suitable nucleophile results in parallel resolution of the isomers and high yields of unconventional product isomers. The method accommodates a range of oxygen- and nitrogen-centered nucleophiles and tolerates numerous common functional groups. A Curtin\u2013Hammett kinetic scheme is supported by computational and experimental data, providing a general mechanistic framework for extending this migratory cross-coupling concept. ",
-            "contentType": {
-                "id": "5ce663395846762193c9c430",
-                "name": "Working Paper"
-            },
-            "categories": [
-                {
-                    "id": "605c72ef153207001f6470d1",
-                    "name": "Organic Chemistry",
-                    "description": "Research on Organic Chemistry"
-                }
-            ],
-            "subject": {
-                "id": "5e68cb1bd1f19d49ce3ac739",
-                "name": "Chemistry",
-                "description": "Discover early research outputs such as working papers, posters and presentations in Chemistry."
-            },
-            "event": null,
-            "status": "PUBLISHED",
-            "statusDate": "2024-04-29T09:04:02.103Z",
-            "funders": [],
-            "authors": [
-                {
-                    "orcid": null,
-                    "title": "Dr",
-                    "firstName": "Yoshiya",
-                    "lastName": "Sekiguchi",
-                    "institutions": [
-                        {
-                            "name": "Harvard University",
-                            "country": "United States",
-                            "rorId": "https://ror.org/03vek6s52"
-                        }
-                    ]
-                },
-                {
-                    "orcid": null,
-                    "title": "Mr",
-                    "firstName": "Polpum",
-                    "lastName": "Onnuch",
-                    "institutions": [
-                        {
-                            "name": "Harvard University",
-                            "country": "United States",
-                            "rorId": "https://ror.org/03vek6s52"
-                        }
-                    ]
-                },
-                {
-                    "orcid": "0000-0002-4983-137X",
-                    "title": "Mr",
-                    "firstName": "Yuli",
-                    "lastName": "Li",
-                    "institutions": [
-                        {
-                            "name": "Harvard University",
-                            "country": "United States",
-                            "rorId": "https://ror.org/03vek6s52"
-                        }
-                    ]
-                },
-                {
-                    "orcid": "0000-0003-0951-6487",
-                    "title": "Prof",
-                    "firstName": "Richard",
-                    "lastName": "Liu",
-                    "institutions": [
-                        {
-                            "name": "Harvard University",
-                            "country": "United States",
-                            "rorId": "https://ror.org/03vek6s52"
-                        }
-                    ]
-                }
-            ],
-            "metrics": [
-                {
-                    "description": "Abstract Views",
-                    "value": 6148
-                },
-                {
-                    "description": "Citations",
-                    "value": 0
-                },
-                {
-                    "description": "Content Downloads",
-                    "value": 4080
-                }
-            ],
-            "version": "2",
-            "versionRefs": [
-                {
-                    "version": "1",
-                    "itemId": "6626fe7421291e5d1d6a9686",
-                    "legacyId": null
-                },
-                {
-                    "version": "2",
-                    "itemId": "662cf1d1418a5379b0deee4c",
-                    "legacyId": null
-                }
-            ],
-            "submittedDate": "2024-04-27T12:40:18.291Z",
-            "publishedDate": "2024-04-29T09:04:02.103Z",
-            "approvedDate": "2024-04-29T09:03:45.365Z",
-            "keywords": [],
-            "hasCompetingInterests": false,
-            "competingInterestsDeclaration": null,
-            "gainedEthicsApproval": "NOT_RELEVANT",
-            "suppItems": [],
-            "asset": {
-                "id": "662cf1e532a60ee6142b2ad5",
-                "mimeType": "application/pdf",
-                "fileName": "manuscript draft 2 (1).pdf",
-                "fileSizeBytes": 1337983,
-                "smallThumbnail": {
-                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/662cf1d1418a5379b0deee4c/smallThumb/migratory-aryl-cross-coupling.jpg"
-                },
-                "mediumThumbnail": {
-                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/662cf1d1418a5379b0deee4c/mediumThumb/migratory-aryl-cross-coupling.jpg"
-                },
-                "largeThumbnail": {
-                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/662cf1d1418a5379b0deee4c/largeThumb/migratory-aryl-cross-coupling.jpg"
-                },
-                "original": {
-                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/662cf1d1418a5379b0deee4c/original/migratory-aryl-cross-coupling.pdf"
-                }
-            },
-            "license": {
-                "id": "5cc9d9bf7d4e0000ac04ef25",
-                "name": "CC BY NC ND 4.0",
-                "description": "This license will allow Site users to copy and redistribute the Content in any medium or format. However, the Content may not be used for commercial purposes and if the user remixes, transforms or builds upon the Content they may not redistribute the modified material. There is a requirement to attribute the Author upon reuse of the Content.",
-                "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
-            },
-            "webLinks": [],
-            "origin": "CHEMRXIV",
-            "termsAcceptance": true,
-            "versionNote": "Paragraph accidentally omitted during text/figure combination process - now fixed",
             "latestComments": [],
             "commentsCount": 0,
             "isLatestVersion": true,
@@ -8414,7 +8264,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6140
+                    "value": 6162
                 },
                 {
                     "description": "Citations",
@@ -8422,7 +8272,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 4039
+                    "value": 4052
                 }
             ],
             "version": "1",
@@ -8501,6 +8351,156 @@
             "origin": "CHEMRXIV",
             "termsAcceptance": true,
             "versionNote": "",
+            "latestComments": [],
+            "commentsCount": 0,
+            "isLatestVersion": true,
+            "legacyId": null
+        }
+    },
+    {
+        "item": {
+            "id": "662cf1d1418a5379b0deee4c",
+            "doi": "10.26434/chemrxiv-2024-z2z04-v2",
+            "vor": null,
+            "title": "Migratory Aryl Cross-Coupling ",
+            "abstract": "A fundamental property of cross-coupling reactions is regiospecificity, meaning that the site of bond formation is determined by the leaving group\u2019s location on the electrophile. Typically, to achieve a different substitution pattern requires synthesis of a new, corresponding starting-material isomer. As an alternative, we proposed the development of cross-coupling variants that afford access to multiple structural isomers from the same coupling partners. Here, we first demonstrate that a bulky palladium catalyst can facilitate efficient, reversible positional transposition of aryl halides by temporarily forming metal aryne species. Despite the nearly thermoneutral equilibrium governing this process, combining it with gradual addition of a suitable nucleophile results in parallel resolution of the isomers and high yields of unconventional product isomers. The method accommodates a range of oxygen- and nitrogen-centered nucleophiles and tolerates numerous common functional groups. A Curtin\u2013Hammett kinetic scheme is supported by computational and experimental data, providing a general mechanistic framework for extending this migratory cross-coupling concept. ",
+            "contentType": {
+                "id": "5ce663395846762193c9c430",
+                "name": "Working Paper"
+            },
+            "categories": [
+                {
+                    "id": "605c72ef153207001f6470d1",
+                    "name": "Organic Chemistry",
+                    "description": "Research on Organic Chemistry"
+                }
+            ],
+            "subject": {
+                "id": "5e68cb1bd1f19d49ce3ac739",
+                "name": "Chemistry",
+                "description": "Discover early research outputs such as working papers, posters and presentations in Chemistry."
+            },
+            "event": null,
+            "status": "PUBLISHED",
+            "statusDate": "2024-04-29T09:04:02.103Z",
+            "funders": [],
+            "authors": [
+                {
+                    "orcid": null,
+                    "title": "Dr",
+                    "firstName": "Yoshiya",
+                    "lastName": "Sekiguchi",
+                    "institutions": [
+                        {
+                            "name": "Harvard University",
+                            "country": "United States",
+                            "rorId": "https://ror.org/03vek6s52"
+                        }
+                    ]
+                },
+                {
+                    "orcid": null,
+                    "title": "Mr",
+                    "firstName": "Polpum",
+                    "lastName": "Onnuch",
+                    "institutions": [
+                        {
+                            "name": "Harvard University",
+                            "country": "United States",
+                            "rorId": "https://ror.org/03vek6s52"
+                        }
+                    ]
+                },
+                {
+                    "orcid": "0000-0002-4983-137X",
+                    "title": "Mr",
+                    "firstName": "Yuli",
+                    "lastName": "Li",
+                    "institutions": [
+                        {
+                            "name": "Harvard University",
+                            "country": "United States",
+                            "rorId": "https://ror.org/03vek6s52"
+                        }
+                    ]
+                },
+                {
+                    "orcid": "0000-0003-0951-6487",
+                    "title": "Prof",
+                    "firstName": "Richard",
+                    "lastName": "Liu",
+                    "institutions": [
+                        {
+                            "name": "Harvard University",
+                            "country": "United States",
+                            "rorId": "https://ror.org/03vek6s52"
+                        }
+                    ]
+                }
+            ],
+            "metrics": [
+                {
+                    "description": "Abstract Views",
+                    "value": 6152
+                },
+                {
+                    "description": "Citations",
+                    "value": 0
+                },
+                {
+                    "description": "Content Downloads",
+                    "value": 4084
+                }
+            ],
+            "version": "2",
+            "versionRefs": [
+                {
+                    "version": "1",
+                    "itemId": "6626fe7421291e5d1d6a9686",
+                    "legacyId": null
+                },
+                {
+                    "version": "2",
+                    "itemId": "662cf1d1418a5379b0deee4c",
+                    "legacyId": null
+                }
+            ],
+            "submittedDate": "2024-04-27T12:40:18.291Z",
+            "publishedDate": "2024-04-29T09:04:02.103Z",
+            "approvedDate": "2024-04-29T09:03:45.365Z",
+            "keywords": [],
+            "hasCompetingInterests": false,
+            "competingInterestsDeclaration": null,
+            "gainedEthicsApproval": "NOT_RELEVANT",
+            "suppItems": [],
+            "asset": {
+                "id": "662cf1e532a60ee6142b2ad5",
+                "mimeType": "application/pdf",
+                "fileName": "manuscript draft 2 (1).pdf",
+                "fileSizeBytes": 1337983,
+                "smallThumbnail": {
+                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/662cf1d1418a5379b0deee4c/smallThumb/migratory-aryl-cross-coupling.jpg"
+                },
+                "mediumThumbnail": {
+                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/662cf1d1418a5379b0deee4c/mediumThumb/migratory-aryl-cross-coupling.jpg"
+                },
+                "largeThumbnail": {
+                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/662cf1d1418a5379b0deee4c/largeThumb/migratory-aryl-cross-coupling.jpg"
+                },
+                "original": {
+                    "url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/662cf1d1418a5379b0deee4c/original/migratory-aryl-cross-coupling.pdf"
+                }
+            },
+            "license": {
+                "id": "5cc9d9bf7d4e0000ac04ef25",
+                "name": "CC BY NC ND 4.0",
+                "description": "This license will allow Site users to copy and redistribute the Content in any medium or format. However, the Content may not be used for commercial purposes and if the user remixes, transforms or builds upon the Content they may not redistribute the modified material. There is a requirement to attribute the Author upon reuse of the Content.",
+                "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+            },
+            "webLinks": [],
+            "origin": "CHEMRXIV",
+            "termsAcceptance": true,
+            "versionNote": "Paragraph accidentally omitted during text/figure combination process - now fixed",
             "latestComments": [],
             "commentsCount": 0,
             "isLatestVersion": true,
@@ -8668,7 +8668,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6062
+                    "value": 6080
                 },
                 {
                     "description": "Citations",
@@ -8676,7 +8676,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 7885
+                    "value": 7894
                 }
             ],
             "version": "4",
@@ -8852,7 +8852,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6059
+                    "value": 6069
                 },
                 {
                     "description": "Citations",
@@ -8860,7 +8860,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 4641
+                    "value": 4651
                 }
             ],
             "version": "2",
@@ -9168,7 +9168,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 6018
+                    "value": 6022
                 },
                 {
                     "description": "Citations",
@@ -9469,7 +9469,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 5867
+                    "value": 5872
                 },
                 {
                     "description": "Citations",
@@ -9794,7 +9794,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 5809
+                    "value": 5818
                 },
                 {
                     "description": "Citations",
@@ -9802,7 +9802,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 3084
+                    "value": 3088
                 }
             ],
             "version": "1",
@@ -9957,7 +9957,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 5522
+                    "value": 5530
                 },
                 {
                     "description": "Citations",
@@ -9965,7 +9965,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 4096
+                    "value": 4101
                 }
             ],
             "version": "3",
@@ -10990,7 +10990,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 5435
+                    "value": 5444
                 },
                 {
                     "description": "Citations",
@@ -10998,7 +10998,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 2901
+                    "value": 2905
                 }
             ],
             "version": "1",
@@ -11221,7 +11221,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 5359
+                    "value": 5363
                 },
                 {
                     "description": "Citations",
@@ -11229,7 +11229,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 2577
+                    "value": 2578
                 }
             ],
             "version": "1",
@@ -11396,7 +11396,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 5299
+                    "value": 5314
                 },
                 {
                     "description": "Citations",
@@ -11404,7 +11404,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 5105
+                    "value": 5130
                 }
             ],
             "version": "4",
@@ -11679,7 +11679,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 5254
+                    "value": 5261
                 },
                 {
                     "description": "Citations",
@@ -11687,7 +11687,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 2979
+                    "value": 2983
                 }
             ],
             "version": "1",
@@ -11907,7 +11907,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 5202
+                    "value": 5216
                 },
                 {
                     "description": "Citations",
@@ -11915,7 +11915,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 3285
+                    "value": 3291
                 }
             ],
             "version": "1",
@@ -12176,7 +12176,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 5163
+                    "value": 5178
                 },
                 {
                     "description": "Citations",
@@ -12184,7 +12184,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 2947
+                    "value": 2957
                 }
             ],
             "version": "4",
@@ -12427,7 +12427,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 5147
+                    "value": 5152
                 },
                 {
                     "description": "Citations",
@@ -12435,7 +12435,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 3425
+                    "value": 3430
                 }
             ],
             "version": "1",
@@ -12709,7 +12709,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 3002
+                    "value": 3004
                 }
             ],
             "version": "1",
@@ -12952,7 +12952,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 5119
+                    "value": 5121
                 },
                 {
                     "description": "Citations",
@@ -12960,7 +12960,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 3539
+                    "value": 3542
                 }
             ],
             "version": "1",
@@ -13140,7 +13140,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 5105
+                    "value": 5109
                 },
                 {
                     "description": "Citations",
@@ -13148,7 +13148,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 2733
+                    "value": 2738
                 }
             ],
             "version": "1",
@@ -13440,7 +13440,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 5080
+                    "value": 5093
                 },
                 {
                     "description": "Citations",
@@ -13448,7 +13448,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 4134
+                    "value": 4139
                 }
             ],
             "version": "3",
@@ -13782,7 +13782,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 2541
+                    "value": 2542
                 }
             ],
             "version": "2",
@@ -14101,7 +14101,7 @@
             "metrics": [
                 {
                     "description": "Abstract Views",
-                    "value": 5039
+                    "value": 5041
                 },
                 {
                     "description": "Citations",
@@ -14109,7 +14109,7 @@
                 },
                 {
                     "description": "Content Downloads",
-                    "value": 3317
+                    "value": 3327
                 }
             ],
             "version": "2",

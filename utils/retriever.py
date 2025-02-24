@@ -176,12 +176,10 @@ class Retriever:
             raise ValueError("The input dictionary must contain a 'documents' key.")
         
         paragraphized_documents = []
-        
-        for doc in documents['documents']:
+        for doc in documents['documents'][0]:
             if not isinstance(doc, str):
                 # print(f"Skipping invalid document: {doc}")
                 continue
-            
             paragraphs = self.split_text(doc, max_words=max_words)
             paragraphized_documents.extend(paragraphs)
         

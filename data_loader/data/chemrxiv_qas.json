@@ -1,0 +1,46 @@
+[
+    {
+        "q": "What is the reactive intermediate derived from tyrosine that is proposed to undergo intramolecular cyclization by adding to the functional group which was attempted to be incorporated into an acyl aziridine moiety in the synthetic strategy described?",
+        "a": "tyrosine derived quinone methide",
+        "path": [
+            {
+                "entity1": "tyrosine derived quinone methide",
+                "relation": "adds to",
+                "entity2": "histidine imidazole",
+                "text": "The \nlack of nN to CO conjugation of this moiety lead to facile \nepimerization of the adjacent serine astereocenter even under mild \nconditions. Besides this, cleavage of the aziridine amide by \nnucleophiles was observed as a dominant side reaction (see SI). Further, a potentially biomimetic intramolecular cyclization by \naddition of the histidine imidazole to the corresponding tyrosine\nderived quinone methide was considered (Figure 2b, strategy D). However, this approach led mostly to either decomposition or \ntautomerization to the corresponding dehydrotyrosine (see SI). In \naddition to the approaches described, several other strategies were \nevaluated for bamino acid synthesis; see SI for further detail. Figure 2.",
+                "q": "Which reactive intermediate derived from tyrosine is proposed to undergo intramolecular cyclization by adding to the histidine imidazole?",
+                "a": "tyrosine derived quinone methide"
+            },
+            {
+                "entity1": "histidine imidazole",
+                "relation": "reacts with",
+                "entity2": "acyl aziridine",
+                "text": "of a nonepimerizable surrogate \nfor the primary amide. For construction of the bbranched tyrosine \nmoiety of the eastern fragment 4, a broad range of strategies were \nevaluated (Figure 2, strategies BD). Linkages of this type are \nextremely rare and notoriously difficult to obtain synthetically. Indeed, no successful strategy has been uncovered to date.1920 \nAttempted nucleophilic substitution reactions under either neutral, \nanionic or halogenideAgfacilitated conditions led consistently to \neither formation of the corresponding unsaturated dehydroamino \nacid or decomposition of the substrates (Figure 2b, strategy B, see \nSI). Attempts to utilize addition of the histidine imidazole to an acyl \naziridine moiety were hampered by the electronic nature of the \nacyclic twisted amide such obtained (Figure 2b, strategy C).",
+                "q": "Which functional group was attempted to be added to an acyl aziridine moiety in the synthetic strategy described?",
+                "a": "histidine imidazole"
+            }
+        ]
+    },
+    {
+        "q": "In the synthesis of pyrazole 2, bromide 3 is first treated with the reagent that activates it for further reaction. Which reagent is introduced next to complete this transformation?",
+        "a": "(MeS)2",
+        "path": [
+            {
+                "entity1": "(MeS)2",
+                "relation": "followed by the addition of",
+                "entity2": "nBuLi",
+                "text": "Both routes rely on the modification of the already installed \nfunctional groups (a) oxidation of the thiomethyl group;4 and (b) \nmetalmediated crosscoupling of halidesboronates with sodium \nsulfinate5,6 or sulphur dioxidemethyl iodide (Figure 1).7,8,9,10 ,11 \nHere, we present a principally novel approach to methyl \nsulfones that relies on the 1,3heterocycle disconnection logic \nwith the newly developed reagent 1 (Figure 1). Results and discussion \nBackground. In our daily practice, we often use two standard \napproaches to methyl sulfones described above (Figure 1). Recently, we received a request from a pharmaceutical \ncompany for a synthesis of pyrazole 2 (Scheme 1), which was \ndescribed in a patent before.12 In that method, bromide 3 was \ntreated first with nBuLi followed by the addition of (MeS)2.",
+                "q": "In the synthesis of pyrazole 2, after bromide 3 is treated with nBuLi, which reagent is subsequently added?",
+                "a": "(MeS)2"
+            },
+            {
+                "entity1": "nBuLi",
+                "relation": "treated with",
+                "entity2": "bromide",
+                "text": "Both routes rely on the modification of the already installed \nfunctional groups (a) oxidation of the thiomethyl group;4 and (b) \nmetalmediated crosscoupling of halidesboronates with sodium \nsulfinate5,6 or sulphur dioxidemethyl iodide (Figure 1).7,8,9,10 ,11 \nHere, we present a principally novel approach to methyl \nsulfones that relies on the 1,3heterocycle disconnection logic \nwith the newly developed reagent 1 (Figure 1). Results and discussion \nBackground. In our daily practice, we often use two standard \napproaches to methyl sulfones described above (Figure 1). Recently, we received a request from a pharmaceutical \ncompany for a synthesis of pyrazole 2 (Scheme 1), which was \ndescribed in a patent before.12 In that method, bromide 3 was \ntreated first with nBuLi followed by the addition of (MeS)2.",
+                "q": "Which reagent is used to treat bromide 3 before adding (MeS)2 in the synthesis of pyrazole 2?",
+                "a": "nBuLi"
+            }
+        ]
+    }
+]

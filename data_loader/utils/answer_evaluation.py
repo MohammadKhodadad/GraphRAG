@@ -21,11 +21,12 @@ def compute_gpt4o_scientific_similarity(sentence1, sentence2, api_key):
     client = OpenAI(api_key=api_key)
     
     prompt = f"""
-    You are a scientific evaluator. Given the two sentences below, rate how scientifically similar they are on a scale from 0 to 1, 
+    You are a scientific evaluator. Given the two answers below, one Prediction, and one Ground truth, rate how scientifically similar they are on a scale from 0 to 1, 
     where 0 means completely unrelated and 1 means they are scientifically identical. Provide only the numerical score.
+    The answers might be each other's synonynms. If the prediction is more than a single word, see if the ground truth keywords exist in the prediction.
 
-    Sentence 1: "{sentence1}"
-    Sentence 2: "{sentence2}"
+    Ground Truth: "{sentence1}"
+    Prediction: "{sentence2}"
     """
     response = client.chat.completions.create(
                 messages=[

@@ -8,12 +8,12 @@ if __name__ == "__main__" and __package__ is None:
     sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
     from entity_extraction import EntityExtractor, extract_relations, extract_entity_descriptions, verify_entities_from_text
     from graph_manager import GraphManager
-    from text_extraction import extract_text_from_pdf, clean_text, split_text
+    from text_extraction import extract_text_from_pdf, clean_text, split_text, extract_introduction_with_limit
     from graph_explorer import GraphExplorer
 else:
     from .entity_extraction import EntityExtractor, extract_relations, extract_entity_descriptions, verify_entities_from_text
     from .graph_manager import GraphManager
-    from .text_extraction import extract_text_from_pdf, clean_text, split_text
+    from .text_extraction import extract_text_from_pdf, clean_text, split_text, extract_introduction_with_limit
     from .graph_explorer import GraphExplorer
 
 def graph_pipeline(directory, graph_directory, api_key):
@@ -34,7 +34,7 @@ def graph_pipeline(directory, graph_directory, api_key):
                 raise Exception('Not Implemented.')
             else:
                 raise Exception('No supported input.')
-            cleaned_text= clean_text(text)
+            cleaned_text= extract_introduction_with_limit(clean_text(text),2000)
         except Exception as e:
             print(f'Error: {e}')
             continue
@@ -68,7 +68,7 @@ def graph_pipeline_from_csv(file_address, graph_directory, api_key,source_column
     entity_extractor = EntityExtractor()
     data = pd.read_csv(file_address)
     print('Num Records: ',len(data))
-    data=data.iloc[:500]
+    data=data.iloc[:1000]
     for index, row in tqdm.tqdm(data.iterrows()):
         try:
             cleaned_text= clean_text(row[text_column])

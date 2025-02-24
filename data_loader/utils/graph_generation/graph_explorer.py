@@ -29,9 +29,11 @@ class GraphExplorer:
             while queue:
                 node, path = queue.popleft()
 
-                # If the exact length is reached, consider it for sampling
+                # If the exact length is reached, format and store the path
                 if len(path) == length + 1:
-                    sampled_paths.append(path)
+                    formatted_path, num_sources = self._format_path(path)
+                    if formatted_path and num_sources>1:
+                        sampled_paths.append(formatted_path)
                     if len(sampled_paths) >= num_samples:
                         break  # Stop when enough samples are collected
                     continue  # Do not expand further
@@ -45,26 +47,33 @@ class GraphExplorer:
             print(f"No paths of length {length} found.")
             return []
 
-        return self._format_paths(sampled_paths)
+        return sampled_paths
 
-    def _format_paths(self, sampled_paths):
-        """Formats paths by retrieving edge descriptions."""
-        formatted_paths = []
-        for path in sampled_paths:
-            completed_path = []
-            for i in range(len(path) - 1):
-                node1, node2 = path[i], path[i + 1]
-                edge_data = self.graph_manager.graph.edges.get((node1, node2), {})
-                description = edge_data.get("description", {})
+    def _format_path(self, path):
+        """Formats a single path by retrieving edge descriptions and sources, ensuring diverse sources are picked."""
+        completed_path = []
+        used_sources = set()
+        num_sources = 0
 
-                if description:
-                    for key, value in description.items():
-                        relation = value[-1].get('description', 'Unknown')
-                        text = value[-1].get('text', '')
-                        completed_path.append((node1, relation, node2, text))
+        for i in range(len(path) - 1):
+            node1, node2 = path[i], path[i + 1]
+            edge_data = self.graph_manager.graph.edges.get((node1, node2), {})
+            descriptions = edge_data.get("description", {})
+            available_sources = list(descriptions.keys())
             
-            formatted_paths.append(completed_path)
-        return formatted_paths
+            if available_sources:
+                # Try to pick a new source each time
+                new_source = next((s for s in available_sources if s not in used_sources), available_sources[0])
+                used_sources.add(new_source)
+                num_sources += 1
+                value = descriptions[new_source]
+                
+                if value:
+                    relation = value[-1].get('description', 'Unknown')
+                    text = value[-1].get('text', '')
+                    completed_path.append((node1, relation, node2, text, new_source))
+        
+        return completed_path, num_sources
 
     def display_path(self, path):
 
@@ -90,14 +99,17 @@ if __name__ == "__main__":
     gm.add_node("C", "User3", "Another node")
     gm.add_node("D", "User4", "Extra node")
     gm.add_edge("A", "B", "User1", "First connection")
-    gm.add_edge("B", "C", "User2", "Second connection")
-    gm.add_edge("C", "D", "User3", "Third connection")
-    gm.add_edge("A", "D", "User4", "Alternate connection")
+    gm.add_edge("B", "C", "User1.2", "Second connection")
+    gm.add_edge("B", "C", "User1", "Second.one connection")
+    gm.add_edge("C", "D", "User1", "Third connection")
+    gm.add_edge("C", "D", "User1.3", "Third.one connection")
 
     gm.display_graph()
 
     explorer = GraphExplorer(gm)
+    path_length = 3
+    num_samples = 1
+    results = explorer.sample_random_paths(path_length, num_samples)
+    
 
-    path_length = 2
-    num_samples = 3
-    print(explorer.sample_random_paths(2))
+    print(results)

@@ -8,9 +8,9 @@ import fitz  # PyMuPDF
 import re
 import pandas as pd
 if __name__=='__main__':
-    from graph_generation.text_extraction import extract_text_from_pdf, clean_text, split_text
+    from graph_generation.text_extraction import extract_text_from_pdf, clean_text, split_text, extract_introduction_with_limit
 else:
-    from .graph_generation.text_extraction import extract_text_from_pdf, clean_text, split_text
+    from .graph_generation.text_extraction import extract_text_from_pdf, clean_text, split_text, extract_introduction_with_limit
 
 def chemrxiv_fetch_all_papers(output_file="chemrxiv_data.json",total=50):
     """
@@ -131,7 +131,7 @@ def chemrxiv_embed_and_store(pipeline,data_folder):
                 raise Exception('Not Implemented.')
             else:
                 raise Exception('No supported input.')
-            cleaned_text= clean_text(text)
+            cleaned_text= extract_introduction_with_limit(clean_text(text),2000)
             texts.append(cleaned_text)
             ids.append(name)
         except Exception as e:

@@ -11,6 +11,8 @@ import nltk
 nltk.download("punkt_tab")
 from nltk.tokenize import sent_tokenize
 
+
+
 def extract_text_from_pdf(pdf_path):
     """Extracts text from a PDF file using PyMuPDF."""
     text = ""
@@ -24,6 +26,43 @@ def clean_text(text):
     text = re.sub(r'[^\S\r\n]+', ' ', text)  # Replace multiple spaces and tabs with a single space, keep \n
     text = re.sub(r'[^a-zA-Z0-9.,;!?()\s\n]', '', text)  # Keep alphanumeric, punctuation, and whitespace (\n included)
     return text.strip()
+
+
+
+def extract_introduction_with_limit(text, char_limit=3000):
+    # Define section headers
+    introduction_pattern = r"(?i)\bIntroduction\b"
+    next_section_pattern = r"(?i)\b(?:Methods|Materials|Experiments|Related Work|Background|Results|Discussion|Conclusion)\b"
+
+    # Locate "Introduction" section
+    intro_match = re.search(introduction_pattern, text)
+    if not intro_match:
+        return "Introduction section not found."
+
+    start_idx = intro_match.end()  # Start extracting after "Introduction"
+
+    # Locate the next major section
+    next_section_match = re.search(next_section_pattern, text[start_idx:])
+    # end_idx = start_idx + next_section_match.start() if next_section_match else len(text)
+    end_idx=min(start_idx+8000,len(text))
+
+    # Extract introduction text
+    introduction_text = text[start_idx:end_idx].strip()
+
+    # Split text into paragraphs based on '\n\n' (double newline)
+    paragraphs = re.split(r"\n\s*\n", introduction_text)
+
+    # Accumulate paragraphs until reaching 3000 characters
+    extracted_text = ""
+    current_length = 0
+
+    for idx, paragraph in enumerate(paragraphs):
+        if current_length + len(paragraph) > char_limit and idx>0:
+            break
+        extracted_text += paragraph + "\n\n"
+        current_length += len(paragraph)
+
+    return extracted_text.strip()
 
 
 def split_text(text, max_words=200):
@@ -51,3 +90,8 @@ def split_text(text, max_words=200):
         chunks.append(" ".join(current_chunk))
 
     return chunks
+
+if __name__=='__main__':
+    address= '/media/torontoai/GraphRAG/GraphRAG/data_loader/data/chemrxiv_papers/AIMNet2:_A_Neural_Network_Potential_to_Meet_your_Neutral,_Charged,_Organic,_and_Elemental-Organic_Needs.pdf'
+    cleaned_text= extract_introduction_with_limit(clean_text(extract_text_from_pdf(address)),2000)
+    print(cleaned_text)
