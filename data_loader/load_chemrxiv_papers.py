@@ -9,14 +9,14 @@ dotenv.load_dotenv()
 
 api_key = os.environ.get("OPENAI_API_KEY")  # Ensure this is set in your environment
 # STAGE 1
-# all_papers=chemrxiv_fetch_all_papers(output_file="./data/chemrxiv_data_2306.json",total=50)
-# with open('./data/chemrxiv_data_2306.json','rb') as f:
-#     all_papers=json.load(f)
-# chemrxiv_download_papers(all_papers,'./data/chemrxiv_papers')
-# # STAGE 2
-# graph_pipeline('./data/chemrxiv_papers','./data/chemrxiv_graph_v1.json',api_key)
+all_papers=chemrxiv_fetch_all_papers(output_file="./data/chemrxiv_data_2306.json",total=2000)
+with open('./data/chemrxiv_data_2306.json','rb') as f:
+    all_papers=json.load(f)
+chemrxiv_download_papers(all_papers,'./data/chemrxiv_papers')
+# STAGE 2
+graph_pipeline('./data/chemrxiv_papers','./data/chemrxiv_graph_v1.json',api_key)
 # STAGE 3
-sampled_paths = sample_graph_pipeline('./data/chemrxiv_graph_v1.json',{2:2 })
+sampled_paths = sample_graph_pipeline('./data/chemrxiv_graph_v1.json',{2:20,3:20 })
 print(sampled_paths)
 # STAGE 4
 generate_questions_from_paths(sampled_paths,api_key,'./data/chemrxiv_qas.json')

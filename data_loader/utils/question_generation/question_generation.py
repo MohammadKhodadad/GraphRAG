@@ -26,7 +26,7 @@ def generate_relation_question(client, entity1, relation, entity2, text):
         f"Text: {text}\n\n"
         f"Your task is to generate a factual question about Entity 1 and its relation, where the answer is Entity1.\n"
         f"Ensure that the question is factual and can be answered solely based on the given text.\n"
-        f"Do not mention a specific part of the text such as 'Abstract', 'Table #1', 'in the text', or etc.\n"
+        f"Do not point to the text such as 'Abstract', 'Table #1', 'in the text', 'in the article', or etc.\n"
         f"If the entity and relation is not specific enough, try to add descriptions FROM THE TEXT to make it specifc.\n"
         f"Return a dictionary without any code formatting, backticks, or markdown, with keys 'q' and 'a'."
     )
@@ -42,7 +42,7 @@ def generate_description_question(client, entity, description, text):
         f"Text: {text}\n\n"
         f"Your task is to generate a factual question about the entity that can be answered by a part of the description.\n"
         f"Ensure that the question is factual and can be answered solely based on the given text.\n"
-        f"Do not mention a specific part of the text such as 'Abstract', 'Table #1', or etc.\n"
+        f"Do not point to the text such as 'Abstract', 'Table #1', 'in the text', 'in the article', or etc.\n"
         f"Return a dictionary without any code formatting, backticks, or markdown, with keys 'q' and 'a'."
     )
     

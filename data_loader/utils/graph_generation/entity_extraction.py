@@ -4,6 +4,7 @@ import re
 import tqdm
 import os
 import openai
+import dotenv
 from openai import OpenAI
 import json
 from rdkit import Chem
@@ -11,6 +12,9 @@ from rdkit.Chem import Descriptors
 from rdkit.Chem.rdMolDescriptors import CalcMolFormula
 from openai import OpenAI
 from pubchempy import get_compounds
+from chemspipy import ChemSpider
+
+
 
 class EntityExtractor:
     def __init__(self, model_name="pruas/BENT-PubMedBERT-NER-Chemical"):
@@ -251,24 +255,62 @@ def extract_entity_descriptions(text, entities, api_key, model="gpt-4o", max_des
 
 
 
+def get_chemical_info(chemical_name,cs):
+    """Fetches chemical properties and safety data from ChemSpider."""
+
+    try:
+        # Search for the compound
+        results = cs.search(chemical_name)
+
+        if not results:
+            return {"error": "Chemical not found in ChemSpider."}
+
+        # Get the first result
+        compound = results[0]
+
+        # Fetch additional details
+        # safety_info = {
+        #     "ChemSpider ID": compound.csid,
+        #     "IUPAC Name": compound.iupac_name,
+        #     "Molecular Formula": compound.molecular_formula,
+        #     "Molecular Weight": compound.molecular_weight,
+        #     "Canonical SMILES": compound.smiles,
+        #     "InChI": compound.inchi,
+        #     "Safety Summary": compound.safety_summary if hasattr(compound, "safety_summary") else "N/A",
+        #     "GHS Classification": compound.ghs_classification if hasattr(compound, "ghs_classification") else "N/A",
+        #     "Hazard Statements": compound.hazard_statements if hasattr(compound, "hazard_statements") else "N/A",
+        #     "Precautionary Statements": compound.precautionary_statements if hasattr(compound, "precautionary_statements") else "N/A",
+        #     "NFPA Label": compound.nfpa_label if hasattr(compound, "nfpa_label") else "N/A"
+        # }
+
+        return compound
+
+    except Exception as e:
+        return {"error": f"An error occurred: {str(e)}"}
+
+
 if __name__=='__main__':
     import dotenv
     dotenv.load_dotenv()
     api_key = os.environ.get("OPENAI_API_KEY")  # Ensure this is set in your environment
-    extractor = EntityExtractor()
-    text = """Cesium carbonate (Cs₂CO₃) is a widely used inorganic base in organic synthesis. It dissolves in water and is often used as a mild base in various catalytic reactions. In Suzuki coupling reactions, Cs₂CO₃ acts as a catalyst by facilitating the deprotonation of boronic acids. However, its efficiency is questionable, as many researchers prefer stronger bases like potassium tert-butoxide (t-BuOK).
+#     extractor = EntityExtractor()
+#     text = """Cesium carbonate (Cs₂CO₃) is a widely used inorganic base in organic synthesis. It dissolves in water and is often used as a mild base in various catalytic reactions. In Suzuki coupling reactions, Cs₂CO₃ acts as a catalyst by facilitating the deprotonation of boronic acids. However, its efficiency is questionable, as many researchers prefer stronger bases like potassium tert-butoxide (t-BuOK).
 
-Additionally, Cs₂CO₃ precipitates at concentrations above 8 M, limiting its application in high-concentration reactions. While some scientists believe it is an inferior catalyst compared to organic bases, others argue that its solubility advantages outweigh its lower catalytic efficiency.
+# Additionally, Cs₂CO₃ precipitates at concentrations above 8 M, limiting its application in high-concentration reactions. While some scientists believe it is an inferior catalyst compared to organic bases, others argue that its solubility advantages outweigh its lower catalytic efficiency.
 
-Moreover, Cs₂CO₃ is a better choice than K₂CO₃ in reactions that require higher solubility in polar solvents. However, in my experience, reactions catalyzed by Cs₂CO₃ take much longer to complete, making it an impractical choice for time-sensitive experiments.
+# Moreover, Cs₂CO₃ is a better choice than K₂CO₃ in reactions that require higher solubility in polar solvents. However, in my experience, reactions catalyzed by Cs₂CO₃ take much longer to complete, making it an impractical choice for time-sensitive experiments.
 
-Interestingly, a recent study found that Cs₂CO₃ accelerates some esterification reactions in dimethyl sulfoxide (DMSO), but its role as a catalyst in these systems is still debated. Some researchers claim that Cs₂CO₃ plays no direct role and that the solvent itself may be responsible for the acceleration."""
-    # entities = ["HCl", "Sodium hydroxide", "Reaction", "Solution", "Water"]
-    extracted_entities = extractor.extract_entities(text)
-    print("Extracted Entities:", extracted_entities)
-    filtered_entities = verify_entities_from_text(text, extracted_entities, api_key)
-    print("Verified Entities:", extracted_entities)
-    relations = extract_relations(text,extracted_entities,api_key)
-    print("Extracted Relations:",relations)
-    descriptions= extract_entity_descriptions(text,extracted_entities,api_key)
-    print('Extracted Descriptions:', descriptions)
+# Interestingly, a recent study found that Cs₂CO₃ accelerates some esterification reactions in dimethyl sulfoxide (DMSO), but its role as a catalyst in these systems is still debated. Some researchers claim that Cs₂CO₃ plays no direct role and that the solvent itself may be responsible for the acceleration."""
+#     # entities = ["HCl", "Sodium hydroxide", "Reaction", "Solution", "Water"]
+#     extracted_entities = extractor.extract_entities(text)
+#     print("Extracted Entities:", extracted_entities)
+#     filtered_entities = verify_entities_from_text(text, extracted_entities, api_key)
+#     print("Verified Entities:", extracted_entities)
+#     relations = extract_relations(text,extracted_entities,api_key)
+#     print("Extracted Relations:",relations)
+#     descriptions= extract_entity_descriptions(text,extracted_entities,api_key)
+#     print('Extracted Descriptions:', descriptions)
+
+    cs_api_key = os.environ.get("CHEMSPIDER_API_KEY")
+    cs = ChemSpider(cs_api_key)
+    print(get_chemical_info('water',cs))

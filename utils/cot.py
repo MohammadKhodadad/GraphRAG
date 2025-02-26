@@ -84,6 +84,7 @@ class ChainOfThoughts:
             f"Pieces of Information:\n{pool_text}\n\n"
             f"Your job is to output the next best question based on the query and the available relevant information that we need to answer in order to answer the query or stop the process."
             f"**Don't use your internal knowledge to answer a part of the question**: only look for what we need to know and what we have available in the paraphraphs."
+            f"**The generated question has to be complete by its own. Don't point to a part of the pieces of information or the query in the generated question. Simply include any information needed in the generated question itself."
             f"**You might find the next best question the query itself, when it is a small question itself.**"
             f"If the releveant paragraphs are enough to answer, return 'stop!' as plain text"
             f"Return only the question as plain text."

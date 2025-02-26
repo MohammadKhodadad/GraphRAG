@@ -26,10 +26,10 @@ if __name__ == "__main__":
     # LOAD DATA
     
     # pubchem_embed_and_store(pipeline,'./data_loader/data/pubchem_dump_with_wiki_text.csv')
-    question = 'In the synthesis of pyrazole 2, bromide 3 is first treated with the reagent that activates it for further reaction. Which reagent is introduced next to complete this transformation?'
+    question = 'Considering that the conformation of 3,6-bridged derivatives is influenced by their substituent groups, which simple sugar serves as the central core for most ellagitannins?'
     # question = "Palmitoylcarnitine participates in which metabolic process essential for energy production?"
     response = pipeline.process_query(
-        question, top_k=1, max_iterations=3, hybrid=True,reranker=True,reranker_top_k=2
+        question, top_k=5, max_iterations=5, hybrid=True,reranker=True,reranker_top_k=5
     )
     print(f"Question: {question}")
     print(f"GraphRAG Response: {response}")

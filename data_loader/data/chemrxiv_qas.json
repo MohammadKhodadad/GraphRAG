@@ -1,45 +1,1041 @@
 [
     {
-        "q": "What is the reactive intermediate derived from tyrosine that is proposed to undergo intramolecular cyclization by adding to the functional group which was attempted to be incorporated into an acyl aziridine moiety in the synthetic strategy described?",
-        "a": "tyrosine derived quinone methide",
+        "q": "Which group of natural compounds, known for their monoterpene indole structure and derived from a small tree used in traditional medicines, contains a subgroup characterized by compounds with an additional C19 methyl-bearing stereocenter and, in some cases, an uncommon alkyl chloride motif?",
+        "a": "indole alkaloids",
         "path": [
             {
-                "entity1": "tyrosine derived quinone methide",
-                "relation": "adds to",
-                "entity2": "histidine imidazole",
-                "text": "The \nlack of nN to CO conjugation of this moiety lead to facile \nepimerization of the adjacent serine astereocenter even under mild \nconditions. Besides this, cleavage of the aziridine amide by \nnucleophiles was observed as a dominant side reaction (see SI). Further, a potentially biomimetic intramolecular cyclization by \naddition of the histidine imidazole to the corresponding tyrosine\nderived quinone methide was considered (Figure 2b, strategy D). However, this approach led mostly to either decomposition or \ntautomerization to the corresponding dehydrotyrosine (see SI). In \naddition to the approaches described, several other strategies were \nevaluated for bamino acid synthesis; see SI for further detail. Figure 2.",
-                "q": "Which reactive intermediate derived from tyrosine is proposed to undergo intramolecular cyclization by adding to the histidine imidazole?",
-                "a": "tyrosine derived quinone methide"
+                "entity1": "indole alkaloids",
+                "relation": "are a group of",
+                "entity2": "rauvomines",
+                "text": "The rauvomines (17) are a group of indole alkaloids recently isolated from Rauvolfia vomitoria, a small tree used \nin various traditional medicines which has proven to be a rich source of monoterpene indole alkaloids (MIAs).1,2 \nStructurally, rauvomines AG fall into the sarpagine class of MIAs (exemplified by 8) but contain certain features that \nrender them unique among this family.3 For instance, while all rauvomines incorporate an additional C19 methylbearing \nstereocenter found in a smaller subset of the class,4 rauvomines A (1) and C (3) contain an alkyl chloride, an uncommon \nmotif for terrestrial indole alkaloids.5 Rauvomine B (2) is more unique still, with its proposed structure featuring a \ncyclopropane ring bridging its indoloquinolizidine unit, formed via an additional CC bond between C16 and C20 in the \ntypical sarpagine scaffold.",
+                "q": "Which group of natural compounds, known for their monoterpene indole structure and derived from Rauvolfia vomitoria, includes rauvomines as a subgroup?",
+                "a": "indole alkaloids"
             },
             {
-                "entity1": "histidine imidazole",
-                "relation": "reacts with",
-                "entity2": "acyl aziridine",
-                "text": "of a nonepimerizable surrogate \nfor the primary amide. For construction of the bbranched tyrosine \nmoiety of the eastern fragment 4, a broad range of strategies were \nevaluated (Figure 2, strategies BD). Linkages of this type are \nextremely rare and notoriously difficult to obtain synthetically. Indeed, no successful strategy has been uncovered to date.1920 \nAttempted nucleophilic substitution reactions under either neutral, \nanionic or halogenideAgfacilitated conditions led consistently to \neither formation of the corresponding unsaturated dehydroamino \nacid or decomposition of the substrates (Figure 2b, strategy B, see \nSI). Attempts to utilize addition of the histidine imidazole to an acyl \naziridine moiety were hampered by the electronic nature of the \nacyclic twisted amide such obtained (Figure 2b, strategy C).",
-                "q": "Which functional group was attempted to be added to an acyl aziridine moiety in the synthetic strategy described?",
-                "a": "histidine imidazole"
+                "entity1": "rauvomines",
+                "relation": "are isolated from",
+                "entity2": "Rauvolfia vomitoria",
+                "text": "The rauvomines (17) are a group of indole alkaloids recently isolated from Rauvolfia vomitoria, a small tree used \nin various traditional medicines which has proven to be a rich source of monoterpene indole alkaloids (MIAs).1,2 \nStructurally, rauvomines AG fall into the sarpagine class of MIAs (exemplified by 8) but contain certain features that \nrender them unique among this family.3 For instance, while all rauvomines incorporate an additional C19 methylbearing \nstereocenter found in a smaller subset of the class,4 rauvomines A (1) and C (3) contain an alkyl chloride, an uncommon \nmotif for terrestrial indole alkaloids.5 Rauvomine B (2) is more unique still, with its proposed structure featuring a \ncyclopropane ring bridging its indoloquinolizidine unit, formed via an additional CC bond between C16 and C20 in the \ntypical sarpagine scaffold.",
+                "q": "What group of indole alkaloids, characterized by features such as an additional C19 methyl-bearing stereocenter and, in some cases, an uncommon alkyl chloride motif, were isolated from the small tree used in traditional medicines, Rauvolfia vomitoria?",
+                "a": "rauvomines"
             }
         ]
     },
     {
-        "q": "In the synthesis of pyrazole 2, bromide 3 is first treated with the reagent that activates it for further reaction. Which reagent is introduced next to complete this transformation?",
-        "a": "(MeS)2",
+        "q": "In synthetic methods utilizing alkylating scaffolds and transition metal catalysis, which element coordinates to a functional group that later reacts with additional thioesters to form phospholipids with three alkyl chains, thereby linking its role in the initial coordination step?",
+        "a": "bismuth",
         "path": [
             {
-                "entity1": "(MeS)2",
-                "relation": "followed by the addition of",
-                "entity2": "nBuLi",
-                "text": "Both routes rely on the modification of the already installed \nfunctional groups (a) oxidation of the thiomethyl group;4 and (b) \nmetalmediated crosscoupling of halidesboronates with sodium \nsulfinate5,6 or sulphur dioxidemethyl iodide (Figure 1).7,8,9,10 ,11 \nHere, we present a principally novel approach to methyl \nsulfones that relies on the 1,3heterocycle disconnection logic \nwith the newly developed reagent 1 (Figure 1). Results and discussion \nBackground. In our daily practice, we often use two standard \napproaches to methyl sulfones described above (Figure 1). Recently, we received a request from a pharmaceutical \ncompany for a synthesis of pyrazole 2 (Scheme 1), which was \ndescribed in a patent before.12 In that method, bromide 3 was \ntreated first with nBuLi followed by the addition of (MeS)2.",
-                "q": "In the synthesis of pyrazole 2, after bromide 3 is treated with nBuLi, which reagent is subsequently added?",
-                "a": "(MeS)2"
+                "entity1": "bismuth",
+                "relation": "coordinates to",
+                "entity2": "thiol",
+                "text": "These \ninclude the formation of bicycles17 via alkylating scaffolds,1821 \nbridging Cys residues using perfluoroaryl bracesfluorine \ndisplacement22, 23 (and alternative bridging groups24, 25), thiol \ncoordination to bismuth,26 thioladdition chemistry,27, 28 and \ndesulfurative replacement of a disulfide bridge.29 Incorporation \nof nonstandard amino acids enables the exploitation of \nchemoselective (bioorthogonal) chemistry such as azidealkyne \ncycloaddition30, 31 (i.e., Click Chemistry), Staudinger ligation32 \nand azidephosphonite chemistry.33 Simple imine34 and oxime35 \nbond formation has been utilized, as well as more complex \ntransition metal (TM)catalyzed3641 and multicomponent \nchemistry.42 Radical reactions such as thiolene4345 and, more \nrecently, decarboxylative photoredox catalysis46 and CH \nalkylation47 have also been successfully applied. Among this \nbroad range of available synthetic techniques, Grubbs \nruthenium (Ru)catalyzed ringclosing olefin metathesis (RCM)48",
+                "q": "Which element is described as coordinating to a thiol group in the context of various synthetic chemical techniques, including those involving alkylating scaffolds and transition metal catalysis?",
+                "a": "bismuth"
             },
             {
-                "entity1": "nBuLi",
-                "relation": "treated with",
-                "entity2": "bromide",
-                "text": "Both routes rely on the modification of the already installed \nfunctional groups (a) oxidation of the thiomethyl group;4 and (b) \nmetalmediated crosscoupling of halidesboronates with sodium \nsulfinate5,6 or sulphur dioxidemethyl iodide (Figure 1).7,8,9,10 ,11 \nHere, we present a principally novel approach to methyl \nsulfones that relies on the 1,3heterocycle disconnection logic \nwith the newly developed reagent 1 (Figure 1). Results and discussion \nBackground. In our daily practice, we often use two standard \napproaches to methyl sulfones described above (Figure 1). Recently, we received a request from a pharmaceutical \ncompany for a synthesis of pyrazole 2 (Scheme 1), which was \ndescribed in a patent before.12 In that method, bromide 3 was \ntreated first with nBuLi followed by the addition of (MeS)2.",
-                "q": "Which reagent is used to treat bromide 3 before adding (MeS)2 in the synthesis of pyrazole 2?",
-                "a": "nBuLi"
+                "entity1": "thiol",
+                "relation": "generates",
+                "entity2": "phospholipids",
+                "text": "Interestingly, it was also observed that the remaining thiol group of the diacylated product can \nfurther react with additional thioesters to generate phospholipids containing three alkyl chains. Inspired by these findings, \nwe hypothesized that cysteine itself may undergo NCL in the presence of acyl thioesters followed by substrate reloading, \nleading to the production of diacylcysteine species. Both cysteine and shortchain thioesters have been shown to be \nsynthesized by prebiotically plausible routes, and both can be produced in abundance, the latter through derivatization \nof shortchain fatty acids (24, 25 . Furthermore, recent studies have highlighted the significance of cysteine in prebiotic \nmetabolism, for instance as a catalyst for peptide bond formation (24 .",
+                "q": "Which functional group in the diacylated product reacts with additional thioesters to generate phospholipids containing three alkyl chains?",
+                "a": "thiol"
+            }
+        ]
+    },
+    {
+        "q": "Which element is involved in transition metal‐catalyzed and cyclization reactions by coordinating with a functional group that further reacts with thioesters to generate phospholipids containing three alkyl chains?",
+        "a": "bismuth",
+        "path": [
+            {
+                "entity1": "bismuth",
+                "relation": "coordinates to",
+                "entity2": "thiol",
+                "text": "These \ninclude the formation of bicycles17 via alkylating scaffolds,1821 \nbridging Cys residues using perfluoroaryl bracesfluorine \ndisplacement22, 23 (and alternative bridging groups24, 25), thiol \ncoordination to bismuth,26 thioladdition chemistry,27, 28 and \ndesulfurative replacement of a disulfide bridge.29 Incorporation \nof nonstandard amino acids enables the exploitation of \nchemoselective (bioorthogonal) chemistry such as azidealkyne \ncycloaddition30, 31 (i.e., Click Chemistry), Staudinger ligation32 \nand azidephosphonite chemistry.33 Simple imine34 and oxime35 \nbond formation has been utilized, as well as more complex \ntransition metal (TM)catalyzed3641 and multicomponent \nchemistry.42 Radical reactions such as thiolene4345 and, more \nrecently, decarboxylative photoredox catalysis46 and CH \nalkylation47 have also been successfully applied. Among this \nbroad range of available synthetic techniques, Grubbs \nruthenium (Ru)catalyzed ringclosing olefin metathesis (RCM)48",
+                "q": "Which element coordinates with thiol groups as part of the synthetic strategies involving transition metal‐catalyzed and cyclization reactions?",
+                "a": "bismuth"
+            },
+            {
+                "entity1": "thiol",
+                "relation": "reacts with",
+                "entity2": "thioesters",
+                "text": "Interestingly, it was also observed that the remaining thiol group of the diacylated product can \nfurther react with additional thioesters to generate phospholipids containing three alkyl chains. Inspired by these findings, \nwe hypothesized that cysteine itself may undergo NCL in the presence of acyl thioesters followed by substrate reloading, \nleading to the production of diacylcysteine species. Both cysteine and shortchain thioesters have been shown to be \nsynthesized by prebiotically plausible routes, and both can be produced in abundance, the latter through derivatization \nof shortchain fatty acids (24, 25 . Furthermore, recent studies have highlighted the significance of cysteine in prebiotic \nmetabolism, for instance as a catalyst for peptide bond formation (24 .",
+                "q": "What functional group in the diacylated product reacts with additional thioesters to generate phospholipids containing three alkyl chains?",
+                "a": "thiol"
+            }
+        ]
+    },
+    {
+        "q": "Which element is responsible for coordinating with the reactive group that, through its nucleophilic sidechain, participates in the formation of disulfide bonds in the context of synthetic techniques involving such coordination?",
+        "a": "bismuth",
+        "path": [
+            {
+                "entity1": "bismuth",
+                "relation": "coordinates to",
+                "entity2": "thiol",
+                "text": "These \ninclude the formation of bicycles17 via alkylating scaffolds,1821 \nbridging Cys residues using perfluoroaryl bracesfluorine \ndisplacement22, 23 (and alternative bridging groups24, 25), thiol \ncoordination to bismuth,26 thioladdition chemistry,27, 28 and \ndesulfurative replacement of a disulfide bridge.29 Incorporation \nof nonstandard amino acids enables the exploitation of \nchemoselective (bioorthogonal) chemistry such as azidealkyne \ncycloaddition30, 31 (i.e., Click Chemistry), Staudinger ligation32 \nand azidephosphonite chemistry.33 Simple imine34 and oxime35 \nbond formation has been utilized, as well as more complex \ntransition metal (TM)catalyzed3641 and multicomponent \nchemistry.42 Radical reactions such as thiolene4345 and, more \nrecently, decarboxylative photoredox catalysis46 and CH \nalkylation47 have also been successfully applied. Among this \nbroad range of available synthetic techniques, Grubbs \nruthenium (Ru)catalyzed ringclosing olefin metathesis (RCM)48",
+                "q": "Which element, mentioned in the range of synthetic techniques including thiol coordination, is responsible for coordinating with a thiol group?",
+                "a": "bismuth"
+            },
+            {
+                "entity1": "thiol",
+                "relation": "forms",
+                "entity2": "disulfide",
+                "text": "Cyclisation via amide bond formation has \nbeen applied using both synthetic methods (peptide ligation11\n13) and biological approaches exploiting intein chemistry (e.g., \nSICLOPPS14, 15), mRNA display,10 and ligase enzymes.16 Due to \nthe nucleophilicity of the thiol sidechain, numerous Cys\nselective reactions (beyond disulfide and thioether formation) \nhave been developedrepurposed for peptide cyclisation.",
+                "q": "Which reactive group, noted for its nucleophilic sidechain in cysteine, is responsible for the formation of disulfide bonds?",
+                "a": "thiol"
+            }
+        ]
+    },
+    {
+        "q": "In synthetic chemistry techniques, one can observe coordination by a specific element via a thiol group, which is also involved in peptide cyclisation methods where the nucleophilicity of the thiol sidechain leads to the formation of a bond that is not a disulfide bond. Which element is directly coordinated by the thiol in these techniques?",
+        "a": "bismuth",
+        "path": [
+            {
+                "entity1": "bismuth",
+                "relation": "coordinates to",
+                "entity2": "thiol",
+                "text": "These \ninclude the formation of bicycles17 via alkylating scaffolds,1821 \nbridging Cys residues using perfluoroaryl bracesfluorine \ndisplacement22, 23 (and alternative bridging groups24, 25), thiol \ncoordination to bismuth,26 thioladdition chemistry,27, 28 and \ndesulfurative replacement of a disulfide bridge.29 Incorporation \nof nonstandard amino acids enables the exploitation of \nchemoselective (bioorthogonal) chemistry such as azidealkyne \ncycloaddition30, 31 (i.e., Click Chemistry), Staudinger ligation32 \nand azidephosphonite chemistry.33 Simple imine34 and oxime35 \nbond formation has been utilized, as well as more complex \ntransition metal (TM)catalyzed3641 and multicomponent \nchemistry.42 Radical reactions such as thiolene4345 and, more \nrecently, decarboxylative photoredox catalysis46 and CH \nalkylation47 have also been successfully applied. Among this \nbroad range of available synthetic techniques, Grubbs \nruthenium (Ru)catalyzed ringclosing olefin metathesis (RCM)48",
+                "q": "Which element is directly coordinated by thiol in the described synthetic chemistry techniques?",
+                "a": "bismuth"
+            },
+            {
+                "entity1": "thiol",
+                "relation": "forms",
+                "entity2": "thioether",
+                "text": "Cyclisation via amide bond formation has \nbeen applied using both synthetic methods (peptide ligation11\n13) and biological approaches exploiting intein chemistry (e.g., \nSICLOPPS14, 15), mRNA display,10 and ligase enzymes.16 Due to \nthe nucleophilicity of the thiol sidechain, numerous Cys\nselective reactions (beyond disulfide and thioether formation) \nhave been developedrepurposed for peptide cyclisation.",
+                "q": "Which bond, aside from disulfide bonds, is formed due to the nucleophilicity of the thiol sidechain in peptide cyclisation methods?",
+                "a": "thioether"
+            }
+        ]
+    },
+    {
+        "q": "Which element, coordinated during a synthetic process that utilizes the reactive group involved in addition reactions as described by 'thiol addition chemistry,' is being coordinated by a thiol group?",
+        "a": "bismuth",
+        "path": [
+            {
+                "entity1": "bismuth",
+                "relation": "coordinates to",
+                "entity2": "thiol",
+                "text": "These \ninclude the formation of bicycles17 via alkylating scaffolds,1821 \nbridging Cys residues using perfluoroaryl bracesfluorine \ndisplacement22, 23 (and alternative bridging groups24, 25), thiol \ncoordination to bismuth,26 thioladdition chemistry,27, 28 and \ndesulfurative replacement of a disulfide bridge.29 Incorporation \nof nonstandard amino acids enables the exploitation of \nchemoselective (bioorthogonal) chemistry such as azidealkyne \ncycloaddition30, 31 (i.e., Click Chemistry), Staudinger ligation32 \nand azidephosphonite chemistry.33 Simple imine34 and oxime35 \nbond formation has been utilized, as well as more complex \ntransition metal (TM)catalyzed3641 and multicomponent \nchemistry.42 Radical reactions such as thiolene4345 and, more \nrecently, decarboxylative photoredox catalysis46 and CH \nalkylation47 have also been successfully applied. Among this \nbroad range of available synthetic techniques, Grubbs \nruthenium (Ru)catalyzed ringclosing olefin metathesis (RCM)48",
+                "q": "Which element is coordinated by a thiol group during the synthetic process described that utilizes thiol coordination?",
+                "a": "bismuth"
+            },
+            {
+                "entity1": "thiol",
+                "relation": "adds to",
+                "entity2": "addition chemistry",
+                "text": "These \ninclude the formation of bicycles17 via alkylating scaffolds,1821 \nbridging Cys residues using perfluoroaryl bracesfluorine \ndisplacement22, 23 (and alternative bridging groups24, 25), thiol \ncoordination to bismuth,26 thioladdition chemistry,27, 28 and \ndesulfurative replacement of a disulfide bridge.29 Incorporation \nof nonstandard amino acids enables the exploitation of \nchemoselective (bioorthogonal) chemistry such as azidealkyne \ncycloaddition30, 31 (i.e., Click Chemistry), Staudinger ligation32 \nand azidephosphonite chemistry.33 Simple imine34 and oxime35 \nbond formation has been utilized, as well as more complex \ntransition metal (TM)catalyzed3641 and multicomponent \nchemistry.42 Radical reactions such as thiolene4345 and, more \nrecently, decarboxylative photoredox catalysis46 and CH \nalkylation47 have also been successfully applied. Among this \nbroad range of available synthetic techniques, Grubbs \nruthenium (Ru)catalyzed ringclosing olefin metathesis (RCM)48",
+                "q": "Which reactive group, known for its nucleophilic properties, participates in addition reactions as exemplified by the chemistry term 'thiol addition chemistry' mentioned in the text?",
+                "a": "thiol"
+            }
+        ]
+    },
+    {
+        "q": "Considering that the conformation of 3,6-bridged derivatives is influenced by their substituent groups, which simple sugar serves as the central core for most ellagitannins?",
+        "a": "glucose",
+        "path": [
+            {
+                "entity1": "ellagitannins",
+                "relation": "comprise",
+                "entity2": "glucose",
+                "text": "Hydrolyzable \ntannins, \ncomprising \ngallotannins \nand \nellagitannins, are a group of plant polyphenols with structural \ndiversity and various biological activities.1 Most ellagitannins \ncomprise \na \nglucose \ncore \nand \nacyl \ngroups, \nmainly \nhexahydroxydiphenoyl \n(HHDP) \nand \ndehydrohexahydroxydiphenoyl (DHHDP) groups, derived from \ngallic acid.1 Feldman et al.",
+                "q": "Which simple sugar forms the central core that most ellagitannins comprise?",
+                "a": "glucose"
+            },
+            {
+                "entity1": "glucose",
+                "relation": "derivatives change conformation depending on",
+                "entity2": "substituent groups",
+                "text": "Furthermore, \ncorilagin (7), an analogue of 6 without the galloyl groups at C2 \nand C4, change its conformation depending on the solvent \n(Figure 1c).12 Notably, the conformations of 3,6bridged \nglucose derivatives change depending on their substituent \ngroups and the bridge length.13 \nTo understand the biosynthetic mechanism and biological \nactivities of ellagitannins, it is important to clarify their precise \nconformations. The JH,H values are the most useful data for the \naccurate determination of the conformation of glucose \nderivatives because they reflect the dihedral angles between \nvicinal hydrogens. Here, the precise conformations of 5, 6, and \nrelated ellagitannins in the solution state were investigated via \nthe DFT calculations of JH,H values.",
+                "q": "What aspect of the 3,6-bridged glucose derivatives determines the change in their conformation?",
+                "a": "substituent groups"
+            }
+        ]
+    },
+    {
+        "q": "What group of plant polyphenols, defined as a subtype of hydrolyzable tannins with a glucose core acylated with groups derived from gallic acid, could be linked to the metabolic processing of glucose that supports the native growth of a carotenogenic basidiomycetous yeast known for producing microbial oil at high titers?",
+        "a": "ellagitannins",
+        "path": [
+            {
+                "entity1": "ellagitannins",
+                "relation": "comprise",
+                "entity2": "glucose",
+                "text": "Hydrolyzable \ntannins, \ncomprising \ngallotannins \nand \nellagitannins, are a group of plant polyphenols with structural \ndiversity and various biological activities.1 Most ellagitannins \ncomprise \na \nglucose \ncore \nand \nacyl \ngroups, \nmainly \nhexahydroxydiphenoyl \n(HHDP) \nand \ndehydrohexahydroxydiphenoyl (DHHDP) groups, derived from \ngallic acid.1 Feldman et al.",
+                "q": "Which group of plant polyphenols, a subtype of hydrolyzable tannins that includes compounds acylated with groups such as HHDP and DHHDP derived from gallic acid, is characterized by comprising a glucose core?",
+                "a": "ellagitannins"
+            },
+            {
+                "entity1": "glucose",
+                "relation": "grows on",
+                "entity2": "Rhodosporidium toruloides",
+                "text": "Rhodosporidium toruloides (i.e., Rhodotorula toruloides), a carotenogenic \nbasidiomycetous yeast, can natively produce oils at titers far greater than many other oleaginous \nmicroorganisms (e.g., native R. toruloides can reach 8 gL1 while Yarrowia lipolytica, a model \norganism for oleaginous yeast, natively reaches 4 gL1) and can natively grow on a wide range \nof sugars, including glucose, xylose, arabinose, and sucrose.6 A preliminary technoeconomic \nanalysis (TEA) on the potential for microbial oil production from R. toruloides oil estimated a \nminimum selling price of microbial oil of 4 to 6 USDkg1 and a carbon intensity of 7.2 to 11.6 \nkg CO2eqkg1 from glucose.7 Another study using sugarcane juice as the feedstock estimated \nthe production cost of microbial oil to be 1.2 USDkg1 with optimistic assumptions for capacity \n(48,000 MTyr1 of oil), glucose to oil yield (0.25 gg1), and oil recovery (95 ).8,9 Given that \nthe selling price of soybean oil from 2011 to 2021 was 0.62 to 1.5 USDkg1, microbial oil \nproduction from lowvalue, diluted sugars may be economically feasible with further \ntechnological development.10 A recent study by Bonturi et al.",
+                "q": "Which carotenogenic basidiomycetous yeast, capable of natively growing on sugars such as glucose, is noted for producing microbial oil at high titers?",
+                "a": "Rhodosporidium toruloides"
+            }
+        ]
+    },
+    {
+        "q": "Which type of hydrolyzable tannin, characterized by a glucose core bonded to acyl groups like hexahydroxydiphenoyl (HHDP) and dehydrohexahydroxydiphenoyl (DHHDP), also features a sugar that is employed as a substrate in technoeconomic studies for microbial oil production by Rhodosporidium toruloides?",
+        "a": "ellagitannins",
+        "path": [
+            {
+                "entity1": "ellagitannins",
+                "relation": "comprise",
+                "entity2": "glucose",
+                "text": "Hydrolyzable \ntannins, \ncomprising \ngallotannins \nand \nellagitannins, are a group of plant polyphenols with structural \ndiversity and various biological activities.1 Most ellagitannins \ncomprise \na \nglucose \ncore \nand \nacyl \ngroups, \nmainly \nhexahydroxydiphenoyl \n(HHDP) \nand \ndehydrohexahydroxydiphenoyl (DHHDP) groups, derived from \ngallic acid.1 Feldman et al.",
+                "q": "Which type of hydrolyzable tannin is characterized by comprising a glucose core along with acyl groups like hexahydroxydiphenoyl (HHDP) and dehydrohexahydroxydiphenoyl (DHHDP) groups?",
+                "a": "ellagitannins"
+            },
+            {
+                "entity1": "glucose",
+                "relation": "used for",
+                "entity2": "oil production",
+                "text": "Rhodosporidium toruloides (i.e., Rhodotorula toruloides), a carotenogenic \nbasidiomycetous yeast, can natively produce oils at titers far greater than many other oleaginous \nmicroorganisms (e.g., native R. toruloides can reach 8 gL1 while Yarrowia lipolytica, a model \norganism for oleaginous yeast, natively reaches 4 gL1) and can natively grow on a wide range \nof sugars, including glucose, xylose, arabinose, and sucrose.6 A preliminary technoeconomic \nanalysis (TEA) on the potential for microbial oil production from R. toruloides oil estimated a \nminimum selling price of microbial oil of 4 to 6 USDkg1 and a carbon intensity of 7.2 to 11.6 \nkg CO2eqkg1 from glucose.7 Another study using sugarcane juice as the feedstock estimated \nthe production cost of microbial oil to be 1.2 USDkg1 with optimistic assumptions for capacity \n(48,000 MTyr1 of oil), glucose to oil yield (0.25 gg1), and oil recovery (95 ).8,9 Given that \nthe selling price of soybean oil from 2011 to 2021 was 0.62 to 1.5 USDkg1, microbial oil \nproduction from lowvalue, diluted sugars may be economically feasible with further \ntechnological development.10 A recent study by Bonturi et al.",
+                "q": "Which sugar, among those that Rhodosporidium toruloides can utilize, is specifically mentioned as a substrate in technoeconomic studies for microbial oil production?",
+                "a": "glucose"
+            }
+        ]
+    },
+    {
+        "q": "Which group of plant polyphenols, characterized by a structure that includes a sugar unit also utilized as a feedstock for microbial oil production by Rhodosporidium toruloides and specific acyl groups like hexahydroxydiphenoyl and dehydrohexahydroxydiphenoyl, is referred to?",
+        "a": "ellagitannins",
+        "path": [
+            {
+                "entity1": "ellagitannins",
+                "relation": "comprise",
+                "entity2": "glucose",
+                "text": "Hydrolyzable \ntannins, \ncomprising \ngallotannins \nand \nellagitannins, are a group of plant polyphenols with structural \ndiversity and various biological activities.1 Most ellagitannins \ncomprise \na \nglucose \ncore \nand \nacyl \ngroups, \nmainly \nhexahydroxydiphenoyl \n(HHDP) \nand \ndehydrohexahydroxydiphenoyl (DHHDP) groups, derived from \ngallic acid.1 Feldman et al.",
+                "q": "Which group of plant polyphenols is characterized by having a glucose core and acyl groups such as hexahydroxydiphenoyl (HHDP) and dehydrohexahydroxydiphenoyl (DHHDP) groups?",
+                "a": "ellagitannins"
+            },
+            {
+                "entity1": "glucose",
+                "relation": "converted to",
+                "entity2": "oil",
+                "text": "Rhodosporidium toruloides (i.e., Rhodotorula toruloides), a carotenogenic \nbasidiomycetous yeast, can natively produce oils at titers far greater than many other oleaginous \nmicroorganisms (e.g., native R. toruloides can reach 8 gL1 while Yarrowia lipolytica, a model \norganism for oleaginous yeast, natively reaches 4 gL1) and can natively grow on a wide range \nof sugars, including glucose, xylose, arabinose, and sucrose.6 A preliminary technoeconomic \nanalysis (TEA) on the potential for microbial oil production from R. toruloides oil estimated a \nminimum selling price of microbial oil of 4 to 6 USDkg1 and a carbon intensity of 7.2 to 11.6 \nkg CO2eqkg1 from glucose.7 Another study using sugarcane juice as the feedstock estimated \nthe production cost of microbial oil to be 1.2 USDkg1 with optimistic assumptions for capacity \n(48,000 MTyr1 of oil), glucose to oil yield (0.25 gg1), and oil recovery (95 ).8,9 Given that \nthe selling price of soybean oil from 2011 to 2021 was 0.62 to 1.5 USDkg1, microbial oil \nproduction from lowvalue, diluted sugars may be economically feasible with further \ntechnological development.10 A recent study by Bonturi et al.",
+                "q": "Which common sugar, mentioned as a feedstock for the oil-producing yeast Rhodosporidium toruloides, is converted to oil in microbial oil production?",
+                "a": "glucose"
+            }
+        ]
+    },
+    {
+        "q": "What is the acyl group, derived from gallic acid, that is a principal component in the structural makeup of ellagitannins and is also incorporated into the hydrolyzable tannins of ellagitannins?",
+        "a": "hexahydroxydiphenoyl",
+        "path": [
+            {
+                "entity1": "ellagitannins",
+                "relation": "comprise",
+                "entity2": "hexahydroxydiphenoyl",
+                "text": "Hydrolyzable \ntannins, \ncomprising \ngallotannins \nand \nellagitannins, are a group of plant polyphenols with structural \ndiversity and various biological activities.1 Most ellagitannins \ncomprise \na \nglucose \ncore \nand \nacyl \ngroups, \nmainly \nhexahydroxydiphenoyl \n(HHDP) \nand \ndehydrohexahydroxydiphenoyl (DHHDP) groups, derived from \ngallic acid.1 Feldman et al.",
+                "q": "Which acyl group derived from gallic acid is mainly found in ellagitannins as part of their structural composition?",
+                "a": "hexahydroxydiphenoyl"
+            },
+            {
+                "entity1": "hexahydroxydiphenoyl",
+                "relation": "derived from",
+                "entity2": "gallic acid",
+                "text": "Hydrolyzable \ntannins, \ncomprising \ngallotannins \nand \nellagitannins, are a group of plant polyphenols with structural \ndiversity and various biological activities.1 Most ellagitannins \ncomprise \na \nglucose \ncore \nand \nacyl \ngroups, \nmainly \nhexahydroxydiphenoyl \n(HHDP) \nand \ndehydrohexahydroxydiphenoyl (DHHDP) groups, derived from \ngallic acid.1 Feldman et al.",
+                "q": "Which acyl group, forming a part of ellagitannins in hydrolyzable tannins, is derived from gallic acid?",
+                "a": "hexahydroxydiphenoyl"
+            }
+        ]
+    },
+    {
+        "q": "Which type of permanent magnets is manufactured from an alloy that includes a trace amount of one element and also contains a metal constituting 60–70% of its composition, leading to a unique classification of these magnets?",
+        "a": "NdFeB magnets",
+        "path": [
+            {
+                "entity1": "Pr",
+                "relation": "consists of",
+                "entity2": "NdFeB",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which permanent magnets are made from an alloy that includes 0.57 wt% of Pr among its components?",
+                "a": "NdFeB magnets"
+            },
+            {
+                "entity1": "NdFeB",
+                "relation": "consists of",
+                "entity2": "Fe",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "NdFeB permanent magnets are composed of an alloy in which one metal makes up 60–70 weight percent. Which metal is this?",
+                "a": "Fe"
+            }
+        ]
+    },
+    {
+        "q": "What permanent magnet alloy, known for including a specific rare earth element along with iron, neodymium, and boron in its composition, exhibits an increase in its transition temperature when a small amount of cobalt is added?",
+        "a": "NdFeB",
+        "path": [
+            {
+                "entity1": "Pr",
+                "relation": "consists of",
+                "entity2": "NdFeB",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which type of permanent magnet alloy contains praseodymium (Pr) as part of its composition along with iron (Fe), neodymium (Nd), and boron (B)?",
+                "a": "NdFeB"
+            },
+            {
+                "entity1": "NdFeB",
+                "relation": "increases Curie temperature of",
+                "entity2": "Co",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which permanent magnet alloy, composed mostly of iron, neodymium, and boron, has its Curie temperature raised by the addition of a small amount of Co?",
+                "a": "NdFeB"
+            }
+        ]
+    },
+    {
+        "q": "What is the type of permanent magnet that is produced from an alloy of praseodymium, iron, neodymium, and boron, and that is further enhanced by the addition of an element used to improve thermal stability?",
+        "a": "NdFeB magnets",
+        "path": [
+            {
+                "entity1": "Pr",
+                "relation": "consists of",
+                "entity2": "NdFeB",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which type of permanent magnet is made using an alloy that includes praseodymium (Pr) along with iron (Fe), neodymium (Nd), and boron (B)?",
+                "a": "NdFeB magnets"
+            },
+            {
+                "entity1": "NdFeB",
+                "relation": "improves thermal stability of",
+                "entity2": "Al",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which element is added to neodymiumironboron (NdFeB) magnets to improve their thermal stability?",
+                "a": "Al"
+            }
+        ]
+    },
+    {
+        "q": "What is the element that makes up around 0.57 wt% of the magnet alloy used to produce a type of permanent magnet, which is primarily composed of iron, neodymium, and boron and is optimized by the addition of small amounts of copper?",
+        "a": "Pr",
+        "path": [
+            {
+                "entity1": "Pr",
+                "relation": "consists of",
+                "entity2": "NdFeB",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which element, constituting about 0.57 wt of the NdFeB magnet alloy, is part of its composition?",
+                "a": "Pr"
+            },
+            {
+                "entity1": "NdFeB",
+                "relation": "has added",
+                "entity2": "Cu",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which type of permanent magnets, primarily composed of iron, neodymium, and boron, have small amounts of copper added to adjust their properties?",
+                "a": "NdFeB"
+            }
+        ]
+    },
+    {
+        "q": "Given a permanent magnet alloy that is primarily composed of iron, a rare-earth element, and boron (with typical weight percentages of approximately 60 wt% iron, 20 wt% of the rare-earth element, and 0.31 wt% boron), which additional element is incorporated in a 0.57 wt% proportion into a similar alloy composition that already includes these three constituents?",
+        "a": "Pr",
+        "path": [
+            {
+                "entity1": "Pr",
+                "relation": "consists of",
+                "entity2": "NdFeB",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which element is added in a 0.57 wt% proportion to the NdFeB magnet alloy composition that already includes Fe, Nd, and B?",
+                "a": "Pr"
+            },
+            {
+                "entity1": "NdFeB",
+                "relation": "consists of",
+                "entity2": "Nd",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which permanent magnet alloy is comprised of an alloy made mainly of 6070 wt % Fe, 2030 wt % Nd, and 0.31 wt % B, and is commonly abbreviated by its formula?",
+                "a": "NdFeB"
+            }
+        ]
+    },
+    {
+        "q": "In NdFeB permanent magnets, which are composed of Fe, Nd, B, and an element present at 0.57 wt% alongside another constituent present at 0.31 wt% in the alloy, what is the element found at the higher weight percentage?",
+        "a": "Pr",
+        "path": [
+            {
+                "entity1": "Pr",
+                "relation": "consists of",
+                "entity2": "NdFeB",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which element, present at 0.57 wt, is one of the constituents of NdFeB permanent magnets along with Fe, Nd, and B?",
+                "a": "Pr"
+            },
+            {
+                "entity1": "NdFeB",
+                "relation": "consists of",
+                "entity2": "B",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which element, present at 0.31 wt% in the alloy composition, is a constituent of NdFeB (neodymium–iron–boron) magnets?",
+                "a": "B"
+            }
+        ]
+    },
+    {
+        "q": "In the permanent magnet type that incorporates Ga for improved thermal stability and is primarily composed of an alloy of Fe, Nd, and B, which element is present at approximately 0.57 wt% alongside these three elements?",
+        "a": "Pr",
+        "path": [
+            {
+                "entity1": "Pr",
+                "relation": "consists of",
+                "entity2": "NdFeB",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "In NdFeB magnets, which element is included in the alloy at about 0.57 wt% alongside Fe, Nd, and B?",
+                "a": "Pr"
+            },
+            {
+                "entity1": "NdFeB",
+                "relation": "improves thermal stability of",
+                "entity2": "Ga",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which type of permanent magnet, primarily composed of an alloy with Fe, Nd, and B, incorporates Ga to enhance its thermal stability?",
+                "a": "NdFeB"
+            }
+        ]
+    },
+    {
+        "q": "What type of permanent magnet, whose alloy composition includes Fe, Nd, and B along with a specific minor element, is further enhanced in high‐temperature coercivity when another element is added?",
+        "a": "NdFeB",
+        "path": [
+            {
+                "entity1": "Pr",
+                "relation": "consists of",
+                "entity2": "NdFeB",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which type of permanent magnet contains 0.57 wt% of Pr as part of its alloy composition along with Fe, Nd, and B?",
+                "a": "NdFeB"
+            },
+            {
+                "entity1": "NdFeB",
+                "relation": "increases coercivity of",
+                "entity2": "Dy",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which type of permanent magnet, primarily made of neodymium, iron, and boron, is known to have its high‐temperature coercivity enhanced by the addition of dysprosium (Dy)?",
+                "a": "NdFeB"
+            }
+        ]
+    },
+    {
+        "q": "Which rare earth element is included in the alloy composition of the permanent magnet that is primarily made of iron, neodymium, and boron, and whose high‐temperature coercivity is enhanced by adding elements such as terbium?",
+        "a": "Pr",
+        "path": [
+            {
+                "entity1": "Pr",
+                "relation": "consists of",
+                "entity2": "NdFeB",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which rare earth element is included in the alloy composition of NdFeB magnets at approximately 0.57 wt%, making it one of the components that these magnets consist of?",
+                "a": "Pr"
+            },
+            {
+                "entity1": "NdFeB",
+                "relation": "increases coercivity of",
+                "entity2": "Tb",
+                "text": "Neodymiumironboron permanent magnets, commonly abbreviated as NdFeB magnets consist of an alloy \nmainly made of 6070 wt of Fe, 2030 wt of Nd, and 0.31 wt of B, as well as 0.57 wt of Pr.1 Small \namounts of other metals such as Al, Ga, Co, Cu, Dy and Tb are added to NdFeB magnets to adjust their \nproperties.2 For example, Dy and Tb are typically added to increase the coercivity of a magnet at high \ntemperatures.2,3 The addition of up to 5 of Co increases the Curie temperature of the magnet, a \ntemperature in which the magnet retains its permanent magnetic properties,4 whereas Ga and Al improve \nthe thermal stability of the magnet.5 Therefore, the used NdFeB magnets are not only a potential secondary \nsource for rare earth elements (REE) but also for other critical elements such as Co, Al, or Ga.6 \nLargersized wind turbine and electric car magnets can be recycled as they are, but smaller magnets \nfrom electric appliances and hard disk drives (HDDs) must be separated from the other components \nincluding plastic or metal parts either by manual7,8 or automatic9,10 dismantling.",
+                "q": "Which type of permanent magnet, known for its alloy composition containing mainly iron, neodymium, boron, and small amounts of praseodymium, is designed to have its high‐temperature coercivity increased by adding elements such as Tb?",
+                "a": "NdFeB"
+            }
+        ]
+    },
+    {
+        "q": "In the modular synthesis of a novel cyclic peptide isolated in 2023 from the RiPP family, which is constructed from Ltyrosine, Lproline, and Ltryptophan and features a highly strained cyclic linkage (atropTyr C6toTrp N1), what is the type of linkage introduced by the CH activation reaction on alanine derivatives using an aminoquinoline directing group that enables its assembly?",
+        "a": "biaryl linkages",
+        "path": [
+            {
+                "entity1": "biaryl linkages",
+                "relation": "is introduced via",
+                "entity2": "CH biarylation of alanine derivatives",
+                "text": "CH activation has surfaced as an \nincreasingly powerful method for directly introducing functional \ngroups into inert and unfunctionalized positions.8 These reactions \nare valuable for synthesizing nonnatural amino acid derivatives.9 \nIn recent years, various CH activation reactions utilizing alanine \nderivatives have been reported.10, 11 Aiming to achieve not only \nthe total synthesis of lapparbin (1) but also a streamlined \nsynthesis of nonnatural analogues of lapparbin (1), we planned \nthe total synthesis of lapparbin (1) through modular synthesis \nemploying CH biarylation of alanine derivatives. Specifically, we \nattempted the introduction of biaryl linkages via CH biarylation of \nalanine derivatives using aminoquinoline as a directing group. 11 \nFurthermore, using subsequent Larock macrocyclization, we \naimed to construct the highly strained atropTyrTrp linkage in a \nmodular fashion.",
+                "q": "Which type of linkages are introduced via CH biarylation of alanine derivatives using aminoquinoline as a directing group?",
+                "a": "biaryl linkages"
+            },
+            {
+                "entity1": "CH biarylation of alanine derivatives",
+                "relation": "is synthesized from",
+                "entity2": "lapparbin",
+                "text": "CH activation has surfaced as an \nincreasingly powerful method for directly introducing functional \ngroups into inert and unfunctionalized positions.8 These reactions \nare valuable for synthesizing nonnatural amino acid derivatives.9 \nIn recent years, various CH activation reactions utilizing alanine \nderivatives have been reported.10, 11 Aiming to achieve not only \nthe total synthesis of lapparbin (1) but also a streamlined \nsynthesis of nonnatural analogues of lapparbin (1), we planned \nthe total synthesis of lapparbin (1) through modular synthesis \nemploying CH biarylation of alanine derivatives. Specifically, we \nattempted the introduction of biaryl linkages via CH biarylation of \nalanine derivatives using aminoquinoline as a directing group. 11 \nFurthermore, using subsequent Larock macrocyclization, we \naimed to construct the highly strained atropTyrTrp linkage in a \nmodular fashion.",
+                "q": "Which CH activation reaction involving alanine derivatives is employed in the modular synthesis of lapparbin (1) to introduce biaryl linkages?",
+                "a": "CH biarylation of alanine derivatives"
+            },
+            {
+                "entity1": "lapparbin",
+                "relation": "is synthesized from",
+                "entity2": "ltyrosine",
+                "text": "In recent years, biarylcontaining peptides generated by \ncytochrome P450 macrocyclases have been reported in rapid \nsuccession worldwide.1 These natural products are known to \npossess various biaryl linkages within cyclic peptides. Many of \nthese natural compounds, referred to as RiPPs (ribosomally \nsynthesized and posttranslationally modified peptides), not only \nfeature challenging synthetic chemistry due to their atropisomeric \naxes but also exhibit either exceptionally potent biological \nactivities or remain largely enigmatic in terms of their biological \nfunctions.2 \n Lapparbin (1) is a novel cyclic peptide isolated in 2023 by Oh \nand Kim et al.3 Structurally, it is characterized by an extremely \nrare and highly strained atropTyr C6toTrp N1 linkage, \ncomposed of three amino acid residues Ltyrosine, Lproline, and \nLtryptophan.",
+                "q": "Which novel cyclic peptide, characterized by a highly strained atropTyr C6toTrp N1 linkage and synthesized from Ltyrosine, Lproline, and Ltryptophan, was isolated in 2023 and belongs to the RiPPs class of peptides?",
+                "a": "lapparbin"
+            }
+        ]
+    },
+    {
+        "q": "What reaction method, which involves a CH activation strategy using the biarylation of alanine derivatives, is used to synthesize a compound constructed from the incorporation of L-proline, L-tyrosine, and L-tryptophan to form a highly strained atropTyr C6toTrp N1 linkage?",
+        "a": "CH biarylation of alanine derivatives",
+        "path": [
+            {
+                "entity1": "biaryl linkages",
+                "relation": "is introduced via",
+                "entity2": "CH biarylation of alanine derivatives",
+                "text": "CH activation has surfaced as an \nincreasingly powerful method for directly introducing functional \ngroups into inert and unfunctionalized positions.8 These reactions \nare valuable for synthesizing nonnatural amino acid derivatives.9 \nIn recent years, various CH activation reactions utilizing alanine \nderivatives have been reported.10, 11 Aiming to achieve not only \nthe total synthesis of lapparbin (1) but also a streamlined \nsynthesis of nonnatural analogues of lapparbin (1), we planned \nthe total synthesis of lapparbin (1) through modular synthesis \nemploying CH biarylation of alanine derivatives. Specifically, we \nattempted the introduction of biaryl linkages via CH biarylation of \nalanine derivatives using aminoquinoline as a directing group. 11 \nFurthermore, using subsequent Larock macrocyclization, we \naimed to construct the highly strained atropTyrTrp linkage in a \nmodular fashion.",
+                "q": "What reaction method was used to introduce biaryl linkages in the synthesis of lapparbin via CH activation involving alanine derivatives?",
+                "a": "CH biarylation of alanine derivatives"
+            },
+            {
+                "entity1": "CH biarylation of alanine derivatives",
+                "relation": "is synthesized from",
+                "entity2": "lapparbin",
+                "text": "CH activation has surfaced as an \nincreasingly powerful method for directly introducing functional \ngroups into inert and unfunctionalized positions.8 These reactions \nare valuable for synthesizing nonnatural amino acid derivatives.9 \nIn recent years, various CH activation reactions utilizing alanine \nderivatives have been reported.10, 11 Aiming to achieve not only \nthe total synthesis of lapparbin (1) but also a streamlined \nsynthesis of nonnatural analogues of lapparbin (1), we planned \nthe total synthesis of lapparbin (1) through modular synthesis \nemploying CH biarylation of alanine derivatives. Specifically, we \nattempted the introduction of biaryl linkages via CH biarylation of \nalanine derivatives using aminoquinoline as a directing group. 11 \nFurthermore, using subsequent Larock macrocyclization, we \naimed to construct the highly strained atropTyrTrp linkage in a \nmodular fashion.",
+                "q": "Which CH activation strategy involving the biarylation of alanine derivatives was employed in the modular synthesis of lapparbin?",
+                "a": "CH biarylation of alanine derivatives"
+            },
+            {
+                "entity1": "lapparbin",
+                "relation": "is synthesized from",
+                "entity2": "lproline",
+                "text": "The most challenging aspect of the total synthesis of lapparbin (1) \nis the construction of the highly strained atropTyr C6toTrp N1 \nlinkage, composed of three amino acid residues, inclucing L\ntyrosine, Lproline, and Ltryptophan. Recently, we reported the \ntotal synthesis of cihunamide B, which features a highly strained \natropTrpTrp linkage.6 In this synthesis, the application of an \nSNAr \nreaction \nfollowed \nby \natroposelective \nLarock \nmacrocyclization enabled the construction of the highly strained \natropTrpTrp linkage. Hence, we hypothesized that this \natroposelective Larock macrocyclization could be applied to the \ntotal synthesis of lapparbin (1).7 \n Additionally, the efficient introduction of biaryl moieties is a \ncritical objective in this study.",
+                "q": "Which compound is synthesized by incorporating Lproline along with L-tyrosine and L-tryptophan to construct a highly strained atropTyr C6toTrp N1 linkage?",
+                "a": "lapparbin"
+            }
+        ]
+    },
+    {
+        "q": "What is the type of molecular connection formed through the reaction involving alanine derivatives with an aminoquinoline directing group, a reaction that is used in the modular approach to synthesize a compound assembled from L-tryptophan, L-tyrosine, and L-proline featuring a highly strained atroposelective architecture?",
+        "a": "biaryl linkages",
+        "path": [
+            {
+                "entity1": "biaryl linkages",
+                "relation": "is introduced via",
+                "entity2": "CH biarylation of alanine derivatives",
+                "text": "CH activation has surfaced as an \nincreasingly powerful method for directly introducing functional \ngroups into inert and unfunctionalized positions.8 These reactions \nare valuable for synthesizing nonnatural amino acid derivatives.9 \nIn recent years, various CH activation reactions utilizing alanine \nderivatives have been reported.10, 11 Aiming to achieve not only \nthe total synthesis of lapparbin (1) but also a streamlined \nsynthesis of nonnatural analogues of lapparbin (1), we planned \nthe total synthesis of lapparbin (1) through modular synthesis \nemploying CH biarylation of alanine derivatives. Specifically, we \nattempted the introduction of biaryl linkages via CH biarylation of \nalanine derivatives using aminoquinoline as a directing group. 11 \nFurthermore, using subsequent Larock macrocyclization, we \naimed to construct the highly strained atropTyrTrp linkage in a \nmodular fashion.",
+                "q": "Which type of molecular connection is introduced via CH biarylation of alanine derivatives using aminoquinoline as a directing group in the synthesis strategy described?",
+                "a": "biaryl linkages"
+            },
+            {
+                "entity1": "CH biarylation of alanine derivatives",
+                "relation": "is synthesized from",
+                "entity2": "lapparbin",
+                "text": "CH activation has surfaced as an \nincreasingly powerful method for directly introducing functional \ngroups into inert and unfunctionalized positions.8 These reactions \nare valuable for synthesizing nonnatural amino acid derivatives.9 \nIn recent years, various CH activation reactions utilizing alanine \nderivatives have been reported.10, 11 Aiming to achieve not only \nthe total synthesis of lapparbin (1) but also a streamlined \nsynthesis of nonnatural analogues of lapparbin (1), we planned \nthe total synthesis of lapparbin (1) through modular synthesis \nemploying CH biarylation of alanine derivatives. Specifically, we \nattempted the introduction of biaryl linkages via CH biarylation of \nalanine derivatives using aminoquinoline as a directing group. 11 \nFurthermore, using subsequent Larock macrocyclization, we \naimed to construct the highly strained atropTyrTrp linkage in a \nmodular fashion.",
+                "q": "Which reaction involving alanine derivatives and aminoquinoline directing groups is employed in the modular synthesis approach to achieve the total synthesis of lapparbin?",
+                "a": "CH biarylation of alanine derivatives"
+            },
+            {
+                "entity1": "lapparbin",
+                "relation": "is synthesized from",
+                "entity2": "ltryptophan",
+                "text": "The most challenging aspect of the total synthesis of lapparbin (1) \nis the construction of the highly strained atropTyr C6toTrp N1 \nlinkage, composed of three amino acid residues, inclucing L\ntyrosine, Lproline, and Ltryptophan. Recently, we reported the \ntotal synthesis of cihunamide B, which features a highly strained \natropTrpTrp linkage.6 In this synthesis, the application of an \nSNAr \nreaction \nfollowed \nby \natroposelective \nLarock \nmacrocyclization enabled the construction of the highly strained \natropTrpTrp linkage. Hence, we hypothesized that this \natroposelective Larock macrocyclization could be applied to the \ntotal synthesis of lapparbin (1).7 \n Additionally, the efficient introduction of biaryl moieties is a \ncritical objective in this study.",
+                "q": "Which compound is synthesized using L-tryptophan, along with L-tyrosine and L-proline, to construct a highly strained atroposelective biaryl linkage?",
+                "a": "lapparbin"
+            }
+        ]
+    },
+    {
+        "q": "What structural unit is introduced through the synthetic method that directly activates CH bonds in alanine derivatives and is employed in the total synthesis of a compound derived from L‐tyrosine, L‐proline, and L‐tryptophan featuring a highly strained atropTyr C6toTrp N1 linkage?",
+        "a": "biaryl linkages",
+        "path": [
+            {
+                "entity1": "biaryl linkages",
+                "relation": "is introduced via",
+                "entity2": "CH biarylation of alanine derivatives",
+                "text": "CH activation has surfaced as an \nincreasingly powerful method for directly introducing functional \ngroups into inert and unfunctionalized positions.8 These reactions \nare valuable for synthesizing nonnatural amino acid derivatives.9 \nIn recent years, various CH activation reactions utilizing alanine \nderivatives have been reported.10, 11 Aiming to achieve not only \nthe total synthesis of lapparbin (1) but also a streamlined \nsynthesis of nonnatural analogues of lapparbin (1), we planned \nthe total synthesis of lapparbin (1) through modular synthesis \nemploying CH biarylation of alanine derivatives. Specifically, we \nattempted the introduction of biaryl linkages via CH biarylation of \nalanine derivatives using aminoquinoline as a directing group. 11 \nFurthermore, using subsequent Larock macrocyclization, we \naimed to construct the highly strained atropTyrTrp linkage in a \nmodular fashion.",
+                "q": "What structural unit is introduced through CH biarylation of alanine derivatives in the modular synthesis approach described?",
+                "a": "biaryl linkages"
+            },
+            {
+                "entity1": "CH biarylation of alanine derivatives",
+                "relation": "is synthesized from",
+                "entity2": "lapparbin",
+                "text": "CH activation has surfaced as an \nincreasingly powerful method for directly introducing functional \ngroups into inert and unfunctionalized positions.8 These reactions \nare valuable for synthesizing nonnatural amino acid derivatives.9 \nIn recent years, various CH activation reactions utilizing alanine \nderivatives have been reported.10, 11 Aiming to achieve not only \nthe total synthesis of lapparbin (1) but also a streamlined \nsynthesis of nonnatural analogues of lapparbin (1), we planned \nthe total synthesis of lapparbin (1) through modular synthesis \nemploying CH biarylation of alanine derivatives. Specifically, we \nattempted the introduction of biaryl linkages via CH biarylation of \nalanine derivatives using aminoquinoline as a directing group. 11 \nFurthermore, using subsequent Larock macrocyclization, we \naimed to construct the highly strained atropTyrTrp linkage in a \nmodular fashion.",
+                "q": "Which synthetic method, involving the direct introduction of biaryl linkages via a CH activation process on alanine derivatives, is employed for the total synthesis of lapparbin?",
+                "a": "CH biarylation of alanine derivatives"
+            },
+            {
+                "entity1": "lapparbin",
+                "relation": "is synthesized from",
+                "entity2": "l tyrosine",
+                "text": "The most challenging aspect of the total synthesis of lapparbin (1) \nis the construction of the highly strained atropTyr C6toTrp N1 \nlinkage, composed of three amino acid residues, inclucing L\ntyrosine, Lproline, and Ltryptophan. Recently, we reported the \ntotal synthesis of cihunamide B, which features a highly strained \natropTrpTrp linkage.6 In this synthesis, the application of an \nSNAr \nreaction \nfollowed \nby \natroposelective \nLarock \nmacrocyclization enabled the construction of the highly strained \natropTrpTrp linkage. Hence, we hypothesized that this \natroposelective Larock macrocyclization could be applied to the \ntotal synthesis of lapparbin (1).7 \n Additionally, the efficient introduction of biaryl moieties is a \ncritical objective in this study.",
+                "q": "Which compound, whose total synthesis involves the incorporation of L‐tyrosine along with L‑proline and L‑tryptophan and features a highly strained atropTyr C6toTrp N1 linkage, is synthesized from L‑tyrosine?",
+                "a": "lapparbin"
+            }
+        ]
+    },
+    {
+        "q": "In the modular synthesis strategy for the total synthesis of lapparbin and its analogues, a method employs a particular CH functionalization of alanine derivatives using a directing group that is also a ligand responsible for generating an oxindole byproduct. What is introduced via that CH functionalization step?",
+        "a": "biaryl linkages",
+        "path": [
+            {
+                "entity1": "biaryl linkages",
+                "relation": "is introduced via",
+                "entity2": "CH biarylation of alanine derivatives",
+                "text": "CH activation has surfaced as an \nincreasingly powerful method for directly introducing functional \ngroups into inert and unfunctionalized positions.8 These reactions \nare valuable for synthesizing nonnatural amino acid derivatives.9 \nIn recent years, various CH activation reactions utilizing alanine \nderivatives have been reported.10, 11 Aiming to achieve not only \nthe total synthesis of lapparbin (1) but also a streamlined \nsynthesis of nonnatural analogues of lapparbin (1), we planned \nthe total synthesis of lapparbin (1) through modular synthesis \nemploying CH biarylation of alanine derivatives. Specifically, we \nattempted the introduction of biaryl linkages via CH biarylation of \nalanine derivatives using aminoquinoline as a directing group. 11 \nFurthermore, using subsequent Larock macrocyclization, we \naimed to construct the highly strained atropTyrTrp linkage in a \nmodular fashion.",
+                "q": "In the modular synthesis strategy aimed at the total synthesis of lapparbin and its analogues, which type of linkages is introduced via CH biarylation of alanine derivatives?",
+                "a": "biaryl linkages"
+            },
+            {
+                "entity1": "CH biarylation of alanine derivatives",
+                "relation": "acts as a directing group for",
+                "entity2": "aminoquinoline",
+                "text": "CH activation has surfaced as an \nincreasingly powerful method for directly introducing functional \ngroups into inert and unfunctionalized positions.8 These reactions \nare valuable for synthesizing nonnatural amino acid derivatives.9 \nIn recent years, various CH activation reactions utilizing alanine \nderivatives have been reported.10, 11 Aiming to achieve not only \nthe total synthesis of lapparbin (1) but also a streamlined \nsynthesis of nonnatural analogues of lapparbin (1), we planned \nthe total synthesis of lapparbin (1) through modular synthesis \nemploying CH biarylation of alanine derivatives. Specifically, we \nattempted the introduction of biaryl linkages via CH biarylation of \nalanine derivatives using aminoquinoline as a directing group. 11 \nFurthermore, using subsequent Larock macrocyclization, we \naimed to construct the highly strained atropTyrTrp linkage in a \nmodular fashion.",
+                "q": "Which method involving alanine derivatives uses aminoquinoline as a directing group to introduce biaryl linkages in the synthesis of nonnatural lapparbin analogues?",
+                "a": "CH biarylation of alanine derivatives"
+            },
+            {
+                "entity1": "aminoquinoline",
+                "relation": "produces",
+                "entity2": "oxindole",
+                "text": "Further \ninvestigation of ligands revealed that neither L5 nor L6 produced \nthe desired compound 11, and only the starting material was \nrecovered (entries 6 and 7). Finally, when aminoquinoline L7 was \nused as a ligand, the target compound 11 was still not obtained, \nand the byproduct oxindole 12 was observed instead (entry 8). Various screenings of solvents and bases were also conducted, \nbut none of them yielded the desired compound 11; only the \nstarting material was recovered, or complex mixtures were \nproduced (see the Supporting Information). From these results, it \na \nJ. Zhang, Dr. L. Yu, H. Ogawa, and Prof. Dr. H. Nakamura.",
+                "q": "Which ligand, based on the aminoquinoline structure, produced the byproduct oxindole observed in the reaction?",
+                "a": "aminoquinoline"
+            }
+        ]
+    },
+    {
+        "q": "In an aqueous Menshutkin reaction studied using ML models for free energy predictions, a certain compound reacts with ammonia. Considering that the ammonia produced subsequently participates in a catalytic process by decomposing on a superionic compound characterized by fast diffusing Li cations and a large disparity between anionic and cationic radii, which compound initiates this sequence of reactions?",
+        "a": "chloromethane",
+        "path": [
+            {
+                "entity1": "chloromethane",
+                "relation": "reacts with",
+                "entity2": "ammonia",
+                "text": "deep neural network) for free energy predictions of condensed phase\nreactions.15,18,19,2328 Many of these studies18,19,2325,28 combine the ML models with semi\nempirical or lowerlevel QMMM methods to obtain the energy predictions that match the\naccuracy of higherlevel QMMM methods. For example, GomezFlores et al.19 used a ML\napproach to predict the energy difference between the density functional tightbinding model\nand other higher level QM methods for a thioldisulfide exchange reaction in water. In a\nstudy by Pan et al.,18 a ML model was trained to reproduce ab initio QMMM poten\ntials in free energy simulations for the aqueous Menshutkin reaction between ammonia and\nchloromethane.",
+                "q": "In the aqueous Menshutkin reaction studied using ML models for free energy predictions, which compound reacts with ammonia?",
+                "a": "chloromethane"
+            },
+            {
+                "entity1": "ammonia",
+                "relation": "decomposes on",
+                "entity2": "lithium imide",
+                "text": "Here, we unravel the complex dynamic behaviour of a catalytic process in\noperando conditions by investigating the ammonia decomposition on a lithium\nimide (Li2NH) surface, a process that has received much attention for its pos\nsible role in a future sustainable hydrogenbased economy9,10,11,12,13,14 We\nperform state of the art simulations in which the interatomic forces are calcu\nlated with an accuracy close to that of ab initio molecular dynamics15. Our\nsimulations reveal that the reactive process induces a change of state of the\ninterface. Such a modified interfacial state is the actual catalytic medium, and\none does not need to invoke any special stable arrangement of atoms.",
+                "q": "Which compound is involved in the catalytic process by decomposing on a lithium imide (Li2NH) surface?",
+                "a": "ammonia"
+            },
+            {
+                "entity1": "lithium imide",
+                "relation": "exhibits",
+                "entity2": "superionic behaviour",
+                "text": "Like many other ionic systems20 in\nwhich there is a large difference between anionic and cationic radii, lithium\nimide exhibits a superionic behaviour21,22 with the Li cations fast diffusing\nand the divalent imide anions oscillating around their equilibrium positions\n(Fig. 1b). As the temperature increases, Li cations sitting in a tetrahedral\nsite can move first to an octahedral empty site, and then to a tetrahedral\nvacancy (Supplementary Video 1 and Supplementary Figure 1). The ease with\nhttpsdoi.org10.26434chemrxiv2022qr7wtv2 ORCID httpsorcid.org000000028219224X Content not peerreviewed by ChemRxiv. License CC BY",
+                "q": "Which compound, characterized as an ionic system with a large difference between anionic and cationic radii and featuring fast diffusing Li cations, exhibits superionic behaviour?",
+                "a": "lithium imide"
+            }
+        ]
+    },
+    {
+        "q": "Which compound, used in ML-based free energy simulations for the aqueous Menshutkin reaction, reacts with a nitrogen-containing species that is produced when dinitrogen, bound by Schrock's molybdenum-based complexes under ambient conditions, is reduced to form ammonia?",
+        "a": "chloromethane",
+        "path": [
+            {
+                "entity1": "chloromethane",
+                "relation": "reacts with",
+                "entity2": "ammonia",
+                "text": "deep neural network) for free energy predictions of condensed phase\nreactions.15,18,19,2328 Many of these studies18,19,2325,28 combine the ML models with semi\nempirical or lowerlevel QMMM methods to obtain the energy predictions that match the\naccuracy of higherlevel QMMM methods. For example, GomezFlores et al.19 used a ML\napproach to predict the energy difference between the density functional tightbinding model\nand other higher level QM methods for a thioldisulfide exchange reaction in water. In a\nstudy by Pan et al.,18 a ML model was trained to reproduce ab initio QMMM poten\ntials in free energy simulations for the aqueous Menshutkin reaction between ammonia and\nchloromethane.",
+                "q": "In the ML-based free energy simulations for the aqueous Menshutkin reaction, which compound reacts with ammonia?",
+                "a": "chloromethane"
+            },
+            {
+                "entity1": "ammonia",
+                "relation": "is reduced to",
+                "entity2": "dinitrogen",
+                "text": "A key breakthrough was Schrocks discovery of\nmolybdenumbased complexes capable of binding and reducing dinitrogen to ammonia\nunder ambient conditions. His work led to the development of the first welldefined,\nhomogeneous catalyst containing a single metal site for nitrogen fixation, known as the\n1\nhttpsdoi.org10.26434chemrxiv2023t73mw ORCID httpsorcid.org0000000214651010 Content not peerreviewed by ChemRxiv. License CC BY 4.0",
+                "q": "Which nitrogen-containing compound is formed when dinitrogen is reduced by molybdenum-based complexes under ambient conditions as discovered by Schrock?",
+                "a": "ammonia"
+            },
+            {
+                "entity1": "dinitrogen",
+                "relation": "binds to",
+                "entity2": "molybdenum-based complexes",
+                "text": "A key breakthrough was Schrocks discovery of\nmolybdenumbased complexes capable of binding and reducing dinitrogen to ammonia\nunder ambient conditions. His work led to the development of the first welldefined,\nhomogeneous catalyst containing a single metal site for nitrogen fixation, known as the\n1\nhttpsdoi.org10.26434chemrxiv2023t73mw ORCID httpsorcid.org0000000214651010 Content not peerreviewed by ChemRxiv. License CC BY 4.0",
+                "q": "Which molecule, critical for nitrogen fixation, is bound by the molybdenum‐based complexes discovered by Schrock to facilitate its reduction to ammonia under ambient conditions?",
+                "a": "dinitrogen"
+            }
+        ]
+    },
+    {
+        "q": "What carboxylic acid derivative, widely utilized in pharmaceuticals, polymers, and agrochemicals and synthesized from carboxyl moieties, can be obtained by first forming a chemical moiety that plays a critical role in protein synthesis, lipid homeostasis, and cellular signaling, when this moiety is itself derived from a compound that acts as a radical precursor in photoredox-catalyzed carboamidation protocols?",
+        "a": "amides",
+        "path": [
+            {
+                "entity1": "amides",
+                "relation": "are synthesized from",
+                "entity2": "carboxyl",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which carboxylic acid derivative, known for its roles in protein synthesis, lipid homeostasis, and cellular signaling, is synthesized from carboxyl moieties and widely used in pharmaceuticals, polymers, and agrochemicals?",
+                "a": "amides"
+            },
+            {
+                "entity1": "carboxyl",
+                "relation": "are synthesized from",
+                "entity2": "esters",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which chemical moiety, known for its crucial roles in protein synthesis, lipid homeostasis, and cellular signaling, is synthesized from esters?",
+                "a": "carboxyl"
+            },
+            {
+                "entity1": "esters",
+                "relation": "used as radical precursors in",
+                "entity2": "carboamidation protocols",
+                "text": "In the realm \nof alkene carboamidations, alkyl radicals can be generated via \nthermal processes (5080 C) from diacyl peroxide reactants in \nthe presence of an iron catalyst or by activating the C(sp3)H \nbond of alkane reactants using benzoyl peroxide and radical ini\ntiators (Figure 1A).2528 Building on these findings, the groups \nof Chen and Maity reported photoredoxcatalyzed carboami\ndation protocols using bromo nitriles, ketones and esters as \nradical precursors (Figure 1B).29,30 Noteworthy in these reports \nare the use of costeffective starting materials along with addi\ntives (KF or Zn(OAc)2) that completely suppress alkylbromin\nation byproducts resulting from atom transfer radical addition \n(ATRA).31 However, these conditions depend on electrophilic \ncyano and ketoester primary radicals, thus limiting the gen\nerality of the approach.",
+                "q": "Which compound, mentioned along with bromo nitriles and ketones, serves as a radical precursor in the photoredox-catalyzed carboamidation protocols?",
+                "a": "esters"
+            }
+        ]
+    },
+    {
+        "q": "Starting from abundant aliphatic carboxylic acids that can be transformed into activated redoxactive compounds useful as sp3 electrophiles, how can one obtain the chemical group that is further utilized in vital biological processes such as protein synthesis, lipid regulation, and cell signaling, which in turn serves as the precursor for a widely used carboxylic acid derivative in both pharmaceuticals and synthetic applications?",
+        "a": "amides",
+        "path": [
+            {
+                "entity1": "amides",
+                "relation": "are synthesized from",
+                "entity2": "carboxyl",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which carboxylic acid derivative, prevalent in biological systems and synthetic applications like protein synthesis and pharmaceuticals, is synthesized from carboxyl groups via selective incorporation of carboxyl moieties?",
+                "a": "amides"
+            },
+            {
+                "entity1": "carboxyl",
+                "relation": "are synthesized from",
+                "entity2": "esters",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which chemical moiety, important for processes like protein synthesis, lipid regulation, and cell signaling, is synthesized from esters?",
+                "a": "carboxyl"
+            },
+            {
+                "entity1": "esters",
+                "relation": "are synthesized from",
+                "entity2": "aliphatic carboxylic acids",
+                "text": "A pioneering approach, that \nenables the direct coupling of sp2 and sp3 electrophiles, such as aldehydes and carboxylic acids, heralds \nan unprecedented disconnection in the crosselectrophile coupling domain (Figure 1A). Aryl sulfonyl \nhydrazones are considered as a benchstable, activated form of aldehydes due to their known propensity \nto undergo both radical and polar addition, ultimately yielding deoxygenated, crosscoupled products \nupon thermal decomposition of alkylated hydrazide intermediates (Figure 1B).1827 Utilizing abundant \naliphatic carboxylic acids activated as NHPIbased redoxactive esters (RAEs) to serve as sp3 \nelectrophiles, and employing visible lightmediated decarboxylation to yield carboncentered \nhttpsdoi.org10.26434chemrxiv2023fcl2j ORCID httpsorcid.org0000000231076927 Content not peerreviewed by ChemRxiv. License CC BY 4.0",
+                "q": "Which compounds, activated as NHPI-based redoxactive esters to serve as sp3 electrophiles, are synthesized from abundant aliphatic carboxylic acids?",
+                "a": "esters"
+            }
+        ]
+    },
+    {
+        "q": "Starting from a class of compounds employed as redox active derivatives to convert carboxylic acids into alternative alkyl nucleophile surrogates in the Nozaki–Hiyama–Kishi reaction, which yield a functional group known for its role in protein synthesis, lipid homeostasis, and cellular signaling, what derivative synthesized from that functional group is widely utilized in pharmaceuticals, polymers, and other synthetic applications?",
+        "a": "amides",
+        "path": [
+            {
+                "entity1": "amides",
+                "relation": "are synthesized from",
+                "entity2": "carboxyl",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which derivative of carboxyl compounds, known for its role in protein synthesis, lipid homeostasis, and diverse synthetic applications such as in pharmaceuticals and polymers, is synthesized from carboxyl groups?",
+                "a": "amides"
+            },
+            {
+                "entity1": "carboxyl",
+                "relation": "are synthesized from",
+                "entity2": "esters",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which functional group, known for its role in protein synthesis, lipid homeostasis, and cellular signaling, is synthesized from esters?",
+                "a": "carboxyl"
+            },
+            {
+                "entity1": "esters",
+                "relation": "are used via",
+                "entity2": "carboxylic acids",
+                "text": "The NozakiHiyamaKishi (NHK) \nreaction, first discovered in 19777 and formalized in 19868 \nusually involves the crosscoupling of an alkenyl halide with \nan aldehyde through the use of stoichiometric Cr and cata\nlytic Ni to afford an allylic alcohol product.9 The correspond\ning alkylvariant of this reaction is seldom employed with a \nvariety of alkyl nucleophile surrogates being disclosed over \nthe years such as alkyl iodides,10 carboxylic acids via redox\nactive esters (RAEs),11 olefins,12 or even unactivated CH \nbonds13 (Figure 1B). Those variants, however, have not been \nemployed in a catalytic, highly enantioselective fashion.",
+                "q": "Which class of compounds, functioning as redox active derivatives (RAEs), is employed to convert carboxylic acids into alternative alkyl nucleophile surrogates in the Nozaki–Hiyama–Kishi reaction?",
+                "a": "esters"
+            }
+        ]
+    },
+    {
+        "q": "What derivative of carboxylic acids, known for its role in protein synthesis and other biological processes, is synthesized from carboxyl groups—a functional group that is itself derived from the acids used to form redox-active esters in the alkyl variant of the Nozaki–Hiyama–Kishi reaction?",
+        "a": "amides",
+        "path": [
+            {
+                "entity1": "amides",
+                "relation": "are synthesized from",
+                "entity2": "carboxyl",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which derivative of carboxylic acids, known for its role in protein synthesis and other biological processes, is synthesized from carboxyl groups?",
+                "a": "amides"
+            },
+            {
+                "entity1": "carboxyl",
+                "relation": "are synthesized from",
+                "entity2": "carboxylic acids",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which functional group, utilized as a synthetic handle in pharmaceuticals, polymers, and agrochemicals, is synthesized from carboxylic acids?",
+                "a": "carboxyl"
+            },
+            {
+                "entity1": "carboxylic acids",
+                "relation": "are used via",
+                "entity2": "esters",
+                "text": "The NozakiHiyamaKishi (NHK) \nreaction, first discovered in 19777 and formalized in 19868 \nusually involves the crosscoupling of an alkenyl halide with \nan aldehyde through the use of stoichiometric Cr and cata\nlytic Ni to afford an allylic alcohol product.9 The correspond\ning alkylvariant of this reaction is seldom employed with a \nvariety of alkyl nucleophile surrogates being disclosed over \nthe years such as alkyl iodides,10 carboxylic acids via redox\nactive esters (RAEs),11 olefins,12 or even unactivated CH \nbonds13 (Figure 1B). Those variants, however, have not been \nemployed in a catalytic, highly enantioselective fashion.",
+                "q": "In the alkyl variant of the Nozaki–Hiyama–Kishi reaction, which type of acids are converted into redox-active esters to serve as alkyl nucleophile surrogates?",
+                "a": "carboxylic acids"
+            }
+        ]
+    },
+    {
+        "q": "What type of carboxylic acid derivative, which plays important roles in protein synthesis, lipid regulation, and cellular signaling, can be synthesized by incorporating a functional group derived from carboxylic acids—this very group being central to transformations that, in catalytic conversions on metal oxides, yield water as one of the products?",
+        "a": "amides",
+        "path": [
+            {
+                "entity1": "amides",
+                "relation": "are synthesized from",
+                "entity2": "carboxyl",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which type of carboxylic acid derivative, known to play roles in protein synthesis, lipid regulation, and cellular signaling, can be synthesized by incorporating carboxyl moieties from activated C–H bonds?",
+                "a": "amides"
+            },
+            {
+                "entity1": "carboxyl",
+                "relation": "are synthesized from",
+                "entity2": "carboxylic acids",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which functional group, that plays a key role in accessing valuable carbonyl-containing compounds via selective C–H activation, is synthesized from carboxylic acids?",
+                "a": "carboxyl"
+            },
+            {
+                "entity1": "carboxylic acids",
+                "relation": "produces",
+                "entity2": "water",
+                "text": "Catalytic conversion of carboxylic acids on metal oxides is important for the deoxygenation of \nfeedstock for the preparation of biofuels and lubricants,14 and for the industrial preparation of \nspecific ketones3,57. The interaction of carboxylic acids with the surface of highcrystallineenergy \nmetal oxides begins with acid adsorption,812 forming surface carboxylates, with or without \ndissociation of the carboxyl group. This is followed by various decomposition reactions, leading \nto the formation of alkane and CO2,13,14 ketene and water,15,16 alkene, CO, and water,17,18 or ketone \nand CO2.19,20 In all cases, upon acid contact with a metal oxide surface, a hidden reaction, alpha\nproton abstraction, may consistently occur leading to the enolization of carboxylic acids even \nunder mild conditions.",
+                "q": "In the catalytic conversion of carboxylic acids on metal oxides, which compound is produced in some decomposition reactions such as those that yield ketene and water or alkene, CO, and water?",
+                "a": "water"
+            }
+        ]
+    },
+    {
+        "q": "Which carboxylic acid derivative, known for its roles in biological processes such as protein synthesis and its applications in pharmaceuticals, polymers, and agrochemicals, is synthesized by selectively functionalizing C–H bonds to introduce carboxyl groups that are, in turn, generated from compounds which decompose (after adsorbing onto high-crystalline energy metal oxide surfaces with acid adsorption and alpha proton abstraction) to yield products like alkene, CO, and water?",
+        "a": "amides",
+        "path": [
+            {
+                "entity1": "amides",
+                "relation": "are synthesized from",
+                "entity2": "carboxyl",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which carboxylic acid derivative, noted for its roles in biological processes like protein synthesis and its utility in pharmaceuticals, polymers, and agrochemicals, is synthesized from carboxyl groups introduced through selective C–H functionalization?",
+                "a": "amides"
+            },
+            {
+                "entity1": "carboxyl",
+                "relation": "are synthesized from",
+                "entity2": "carboxylic acids",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which functional group, pivotal in processes such as protein synthesis, lipid homeostasis, and cellular signaling, is synthesized from carboxylic acids?",
+                "a": "carboxyl"
+            },
+            {
+                "entity1": "carboxylic acids",
+                "relation": "forms",
+                "entity2": "alkene",
+                "text": "Catalytic conversion of carboxylic acids on metal oxides is important for the deoxygenation of \nfeedstock for the preparation of biofuels and lubricants,14 and for the industrial preparation of \nspecific ketones3,57. The interaction of carboxylic acids with the surface of highcrystallineenergy \nmetal oxides begins with acid adsorption,812 forming surface carboxylates, with or without \ndissociation of the carboxyl group. This is followed by various decomposition reactions, leading \nto the formation of alkane and CO2,13,14 ketene and water,15,16 alkene, CO, and water,17,18 or ketone \nand CO2.19,20 In all cases, upon acid contact with a metal oxide surface, a hidden reaction, alpha\nproton abstraction, may consistently occur leading to the enolization of carboxylic acids even \nunder mild conditions.",
+                "q": "Which compounds, after adsorbing onto high-crystalline energy metal oxide surfaces and undergoing acid adsorption along with alpha proton abstraction, decompose to form products such as alkene, CO, and water?",
+                "a": "carboxylic acids"
+            }
+        ]
+    },
+    {
+        "q": "Considering that carboxylic acids undergo catalytic decomposition on metal oxide surfaces to yield a common deoxygenation product, and that the resulting carboxyl functional group plays an instrumental role in processes such as protein synthesis, lipid regulation, and serves as a versatile synthetic handle in various industries, what type of carboxylic acid derivative is formed from these carboxyl moieties via selective incorporation from activated C–H bonds?",
+        "a": "amides",
+        "path": [
+            {
+                "entity1": "amides",
+                "relation": "are synthesized from",
+                "entity2": "carboxyl",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which type of carboxylic acid derivative, known for its role in protein synthesis, lipid regulation, and applications in pharmaceuticals and polymers, is synthesized from carboxyl moieties via the selective incorporation from activated C–H bonds?",
+                "a": "amides"
+            },
+            {
+                "entity1": "carboxyl",
+                "relation": "are synthesized from",
+                "entity2": "carboxylic acids",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which functional group, instrumental in processes like protein synthesis, lipid regulation, and cellular signaling, is synthesized from carboxylic acids and serves as a valuable synthetic handle in pharmaceuticals, polymers, and agrochemicals?",
+                "a": "carboxyl"
+            },
+            {
+                "entity1": "carboxylic acids",
+                "relation": "forms",
+                "entity2": "CO2",
+                "text": "Catalytic conversion of carboxylic acids on metal oxides is important for the deoxygenation of \nfeedstock for the preparation of biofuels and lubricants,14 and for the industrial preparation of \nspecific ketones3,57. The interaction of carboxylic acids with the surface of highcrystallineenergy \nmetal oxides begins with acid adsorption,812 forming surface carboxylates, with or without \ndissociation of the carboxyl group. This is followed by various decomposition reactions, leading \nto the formation of alkane and CO2,13,14 ketene and water,15,16 alkene, CO, and water,17,18 or ketone \nand CO2.19,20 In all cases, upon acid contact with a metal oxide surface, a hidden reaction, alpha\nproton abstraction, may consistently occur leading to the enolization of carboxylic acids even \nunder mild conditions.",
+                "q": "During the catalytic conversion on metal oxide surfaces, carboxylic acids undergo decomposition reactions after acid adsorption. What common product is formed from these reactions, contributing to the deoxygenation of feedstock?",
+                "a": "CO2"
+            }
+        ]
+    },
+    {
+        "q": "Which category of compounds, synthesized from naturally occurring precursors that, upon activation, form radicals liberating carbon dioxide in a highly exergonic reaction, is important in biology and widely applied in pharmaceuticals, polymers, and agrochemicals?",
+        "a": "amides",
+        "path": [
+            {
+                "entity1": "amides",
+                "relation": "are synthesized from",
+                "entity2": "carboxyl",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which category of carboxylic acid derivatives, important in biology and widely applied in pharmaceuticals, polymers, and agrochemicals, is typically synthesized from carboxyl moieties?",
+                "a": "amides"
+            },
+            {
+                "entity1": "carboxyl",
+                "relation": "are synthesized from",
+                "entity2": "carboxylic acids",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which naturally occurring compounds serve as the precursors for the carboxyl groups that are incorporated into carbonyl-containing structures?",
+                "a": "carboxylic acids"
+            },
+            {
+                "entity1": "carboxylic acids",
+                "relation": "liberate",
+                "entity2": "carbon dioxide",
+                "text": "When activated, carboxy radicals are formed which rapidly \nliberate carbon dioxide in a highly exergonic reaction (23.2 kcal mol1), to \nform a carboncentered radical.4 This approach, when combined with metal \ncatalysis, has enabled various new kinds of CC and CN bond formation \nreactions.5 A suitable activation method for carboxylic acids are hypervalent \niodine(III) reagents, such as phenyliodo diacetate (PIDA), which are well \nknown sources for aliphatic radicals6 and have been activated with \nphotochemistry in chain reactions.7 On the one hand, singleelectron \ntransfer (SET) or reduction of PIDA can occur from highly reducing excited \nstate photocatalysts (PC, Figure 1).",
+                "q": "What type of compounds, when activated, form radicals that liberate carbon dioxide through a highly exergonic reaction and can be activated by hypervalent iodine reagents?",
+                "a": "carboxylic acids"
+            }
+        ]
+    },
+    {
+        "q": "Considering that carboxylic acids can decompose on high‐crystalline energy metal oxides into compounds including a species that is integral to a functional group derived from carboxylic acids—which serves as a key synthetic handle for accessing carbonyl-containing compounds used in pharmaceuticals, polymers, and agrochemicals—what is the carboxylic acid derivative synthesized from this functional group that plays an important role in protein synthesis as well as in the production of pharmaceuticals, polymers, and agrochemicals?",
+        "a": "amides",
+        "path": [
+            {
+                "entity1": "amides",
+                "relation": "are synthesized from",
+                "entity2": "carboxyl",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which carboxylic acid derivative, important in protein synthesis and used widely in pharmaceuticals, polymers, and agrochemicals, is synthesized from carboxyl groups?",
+                "a": "amides"
+            },
+            {
+                "entity1": "carboxyl",
+                "relation": "are synthesized from",
+                "entity2": "carboxylic acids",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which functional group, used as a key synthetic handle for accessing carbonyl-containing compounds such as those in pharmaceuticals, polymers, and agrochemicals, is synthesized from carboxylic acids?",
+                "a": "carboxyl"
+            },
+            {
+                "entity1": "carboxylic acids",
+                "relation": "forms",
+                "entity2": "CO",
+                "text": "Catalytic conversion of carboxylic acids on metal oxides is important for the deoxygenation of \nfeedstock for the preparation of biofuels and lubricants,14 and for the industrial preparation of \nspecific ketones3,57. The interaction of carboxylic acids with the surface of highcrystallineenergy \nmetal oxides begins with acid adsorption,812 forming surface carboxylates, with or without \ndissociation of the carboxyl group. This is followed by various decomposition reactions, leading \nto the formation of alkane and CO2,13,14 ketene and water,15,16 alkene, CO, and water,17,18 or ketone \nand CO2.19,20 In all cases, upon acid contact with a metal oxide surface, a hidden reaction, alpha\nproton abstraction, may consistently occur leading to the enolization of carboxylic acids even \nunder mild conditions.",
+                "q": "During the catalytic conversion of carboxylic acids on high‐crystalline energy metal oxides, several decomposition pathways occur. In one pathway, carboxylic acids decompose to yield an alkene, CO, and water. Which compound is formed as stated in this reaction?",
+                "a": "CO"
+            }
+        ]
+    },
+    {
+        "q": "Starting from compounds that undergo acid adsorption and subsequent reactions on high‐crystalline metal oxides, which yield a key compound used as a synthetic handle in diverse applications, what carboxylic acid derivative—produced through selective incorporation into activated CH bonds and playing crucial roles in protein synthesis, lipid homeostasis, and cellular signaling—results from this multistep process?",
+        "a": "amides",
+        "path": [
+            {
+                "entity1": "amides",
+                "relation": "are synthesized from",
+                "entity2": "carboxyl",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which carboxylic acid derivative, synthesized from carboxyl moieties via selective incorporation into activated CH bonds, plays important roles in protein synthesis, lipid homeostasis, and cellular signaling, and is also widely used in pharmaceuticals, polymers, and agrochemicals?",
+                "a": "amides"
+            },
+            {
+                "entity1": "carboxyl",
+                "relation": "are synthesized from",
+                "entity2": "carboxylic acids",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which functional moiety, often incorporated as a synthetic handle in pharmaceuticals, polymers, and agrochemicals and playing a role in biological processes like protein synthesis and lipid homeostasis, is synthesized from carboxylic acids?",
+                "a": "carboxyl"
+            },
+            {
+                "entity1": "carboxylic acids",
+                "relation": "reacts with",
+                "entity2": "metal oxides",
+                "text": "Catalytic conversion of carboxylic acids on metal oxides is important for the deoxygenation of \nfeedstock for the preparation of biofuels and lubricants,14 and for the industrial preparation of \nspecific ketones3,57. The interaction of carboxylic acids with the surface of highcrystallineenergy \nmetal oxides begins with acid adsorption,812 forming surface carboxylates, with or without \ndissociation of the carboxyl group. This is followed by various decomposition reactions, leading \nto the formation of alkane and CO2,13,14 ketene and water,15,16 alkene, CO, and water,17,18 or ketone \nand CO2.19,20 In all cases, upon acid contact with a metal oxide surface, a hidden reaction, alpha\nproton abstraction, may consistently occur leading to the enolization of carboxylic acids even \nunder mild conditions.",
+                "q": "What compounds undergo acid adsorption and subsequent reactions on the surface of high‐crystalline metal oxides during catalytic deoxygenation processes for biofuel and lubricant production?",
+                "a": "carboxylic acids"
+            }
+        ]
+    },
+    {
+        "q": "In a dual-catalyzed metallaphotoredox system that employs an earth-abundant nickel catalyst to activate carboxylic acids as radical precursors—thereby generating functional carboxyl groups that play critical roles in processes such as protein synthesis and cellular signaling—what carboxylic acid derivative is formed by incorporating these activated carboxyl moieties from C–H bonds?",
+        "a": "amides",
+        "path": [
+            {
+                "entity1": "amides",
+                "relation": "are synthesized from",
+                "entity2": "carboxyl",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which carboxylic acid derivative, known for its key roles in protein synthesis, lipid regulation, and cellular signaling, is synthesized by incorporating carboxyl moieties from activated C–H bonds?",
+                "a": "amides"
+            },
+            {
+                "entity1": "carboxyl",
+                "relation": "are synthesized from",
+                "entity2": "carboxylic acids",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which functional group, important in biology for roles such as protein synthesis and cellular signaling, is synthesized from carboxylic acids as evident from the approach of incorporating activated CH bonds?",
+                "a": "carboxyl"
+            },
+            {
+                "entity1": "carboxylic acids",
+                "relation": "uses",
+                "entity2": "nickel",
+                "text": "Despite the relatively high cost of \npalladium, traditional methods have favoured its use in crosscoupling due to its high catalytic \nactivity, substrate compatibility, and the broad range of transformations that are possible.1 More \nrecently, however, in the search for catalytic systems that rely on earthabundant metals, nickel has \nemerged as a valuable alternative to palladium for crosscoupling.2,3 In addition to its lower cost and \ngreater abundance, nickel possesses a different reactivity profile to palladium displaying a reduced \npropensity of Nialkyl intermediates to undergo hydride elimination, and possessing a broader \narray of accessible oxidation states (0, 1, 2, 3, 4), meaning that both two and oneelectron redox \nprocesses are possible.46 These properties mean that nickel is now often the metal of choice for \nmetallaphotoredox C(sp2)C(sp3) bond formation, with seminal examples being reported in 2014 by \nboth Molander, using potassium trifluoroborate salts, and MacMillan and Doyle, using carboxylic \nacids as radical precursors, along with aryl halides, to form new bonds using a dual nickeliridium \ncatalysed system (Scheme 1A).7,8 Since then, a wide variety of radical precursors as coupling partners \nhas been reported, expanding the possible synthetic disconnections available for synthetic chemists.8\n17 \nDespite the use of an earth abundant base metal catalyst, metallaphotoredox methods with nickel still \noften rely on the use of preciousmetal iridiumbased photocatalysts.18 The high cost and relative \nscarcity of iridium often becomes an overriding factor in the use of these procedures, which becomes \nincreasingly problematic as scale increases.",
+                "q": "Which earth-abundant metal catalyst is used in dual-catalyzed metallaphotoredox systems that employ carboxylic acids as radical precursors for C(sp2)–C(sp3) bond formation?",
+                "a": "nickel"
+            }
+        ]
+    },
+    {
+        "q": "What derivative, synthesized by incorporating a functional group that is derived from an abundant aliphatic feedstock used in metallaphotoredox crosscoupling with chlorides, plays roles in protein synthesis, lipid homeostasis, cellular signaling, and is utilized as a versatile synthetic handle in pharmaceuticals, polymers, and agrochemicals?",
+        "a": "amides",
+        "path": [
+            {
+                "entity1": "amides",
+                "relation": "are synthesized from",
+                "entity2": "carboxyl",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which derivative of carboxylic acids—playing roles in protein synthesis, lipid homeostasis, and cellular signaling, as well as serving as a versatile synthetic handle in pharmaceuticals, polymers, and agrochemicals—is synthesized by incorporating carboxyl moieties?",
+                "a": "amides"
+            },
+            {
+                "entity1": "carboxyl",
+                "relation": "are synthesized from",
+                "entity2": "carboxylic acids",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which functional group, essential for incorporating carbonyl-containing moieties, is synthesized from carboxylic acids?",
+                "a": "carboxyl"
+            },
+            {
+                "entity1": "carboxylic acids",
+                "relation": "reacts with",
+                "entity2": "chlorides",
+                "text": "In the realm of organic synthesis, crosscoupling technolo\ngies have profoundly streamlined the preparation of complex, \nhighvalue molecules across numerous chemical industries.1,2 \nNotably, the metallaphotoredox crosscoupling platform har\nnesses reactive radical intermediates under mild, transition \nmetalmediated bondforming conditions.3 By enabling open\nshell functionalization of abundant yet conventionally inert ali\nphatic feedstocks such as chlorides, carboxylic acids and CH \nnucleophiles, this powerful strategy enables practical fragment \ncouplings unachievable via traditional twoelectron pathways.4\n7 These transformations are particularly suited for delivering \nC(sp3)rich scaffolds, molecular cores which are increasingly \nrecognized as vital components of clinically successful small \nmolecule drug candidates (Figure 1).8 Novel metallaphotore\ndox methods, particularly those employing new aliphatic part\nners and offering previously untenable retrosynthetic discon\nnections, can ultimately provide valuable approaches to unex\nplored, medicinallyrelevant chemical space.",
+                "q": "Which abundant aliphatic feedstock used in metallaphotoredox crosscoupling reacts with chlorides to enable open shell functionalization for fragment couplings?",
+                "a": "carboxylic acids"
+            }
+        ]
+    },
+    {
+        "q": "What class of carboxylic acid derivatives, essential in biological processes, is synthesized from a functional group that is selectively incorporated from activated C(sp3)–H bonds derived from naturally occurring substrates known for undergoing reductive quenching during metallaphotoredox catalysis?",
+        "a": "amides",
+        "path": [
+            {
+                "entity1": "amides",
+                "relation": "are synthesized from",
+                "entity2": "carboxyl",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which class of carboxylic acid derivatives, essential in biological processes such as protein synthesis and cellular signaling, is synthesized from carboxyl moieties?",
+                "a": "amides"
+            },
+            {
+                "entity1": "carboxyl",
+                "relation": "are synthesized from",
+                "entity2": "carboxylic acids",
+                "text": "Carboxylic acids and their derivatives (e.g., esters, amides) are \nubiquitous in biology, playing important roles in facilitating protein \nsynthesis,1 regulating lipid homeostasis,2 and mediating cellular \nsignaling pathways.3 Beyond natural systems, these related \nfunctional groups are valuable synthetic handles4 and as such, have \ndemonstrated \nutility \nin \npharmaceuticals,5 \npolymers,6 \nand \nagrochemicals (Figure 1A).7 With such widespread applications, the \nselective incorporation of carboxyl moieties from activated CH \nbonds offers a promising, streamlined strategy to access these \nvaluable carbonylcontaining groups. Despite the tremendous \nadvancements in CH functionalization,8 the direct C(sp3)H \ncarboxylation remains a challenging transformation.",
+                "q": "Which functional group, typically synthesized from carboxylic acids, is selectively incorporated from activated C(sp3)–H bonds to provide access to valuable carbonyl-containing compounds?",
+                "a": "carboxyl"
+            },
+            {
+                "entity1": "carboxylic acids",
+                "relation": "undergo",
+                "entity2": "reductive quenching",
+                "text": "The combination of metal catalysis and photochemistry has received \nconsiderable attention over the last decade and holds great promise for \nmilder and more sustainable organic syntheses.1 This rising field, termed \nmetallaphotoredox catalysis and pioneered by the MacMillan group, enables \ndiverse transformations utilizing oxidative or reductive excited state \nquenching mechanisms to form transient organic radicals from readily \navailable starting materials.2 Additionally, employed photosensitizers can \nundergo energy transfer (EnT) processes and thus enable an alternative \nactivation mechanism in lightmediated catalysis holding great promises in \nfuture synthetic applications.3 \nNaturally occurring carboxylic acids are an ideal and abundant substrate to \nundergo reductive or oxidative quenching during metallaphotoredox \ncatalysis.",
+                "q": "Which naturally occurring substrate is identified as undergoing reductive quenching during metallaphotoredox catalysis?",
+                "a": "carboxylic acids"
             }
         ]
     }
