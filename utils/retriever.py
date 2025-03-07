@@ -12,7 +12,7 @@ import re
 # import spacy
 from transformers import pipeline
 from sentence_transformers import CrossEncoder
-
+from nltk.tokenize import sent_tokenize
 
 class EmbeddingFunc(EmbeddingFunction):
     def __init__(self, model_name):
@@ -85,58 +85,106 @@ class Retriever:
 
     def extract_entities(self, query):
         """Use a transformer model to extract entities from the query."""
-        # Clean the query by removing punctuation and converting to lowercase
-        clean_query = re.sub(r'[^\w\s]', '', query)
         
         # Use the NER pipeline to extract entities
-        ner_results = self.ner_pipeline(clean_query)
+        ner_results = self.ner_pipeline(query)
+        # print(ner_results)
         entities = []
         current_entity = ""
+        last_end = -1  # Track the last token's ending position
 
-        for result in ner_results:
+        for i, result in enumerate(ner_results):
             word = result['word']
-            if result['entity'].startswith("B") and (word.startswith("##")):  # Begin a new entity
-                current_entity += word[2:]  # Append to entity phrase
-            elif result['entity'].startswith("B") and (not word.startswith("##")):  # Begin a new entity
-                if current_entity:  # If an entity was being built, save it
-                    entities.append(current_entity.lower())
-                current_entity = word  # Start a new entity
+            entity_type = result['entity']
+            start = result.get('start', None)  # Get start position in original text
+            end = result.get('end', None)  # Get end position in original text
+
+            # Remove "##" from subwords (e.g., "##yl" → "yl")
+            if word.startswith("##"):
+                word = word[2:]
+
+            # If it's the start of a new entity
+            if entity_type.startswith("B"):
+                if start==last_end:
+                    current_entity += word 
+                else:
+                    if current_entity:
+                        entities.append(current_entity.lower())  # Store previous entity
+                    current_entity = word  # Start new entity
             
-            elif result['entity'].startswith("I") and current_entity:  # Continue entity
-                current_entity += " " + word  # Append to entity phrase
+            # If it's a continuation (Inside)
+            elif entity_type.startswith("I") and current_entity:
+                if start == last_end:  
+                    current_entity += word  # Merge directly if no space exists in the original text
+                else:
+                    current_entity += " " + word  # Add a space if there's a gap in the text
             
-            else:  # If we hit an "O" (outside entity), save the last entity
+            # If it's an "O" tag (outside entity), save the entity
+            else:
                 if current_entity:
                     entities.append(current_entity.lower())
-                    current_entity = ""  # Reset
+                    current_entity = ""
 
-        if current_entity:  # Save last entity if it wasn't stored
+            # Update the last token end position
+            last_end = end
+
+        # Ensure last entity is stored
+        if current_entity:
             entities.append(current_entity.lower())
 
-        
-        if not entities:
-            entities = [word.lower() for word in clean_query.split() if word.isalpha()]
-        
         return entities
+
     
+    def split_text(self, text, max_words=128):
+        """Splits text into chunks by grouping sentences while keeping each chunk under `max_words`."""
+        sentences = sent_tokenize(text)  # Tokenize into sentences
+        chunks = []
+        current_chunk = []
+        current_length = 0
 
+        for sentence in sentences:
+            sentence_length = len(sentence.split())
 
-    def extract_paragraphs(self, documents):
+            if current_length + sentence_length > max_words:
+                # Save the current chunk and start a new one
+                chunks.append(" ".join(current_chunk))
+                current_chunk = [sentence]
+                current_length = sentence_length
+            else:
+                # Add the sentence to the current chunk
+                current_chunk.append(sentence)
+                current_length += sentence_length
+
+        # Add any remaining text as the last chunk
+        if current_chunk:
+            chunks.append(" ".join(current_chunk))
+
+        return chunks
+
+    def extract_paragraphs(self, documents, max_words=128):
         """
-        Extract paragraphs from documents.
+        Extracts and improves paragraphization of documents by splitting text into controlled chunks.
+        
+        Args:
+            documents (dict): A dictionary containing a 'documents' key with a list of text documents.
+            max_words (int): Maximum number of words allowed per paragraph.
+        
+        Returns:
+            list: A list of paragraphs extracted from the documents.
         """
         if 'documents' not in documents:
             raise ValueError("The input dictionary must contain a 'documents' key.")
         
         paragraphized_documents = []
         for doc in documents['documents'][0]:
-            try:
-                paragraphs = [paragraph.strip() for paragraph in doc.split("\n") if paragraph.strip()]
-                paragraphized_documents.append(paragraphs)
-            except:
-                print(doc)
-                # pass
-        return [paragraph for doc in paragraphized_documents for paragraph in doc]
+            if not isinstance(doc, str):
+                # print(f"Skipping invalid document: {doc}")
+                continue
+            paragraphs = self.split_text(doc, max_words=max_words)
+            paragraphized_documents.extend(paragraphs)
+        
+        return paragraphized_documents
+
     def cross_encoder_similarity_search(self, query, documents, top_k=1):
         """
         Perform similarity search using the cross-encoder model.
@@ -194,43 +242,43 @@ if __name__ == "__main__":
     retriever.load_model()
 
     # Example texts to embed and store
-#     texts = [
-#         "Aspirin (acetylsalicylic acid) is commonly used as an anti-inflammatory drug.",
-#         "Methanol (CH3OH) is a simple alcohol that is highly toxic to humans.",
-#         "The reaction between sodium chloride (NaCl) and silver nitrate (AgNO3) forms a white precipitate of silver chloride.",
-#         "Benzene is an aromatic hydrocarbon with a six-membered ring structure.",
-#         "Sulfuric acid (H2SO4) is a strong acid used in industrial chemical synthesis.",
-#         "DNA is composed of nucleotides that include adenine, thymine, cytosine, and guanine.",
-#         "Photosynthesis converts carbon dioxide and water into glucose and oxygen using sunlight.",
-#         "The Haber process synthesizes ammonia (NH3) from nitrogen and hydrogen under high pressure.",
-#         "Acetic acid (CH3COOH) is responsible for the sour taste of vinegar.",
-#         "Ethanol (C2H5OH) is a widely used solvent and the main component of alcoholic beverages.",
-#         "Polyethylene (PE) is the most commonly produced plastic, made from polymerization of ethylene.",
-#         "Catalysts like platinum and palladium are used in automotive catalytic converters to reduce emissions.",
-#         "Hydrochloric acid (HCl) is a strong acid used in laboratories and the production of PVC.",
-#         "Enzymes act as biological catalysts that speed up chemical reactions in living organisms.",
-#         "Ozone (O3) is a reactive gas that protects Earth from UV radiation in the stratosphere."
-#     ]
+    texts = [
+        "Aspirin (acetylsalicylic acid) is commonly used as an anti-inflammatory drug.",
+        "Methanol (CH3OH) is a simple alcohol that is highly toxic to humans.",
+        "The reaction between sodium chloride (NaCl) and silver nitrate (AgNO3) forms a white precipitate of silver chloride.",
+        "Benzene is an aromatic hydrocarbon with a six-membered ring structure.",
+        "Sulfuric acid (H2SO4) is a strong acid used in industrial chemical synthesis.",
+        "DNA is composed of nucleotides that include adenine, thymine, cytosine, and guanine.",
+        "Photosynthesis converts carbon dioxide and water into glucose and oxygen using sunlight.",
+        "The Haber process synthesizes ammonia (NH3) from nitrogen and hydrogen under high pressure.",
+        "Acetic acid (CH3COOH) is responsible for the sour taste of vinegar.",
+        "Ethanol (C2H5OH) is a widely used solvent and the main component of alcoholic beverages.",
+        "Polyethylene (PE) is the most commonly produced plastic, made from polymerization of ethylene.",
+        "Catalysts like platinum and palladium are used in automotive catalytic converters to reduce emissions.",
+        "Hydrochloric acid (HCl) is a strong acid used in laboratories and the production of PVC.",
+        "Enzymes act as biological catalysts that speed up chemical reactions in living organisms.",
+        "Ozone (O3) is a reactive gas that protects Earth from UV radiation in the stratosphere."
+    ]
 
-#     ids = [
-#         "doc_aspirin",
-#         "doc_methanol",
-#         "doc_nacl_agno3",
-#         "doc_benzene",
-#         "doc_sulfuric_acid",
-#         "doc_dna",
-#         "doc_photosynthesis",
-#         "doc_haber_process",
-#         "doc_acetic_acid",
-#         "doc_ethanol",
-#         "doc_polyethylene",
-#         "doc_catalyst",
-#         "doc_hcl",
-#         "doc_enzymes",
-#         "doc_ozone"
-# ]
-#     # Store embeddings
-#     retriever.embed_and_store(texts, ids)
+    ids = [
+        "doc_aspirin",
+        "doc_methanol",
+        "doc_nacl_agno3",
+        "doc_benzene",
+        "doc_sulfuric_acid",
+        "doc_dna",
+        "doc_photosynthesis",
+        "doc_haber_process",
+        "doc_acetic_acid",
+        "doc_ethanol",
+        "doc_polyethylene",
+        "doc_catalyst",
+        "doc_hcl",
+        "doc_enzymes",
+        "doc_ozone"
+]
+    # Store embeddings
+    retriever.embed_and_store(texts, ids)
 
     # Perform a similarity search
     query = "acetylsalicylic acid"

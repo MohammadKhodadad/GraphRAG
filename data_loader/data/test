@@ -1,0 +1,14 @@
+import zipfile
+import os
+
+zip_file = "material-safety-data-sheets.zip"
+extract_folder = "material_safety_data"
+
+# Create the extraction directory if it doesn't exist
+os.makedirs(extract_folder, exist_ok=True)
+
+# Extract the ZIP file
+with zipfile.ZipFile(zip_file, 'r') as zip_ref:
+    zip_ref.extractall(extract_folder)
+
+print(f"Extracted to: {extract_folder}")

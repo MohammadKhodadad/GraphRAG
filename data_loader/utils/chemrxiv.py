@@ -7,8 +7,12 @@ import os
 import fitz  # PyMuPDF
 import re
 import pandas as pd
+if __name__=='__main__':
+    from graph_generation.text_extraction import extract_text_from_pdf, clean_text, split_text, extract_introduction_with_limit
+else:
+    from .graph_generation.text_extraction import extract_text_from_pdf, clean_text, split_text, extract_introduction_with_limit
 
-def chemrxiv_fetch_all_papers_from_2024(output_file="chemrxiv_data.json",total=50):
+def chemrxiv_fetch_all_papers(output_file="chemrxiv_data.json",total=50, search_data_from="2023-06-01"):
     """
     Fetch all papers from ChemRxiv starting from 2024 and save them to a JSON file.
 
@@ -23,7 +27,7 @@ def chemrxiv_fetch_all_papers_from_2024(output_file="chemrxiv_data.json",total=5
     params = {
         "limit": 50,                # Max results per page
         "sort": "VIEWS_COUNT_DESC", # Sort by most viewed papers
-        "searchDateFrom": "2023-06-01", # Filter papers from 2024 onwards
+        "searchDateFrom": search_data_from, # Filter papers from 2024 onwards
         # "searchDateTo": "2023-12-01"
     }
 
@@ -65,28 +69,34 @@ def chemrxiv_fetch_all_papers_from_2024(output_file="chemrxiv_data.json",total=5
     print(f"All data saved to {output_file}. Total papers: {total_fetched}")
     return all_papers
 
-def chemrxiv_download_paper(paper,output_folder):
+def chemrxiv_download_paper(paper,output_folder, name_id=True):
     time.sleep(0.2)
     # Get the paper title and URL
     paper_title = paper.get("item", {}).get("title", "unknown_title").replace("/", "-").replace(" ", "_")  # Sanitize filename
+    paper_id = paper.get("item", {}).get("id", None)
     paper_url = paper.get("item", {}).get("asset", {}).get("original", {}).get("url")
     paper_license = paper.get("item", {}).get("license", {}).get("name", "")
     
     if not paper_url:
         print(f"Skipping paper '{paper_title}' (No URL found)")
+    elif (not paper_id ) or (not paper_title):
+        print('No ID or Title found.')
     elif ('ND' not in paper_license) and paper_license:
         # Determine the output file path
         file_extension = paper_url.split(".")[-1]  # Get file extension from URL
-        file_name = f"{paper_title}.{file_extension}"
+        if name_id:
+            file_name = f"{paper_id}.{file_extension}"
+        else:
+            file_name = f"{paper_title}.{file_extension}"
         file_path = os.path.join(output_folder, file_name)
-        
-        # Download the paper
-        response = requests.get(paper_url, stream=True)
-        response.raise_for_status()
-        
-        with open(file_path, "wb") as f:
-            for chunk in response.iter_content(chunk_size=1024):
-                f.write(chunk)
+        if not os.path.exists(file_path):
+            # Download the paper
+            response = requests.get(paper_url, stream=True)
+            response.raise_for_status()
+            
+            with open(file_path, "wb") as f:
+                for chunk in response.iter_content(chunk_size=1024):
+                    f.write(chunk)
 
 def chemrxiv_download_papers(all_papers, output_folder="chemrxiv_papers"):
     """
@@ -112,10 +122,34 @@ def chemrxiv_download_papers(all_papers, output_folder="chemrxiv_papers"):
                 time.sleep(5)
 
 
+def chemrxiv_embed_and_store(pipeline,data_folder):
+    texts = []
+    ids = []
+    names=os.listdir(data_folder)
+    for name in tqdm.tqdm(names):
+        address=os.path.join(data_folder,name)
+        try:
+            if '.pdf' in address:
+                text=extract_text_from_pdf(address)
+            elif '.jsonl' in address:
+                raise Exception('Not Implemented.')
+            elif '.csv' in address:
+                raise Exception('Not Implemented.')
+            else:
+                raise Exception('No supported input.')
+            cleaned_text= extract_introduction_with_limit(clean_text(text),2000)
+            texts.append(cleaned_text)
+            ids.append(name)
+        except Exception as e:
+            print(f'Error: {e}')
+            continue
+
+    pipeline.cot.retriever.embed_and_store(texts, ids)
+
 # Example usage
 if __name__=='__main__':
 
-    all_papers=chemrxiv_fetch_all_papers_from_2024(output_file="../data/chemrxiv_data_2024.json")
+    all_papers=chemrxiv_fetch_all_papers(output_file="../data/chemrxiv_data_2024.json")
     with open('../data/chemrxiv_data_2024.json','rb') as f:
         all_papers=json.load(f)
     chemrxiv_download_papers(all_papers,)

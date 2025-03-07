@@ -212,5 +212,22 @@ def download_and_store_pubchem(address='pubchem_dump.csv'):
         if i%1000==0 and i>0:
             pd.DataFrame({'text':texts,'mentioned_entities':mentioned_entities,'cid':cids,'name':names,'properties':properties}).to_csv(address)
 
+
+
+def pubchem_embed_and_store(pipeline,address,source_column= 'name', text_column='combined_text'):
+    data=pd.read_csv(address)
+    
+    texts = []
+    ids = []
+    for index, row in tqdm.tqdm(data.head(10000).iterrows()):
+        texts.append(row['combined_text'])
+        ids.append(row['name'])
+        if index%1000==0 or index==9999:
+            pipeline.cot.retriever.embed_and_store(texts, ids)
+            texts=[]
+            ids=[]
+
+
+
 if __name__=='__main__':
     print(fetch_compound(51)[3])
