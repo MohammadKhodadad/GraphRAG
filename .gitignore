@@ -11,3 +11,4 @@ chemrxiv_data_*.json
 *.zip
 material_safety_data/
 material-safety-data-sheets.zip
+*.pyc
