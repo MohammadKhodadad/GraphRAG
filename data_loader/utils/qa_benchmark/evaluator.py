@@ -1,268 +1,577 @@
-import os
+import boto3
 import time
-import tqdm
-from openai import OpenAI
-import dotenv
+import json
+from openai import OpenAI, NotGiven
+import os
+import re
+from enum import Enum
+from typing import Dict, Any, Optional, Union, List, Tuple, Set
+from langchain_aws.chat_models.bedrock_converse import ChatBedrockConverse
+from pydantic import BaseModel, Field
+from datetime import datetime
+from dotenv import load_dotenv
 import pandas as pd
 
-def ask_openai(client, prompt):
-    """
-    Given a client and a prompt, send the prompt to OpenAI and return the answer.
-    """
-    response = client.chat.completions.create(
-        messages=[{"role": "user", "content": prompt}],
-        model="o3-mini",
+load_dotenv()
+
+
+def read_json(file_path: str) -> dict:
+    """Read the JSON file from the given file path."""
+    with open(file_path, "r") as file:
+        return json.load(file)
+
+
+class Answer(BaseModel):
+    entity: str = Field(..., description="An answer which is a chemical entity.")
+
+
+class AreSimilar(BaseModel):
+    are_the_same: bool = Field(
+        ..., description="Whether the two entities are the same."
     )
-    return response.choices[0].message.content.strip()
 
-def evaluate_answer(expected, candidate, client):
-    """
-    Evaluate whether the candidate answer is correct.
-    
-    1. First, check for an exact match (ignoring case).
-    2. If not an exact match, ask OpenAI using a yes/no prompt whether the candidate answer
-       is semantically equivalent to the expected answer.
-       
-    Returns True if the candidate answer is considered correct, False otherwise.
-    """
-    if candidate.strip().lower() == expected.strip().lower():
-        return True
-    else:
-        eval_prompt = (
-            f"Expected answer: '{expected}'\n"
-            f"Candidate answer: '{candidate}'\n"
-            "Is the candidate answer semantically equivalent to the expected answer? "
-            "Answer only with 'yes' or 'no'."
+
+class Provider(str, Enum):
+    OPENAI = "openai"
+    BEDROCK = "bedrock"
+    NVIDIA = "nvidia"
+
+
+class ModelRegistry:
+    """Registry to manage provider-model relationships and benchmarking state."""
+
+    PROVIDER_MODELS = {
+        Provider.OPENAI: [
+            "gpt-4o",
+            "gpt-4o-mini",
+            # "o1",
+            # "o1-mini",
+            # "o1-preview",
+            "o3-mini",
+        ],
+        Provider.BEDROCK: [
+            # "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
+            # "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
+            # "us.meta.llama3-3-70b-instruct-v1:0",
+            "anthropic.claude-3-5-sonnet-20240620-v1:0",
+            "mistral.mistral-large-2402-v1:0",
+        ],
+        Provider.NVIDIA: [
+            "deepseek-ai/deepseek-r1",
+        ],
+    }
+
+    def __init__(self):
+        self.completed_benchmarks = set()
+
+    def get_models_for_provider(self, provider: Provider) -> List[str]:
+        """Get all models supported by a specific provider."""
+        return self.PROVIDER_MODELS.get(provider, [])
+
+    def is_valid_model(self, provider: Provider, model: str) -> bool:
+        """Check if a model is valid for a given provider."""
+        return model in self.PROVIDER_MODELS.get(provider, [])
+
+    def get_all_provider_model_combinations(self) -> List[Tuple[Provider, str]]:
+        """Get all valid provider-model combinations."""
+        combinations = []
+        for provider in Provider:
+            for model in self.get_models_for_provider(provider):
+                combinations.append((provider, model))
+        return combinations
+
+    def mark_as_completed(self, provider: Provider, model: str):
+        """Mark a provider-model combination as completed."""
+        self.completed_benchmarks.add((provider, model))
+
+    def is_completed(self, provider: Provider, model: str) -> bool:
+        """Check if a provider-model combination has been completed."""
+        return (provider, model) in self.completed_benchmarks
+
+    def load_completed_benchmarks(self, responses_dir: str):
+        """Load already completed benchmarks from response files."""
+        self.completed_benchmarks = set()
+        if not os.path.exists(responses_dir):
+            return
+
+        for filename in os.listdir(responses_dir):
+            if filename.startswith("responses_") and filename.endswith(".json"):
+                parts = (
+                    filename.replace("responses_", "").replace(".json", "").split("_")
+                )
+                if len(parts) >= 2:
+                    try:
+                        # Convert string back to Provider enum
+                        provider_str = parts[0]
+                        provider = next(
+                            (p for p in Provider if p.value == provider_str), None
+                        )
+                        if not provider:
+                            continue
+
+                        model = parts[1]
+                        if (
+                            "__" in model
+                        ):  # Handle cases like 'deepseek-ai__deepseek-r1'
+                            model = model.replace("__", "/")
+                        self.mark_as_completed(provider, model)
+                    except (ValueError, KeyError):
+                        continue
+
+
+class StructuredLLM:
+    def __init__(
+        self,
+        provider: Union[Provider, str],
+        model_id: str,
+        output_format: BaseModel,
+        temperature: float = 0.2,
+    ):
+        self.provider = (
+            provider if isinstance(provider, Provider) else Provider(provider)
         )
-        evaluation = ask_openai(client, eval_prompt)
-        return evaluation.lower().strip() == "yes"
+        self.model_id = model_id
+        self.output_format = output_format
+        self.temperature = temperature
 
-class QAModel:
-    """
-    A class representing a question-answering model.
-    For now, it only supports an OpenAI-based model.
-    """
-    def __init__(self, api_key, name='openai', model_name='o1', **kwargs):
-        self.api_key = api_key
-        self.name = name.lower()
-        self.model_name = model_name
-        self.client = None
-        if self.name == 'openai':
-            self.client = OpenAI(api_key=api_key)
-
-    def ask(self, prompt):
-        """
-        Ask the model a given prompt and return the response along with duration and token usage.
-        """
-        if self.name == 'openai':
-            start_time = time.time()
-            response = self.client.chat.completions.create(
-                messages=[{"role": "user", "content": prompt}],
-                model=self.model_name,
+        # Validate model is valid for provider
+        model_registry = ModelRegistry()
+        if not model_registry.is_valid_model(self.provider, self.model_id):
+            raise ValueError(
+                f"Model '{self.model_id}' is not supported by provider '{self.provider}'"
             )
-            duration = time.time() - start_time
-            tokens = response.usage.total_tokens if hasattr(response.usage, "total_tokens") else None
-            return response.choices[0].message.content.strip(), duration, tokens
+
+        if self.provider in [Provider.OPENAI, Provider.NVIDIA]:
+            self.api_key = self._get_api_key()
+        self.client = self._initialize_client()
+        if self.provider == Provider.BEDROCK:
+            self.bedrock_llm = self._get_bedrock_llm()
+
+        if self.provider == Provider.OPENAI and self.model_id in [
+            "o1",
+            "o1-preview",
+            "o1-mini",
+            "o3-mini",
+        ]:
+            self.temperature = NotGiven()
+
+    def _get_api_key(self) -> str:
+        """Get API key from environment variables based on the provider."""
+        key_mapping = {
+            Provider.OPENAI: "OPENAI_API_KEY",
+            Provider.NVIDIA: "NVIDIA_API_KEY",
+        }
+
+        if self.provider in key_mapping:
+            env_var = key_mapping[self.provider]
+            api_key = os.environ.get(env_var)
+            if not api_key:
+                raise ValueError(f"{env_var} environment variable is not set")
+            return api_key
+
+    def _initialize_client(self):
+        """Initialize the appropriate client based on provider."""
+        if self.provider == Provider.OPENAI:
+            return OpenAI(api_key=self.api_key)
+        elif self.provider == Provider.NVIDIA:
+            return OpenAI(
+                base_url="https://integrate.api.nvidia.com/v1", api_key=self.api_key
+            )
+        elif self.provider == Provider.BEDROCK:
+            session = boto3.session.Session()
+            configured_region = session.region_name
+            return boto3.client("bedrock-runtime", region_name=configured_region)
         else:
-            raise Exception("Not implemented.")
+            raise ValueError(f"Invalid provider: {self.provider}")
 
-    def prompt_with_question(self, question):
-        """
-        Build a prompt using only the question.
-        """
-        prompt = (
-            f"Provide a single word (or compound word) answer to the following question:\n"
-            f"Question: {question}"
+    def _get_bedrock_llm(self):
+        """Get the Bedrock LLM model based on the model name and temperature."""
+        llm = ChatBedrockConverse(
+            client=self.client, model_id=self.model_id, temperature=self.temperature
         )
-        return self.ask(prompt)
+        llm = llm.with_structured_output(self.output_format, include_raw=True)
+        return llm
 
-    def prompt_with_question_context(self, question, context):
-        """
-        Build a prompt using both the question and the provided context.
-        """
-        prompt = (
-            "Provide a single word (or compound word) answer to the following question based on the Context.\n"
-            f"Context: {context}\n"
-            f"Question: {question}"
+    def _call_bedrock(self, messages: list[dict]) -> Dict[str, Any]:
+        """Call the Bedrock LLM model with the given message."""
+        response = self.bedrock_llm.invoke(messages)
+        usage_metadata = response["raw"].usage_metadata
+        output = {
+            "raw_response": response["raw"],
+            "parsed_output": response["parsed"],
+            "date": datetime.now(),
+            "latency": response["raw"].response_metadata["metrics"]["latencyMs"][0],
+            "input_tokens": usage_metadata["input_tokens"],
+            "output_tokens": usage_metadata["output_tokens"],
+        }
+        return output
+
+    def _call_openai(self, messages: str) -> Dict[str, Any]:
+        """Call the OpenAI API with the given messages."""
+        now = time.time()
+        response = self.client.beta.chat.completions.parse(
+            model=self.model_id,
+            messages=messages,
+            response_format=self.output_format,
+            temperature=self.temperature,
         )
-        return self.ask(prompt)
+        elapsed_ms = (time.time() - now) * 1000
+        output = {
+            "raw_response": response,
+            "parsed_output": response.choices[0].message.parsed,
+            "date": datetime.now(),
+            "latency": elapsed_ms,
+            "input_tokens": response.usage.prompt_tokens,
+            "output_tokens": response.usage.completion_tokens,
+            "reasoning_tokens": response.usage.completion_tokens_details.reasoning_tokens,
+        }
+        return output
 
-    def call(self, qa):
-        """
-        Accepts a single QA dict or a list of QA dicts.
-        Each dict should include:
-            - 'question'
-            - optionally, 'context'
-            - 'expected' : the expected answer.
-        
-        Returns for each QA item:
-            - answer_without, duration_without, tokens_without
-            - answer_with, duration_with, tokens_with
-        """
-        def process_item(item):
-            question = item.get("question")
-            context = item.get("context", "")
-            length = item.get("length",None)
-            answer_without, duration_without, tokens_without = self.prompt_with_question(question)
-            if context:
-                answer_with, duration_with, tokens_with = self.prompt_with_question_context(question, context)
+    def _call_nvidia(self, messages: str) -> Dict[str, Any]:
+        now = time.time()
+        response = self.client.chat.completions.create(
+            model=self.model_id,
+            messages=messages,
+            temperature=0.6,
+            top_p=0.7,
+            max_tokens=4096,
+        )
+        elapsed_ms = (time.time() - now) * 1000
+        response_text = response.choices[0].message.content
+
+        reasoning_tokens = None
+        text_to_parse = response_text
+
+        think_pattern = r"<think>(.*?)</think>(.*)"
+        think_match = re.search(think_pattern, response_text, re.DOTALL)
+
+        if think_match:
+            reasoning_tokens = think_match.group(1).strip()
+            text_to_parse = think_match.group(2).strip()
+
+        json_pattern = r"{.*}"
+        json_match = re.search(json_pattern, text_to_parse, re.DOTALL)
+
+        if json_match:
+            try:
+                json_text = json_match.group(0).replace("'", '"')
+                parsed_output = self.output_format.model_validate_json(json_text)
+            except Exception as e:
+                print(f"Error parsing JSON: {e}")
+                parsed_output = self._generate_empty_output()
+        else:
+            parsed_output = self._generate_empty_output()
+
+        output = {
+            "raw_response": response,
+            "parsed_output": parsed_output,
+            "reasoning_tokens": reasoning_tokens,
+            "date": datetime.now(),
+            "latency": elapsed_ms,
+            "input_tokens": response.usage.prompt_tokens,
+            "output_tokens": response.usage.completion_tokens,
+            "reasoning": reasoning_tokens,
+        }
+        return output
+
+    def _generate_empty_output(self):
+        """Create an empty instance of the output format."""
+        field_types = self.output_format.__annotations__
+        fields = {}
+        for field_name, field_type in field_types.items():
+            if field_type == str:
+                fields[field_name] = ""
+            elif field_type == bool:
+                fields[field_name] = False
+            elif field_type == int:
+                fields[field_name] = 0
+            elif field_type == float:
+                fields[field_name] = 0.0
             else:
-                answer_with, duration_with, tokens_with = answer_without, duration_without, tokens_without
-            return {
-                "question": question,
-                "context": context,
-                "length":length,
-                "expected": item.get("expected", "").strip(),
-                "answer_without": answer_without,
-                "duration_without": duration_without,
-                "tokens_without": tokens_without,
-                "answer_with": answer_with,
-                "duration_with": duration_with,
-                "tokens_with": tokens_with
-            }
-        
-        if isinstance(qa, list):
-            return [process_item(item) for item in tqdm.tqdm(qa)]
-        elif isinstance(qa, dict):
-            return process_item(qa)
+                fields[field_name] = None
+        return self.output_format(**fields)
+
+    def __call__(self, prompt: str) -> Dict[str, Any]:
+        """Evaluate the given messages using the appropriate LLM model."""
+        if self.provider == Provider.BEDROCK:
+            messages = [{"role": "user", "content": [{"text": prompt}]}]
+            return self._call_bedrock(messages)
+        elif self.provider == Provider.OPENAI:
+            messages = [{"role": "user", "content": [{"type": "text", "text": prompt}]}]
+            return self._call_openai(messages)
+        elif self.provider == Provider.NVIDIA:
+            json_schema = self.output_format.model_json_schema()
+            messages = [
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": f"{prompt}\nPlease return only the raw JSON string (no markdown) that strictly conforms to the following JSON schema, with no additional text: {json_schema}",
+                        }
+                    ],
+                }
+            ]
+            return self._call_nvidia(messages)
+
+
+class Evaluate:
+    def __init__(
+        self,
+        qa_llm: StructuredLLM,
+        records: list[dict],
+        responses_save_path: str = None,
+        verifier_provider: Provider = Provider.OPENAI,
+        verifier_model: str = "o3-mini",
+    ):
+        self.qa_llm = qa_llm
+        self.verifier_llm = StructuredLLM(
+            provider=verifier_provider,
+            model_id=verifier_model,
+            output_format=AreSimilar,
+        )
+        self.records = records
+        self.responses_save_path = responses_save_path
+
+    def _verify_entity(self, expected: str, candidate: str) -> bool:
+        if candidate.strip().lower() == expected.strip().lower():
+            return True
         else:
-            raise ValueError("Input must be a dictionary or a list of dictionaries.")
+            VERIFY_PROMPT = (
+                f"Expected answer: {expected}\n"
+                f"Candidate answer: {candidate}\n"
+                "Are these two answers referring to the same entity? "
+                "Answer with true or false."
+            )
+            response = self.verifier_llm(VERIFY_PROMPT)
+            return response["parsed_output"].are_the_same
 
-class Evaluator:
-    """
-    Evaluator class that instantiates a set of models and evaluates each on a set of QA items.
-    For each model, it produces two rows of results:
-      - One for evaluation using answers without context.
-      - One for evaluation using answers with context.
-    The results include accuracy, average duration, and average token usage.
-    """
-    def __init__(self, eval_client, model_configs):
-        """
-        eval_client: an OpenAI client used for evaluation prompts.
-        model_configs: list of dicts, each with keys 'name', 'api_key', and 'model_name'
-        """
-        self.eval_client = eval_client
-        self.models = {}
-        for config in model_configs:
-            model_type = config.get("name", "openai")
-            api_key = config["api_key"]
-            variant = config.get("model_name", "o1")
-            key = f"{model_type}-{variant}"
-            self.models[key] = QAModel(api_key, name=model_type, model_name=variant)
-
-    def run_evaluation(self, qa_items):
-        """
-        qa_items: list of dictionaries. Each should include:
-            - 'question'
-            - optionally 'context'
-            - 'expected' (expected answer)
-        
-        For each model, the evaluator:
-         - Runs the model on all QA items.
-         - Evaluates the answers both without context and with context.
-         - Aggregates accuracy, average duration, and average token usage for both runs.
-         
-        Returns a pandas DataFrame with two rows per model.
-        """
+    def _eval_without_context(self) -> List[Dict[str, Any]]:
         results = []
 
-        for model_key, model in self.models.items():
-            total = len(qa_items)
-            # Aggregators for answers without context.
-            correct_without = 0
-            total_duration_without = 0.0
-            total_tokens_without = 0
+        NO_CONTEXT_PROMPT = (
+            "Provide a single entity name as an answer to the following question:\n"
+            "Question: {question}"
+        )
 
-            # Aggregators for answers with context.
-            correct_with = 0
-            total_duration_with = 0.0
-            total_tokens_with = 0
-            print(f'Running queries for model :{model_key}')
-            qa_results = model.call(qa_items)
-            # Ensure we have a list of results.
-            if not isinstance(qa_results, list):
-                qa_results = [qa_results]
-            print(f'Running evaluations for model :{model_key}')
-            for res in qa_results:
-                expected = res["expected"]
-                # Evaluate without context.
-                candidate_without = res["answer_without"].strip()
-                is_correct_without = evaluate_answer(expected, candidate_without, self.eval_client)
-                if is_correct_without:
-                    correct_without += 1
-                total_duration_without += res["duration_without"]
-                if res["tokens_without"] is not None:
-                    total_tokens_without += res["tokens_without"]
+        for record in self.records:
+            question = record["question"]
+            expected = record["expected"]
 
-                # Evaluate with context.
-                candidate_with = res["answer_with"].strip()
-                is_correct_with = evaluate_answer(expected, candidate_with, self.eval_client)
-                if is_correct_with:
-                    correct_with += 1
-                total_duration_with += res["duration_with"]
-                if res["tokens_with"] is not None:
-                    total_tokens_with += res["tokens_with"]
+            response = self.qa_llm(NO_CONTEXT_PROMPT.format(question=question))
+            candidate = response["parsed_output"].entity
 
-            accuracy_without = (correct_without / total) * 100 if total > 0 else 0
-            avg_duration_without = total_duration_without / total if total > 0 else 0
-            avg_tokens_without = total_tokens_without / total if total > 0 else 0
+            is_correct = self._verify_entity(expected, candidate) if expected else False
 
-            accuracy_with = (correct_with / total) * 100 if total > 0 else 0
-            avg_duration_with = total_duration_with / total if total > 0 else 0
-            avg_tokens_with = total_tokens_with / total if total > 0 else 0
+            result = {
+                "question": question,
+                "candidate": candidate,
+                "expected": expected,
+                "is_correct": is_correct,
+                "context_used": False,
+                "input_tokens": response.get("input_tokens", 0),
+                "output_tokens": response.get("output_tokens", 0),
+                "reasoning_tokens": response.get("reasoning_tokens", 0),
+                "latency": round(response.get("latency", 0), 2),
+                "date": response.get("date", datetime.now()).strftime("%Y-%m-%d %H:%M"),
+            }
+            results.append(result)
 
-            results.append({
-                "Model": model_key,
-                "Run": "Without Context",
-                "Accuracy (%)": round(accuracy_without, 2),
-                "Avg Duration (s)": round(avg_duration_without, 2),
-                "Avg Tokens": round(avg_tokens_without, 2)
-            })
+        return results
 
-            results.append({
-                "Model": model_key,
-                "Run": "With Context",
-                "Accuracy (%)": round(accuracy_with, 2),
-                "Avg Duration (s)": round(avg_duration_with, 2),
-                "Avg Tokens": round(avg_tokens_with, 2)
-            })
+    def _eval_with_context(self) -> List[Dict[str, Any]]:
+        results = []
+
+        WITH_CONTEXT_PROMPT = (
+            "Provide a single entity name as an answer to the following question based on the context:\n"
+            "Question: {question}\n\n"
+            "Context: {context}"
+        )
+
+        for record in self.records:
+            question = record["question"]
+            context = record["context"]
+            expected = record["expected"]
+
+            response = self.qa_llm(
+                WITH_CONTEXT_PROMPT.format(question=question, context=context)
+            )
+            candidate = response["parsed_output"].entity
+
+            is_correct = self._verify_entity(expected, candidate) if expected else False
+
+            result = {
+                "question": question,
+                "candidate": candidate,
+                "expected": expected,
+                "is_correct": is_correct,
+                "context_used": True,
+                "context": context,
+                "input_tokens": response.get("input_tokens", 0),
+                "output_tokens": response.get("output_tokens", 0),
+                "reasoning_tokens": response.get("reasoning_tokens", 0),
+                "latency": round(response.get("latency", 0), 2),
+                "date": response.get("date", datetime.now()).strftime("%Y-%m-%d %H:%M"),
+            }
+            results.append(result)
+
+        return results
+
+    def evaluate(self):
+        """
+        Evaluate the records with and without context, and return results.
+        If responses_save_path is provided, save the detailed results as JSON.
+        """
+        without_context_results = self._eval_without_context()
+        with_context_results = self._eval_with_context()
+
+        if self.responses_save_path:
+            all_results = without_context_results + with_context_results
+            with open(self.responses_save_path, "w") as f:
+                json.dump(all_results, f, default=str, indent=2)
+
+        # Use .value to get the string representation of the provider enum
+        model_name = f"{self.qa_llm.provider.value}-{self.qa_llm.model_id}"
+
+        results = []
+
+        if without_context_results:
+            total = len(without_context_results)
+            correct = sum(1 for r in without_context_results if r["is_correct"])
+            accuracy = (correct / total) * 100 if total > 0 else 0
+            avg_latency = (
+                sum(r["latency"] for r in without_context_results) / total
+                if total > 0
+                else 0
+            )
+            avg_in_tokens = (
+                sum(r["input_tokens"] for r in without_context_results) / total
+                if total > 0
+                else 0
+            )
+            avg_out_tokens = (
+                sum(r["output_tokens"] for r in without_context_results) / total
+                if total > 0
+                else 0
+            )
+
+            results.append(
+                {
+                    "Model": model_name,
+                    "Run": "Without Context",
+                    "Accuracy (%)": round(accuracy, 2),
+                    "Avg Duration (s)": round(avg_latency, 2),
+                    "Avg Input Tokens": round(avg_in_tokens, 2),
+                    "Avg Output Tokens": round(avg_out_tokens, 2),
+                    "Total Samples": total,
+                }
+            )
+
+        if with_context_results:
+            total = len(with_context_results)
+            correct = sum(1 for r in with_context_results if r["is_correct"])
+            accuracy = (correct / total) * 100 if total > 0 else 0
+            avg_latency = (
+                sum(r["latency"] for r in with_context_results) / total
+                if total > 0
+                else 0
+            )
+            avg_in_tokens = (
+                sum(r["input_tokens"] for r in with_context_results) / total
+                if total > 0
+                else 0
+            )
+            avg_out_tokens = (
+                sum(r["output_tokens"] for r in with_context_results) / total
+                if total > 0
+                else 0
+            )
+
+            results.append(
+                {
+                    "Model": model_name,
+                    "Run": "With Context",
+                    "Accuracy (%)": round(accuracy, 2),
+                    "Avg Duration (s)": round(avg_latency, 2),
+                    "Avg Input Tokens": round(avg_in_tokens, 2),
+                    "Avg Output Tokens": round(avg_out_tokens, 2),
+                    "Total Samples": total,
+                }
+            )
 
         return pd.DataFrame(results)
 
-# Example usage:
+
+class BenchmarkRunner:
+    """Class to run benchmarks across multiple models and providers."""
+
+    def __init__(
+        self,
+        records: list[dict],
+        responses_dir: str = "responses",
+        results_file: str = "results.csv",
+    ):
+        self.records = records
+        self.responses_dir = responses_dir
+        self.results_file = results_file
+        self.model_registry = ModelRegistry()
+        os.makedirs(responses_dir, exist_ok=True)
+
+        self.model_registry.load_completed_benchmarks(responses_dir)
+
+    def run_all_benchmarks(self, skip_completed: bool = True):
+        """Run benchmarks for all provider-model combinations."""
+        results_all = []
+
+        for (
+            provider,
+            model,
+        ) in self.model_registry.get_all_provider_model_combinations():
+            if skip_completed and self.model_registry.is_completed(provider, model):
+                print(f"Skipping already evaluated {provider.value} model: {model}")
+                continue
+
+            print(f"\nEvaluating {provider.value} model: {model}")
+            try:
+                structured_llm = StructuredLLM(
+                    provider=provider, model_id=model, output_format=Answer
+                )
+
+                model_filename = model.replace("/", "__")
+                responses_path = f"{self.responses_dir}/responses_{provider.value}_{model_filename}.json"
+
+                evaluator = Evaluate(
+                    qa_llm=structured_llm,
+                    records=self.records,
+                    responses_save_path=responses_path,
+                )
+
+                df_results = evaluator.evaluate()
+                results_all.append(df_results)
+
+                self.model_registry.mark_as_completed(provider, model)
+
+            except Exception as e:
+                print(f"Error evaluating {provider.value} model {model}: {e}")
+
+        if results_all:
+            combined_results = pd.concat(results_all)
+            combined_results.to_csv(self.results_file, index=False)
+            return combined_results
+
+        return pd.DataFrame()
+
+
 if __name__ == "__main__":
-    # Load environment variables.
-    dotenv.load_dotenv()
-    eval_api_key = os.environ.get("OPENAI_API_KEY")
-    
-    # Evaluation client for ask_openai (using o3-mini model as before)
-    eval_client = OpenAI(api_key=eval_api_key)
-    
-    # Define model configurations to be evaluated.
-    model_configs = [
-        {"name": "openai", "api_key": os.environ.get("OPENAI_API_KEY"), "model_name": "o1"},
-        # You can add additional model configurations here.
-        # {"name": "deepseek", "api_key": "YOUR_DEEPSEEK_API_KEY", "model_name": "d1"}
-    ]
-    
-    # Instantiate the evaluator.
-    evaluator = Evaluator(eval_client, model_configs)
-    
-    # Define a list of QA items for evaluation.
-    qa_items = [
-        {
-            "question": "What is the capital of France?",
-            "context": "France is a country in Europe with many famous landmarks.",
-            "expected": "Paris"
-        },
-        {
-            "question": "What is the largest planet in our Solar System?",
-            "context": "The Solar System has eight planets and several dwarf planets.",
-            "expected": "Jupiter"
-        }
-    ]
-    
-    # Run the evaluation.
-    df_results = evaluator.run_evaluation(qa_items)
-    print("Evaluation Results:")
-    print(df_results)
+    RESPONSES_DIR = "responses"  # Directory to save intermediate responses
+    RESULT_PATH = "results.csv"  # Save the final results as a CSV file
+    RECORDS_PATH = "records.json"  # Input json, list of dictionaries with keys 'question', 'context', 'expected'
+    os.makedirs(RESPONSES_DIR, exist_ok=True)
+
+    records = read_json(RECORDS_PATH)
+
+    benchmark_runner = BenchmarkRunner(
+        records=records, responses_dir=RESPONSES_DIR, results_file=RESULT_PATH
+    )
+
+    benchmark_runner.run_all_benchmarks(skip_completed=True)
