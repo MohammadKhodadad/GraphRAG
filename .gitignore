@@ -8,7 +8,6 @@ chemrxiv_graph_v1.json
 chemrxiv_graph_v2.json
 pubchem_graph_v1.json
 chemrxiv_data_*.json
-chemrxiv_data_2201.json
 *.zip
 material_safety_data/
 material-safety-data-sheets.zip
