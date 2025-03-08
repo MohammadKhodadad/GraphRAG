@@ -134,7 +134,6 @@ class StructuredLLM:
         self.output_format = output_format
         self.temperature = temperature
 
-        # Validate model is valid for provider
         model_registry = ModelRegistry()
         if not model_registry.is_valid_model(self.provider, self.model_id):
             raise ValueError(
@@ -364,9 +363,7 @@ class Evaluate:
             is_correct = self._verify_entity(expected, candidate) if expected else False
 
             result = {
-                "question": question,
                 "candidate": candidate,
-                "expected": expected,
                 "is_correct": is_correct,
                 "context_used": False,
                 "input_tokens": response.get("input_tokens", 0),
@@ -374,6 +371,7 @@ class Evaluate:
                 "reasoning_tokens": response.get("reasoning_tokens", 0),
                 "latency": round(response.get("latency", 0), 2),
                 "date": response.get("date", datetime.now()).strftime("%Y-%m-%d %H:%M"),
+                "raw": record,
             }
             results.append(result)
 
@@ -401,17 +399,15 @@ class Evaluate:
             is_correct = self._verify_entity(expected, candidate) if expected else False
 
             result = {
-                "question": question,
                 "candidate": candidate,
-                "expected": expected,
                 "is_correct": is_correct,
                 "context_used": True,
-                "context": context,
                 "input_tokens": response.get("input_tokens", 0),
                 "output_tokens": response.get("output_tokens", 0),
                 "reasoning_tokens": response.get("reasoning_tokens", 0),
                 "latency": round(response.get("latency", 0), 2),
                 "date": response.get("date", datetime.now()).strftime("%Y-%m-%d %H:%M"),
+                "raw": record,
             }
             results.append(result)
 
@@ -430,7 +426,6 @@ class Evaluate:
             with open(self.responses_save_path, "w") as f:
                 json.dump(all_results, f, default=str, indent=2)
 
-        # Use .value to get the string representation of the provider enum
         model_name = f"{self.qa_llm.provider.value}-{self.qa_llm.model_id}"
 
         results = []
@@ -454,6 +449,8 @@ class Evaluate:
                 if total > 0
                 else 0
             )
+            total_in_tokens = sum(r["input_tokens"] for r in without_context_results)
+            total_out_tokens = sum(r["output_tokens"] for r in without_context_results)
 
             results.append(
                 {
@@ -463,6 +460,8 @@ class Evaluate:
                     "Avg Duration (s)": round(avg_latency, 2),
                     "Avg Input Tokens": round(avg_in_tokens, 2),
                     "Avg Output Tokens": round(avg_out_tokens, 2),
+                    "Total Input Tokens": total_in_tokens,
+                    "Total Output Tokens": total_out_tokens,
                     "Total Samples": total,
                 }
             )
@@ -486,6 +485,8 @@ class Evaluate:
                 if total > 0
                 else 0
             )
+            total_in_tokens = sum(r["input_tokens"] for r in with_context_results)
+            total_out_tokens = sum(r["output_tokens"] for r in with_context_results)
 
             results.append(
                 {
@@ -495,6 +496,8 @@ class Evaluate:
                     "Avg Duration (s)": round(avg_latency, 2),
                     "Avg Input Tokens": round(avg_in_tokens, 2),
                     "Avg Output Tokens": round(avg_out_tokens, 2),
+                    "Total Input Tokens": total_in_tokens,
+                    "Total Output Tokens": total_out_tokens,
                     "Total Samples": total,
                 }
             )
