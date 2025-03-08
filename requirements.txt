@@ -16,3 +16,6 @@ rouge-score
 openai
 python-dotenv
 nltk
+pydantic
+langchain-aws
+boto3
