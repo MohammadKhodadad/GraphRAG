@@ -103,13 +103,13 @@ def graph_pipeline_from_csv(file_address, graph_directory, api_key,source_column
             G.save_graph(graph_directory)
 
 
-def sample_graph_pipeline(graph_directory,sample_legnths = {2:2, 3:2 }, api_key= None):
+def sample_graph_pipeline(graph_directory,sample_legnths = {2:2, 3:2 }, api_key= None, min_chars = 4):
     G=GraphManager()
     G.load_graph(graph_directory)
     E = GraphExplorer(G)
     samples={}
-    for key, value in sample_legnths.items():
-        samples[key]= E.sample_random_paths(key, value)
+    for key, value in tqdm.tqdm(sample_legnths.items()):
+        samples[key]= E.sample_random_paths(key, value, min_chars)
         # for path in samples[key]:
         #     E.display_path(path)
     

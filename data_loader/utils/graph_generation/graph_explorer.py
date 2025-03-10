@@ -13,10 +13,11 @@ class GraphExplorer:
         """Initializes the GraphExplorer with an instance of GraphManager."""
         self.graph_manager = graph_manager
 
-    def sample_random_paths(self, length, num_samples=5):
+    def sample_random_paths(self, length, num_samples=5, min_chars=4):
         """Randomly samples paths of the given length using streaming BFS instead of loading all paths."""
         sampled_paths = []
-        nodes = list(self.graph_manager.graph.nodes)
+        # nodes = list(self.graph_manager.graph.nodes)
+        nodes = [node for node in self.graph_manager.graph.nodes if len(str(node)) >= min_chars]
 
         if not nodes:
             print("Graph is empty. No nodes to explore.")
@@ -40,7 +41,7 @@ class GraphExplorer:
 
                 # Expand neighbors while avoiding cycles
                 for neighbor in self.graph_manager.graph.neighbors(node):
-                    if neighbor not in path:  # Ensures simple paths (no cycles)
+                    if neighbor not in path and len(str(neighbor)) >= min_chars:  # Ensures simple paths (no cycles)
                         queue.append((neighbor, path + [neighbor]))
 
         if not sampled_paths:
@@ -102,22 +103,25 @@ class GraphExplorer:
 if __name__ == "__main__":
     gm = GraphManager()
     gm.add_node("A", "User1", "Start node")
+    gm.add_node("AA", "User1", "Start node")
     gm.add_node("B", "User2", "Intermediate node")
+    gm.add_node("BB", "User2", "Intermediate node")
+    gm.add_node("CC", "User3", "Another node")
     gm.add_node("C", "User3", "Another node")
     gm.add_node("D", "User4", "Extra node")
-    gm.add_edge("A", "B", "User1", "First connection")
-    gm.add_edge("B", "C", "User1.2", "Second connection")
-    gm.add_edge("B", "C", "User1", "Second.one connection")
+    gm.add_edge("AA", "BB", "User1", "First connection")
+    # gm.add_edge("BB", "CC", "User1.2", "Second connection")
+    gm.add_edge("BB", "C", "User2", "Second.one connection")
     gm.add_edge("C", "D", "User1", "Third connection")
-    gm.add_edge("C", "D", "User1.3", "Third.one connection")
+    gm.add_edge("CC", "DD", "User1.3", "Third.one connection")
 
     gm.display_graph()
     print()
 
     explorer = GraphExplorer(gm)
-    path_length = 3
+    path_length = 2
     num_samples = 1
-    results = explorer.sample_random_paths(path_length, num_samples)
+    results = explorer.sample_random_paths(path_length, num_samples,min_chars=2)
     
 
     print(results)

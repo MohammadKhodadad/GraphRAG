@@ -11,8 +11,8 @@ if __name__ == "__main__":
     dotenv.load_dotenv()
 
     # Define a list of QA items for evaluation.
-    qa_items = load_qa_items("/media/torontoai/GraphRAG/GraphRAG/data_loader/data/chemrxiv_qas.json")
-    qa_items = random.sample(qa_items, 10)
+    qa_items = load_qa_items("/media/torontoai/GraphRAG/GraphRAG/data_loader/data/chemrxiv_qas_v2_2.json")
+    # qa_items = random.sample(qa_items, 100)
     RECORDS_PATH = "/media/torontoai/GraphRAG/GraphRAG/data_loader/data/chemrxiv_qas_v2_verified.json"
     RESPONSES_DIR = "responses"  # Directory to save intermediate responses
     RESULT_PATH = "results.csv"  # Save the final results as a CSV file

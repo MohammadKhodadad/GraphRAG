@@ -2,10 +2,9 @@ import os
 import json
 import random 
 
-with open('./data/chemrxiv_qas_verified.json','rb') as f:
+with open('./data/chemrxiv_qas_v2_2.json','rb') as f:
     qas=json.load(f)
 print(len(qas))
-qas = random.sample(qas, 50)
 for qa in qas:
     qa['Question']=qa.pop('q')
     qa['Answer']=qa.pop('a')

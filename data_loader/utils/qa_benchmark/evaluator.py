@@ -44,20 +44,20 @@ class ModelRegistry:
         Provider.OPENAI: [
             "gpt-4o",
             "gpt-4o-mini",
-            # "o1",
-            # "o1-mini",
-            # "o1-preview",
+            "o1",
+            "o1-mini",
+            "o1-preview",
             "o3-mini",
         ],
         Provider.BEDROCK: [
-            # "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
-            # "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
-            # "us.meta.llama3-3-70b-instruct-v1:0",
-            # "anthropic.claude-3-5-sonnet-20240620-v1:0",
-            # "mistral.mistral-large-2402-v1:0",
+            "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
+            "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
+            "us.meta.llama3-3-70b-instruct-v1:0",
+            "anthropic.claude-3-5-sonnet-20240620-v1:0",
+            "mistral.mistral-large-2402-v1:0",
         ],
         Provider.NVIDIA: [
-            # "deepseek-ai/deepseek-r1",
+            "deepseek-ai/deepseek-r1",
         ],
     }
 

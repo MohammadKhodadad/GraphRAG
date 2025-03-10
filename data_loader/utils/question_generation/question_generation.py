@@ -3,6 +3,7 @@ from openai import OpenAI
 import os
 import random
 import json
+import tqdm
 
 def ask_openai(client,prompt):
     response = client.chat.completions.create(
@@ -22,13 +23,15 @@ def generate_relation_question(client, entity1, relation, entity2, text, entity1
         f"You are given a text along with an entity and its relation to another entity.\n\n"
         f"Entity 1: {entity1}\n"
         f"Relation: {relation}\n"
-        f"Entity 2 (Answer): {entity2}\n"
+        f"Entity 2: {entity2}\n"
         f"Text: {text}\n\n"
         f"Information about Entity1: {entity1_meta if entity1_meta else 'None'}\n"
-        f"Your task is to generate a factual question about Entity 1 and its relation, where the answer is Entity1.\n"
+        f" Your task is to generate a factual question whose answer is Entity1.\n"
+        f"The question should ask for the entity that has the specified relation to Entity2.\n"
+        f"Do not mention the answer which is the Entity1 in the question."
         f"Ensure that the question is factual and can be answered solely based on the given text and the information about Entity 1.\n"
         f"Do not point to the text such as 'Abstract', 'Table #1', 'in the text', 'in the article', or etc.\n"
-        f"If the entity and relation is not specific enough, try to add descriptions FROM THE TEXT or FROM THE INFORMATION ABOUT ENTITY 1 to make it specifc.\n"
+        f"If Entity1 and relation is not specific enough (meaning it can have multiple answers), try to add descriptions FROM THE TEXT or FROM THE INFORMATION ABOUT ENTITY 1 to make it specifc. (So, Entity1 is the only answer)\n"
         f"Return a dictionary without any code formatting, backticks, or markdown, with keys 'q' and 'a'."
     )
     
@@ -121,7 +124,7 @@ def generate_questions_from_paths(paths, api_key, save_address=None):
     client = OpenAI(api_key=api_key)
     
     for length, paths in paths.items():
-        for path in paths:
+        for path in tqdm.tqdm(paths):
             sampled_qas.append(generate_multihop_question(client, path))
     
     if save_address:
@@ -226,14 +229,14 @@ if __name__ == "__main__":
 
 
     path = [
-        ("Glucose", "is broken down into", "Pyruvate", "During glycolysis, glucose is broken down into pyruvate, producing ATP."),
-        ("Pyruvate", "is converted into", "Acetyl-CoA", "Pyruvate undergoes decarboxylation to form Acetyl-CoA in the mitochondria."),
-        ("Acetyl-CoA", "enters", "Krebs Cycle", "Acetyl-CoA enters the Krebs cycle, where it undergoes oxidation."),
-        ("Krebs Cycle", "produces", "ATP", "The Krebs cycle produces ATP, NADH, and FADH2 as energy carriers."),
+        ("Glucose", "is broken down into", "Pyruvate", "During glycolysis, glucose is broken down into pyruvate, producing ATP.", '1',''),
+        ("Pyruvate", "is converted into", "Acetyl-CoA", "Pyruvate undergoes decarboxylation to form Acetyl-CoA in the mitochondria.",'2', ''),
+        # ("Acetyl-CoA", "enters", "Krebs Cycle", "Acetyl-CoA enters the Krebs cycle, where it undergoes oxidation.", '3',''),
+        # ("Krebs Cycle", "produces", "ATP", "The Krebs cycle produces ATP, NADH, and FADH2 as energy carriers.", '4',''),
     ]
 
 
 
     qa_pair = generate_multihop_question(client, path)
     print(qa_pair)
-    print(is_factual_chemistry_question(client, qa_pair['q'], qa_pair['a'], path))
+    # print(is_factual_chemistry_question(client, qa_pair['q'], qa_pair['a'], path))
