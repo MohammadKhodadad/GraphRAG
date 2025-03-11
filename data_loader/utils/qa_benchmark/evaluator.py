@@ -129,7 +129,7 @@ class StructuredLLM:
         model_id: str,
         output_format: BaseModel,
         temperature: float = 0.2,
-        max_completion_tokens: int = 4096,
+        max_completion_tokens: int = 8192,
     ):
         self.provider = (
             provider if isinstance(provider, Provider) else Provider(provider)

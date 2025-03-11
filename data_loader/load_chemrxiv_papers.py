@@ -16,8 +16,8 @@ api_key = os.environ.get("OPENAI_API_KEY")  # Ensure this is set in your environ
 # # # STAGE 2
 # graph_pipeline('./data/chemrxiv_papers_v2','./data/chemrxiv_graph_v2.json',api_key)
 # # STAGE 3
-# sampled_paths = sample_graph_pipeline('./data/chemrxiv_graph_v2.json',{1:10, 2:10, 3:10, 4:10 })
-# # print(sampled_paths)
+sampled_paths = sample_graph_pipeline('./data/chemrxiv_graph_v2.json',{1:300, 2:300, 3:300, 4:300 })
+# print(sampled_paths)
 # # STAGE 4
-# generate_questions_from_paths(sampled_paths,api_key,'./data/chemrxiv_qas_v2_2.json')
-evaluate_questions('./data/chemrxiv_qas_v2_2.json','./data/chemrxiv_qas_v2_2_verified.json',api_key)
+generate_questions_from_paths(sampled_paths,api_key,'./data/chemrxiv_qas_v2_3.json')
+evaluate_questions('./data/chemrxiv_qas_v2_3.json','./data/chemrxiv_qas_v2_3_verified.json',api_key)
