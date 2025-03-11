@@ -5,8 +5,10 @@ from openai import OpenAI, NotGiven
 import os
 import re
 from enum import Enum
-from typing import Dict, Any, Optional, Union, List, Tuple, Set
+from typing import Dict, Any, Union, List, Tuple, Iterable
 from langchain_aws.chat_models.bedrock_converse import ChatBedrockConverse
+from langchain_core.output_parsers import JsonOutputParser
+from langchain_core.messages import AIMessage
 from pydantic import BaseModel, Field
 from datetime import datetime
 from dotenv import load_dotenv
@@ -54,13 +56,14 @@ class ModelRegistry:
         Provider.BEDROCK: [
             "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
             "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
-            "us.anthropic.claude-3-7-sonnet-20250219-v1:0-reasoning",
             "us.meta.llama3-3-70b-instruct-v1:0",
             "anthropic.claude-3-5-sonnet-20240620-v1:0",
             "mistral.mistral-large-2402-v1:0",
+            "us.anthropic.claude-3-7-sonnet-20250219-v1:0-reasoning",
+            "us.deepseek.r1-v1:0-reasoning",
         ],
         Provider.NVIDIA: [
-            "deepseek-ai/deepseek-r1",
+            # "deepseek-ai/deepseek-r1",
         ],
     }
 
@@ -138,6 +141,7 @@ class StructuredLLM:
         self.output_format = output_format
         self.temperature = temperature
         self.max_completion_tokens = max_completion_tokens
+        self.is_reasoning = False
         self.thinking_params = None
 
         model_registry = ModelRegistry()
@@ -148,13 +152,17 @@ class StructuredLLM:
 
         if "reasoning" in self.model_id:
             self.model_id = self.model_id.replace("-reasoning", "")
-            self.temperature = 1
-            self.thinking_params = {
-                "thinking": {
-                    "type": "enabled",
-                    "budget_tokens": self.max_completion_tokens - 256,
+            self.is_reasoning = True
+            if "claude-3-7" in self.model_id:
+                self.temperature = 1.0
+                self.thinking_params = {
+                    "thinking": {
+                        "type": "enabled",
+                        "budget_tokens": self.max_completion_tokens - 256,
+                    }
                 }
-            }
+            else:
+                self.temperature = 0.6
 
         if self.provider in [Provider.OPENAI, Provider.NVIDIA]:
             self.api_key = self._get_api_key()
@@ -199,22 +207,41 @@ class StructuredLLM:
         else:
             raise ValueError(f"Invalid provider: {self.provider}")
 
-    def _parse_json_from_text(self, text_to_parse: str):
+    def _parse_json_from_text(self, text_to_parse: str) -> BaseModel:
         """Extract and parse JSON from text string."""
-        json_pattern = r"{.*}"
-        json_match = re.search(json_pattern, text_to_parse, re.DOTALL)
-
-        if json_match:
-            try:
-                json_text = json_match.group(0).replace("'", '"')
-                parsed_output = self.output_format.model_validate_json(json_text)
-            except Exception as e:
-                print(f"Error parsing JSON: {e}")
-                parsed_output = self._generate_empty_output()
-        else:
+        try:
+            parsed_json = JsonOutputParser().invoke(text_to_parse)
+            parsed_output = self.output_format.model_validate(parsed_json)
+        except Exception as e:
+            print(f"Error parsing JSON: {e}")
             parsed_output = self._generate_empty_output()
 
         return parsed_output
+
+    def _process_unstructured_stream(self, stream: Iterable[AIMessage]):
+        responses = []
+        usage_metadata = {}
+        text = ""
+        reason = ""
+        for x in stream:
+            if x.content:
+                for content in x.content:
+                    if "type" in content and content["type"] == "text":
+                        text += content["text"]
+                    if "type" in content and content["type"] == "reasoning_content":
+                        reasoning_content = content["reasoning_content"]
+                        if "text" in reasoning_content:
+                            reason += reasoning_content["text"]
+            if x.response_metadata:
+                if "metrics" in x.response_metadata:
+                    latency = x.response_metadata["metrics"]["latencyMs"]
+                    latency = latency[0] if isinstance(latency, list) else latency
+            if x.usage_metadata:
+                usage_metadata["input_tokens"] = x.usage_metadata["input_tokens"]
+                usage_metadata["output_tokens"] = x.usage_metadata["output_tokens"]
+            responses.append(x)
+        parsed_output = self._parse_json_from_text(text)
+        return {"raw": responses}, reason, parsed_output, latency, usage_metadata
 
     def _get_bedrock_llm(self):
         """Get the Bedrock LLM model based on the model name and temperature."""
@@ -225,35 +252,38 @@ class StructuredLLM:
             temperature=self.temperature,
             additional_model_request_fields=self.thinking_params,
         )
-        llm = llm.with_structured_output(self.output_format, include_raw=True)
+        llm = (
+            llm.with_structured_output(self.output_format, include_raw=True)
+            if not self.is_reasoning
+            else llm
+        )
         return llm
 
     def _call_bedrock(self, messages: list[dict]) -> Dict[str, Any]:
         """Call the Bedrock LLM model with the given message."""
-        reason = ""
+        reason = None
         if self.model_id in [
+            "us.deepseek.r1-v1:0",
             "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
             "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
             "us.meta.llama3-3-70b-instruct-v1:0",
         ]:
             streams = self.bedrock_llm.stream(messages)
-            response = next(streams)
-            latency = response["raw"].response_metadata["metrics"]["latencyMs"]
-            usage_metadata = response["raw"].usage_metadata
-            if self.thinking_params:
-                # First content is reasoning, the second is tool use
-                try:
-                    reason = response["raw"].content[0]["reasoning_content"]["text"]
-                except Exception as e:
-                    reason = None
-                parsed_output = self._parse_json_from_text(
-                    response["raw"].content[1]["input"]
+            if self.is_reasoning:
+                response, reason, parsed_output, latency, usage_metadata = (
+                    self._process_unstructured_stream(streams)
                 )
             else:
-                # No thinking, only the tool use
-                parsed_output = self._parse_json_from_text(
+                response = next(streams)
+                latency = response["raw"].response_metadata["metrics"]["latencyMs"]
+                latency = latency[0] if isinstance(latency, list) else latency
+                usage_metadata = response["raw"].usage_metadata
+                output_text = (
                     response["raw"].content[0]["input"]
+                    if isinstance(response["raw"].content, list)
+                    else response["raw"].content
                 )
+                parsed_output = self._parse_json_from_text(output_text)
 
         else:
             response = self.bedrock_llm.invoke(messages)
