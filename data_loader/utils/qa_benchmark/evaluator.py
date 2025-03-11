@@ -31,6 +31,9 @@ class AreSimilar(BaseModel):
     )
 
 
+JSON_ENFORCE = "Please return only the raw JSON string (no markdown) that strictly conforms to the following JSON schema, with no additional text: {json_schema}"
+
+
 class Provider(str, Enum):
     OPENAI = "openai"
     BEDROCK = "bedrock"
@@ -46,12 +49,12 @@ class ModelRegistry:
             "gpt-4o-mini",
             "o1",
             "o1-mini",
-            "o1-preview",
             "o3-mini",
         ],
         Provider.BEDROCK: [
             "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
             "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
+            "us.anthropic.claude-3-7-sonnet-20250219-v1:0-reasoning",
             "us.meta.llama3-3-70b-instruct-v1:0",
             "anthropic.claude-3-5-sonnet-20240620-v1:0",
             "mistral.mistral-large-2402-v1:0",
@@ -126,6 +129,7 @@ class StructuredLLM:
         model_id: str,
         output_format: BaseModel,
         temperature: float = 0.2,
+        max_completion_tokens: int = 4096,
     ):
         self.provider = (
             provider if isinstance(provider, Provider) else Provider(provider)
@@ -133,12 +137,24 @@ class StructuredLLM:
         self.model_id = model_id
         self.output_format = output_format
         self.temperature = temperature
+        self.max_completion_tokens = max_completion_tokens
+        self.thinking_params = None
 
         model_registry = ModelRegistry()
         if not model_registry.is_valid_model(self.provider, self.model_id):
             raise ValueError(
                 f"Model '{self.model_id}' is not supported by provider '{self.provider}'"
             )
+
+        if "reasoning" in self.model_id:
+            self.model_id = self.model_id.replace("-reasoning", "")
+            self.temperature = 1
+            self.thinking_params = {
+                "thinking": {
+                    "type": "enabled",
+                    "budget_tokens": self.max_completion_tokens - 256,
+                }
+            }
 
         if self.provider in [Provider.OPENAI, Provider.NVIDIA]:
             self.api_key = self._get_api_key()
@@ -183,41 +199,105 @@ class StructuredLLM:
         else:
             raise ValueError(f"Invalid provider: {self.provider}")
 
+    def _parse_json_from_text(self, text_to_parse: str):
+        """Extract and parse JSON from text string."""
+        json_pattern = r"{.*}"
+        json_match = re.search(json_pattern, text_to_parse, re.DOTALL)
+
+        if json_match:
+            try:
+                json_text = json_match.group(0).replace("'", '"')
+                parsed_output = self.output_format.model_validate_json(json_text)
+            except Exception as e:
+                print(f"Error parsing JSON: {e}")
+                parsed_output = self._generate_empty_output()
+        else:
+            parsed_output = self._generate_empty_output()
+
+        return parsed_output
+
     def _get_bedrock_llm(self):
         """Get the Bedrock LLM model based on the model name and temperature."""
         llm = ChatBedrockConverse(
-            client=self.client, model_id=self.model_id, temperature=self.temperature
+            client=self.client,
+            model_id=self.model_id,
+            max_tokens=self.max_completion_tokens,
+            temperature=self.temperature,
+            additional_model_request_fields=self.thinking_params,
         )
         llm = llm.with_structured_output(self.output_format, include_raw=True)
         return llm
 
     def _call_bedrock(self, messages: list[dict]) -> Dict[str, Any]:
         """Call the Bedrock LLM model with the given message."""
-        response = self.bedrock_llm.invoke(messages)
-        usage_metadata = response["raw"].usage_metadata
+        reason = ""
+        if self.model_id in [
+            "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
+            "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
+            "us.meta.llama3-3-70b-instruct-v1:0",
+        ]:
+            streams = self.bedrock_llm.stream(messages)
+            response = next(streams)
+            latency = response["raw"].response_metadata["metrics"]["latencyMs"]
+            usage_metadata = response["raw"].usage_metadata
+            if self.thinking_params:
+                # First content is reasoning, the second is tool use
+                try:
+                    reason = response["raw"].content[0]["reasoning_content"]["text"]
+                except Exception as e:
+                    reason = None
+                parsed_output = self._parse_json_from_text(
+                    response["raw"].content[1]["input"]
+                )
+            else:
+                # No thinking, only the tool use
+                parsed_output = self._parse_json_from_text(
+                    response["raw"].content[0]["input"]
+                )
+
+        else:
+            response = self.bedrock_llm.invoke(messages)
+            usage_metadata = response["raw"].usage_metadata
+            parsed_output = response["parsed"]
+            latency = response["raw"].response_metadata["metrics"]["latencyMs"][0]
+
         output = {
             "raw_response": response["raw"],
-            "parsed_output": response["parsed"],
+            "parsed_output": parsed_output,
             "date": datetime.now(),
-            "latency": response["raw"].response_metadata["metrics"]["latencyMs"][0],
+            "latency": latency,
             "input_tokens": usage_metadata["input_tokens"],
             "output_tokens": usage_metadata["output_tokens"],
         }
+        if reason:
+            output["reasoning"] = reason
         return output
 
     def _call_openai(self, messages: str) -> Dict[str, Any]:
         """Call the OpenAI API with the given messages."""
         now = time.time()
-        response = self.client.beta.chat.completions.parse(
-            model=self.model_id,
-            messages=messages,
-            response_format=self.output_format,
-            temperature=self.temperature,
-        )
+        if self.model_id == "o1-mini":
+            response = self.client.chat.completions.create(
+                model=self.model_id,
+                messages=messages,
+                max_completion_tokens=self.max_completion_tokens,
+            )
+            parsed_output = self._parse_json_from_text(
+                response.choices[0].message.content
+            )
+        else:
+            response = self.client.beta.chat.completions.parse(
+                model=self.model_id,
+                messages=messages,
+                response_format=self.output_format,
+                temperature=self.temperature,
+                max_completion_tokens=self.max_completion_tokens,
+            )
+            parsed_output = response.choices[0].message.parsed
         elapsed_ms = (time.time() - now) * 1000
         output = {
             "raw_response": response,
-            "parsed_output": response.choices[0].message.parsed,
+            "parsed_output": parsed_output,
             "date": datetime.now(),
             "latency": elapsed_ms,
             "input_tokens": response.usage.prompt_tokens,
@@ -233,7 +313,7 @@ class StructuredLLM:
             messages=messages,
             temperature=0.6,
             top_p=0.7,
-            max_tokens=4096,
+            max_tokens=self.max_completion_tokens,
         )
         elapsed_ms = (time.time() - now) * 1000
         response_text = response.choices[0].message.content
@@ -248,18 +328,7 @@ class StructuredLLM:
             reasoning_tokens = think_match.group(1).strip()
             text_to_parse = think_match.group(2).strip()
 
-        json_pattern = r"{.*}"
-        json_match = re.search(json_pattern, text_to_parse, re.DOTALL)
-
-        if json_match:
-            try:
-                json_text = json_match.group(0).replace("'", '"')
-                parsed_output = self.output_format.model_validate_json(json_text)
-            except Exception as e:
-                print(f"Error parsing JSON: {e}")
-                parsed_output = self._generate_empty_output()
-        else:
-            parsed_output = self._generate_empty_output()
+        parsed_output = self._parse_json_from_text(text_to_parse)
 
         output = {
             "raw_response": response,
@@ -292,6 +361,7 @@ class StructuredLLM:
 
     def __call__(self, prompt: str) -> Dict[str, Any]:
         """Evaluate the given messages using the appropriate LLM model."""
+        prompt = f"{prompt}\n{JSON_ENFORCE.format(json_schema=self.output_format.model_json_schema())}"
         if self.provider == Provider.BEDROCK:
             messages = [{"role": "user", "content": [{"text": prompt}]}]
             return self._call_bedrock(messages)
@@ -299,18 +369,7 @@ class StructuredLLM:
             messages = [{"role": "user", "content": [{"type": "text", "text": prompt}]}]
             return self._call_openai(messages)
         elif self.provider == Provider.NVIDIA:
-            json_schema = self.output_format.model_json_schema()
-            messages = [
-                {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": f"{prompt}\nPlease return only the raw JSON string (no markdown) that strictly conforms to the following JSON schema, with no additional text: {json_schema}",
-                        }
-                    ],
-                }
-            ]
+            messages = [{"role": "user", "content": [{"type": "text", "text": prompt}]}]
             return self._call_nvidia(messages)
 
 
@@ -358,9 +417,15 @@ class Evaluate:
             expected = record["expected"]
 
             response = self.qa_llm(NO_CONTEXT_PROMPT.format(question=question))
-            candidate = response["parsed_output"].entity
 
-            is_correct = self._verify_entity(expected, candidate) if expected else False
+            if response["parsed_output"] is not None:
+                candidate = response["parsed_output"].entity
+                is_correct = (
+                    self._verify_entity(expected, candidate) if expected else False
+                )
+            else:
+                candidate = None
+                is_correct = False
 
             result = {
                 "candidate": candidate,
@@ -394,9 +459,15 @@ class Evaluate:
             response = self.qa_llm(
                 WITH_CONTEXT_PROMPT.format(question=question, context=context)
             )
-            candidate = response["parsed_output"].entity
 
-            is_correct = self._verify_entity(expected, candidate) if expected else False
+            if response["parsed_output"] is not None:
+                candidate = response["parsed_output"].entity
+                is_correct = (
+                    self._verify_entity(expected, candidate) if expected else False
+                )
+            else:
+                candidate = None
+                is_correct = False
 
             result = {
                 "candidate": candidate,
@@ -535,27 +606,29 @@ class BenchmarkRunner:
                 continue
 
             print(f"\nEvaluating {provider.value} model: {model}")
-            try:
-                structured_llm = StructuredLLM(
-                    provider=provider, model_id=model, output_format=Answer
-                )
+            # try:
+            structured_llm = StructuredLLM(
+                provider=provider, model_id=model, output_format=Answer
+            )
 
-                model_filename = model.replace("/", "__")
-                responses_path = f"{self.responses_dir}/responses_{provider.value}_{model_filename}.json"
+            model_filename = model.replace("/", "__")
+            responses_path = (
+                f"{self.responses_dir}/responses_{provider.value}_{model_filename}.json"
+            )
 
-                evaluator = Evaluate(
-                    qa_llm=structured_llm,
-                    records=self.records,
-                    responses_save_path=responses_path,
-                )
+            evaluator = Evaluate(
+                qa_llm=structured_llm,
+                records=self.records,
+                responses_save_path=responses_path,
+            )
 
-                df_results = evaluator.evaluate()
-                results_all.append(df_results)
+            df_results = evaluator.evaluate()
+            results_all.append(df_results)
 
-                self.model_registry.mark_as_completed(provider, model)
+            self.model_registry.mark_as_completed(provider, model)
 
-            except Exception as e:
-                print(f"Error evaluating {provider.value} model {model}: {e}")
+            # except Exception as e:
+            #     print(f"Error evaluating {provider.value} model {model}: {e}")
 
         if results_all:
             combined_results = pd.concat(results_all)
