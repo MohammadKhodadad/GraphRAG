@@ -18,7 +18,6 @@ class GraphExplorer:
         sampled_paths = []
         # nodes = list(self.graph_manager.graph.nodes)
         nodes = [node for node in self.graph_manager.graph.nodes if len(str(node)) >= min_chars]
-
         if not nodes:
             print("Graph is empty. No nodes to explore.")
             return []
@@ -26,7 +25,6 @@ class GraphExplorer:
         while len(sampled_paths) < num_samples:
             start = random.choice(nodes)  # Pick a random starting node
             queue = deque([(start, [start])])  # (current node, path taken)
-
             while queue:
                 node, path = queue.popleft()
 
@@ -35,13 +33,15 @@ class GraphExplorer:
                     formatted_path, num_sources = self._format_path(path)
                     if formatted_path and (num_sources>1 or length==1):
                         sampled_paths.append(formatted_path)
-                    if len(sampled_paths) >= num_samples:
-                        break  # Stop when enough samples are collected
+                        break
                     continue  # Do not expand further
 
                 # Expand neighbors while avoiding cycles
-                for neighbor in self.graph_manager.graph.neighbors(node):
-                    if neighbor not in path and len(str(neighbor)) >= min_chars:  # Ensures simple paths (no cycles)
+
+                neighbors = list(self.graph_manager.graph.neighbors(node))
+                random.shuffle(neighbors)  # Shuffle the neighbors to randomize selection
+                for neighbor in neighbors:
+                    if neighbor not in path and len(str(neighbor)) >= min_chars:
                         queue.append((neighbor, path + [neighbor]))
 
         if not sampled_paths:
