@@ -2,11 +2,12 @@ import boto3
 import time
 import json
 import tqdm
+import math
 from openai import OpenAI, NotGiven
 import os
 import re
 from enum import Enum
-from typing import Dict, Any, Union, List, Tuple, Iterable
+from typing import Dict, Any, Union, List, Tuple, Iterable, Callable
 from langchain_aws.chat_models.bedrock_converse import ChatBedrockConverse
 from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.messages import AIMessage
@@ -14,6 +15,9 @@ from pydantic import BaseModel, Field
 from datetime import datetime
 from dotenv import load_dotenv
 import pandas as pd
+import concurrent.futures
+from functools import partial
+from datetime import datetime
 
 load_dotenv()
 
@@ -34,7 +38,10 @@ class AreSimilar(BaseModel):
     )
 
 
-JSON_ENFORCE = "Please return only the raw JSON string (no markdown) that strictly conforms to the following JSON schema, with no additional text: {json_schema}"
+JSON_ENFORCE = (
+    "Please return only the raw JSON string (no markdown) that strictly conforms to the following JSON schema, with no additional text: {json_schema}"
+    "Example: {example}"
+)
 
 
 class Provider(str, Enum):
@@ -49,18 +56,18 @@ class ModelRegistry:
     PROVIDER_MODELS = {
         Provider.OPENAI: [
             "gpt-4o",
-            "gpt-4o-mini",
+            # "gpt-4o-mini",
             # "o1",
-            "o1-mini",
-            "o3-mini",
+            # "o1-mini",
+            # "o3-mini",
         ],
         Provider.BEDROCK: [
-            "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
-            "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
+            # "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
+            # "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
             "us.meta.llama3-3-70b-instruct-v1:0",
-            "anthropic.claude-3-5-sonnet-20240620-v1:0",
-            "mistral.mistral-large-2402-v1:0",
-            "us.anthropic.claude-3-7-sonnet-20250219-v1:0-reasoning",
+            # "anthropic.claude-3-5-sonnet-20240620-v1:0",
+            # "mistral.mistral-large-2402-v1:0",
+            # "us.anthropic.claude-3-7-sonnet-20250219-v1:0-reasoning",
             "us.deepseek.r1-v1:0-reasoning",
         ],
         Provider.NVIDIA: [
@@ -392,7 +399,13 @@ class StructuredLLM:
 
     def __call__(self, prompt: str) -> Dict[str, Any]:
         """Evaluate the given messages using the appropriate LLM model."""
-        prompt = f"{prompt}\n{JSON_ENFORCE.format(json_schema=self.output_format.model_json_schema())}"
+        # Todo: Add support for dynamic example, instead of hardcoding
+        json_schema = JSON_ENFORCE.format(
+            json_schema=self.output_format.model_json_schema(),
+            example='{"entity": "Aspirin"}',
+        )
+        prompt = f"{prompt}\n{json_schema}"
+
         if self.provider == Provider.BEDROCK:
             messages = [{"role": "user", "content": [{"text": prompt}]}]
             return self._call_bedrock(messages)
@@ -412,6 +425,7 @@ class Evaluate:
         responses_save_path: str = None,
         verifier_provider: Provider = Provider.OPENAI,
         verifier_model: str = "gpt-4o",
+        num_workers: int = 16,
     ):
         self.qa_llm = qa_llm
         self.verifier_llm = StructuredLLM(
@@ -421,8 +435,33 @@ class Evaluate:
         )
         self.records = records
         self.responses_save_path = responses_save_path
+        self.num_workers = num_workers
 
-    def _verify_entity(self, expected: str, candidate: str) -> bool:
+        records_per_worker = len(records) / num_workers
+        self.batch_size = max(1, math.ceil(records_per_worker))
+
+        self.qa_llm_params = {
+            "provider": qa_llm.provider,
+            "model_id": qa_llm.model_id,
+            "output_format": qa_llm.output_format,
+            "temperature": qa_llm.temperature,
+            "max_completion_tokens": qa_llm.max_completion_tokens,
+        }
+
+        if qa_llm.is_reasoning:
+            self.qa_llm_params["model_id"] = f"{qa_llm.model_id}-reasoning"
+
+        self.verifier_llm_params = {
+            "provider": verifier_provider,
+            "model_id": verifier_model,
+            "output_format": AreSimilar,
+        }
+
+    def _verify_entity(
+        self, expected: str, candidate: str, worker_verifier_llm=None
+    ) -> bool:
+        verifier_llm = worker_verifier_llm or self.verifier_llm
+
         if candidate.strip().lower() == expected.strip().lower():
             return True
         else:
@@ -432,88 +471,132 @@ class Evaluate:
                 "Are these two answers referring to the same entity? "
                 "Answer with true or false."
             )
-            response = self.verifier_llm(VERIFY_PROMPT)
+            response = verifier_llm(VERIFY_PROMPT)
             return response["parsed_output"].are_the_same
 
-    def _eval_without_context(self) -> List[Dict[str, Any]]:
-        results = []
+    def _create_worker_llms(self):
+        """Create new LLM instances for workers to avoid thread safety issues"""
+        qa_llm = StructuredLLM(**self.qa_llm_params)
+        verifier_llm = StructuredLLM(**self.verifier_llm_params)
+        return qa_llm, verifier_llm
+
+    def _process_record_without_context(self, record, worker_llms=None):
+        """Process a single record without context (thread-safe)"""
+        qa_llm, verifier_llm = worker_llms or (self.qa_llm, self.verifier_llm)
+
+        question = record["question"]
+        expected = record["expected"]
 
         NO_CONTEXT_PROMPT = (
             "Provide a single entity name as an answer to the following question:\n"
-            "Question: {question}"
+            f"Question: {question}"
         )
 
-        for record in tqdm.tqdm(self.records):
-            question = record["question"]
-            expected = record["expected"]
+        response = qa_llm(NO_CONTEXT_PROMPT)
 
-            response = self.qa_llm(NO_CONTEXT_PROMPT.format(question=question))
+        if response["parsed_output"] is not None:
+            candidate = response["parsed_output"].entity
+            is_correct = (
+                self._verify_entity(expected, candidate, verifier_llm)
+                if expected
+                else False
+            )
+        else:
+            candidate = None
+            is_correct = False
 
-            if response["parsed_output"] is not None:
-                candidate = response["parsed_output"].entity
-                is_correct = (
-                    self._verify_entity(expected, candidate) if expected else False
-                )
-            else:
-                candidate = None
-                is_correct = False
+        return {
+            "candidate": candidate,
+            "is_correct": is_correct,
+            "context_used": False,
+            "input_tokens": response.get("input_tokens", 0),
+            "output_tokens": response.get("output_tokens", 0),
+            "reasoning_tokens": response.get("reasoning_tokens", 0),
+            "latency": round(response.get("latency", 0), 2),
+            "date": response.get("date", datetime.now()).strftime("%Y-%m-%d %H:%M"),
+            "reasoning": response.get("reasoning", None),
+            "raw": record,
+        }
 
-            result = {
-                "candidate": candidate,
-                "is_correct": is_correct,
-                "context_used": False,
-                "input_tokens": response.get("input_tokens", 0),
-                "output_tokens": response.get("output_tokens", 0),
-                "reasoning_tokens": response.get("reasoning_tokens", 0),
-                "latency": round(response.get("latency", 0), 2),
-                "date": response.get("date", datetime.now()).strftime("%Y-%m-%d %H:%M"),
-                "raw": record,
-            }
-            results.append(result)
+    def _process_record_with_context(self, record, worker_llms=None):
+        """Process a single record with context (thread-safe)"""
+        qa_llm, verifier_llm = worker_llms or (self.qa_llm, self.verifier_llm)
 
-        return results
-
-    def _eval_with_context(self) -> List[Dict[str, Any]]:
-        results = []
+        question = record["question"]
+        context = record["context"]
+        expected = record["expected"]
 
         WITH_CONTEXT_PROMPT = (
             "Provide a single entity name as an answer to the following question based on the context:\n"
-            "Question: {question}\n\n"
-            "Context: {context}"
+            f"Question: {question}\n\n"
+            f"Context: {context}"
         )
 
-        for record in tqdm.tqdm(self.records):
-            question = record["question"]
-            context = record["context"]
-            expected = record["expected"]
+        response = qa_llm(WITH_CONTEXT_PROMPT)
 
-            response = self.qa_llm(
-                WITH_CONTEXT_PROMPT.format(question=question, context=context)
+        if response["parsed_output"] is not None:
+            candidate = response["parsed_output"].entity
+            is_correct = (
+                self._verify_entity(expected, candidate, verifier_llm)
+                if expected
+                else False
             )
+        else:
+            candidate = None
+            is_correct = False
 
-            if response["parsed_output"] is not None:
-                candidate = response["parsed_output"].entity
-                is_correct = (
-                    self._verify_entity(expected, candidate) if expected else False
-                )
-            else:
-                candidate = None
-                is_correct = False
+        return {
+            "candidate": candidate,
+            "is_correct": is_correct,
+            "context_used": True,
+            "input_tokens": response.get("input_tokens", 0),
+            "output_tokens": response.get("output_tokens", 0),
+            "reasoning_tokens": response.get("reasoning_tokens", 0),
+            "latency": round(response.get("latency", 0), 2),
+            "date": response.get("date", datetime.now()).strftime("%Y-%m-%d %H:%M"),
+            "reasoning": response.get("reasoning", None),
+            "raw": record,
+        }
 
-            result = {
-                "candidate": candidate,
-                "is_correct": is_correct,
-                "context_used": True,
-                "input_tokens": response.get("input_tokens", 0),
-                "output_tokens": response.get("output_tokens", 0),
-                "reasoning_tokens": response.get("reasoning_tokens", 0),
-                "latency": round(response.get("latency", 0), 2),
-                "date": response.get("date", datetime.now()).strftime("%Y-%m-%d %H:%M"),
-                "raw": record,
-            }
-            results.append(result)
+    def _process_batch(self, batch, process_fn):
+        """Process a batch of records with the given processing function"""
+        # Create worker-specific LLM instances to avoid thread safety issues
+        worker_llms = self._create_worker_llms()
+        return [process_fn(record, worker_llms) for record in batch]
+
+    def _parallel_process(self, process_fn: Callable):
+        """Process all records in parallel using the provided function"""
+        results = []
+
+        batches = [
+            self.records[i : i + self.batch_size]
+            for i in range(0, len(self.records), self.batch_size)
+        ]
+
+        with concurrent.futures.ThreadPoolExecutor(
+            max_workers=self.num_workers
+        ) as executor:
+            batch_fn = partial(self._process_batch, process_fn=process_fn)
+
+            futures = [executor.submit(batch_fn, batch) for batch in batches]
+
+            for future in tqdm.tqdm(
+                concurrent.futures.as_completed(futures), total=len(batches)
+            ):
+                batch_results = future.result()
+                results.extend(batch_results)
+
+        assert len(results) == len(self.records), "Some records were not processed"
 
         return results
+
+    def _eval_without_context(self) -> List[Dict[str, Any]]:
+        """Evaluate records without context using parallel processing"""
+        return self._parallel_process(self._process_record_without_context)
+
+    def _eval_with_context(self) -> List[Dict[str, Any]]:
+        """Evaluate records with context using parallel processing"""
+        return self._parallel_process(self._process_record_with_context)
 
     def evaluate(self):
         """
@@ -637,29 +720,27 @@ class BenchmarkRunner:
                 continue
 
             print(f"\nEvaluating {provider.value} model: {model}")
-            # try:
-            structured_llm = StructuredLLM(
-                provider=provider, model_id=model, output_format=Answer
-            )
+            try:
+                structured_llm = StructuredLLM(
+                    provider=provider, model_id=model, output_format=Answer
+                )
 
-            model_filename = model.replace("/", "__")
-            responses_path = (
-                f"{self.responses_dir}/responses_{provider.value}_{model_filename}.json"
-            )
+                model_filename = model.replace("/", "__")
+                responses_path = f"{self.responses_dir}/responses_{provider.value}_{model_filename}.json"
 
-            evaluator = Evaluate(
-                qa_llm=structured_llm,
-                records=self.records,
-                responses_save_path=responses_path,
-            )
+                evaluator = Evaluate(
+                    qa_llm=structured_llm,
+                    records=self.records,
+                    responses_save_path=responses_path,
+                )
 
-            df_results = evaluator.evaluate()
-            results_all.append(df_results)
+                df_results = evaluator.evaluate()
+                results_all.append(df_results)
 
-            self.model_registry.mark_as_completed(provider, model)
+                self.model_registry.mark_as_completed(provider, model)
 
-            # except Exception as e:
-            #     print(f"Error evaluating {provider.value} model {model}: {e}")
+            except Exception as e:
+                print(f"Error evaluating {provider.value} model {model}: {e}")
 
         if results_all:
             combined_results = pd.concat(results_all)
@@ -680,5 +761,8 @@ if __name__ == "__main__":
     benchmark_runner = BenchmarkRunner(
         records=records, responses_dir=RESPONSES_DIR, results_file=RESULT_PATH
     )
-
+    now = datetime.now()
     benchmark_runner.run_all_benchmarks(skip_completed=True)
+    elapsed = datetime.now() - now
+    elapsed_formatted = time.strftime("%H:%M:%S", time.gmtime(elapsed.total_seconds()))
+    print(f"Completed benchmarking in {elapsed_formatted}")
