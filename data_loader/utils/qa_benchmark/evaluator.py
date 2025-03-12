@@ -1,6 +1,7 @@
 import boto3
 import time
 import json
+import tqdm
 from openai import OpenAI, NotGiven
 import os
 import re
@@ -49,7 +50,7 @@ class ModelRegistry:
         Provider.OPENAI: [
             "gpt-4o",
             "gpt-4o-mini",
-            "o1",
+            # "o1",
             "o1-mini",
             "o3-mini",
         ],
@@ -442,7 +443,7 @@ class Evaluate:
             "Question: {question}"
         )
 
-        for record in self.records:
+        for record in tqdm.tqdm(self.records):
             question = record["question"]
             expected = record["expected"]
 
@@ -481,7 +482,7 @@ class Evaluate:
             "Context: {context}"
         )
 
-        for record in self.records:
+        for record in tqdm.tqdm(self.records):
             question = record["question"]
             context = record["context"]
             expected = record["expected"]

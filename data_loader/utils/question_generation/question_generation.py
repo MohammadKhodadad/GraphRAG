@@ -6,7 +6,7 @@ import json
 import tqdm
 from multiprocessing import Pool
 from functools import partial
-
+import concurrent.futures
 
 def ask_openai(client,prompt):
     response = client.chat.completions.create(
@@ -247,20 +247,64 @@ def is_factual_chemistry_question(client, question, answer, path):
         print(f"Error: {e}")
         return 'no'
 
+def evaluate_question_item(question_item, api_key):
+    try:
+        # Each process creates its own client instance.
+        client = OpenAI(api_key=api_key)
+        acceptable = is_factual_chemistry_question(
+            client,
+            question_item['q'],
+            question_item['a'],
+            question_item['path']
+        )
+        if acceptable.lower().strip() == 'yes':
+            return question_item
+    except Exception as e:
+        print(f"Error processing question: {e}")
+    # Return None for questions that don't meet the criteria or in case of an error.
+    return None
+
 def evaluate_questions(questions_address, verified_questions_address, api_key):
-    selected_questions = []
-    count = 0
-    client = OpenAI(api_key=api_key)
-    with open(questions_address,'rb') as f:
-        questions=json.load(f)
-    for question_item in questions:
-        acceptable = is_factual_chemistry_question(client, question_item['q'],question_item['a'],question_item['path'])
-        if acceptable.lower().strip()=='yes':
-            selected_questions.append(question_item)
-            count+=1
+    # Load the questions from file.
+    with open(questions_address, 'rb') as f:
+        questions = json.load(f)
+    
+    # Use a ProcessPoolExecutor to run the evaluation concurrently.
+    with concurrent.futures.ProcessPoolExecutor() as executor:
+        # Pass the questions and the API key directly.
+        # [api_key]*len(questions) creates a list with the same api_key repeated.
+        results = list(tqdm.tqdm(
+            executor.map(evaluate_question_item, questions, [api_key]*len(questions)),
+            total=len(questions)
+        ))
+        
+    # Filter out the None values (i.e. unacceptable questions).
+    selected_questions = [res for res in results if res is not None]
+    
+    # Write the verified questions to file.
     with open(verified_questions_address, "w", encoding="utf-8") as f:
         json.dump(selected_questions, f, ensure_ascii=False, indent=4)
-    print(f'{count} out of {len(questions)} were acceptable.')
+    
+    print(f'{len(selected_questions)} out of {len(questions)} were acceptable.')
+
+# def evaluate_questions(questions_address, verified_questions_address, api_key):
+#     selected_questions = []
+#     count = 0
+#     client = OpenAI(api_key=api_key)
+#     with open(questions_address,'rb') as f:
+#         questions=json.load(f)
+#     for question_item in tqdm.tqdm(questions):
+#         try:
+#             acceptable = is_factual_chemistry_question(client, question_item['q'],question_item['a'],question_item['path'])
+#             if acceptable.lower().strip()=='yes':
+#                 selected_questions.append(question_item)
+#                 count+=1
+#         except Exception as e:
+#             print(e)
+#     with open(verified_questions_address, "w", encoding="utf-8") as f:
+#         json.dump(selected_questions, f, ensure_ascii=False, indent=4)
+#     print(f'{count} out of {len(questions)} were acceptable.')
+
 
 if __name__ == "__main__":
     import dotenv
