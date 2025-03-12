@@ -20,4 +20,4 @@ sampled_paths = sample_graph_pipeline('./data/chemrxiv_graph_v2.json',{1:300, 2:
 # print(sampled_paths)
 # # STAGE 4
 generate_questions_from_paths(sampled_paths,api_key,'./data/chemrxiv_qas_v2_3.json')
-evaluate_questions('./data/chemrxiv_qas_v2_3.json','./data/chemrxiv_qas_v2_3_verified.json',api_key)
+# evaluate_questions('./data/chemrxiv_qas_v2_3.json','./data/chemrxiv_qas_v2_3_verified.json',api_key)

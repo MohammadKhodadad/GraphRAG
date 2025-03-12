@@ -4,6 +4,9 @@ import os
 import random
 import json
 import tqdm
+from multiprocessing import Pool
+from functools import partial
+
 
 def ask_openai(client,prompt):
     response = client.chat.completions.create(
@@ -119,19 +122,70 @@ def generate_multihop_question(client, path):
     return multi_hop_qa
 
 
-def generate_questions_from_paths(paths, api_key, save_address=None):
-    sampled_qas = []
-    client = OpenAI(api_key=api_key)
+# global_client = None
+
+# def init_worker(api_key):
+#     global global_client
+#     global_client = OpenAI(api_key=api_key)
+
+# def worker(path):
+#     # Use the pre-initialized global_client for this process
+#     return generate_multihop_question(global_client, path)
+
+# def generate_questions_from_paths(paths, api_key, save_address=None, num_workers=4):
+#     # Flatten the paths from the dictionary into a single list.
+#     all_paths = []
+#     for length, paths_list in paths.items():
+#         all_paths.extend(paths_list)
+
+#     with Pool(processes=num_workers, initializer=init_worker, initargs=(api_key,)) as pool:
+#         sampled_qas = list(tqdm.tqdm(pool.imap(worker, all_paths), total=len(all_paths)))
     
-    for length, paths in paths.items():
-        for path in tqdm.tqdm(paths):
-            sampled_qas.append(generate_multihop_question(client, path))
+#     if save_address:
+#         with open(save_address, "w", encoding="utf-8") as f:
+#             json.dump(sampled_qas, f, ensure_ascii=False, indent=4)
+    
+#     return sampled_qas
+
+
+
+# Worker function that creates its own OpenAI client and generates a question
+def worker(path, api_key):
+    client = OpenAI(api_key=api_key)
+    return generate_multihop_question(client, path)
+
+def generate_questions_from_paths(paths, api_key, save_address=None, num_workers=16):
+    # Flatten the paths from the dictionary into a single list.
+    all_paths = []
+    for length, paths_list in paths.items():
+        all_paths.extend(paths_list)
+
+    # Use multiprocessing.Pool to parallelize the worker function.
+    with Pool(processes=num_workers) as pool:
+        # Use partial to supply api_key argument to the worker.
+        worker_partial = partial(worker, api_key=api_key)
+        # tqdm tracks the progress of processing each path.
+        sampled_qas = list(tqdm.tqdm(pool.imap(worker_partial, all_paths), total=len(all_paths)))
     
     if save_address:
         with open(save_address, "w", encoding="utf-8") as f:
             json.dump(sampled_qas, f, ensure_ascii=False, indent=4)
     
     return sampled_qas
+
+# def generate_questions_from_paths(paths, api_key, save_address=None):
+#     sampled_qas = []
+#     client = OpenAI(api_key=api_key)
+    
+#     for length, paths in paths.items():
+#         for path in tqdm.tqdm(paths):
+#             sampled_qas.append(generate_multihop_question(client, path))
+    
+#     if save_address:
+#         with open(save_address, "w", encoding="utf-8") as f:
+#             json.dump(sampled_qas, f, ensure_ascii=False, indent=4)
+    
+#     return sampled_qas
 
 
 def is_factual_chemistry_question(client, question, answer, path):
