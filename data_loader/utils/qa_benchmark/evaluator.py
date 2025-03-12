@@ -411,7 +411,7 @@ class Evaluate:
         records: list[dict],
         responses_save_path: str = None,
         verifier_provider: Provider = Provider.OPENAI,
-        verifier_model: str = "o3-mini",
+        verifier_model: str = "gpt-4o",
     ):
         self.qa_llm = qa_llm
         self.verifier_llm = StructuredLLM(
