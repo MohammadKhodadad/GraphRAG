@@ -71,7 +71,7 @@ class ModelRegistry:
             "us.deepseek.r1-v1:0-reasoning",
         ],
         Provider.NVIDIA: [
-            "deepseek-ai/deepseek-r1",
+            # "deepseek-ai/deepseek-r1",
         ],
     }
 
@@ -426,6 +426,7 @@ class Evaluate:
         verifier_provider: Provider = Provider.OPENAI,
         verifier_model: str = "gpt-4o",
         num_workers: int = 2,
+        bedrock_cooldown: float = 1.0,
     ):
         self.qa_llm = qa_llm
         self.verifier_llm = StructuredLLM(
@@ -436,6 +437,7 @@ class Evaluate:
         self.records = records
         self.responses_save_path = responses_save_path
         self.num_workers = num_workers
+        self.bedrock_cooldown = bedrock_cooldown
 
         records_per_worker = len(records) / num_workers
         self.batch_size = max(1, math.ceil(records_per_worker))
@@ -562,7 +564,16 @@ class Evaluate:
         """Process a batch of records with the given processing function"""
         # Create worker-specific LLM instances to avoid thread safety issues
         worker_llms = self._create_worker_llms()
-        return [process_fn(record, worker_llms) for record in batch]
+        results = []
+
+        for record in batch:
+            result = process_fn(record, worker_llms)
+            results.append(result)
+
+            if worker_llms[0].provider == Provider.BEDROCK:
+                time.sleep(self.bedrock_cooldown)
+
+        return results
 
     def _parallel_process(self, process_fn: Callable):
         """Process all records in parallel using the provided function"""
