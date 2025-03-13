@@ -83,7 +83,7 @@ for address in addresses:
 main_df = []
 for key, value in results.items():
     sub_df = pd.DataFrame(value)
-    sub_df['model_name']=key
+    sub_df['model_name']=key.replace('responses_','')
     main_df.append(sub_df)
 main_df = pd.concat(main_df,axis=0).reset_index(drop=True)
 main_df.to_csv(os.path.join(analysis_folder, 'main_df.csv'), index=False)
@@ -111,26 +111,44 @@ pivot = pivot.reindex(columns=[False, True])
 
 # Prepare the bar chart
 models = pivot.index.tolist()
+models= [item.replace('responses_','') for item in models]
 x = np.arange(len(models))  # label locations for models
-bar_width = 0.35
+bar_width = 0.05
 
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(20, 12))
 # Bars for "Without Context" (False)
-plt.bar(x - bar_width/2, pivot[False], bar_width, label='Without Context')
+bars1 = plt.bar(x - bar_width/2, pivot[False], bar_width, label='Without Context')
 # Bars for "With Context" (True)
-plt.bar(x + bar_width/2, pivot[True], bar_width, label='With Context')
+bars2 = plt.bar(x + bar_width/2, pivot[True], bar_width, label='With Context')
 
 plt.xlabel('Model')
 plt.ylabel('Accuracy')
 plt.title('Accuracy by Model with/without Context')
-plt.xticks(x, models, rotation=45)
+plt.xticks(x, models, rotation=0)  # Set labels horizontal (0 degrees)
 plt.legend(title='Context Used')
 plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
 
+# Add numerical values above each bar
+for bar in bars1:
+    plt.text(
+        bar.get_x() + bar.get_width()/2,
+        bar.get_height(),
+        f'{bar.get_height():.2f}',
+        ha='center', va='bottom'
+    )
+for bar in bars2:
+    plt.text(
+        bar.get_x() + bar.get_width()/2,
+        bar.get_height(),
+        f'{bar.get_height():.2f}',
+        ha='center', va='bottom'
+    )
+
 # Save the figure
 plt.savefig(os.path.join(analysis_folder, 'accuracy_bar_models.png'))
 plt.close()
+
 
 ######################### Number of hops #####################################
 hops_df = main_df.groupby(['model_name', 'context_used','n_hops'])[
@@ -143,8 +161,8 @@ df_with_context = hops_df[hops_df['context_used'] == True]
 df_without_context = hops_df[hops_df['context_used'] == False]
 
 # Plotting for accuracy
-plot_metric(df_with_context, 'is_correct', 'With Context', 'accuracy.png')
-plot_metric(df_without_context, 'is_correct', 'Without Context', 'accuracy.png')
+plot_metric(df_with_context, 'is_correct', 'With Context', 'accuracy_with_context.png')
+plot_metric(df_without_context, 'is_correct', 'Without Context', 'accuracy_without_context.png')
 
 
 # Plotting for output_tokens
@@ -161,3 +179,36 @@ plot_grouped_by_n_hops(df_with_context, "With Context", "accuracy_by_model_nhops
 
 # Plot for responses without context
 plot_grouped_by_n_hops(df_without_context, "Without Context", "accuracy_by_model_nhops_without_context.png")
+
+
+
+
+
+
+########## Number of Tokens Distribution ##############################
+
+# Ensure the analysis folder exists
+analysis_folder = 'analysis'
+os.makedirs(analysis_folder, exist_ok=True)
+
+# Create a new column for total tokens used
+main_df['total_tokens'] = main_df['input_tokens'] + main_df['output_tokens'] 
+
+# Get the unique models
+models = main_df['model_name'].unique()
+
+# Prepare data: for each model, extract the distribution of total tokens
+data = [main_df.loc[main_df['model_name'] == model, 'total_tokens'] for model in models]
+
+# Create a box plot for the distribution of total tokens used per model, without outlier markers
+plt.figure(figsize=(10, 6))
+plt.boxplot(data, tick_labels=models, showfliers=False)
+plt.xlabel('Model')
+plt.ylabel('Total Tokens')
+plt.title('Distribution of Total Tokens Used per Model (Outliers Hidden)')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+
+# Save the figure in the analysis folder
+plt.savefig(os.path.join(analysis_folder, 'total_tokens_boxplot.png'))
+plt.close()
