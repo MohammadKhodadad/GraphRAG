@@ -56,22 +56,22 @@ class ModelRegistry:
     PROVIDER_MODELS = {
         Provider.OPENAI: [
             "gpt-4o",
-            # "gpt-4o-mini",
+            "gpt-4o-mini",
             # "o1",
-            # "o1-mini",
-            # "o3-mini",
+            "o1-mini",
+            "o3-mini",
         ],
         Provider.BEDROCK: [
-            # "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
-            # "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
+            "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
+            "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
             "us.meta.llama3-3-70b-instruct-v1:0",
-            # "anthropic.claude-3-5-sonnet-20240620-v1:0",
-            # "mistral.mistral-large-2402-v1:0",
-            # "us.anthropic.claude-3-7-sonnet-20250219-v1:0-reasoning",
+            "anthropic.claude-3-5-sonnet-20240620-v1:0",
+            "mistral.mistral-large-2402-v1:0",
+            "us.anthropic.claude-3-7-sonnet-20250219-v1:0-reasoning",
             "us.deepseek.r1-v1:0-reasoning",
         ],
         Provider.NVIDIA: [
-            # "deepseek-ai/deepseek-r1",
+            "deepseek-ai/deepseek-r1",
         ],
     }
 
@@ -425,7 +425,7 @@ class Evaluate:
         responses_save_path: str = None,
         verifier_provider: Provider = Provider.OPENAI,
         verifier_model: str = "gpt-4o",
-        num_workers: int = 16,
+        num_workers: int = 2,
     ):
         self.qa_llm = qa_llm
         self.verifier_llm = StructuredLLM(

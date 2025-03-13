@@ -13,11 +13,30 @@ addresses = os.listdir(PATH_TO_RESPONSES)
 analysis_folder = 'analysis'
 os.makedirs(analysis_folder, exist_ok=True)
 
+model_name_mapping = {
+    # Provider.OPENAI
+    "gpt-4o": "GPT-4O",
+    "gpt-4o-mini": "GPT-4O Mini",
+    "o1-mini": "O1 Mini",
+    "o3-mini": "O3 Mini",
+    
+    # Provider.BEDROCK
+    "us.anthropic.claude-3-5-sonnet-20241022-v2:0": "Anthropic Claude 3.5",
+    "us.anthropic.claude-3-7-sonnet-20250219-v1:0": "Anthropic Claude 3.7",
+    "us.meta.llama3-3-70b-instruct-v1:0": "Meta LLaMA3 70B Instruct",
+    "anthropic.claude-3-5-sonnet-20240620-v1:0": "Anthropic Claude 3.5 (Alt)",
+    "mistral.mistral-large-2402-v1:0": "Mistral Large",
+    "us.anthropic.claude-3-7-sonnet-20250219-v1:0-reasoning": "Anthropic Claude 3.7 Reasoning",
+    "us.deepseek.r1-v1:0-reasoning": "Deepseek R1 Reasoning",
+    
+    # Provider.NVIDIA
+    "deepseek-ai/deepseek-r1": "Deepseek R1"
+}
 
 
 # Function to plot and save a figure given a dataframe and metric name
 def plot_metric(df, metric, title_suffix, filename):
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(16, 12))
     models = df['model_name'].unique()
     for model in models:
         # Filter data for this model
@@ -48,7 +67,7 @@ def plot_grouped_by_n_hops(df, context_label, filename):
     # Width for each bar in a group (use 80% of the space per group)
     bar_width = 0.8 / num_bars
 
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(20, 12))
     
     # Plot a bar for each n_hops value for every model
     for i, hop in enumerate(n_hops_vals):
@@ -83,9 +102,11 @@ for address in addresses:
 main_df = []
 for key, value in results.items():
     sub_df = pd.DataFrame(value)
-    sub_df['model_name']=key.replace('responses_','')
+    sub_df['model_name']=key.replace('responses_','').replace('openai_','').replace('bedrock_','')
     main_df.append(sub_df)
 main_df = pd.concat(main_df,axis=0).reset_index(drop=True)
+main_df['model_name'] = main_df['model_name'].replace(model_name_mapping)
+
 main_df.to_csv(os.path.join(analysis_folder, 'main_df.csv'), index=False)
 
 main_df['n_hops'] = main_df['raw'].apply(lambda x: x['length'])
@@ -93,7 +114,7 @@ main_df['n_hops'] = main_df['raw'].apply(lambda x: x['length'])
 general_df = main_df.groupby(['model_name', 'context_used'])[
     [col for col in MAIN_COLS if col not in ['model_name', 'context_used']]
 ].mean().reset_index()
-print(general_df)
+# print(general_df)
 general_df.to_csv(os.path.join(analysis_folder, 'general_df.csv'), index=False)
 
 
@@ -104,7 +125,7 @@ general_df['context_used'] = general_df['context_used'].astype(bool)
 pivot = general_df.pivot(index='model_name', columns='context_used', values='is_correct')
 
 # Debug: Print the pivot table's columns to see what we have
-print("Pivot columns:", pivot.columns.tolist())
+# print("Pivot columns:", pivot.columns.tolist())
 
 # Reindex the pivot to ensure we only have two columns: False and True (if available)
 pivot = pivot.reindex(columns=[False, True])
@@ -113,7 +134,7 @@ pivot = pivot.reindex(columns=[False, True])
 models = pivot.index.tolist()
 models= [item.replace('responses_','') for item in models]
 x = np.arange(len(models))  # label locations for models
-bar_width = 0.05
+bar_width = 0.2
 
 plt.figure(figsize=(20, 12))
 # Bars for "Without Context" (False)
@@ -154,7 +175,7 @@ plt.close()
 hops_df = main_df.groupby(['model_name', 'context_used','n_hops'])[
     [col for col in MAIN_COLS if col not in ['model_name', 'context_used']]
 ].mean().reset_index()
-print(hops_df)
+# print(hops_df)
 hops_df.to_csv(os.path.join(analysis_folder, 'hops_df.csv'), index=False)
 
 df_with_context = hops_df[hops_df['context_used'] == True]
@@ -185,7 +206,7 @@ plot_grouped_by_n_hops(df_without_context, "Without Context", "accuracy_by_model
 
 
 
-########## Number of Tokens Distribution ##############################
+################## Number of Tokens Distribution ##############################
 
 # Ensure the analysis folder exists
 analysis_folder = 'analysis'
@@ -201,7 +222,7 @@ models = main_df['model_name'].unique()
 data = [main_df.loc[main_df['model_name'] == model, 'total_tokens'] for model in models]
 
 # Create a box plot for the distribution of total tokens used per model, without outlier markers
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(20, 12))
 plt.boxplot(data, tick_labels=models, showfliers=False)
 plt.xlabel('Model')
 plt.ylabel('Total Tokens')
@@ -212,3 +233,229 @@ plt.tight_layout()
 # Save the figure in the analysis folder
 plt.savefig(os.path.join(analysis_folder, 'total_tokens_boxplot.png'))
 plt.close()
+
+
+
+
+
+
+##################### TOKEN DISTRIBUTION PER MODEL #########################
+import os
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+
+# Ensure the analysis folder exists
+analysis_folder = 'analysis'
+os.makedirs(analysis_folder, exist_ok=True)
+
+# Compute a new column for total tokens used if not already computed
+if 'total_tokens' not in main_df.columns:
+    main_df['total_tokens'] = main_df['input_tokens'] + main_df['output_tokens'] + main_df['reasoning_tokens']
+
+# Get sorted unique models and n_hops values
+models = sorted(main_df['model_name'].unique())
+n_hops_vals = sorted(main_df['n_hops'].unique())
+n_models = len(models)
+n_groups = len(n_hops_vals)
+
+# Settings for grouping: total width allocated for boxes for each model
+group_width = 0.8  
+box_width = group_width / n_groups
+
+# Prepare data and positions for each box
+box_data = []  # List to hold the data for each box
+positions = [] # List to hold the x position for each box
+
+for i, model in enumerate(models):
+    for j, hop in enumerate(n_hops_vals):
+        # Compute x position for this box for the current model
+        pos = i - group_width/2 + (j + 0.5) * box_width
+        positions.append(pos)
+        # Filter data for this model and n_hops value
+        data = main_df[(main_df['model_name'] == model) & (main_df['n_hops'] == hop)]['total_tokens']
+        box_data.append(data)
+
+# Create a color map: one color per n_hops category
+colors = plt.cm.viridis(np.linspace(0, 1, n_groups))
+
+# Create the grouped box plot with patch_artist to allow coloring
+fig, ax = plt.subplots(figsize=(12, 6))
+bp = ax.boxplot(box_data, positions=positions, widths=box_width, patch_artist=True, showfliers=False)
+
+# Color each box according to its n_hops category.
+# The boxes are organized such that for each model, the boxes appear in order of n_hops.
+for box_idx, patch in enumerate(bp['boxes']):
+    # Determine which n_hops group this box belongs to:
+    group_idx = box_idx % n_groups
+    patch.set_facecolor(colors[group_idx])
+
+# Set the x-ticks to the center of each model group
+group_centers = np.arange(n_models)
+ax.set_xticks(group_centers)
+ax.set_xticklabels(models, rotation=0)  # Horizontal labels
+ax.set_xlabel('Model')
+ax.set_ylabel('Total Tokens')
+ax.set_title('Distribution of Total Tokens by Model and n_hops')
+
+# Create legend handles for each n_hops category
+legend_handles = [mpatches.Patch(color=colors[j], label=f'n_hops = {n_hops_vals[j]}') for j in range(n_groups)]
+ax.legend(handles=legend_handles, title='n_hops')
+
+plt.tight_layout()
+plt.savefig(os.path.join(analysis_folder, 'total_tokens_grouped_by_n_hops.png'))
+plt.close()
+
+
+import os
+import matplotlib.pyplot as plt
+
+# Ensure the analysis folder exists
+analysis_folder = 'analysis'
+os.makedirs(analysis_folder, exist_ok=True)
+
+# Compute a new column for total tokens used if not already computed
+if 'total_tokens' not in main_df.columns:
+    main_df['total_tokens'] = main_df['input_tokens'] + main_df['output_tokens'] + main_df['reasoning_tokens']
+
+# Get sorted unique models
+models = sorted(main_df['model_name'].unique())
+n_models = len(models)
+
+# Create a figure with a subplot for each model
+fig, axes = plt.subplots(1, n_models, figsize=(10*n_models,6 ), sharey=True)
+
+# If there's only one model, ensure axes is iterable
+if n_models == 1:
+    axes = [axes]
+
+for ax, model in zip(axes, models):
+    # Filter data for the current model
+    model_data = main_df[main_df['model_name'] == model]
+    
+    # Get sorted unique n_hops values for this model
+    n_hops_vals = sorted(model_data['n_hops'].unique())
+    
+    # Prepare the box plot data: one distribution per n_hops value
+    box_data = [model_data[model_data['n_hops'] == hop]['total_tokens'] for hop in n_hops_vals]
+    
+    # Create the box plot for this model
+    ax.boxplot(box_data, tick_labels=n_hops_vals, showfliers=False)
+    ax.set_xlabel('n_hops')
+    ax.set_ylabel('Total Tokens')
+    ax.set_title(f'{model}: Distribution of Total Tokens by n_hops')
+    ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+plt.tight_layout()
+plt.savefig(os.path.join(analysis_folder, 'total_tokens_multiplot.png'))
+plt.close()
+
+
+
+############################ Latency Distribution #################
+
+
+
+import os
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+
+# Ensure the analysis folder exists
+analysis_folder = 'analysis'
+os.makedirs(analysis_folder, exist_ok=True)
+
+# Get sorted unique models and n_hops values
+models = sorted(main_df['model_name'].unique())
+n_hops_vals = sorted(main_df['n_hops'].unique())
+n_models = len(models)
+n_groups = len(n_hops_vals)
+
+# Settings for grouping: total width allocated for boxes for each model
+group_width = 0.8  
+box_width = group_width / n_groups
+
+# Prepare data and positions for each box
+box_data = []  # List to hold the data for each box
+positions = [] # List to hold the x position for each box
+
+for i, model in enumerate(models):
+    for j, hop in enumerate(n_hops_vals):
+        # Compute x position for this box for the current model
+        pos = i - group_width/2 + (j + 0.5) * box_width
+        positions.append(pos)
+        # Filter data for this model and n_hops value
+        data = main_df[(main_df['model_name'] == model) & (main_df['n_hops'] == hop)]['latency']
+        box_data.append(data)
+
+# Create a color map: one color per n_hops category
+colors = plt.cm.viridis(np.linspace(0, 1, n_groups))
+
+# Create the grouped box plot with patch_artist to allow coloring
+fig, ax = plt.subplots(figsize=(12, 6))
+bp = ax.boxplot(box_data, positions=positions, widths=box_width, patch_artist=True, showfliers=False)
+
+# Color each box according to its n_hops category.
+# The boxes are organized such that for each model, the boxes appear in order of n_hops.
+for box_idx, patch in enumerate(bp['boxes']):
+    # Determine which n_hops group this box belongs to:
+    group_idx = box_idx % n_groups
+    patch.set_facecolor(colors[group_idx])
+
+# Set the x-ticks to the center of each model group
+group_centers = np.arange(n_models)
+ax.set_xticks(group_centers)
+ax.set_xticklabels(models, rotation=0)  # Horizontal labels
+ax.set_xlabel('Model')
+ax.set_ylabel('Latency')
+ax.set_title('Distribution of Latency by Model and n_hops')
+
+# Create legend handles for each n_hops category
+legend_handles = [mpatches.Patch(color=colors[j], label=f'n_hops = {n_hops_vals[j]}') for j in range(n_groups)]
+ax.legend(handles=legend_handles, title='n_hops')
+
+plt.tight_layout()
+plt.savefig(os.path.join(analysis_folder, 'latency_grouped_by_n_hops.png'))
+plt.close()
+
+
+import os
+import matplotlib.pyplot as plt
+
+# Ensure the analysis folder exists
+analysis_folder = 'analysis'
+os.makedirs(analysis_folder, exist_ok=True)
+
+
+# Get sorted unique models
+models = sorted(main_df['model_name'].unique())
+n_models = len(models)
+
+# Create a figure with a subplot for each model
+fig, axes = plt.subplots(1, n_models, figsize=(10*n_models,6 ), sharey=True)
+
+# If there's only one model, ensure axes is iterable
+if n_models == 1:
+    axes = [axes]
+
+for ax, model in zip(axes, models):
+    # Filter data for the current model
+    model_data = main_df[main_df['model_name'] == model]
+    
+    # Get sorted unique n_hops values for this model
+    n_hops_vals = sorted(model_data['n_hops'].unique())
+    
+    # Prepare the box plot data: one distribution per n_hops value
+    box_data = [model_data[model_data['n_hops'] == hop]['latency'] for hop in n_hops_vals]
+    
+    # Create the box plot for this model
+    ax.boxplot(box_data, tick_labels=n_hops_vals, showfliers=False)
+    ax.set_xlabel('n_hops')
+    ax.set_ylabel('Latency')
+    ax.set_title(f'{model}: Distribution of Latency by n_hops')
+    ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+plt.tight_layout()
+plt.savefig(os.path.join(analysis_folder, 'latency_multiplot.png'))
+plt.close()
+
