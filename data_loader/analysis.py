@@ -33,6 +33,22 @@ model_name_mapping = {
     "deepseek-ai/deepseek-r1": "Deepseek R1"
 }
 
+def get_model_type(model_name):
+    # Mapping for claude models (Anthropic Claude)
+    if any(keyword in model_name.lower() for keyword in ['claude']):
+        return 'claude'
+    # Mapping for llama (Meta LLaMA3)
+    elif 'llama' in model_name:
+        return 'llama'
+    # Mapping for mistral models
+    elif 'mistral' in model_name.lower():
+        return 'mistral'
+    # Mapping for deepseek models
+    elif 'deepseek' in model_name.lower():
+        return 'deepseek'
+    # Mapping for openai models (if none of the above match)
+    else:
+        return 'openai'
 
 # Function to plot and save a figure given a dataframe and metric name
 def plot_metric(df, metric, title_suffix, filename):
@@ -122,8 +138,12 @@ general_df['context_used'] = general_df['context_used'].astype(bool)
 
 # Create a pivot table from general_df with model_name as rows,
 # context_used as columns, and accuracy ("is_correct") as values.
+custom_order = {'claude': 0, 'llama': 1, 'mistral': 2, 'deepseek': 3, 'openai': 4}
 pivot = general_df.pivot(index='model_name', columns='context_used', values='is_correct')
-
+pivot['overall_accuracy'] = pivot.mean(axis=1)
+pivot['model_type'] = pivot.index.map(get_model_type)
+pivot['type_order'] = pivot['model_type'].map(custom_order)
+pivot =  pivot.sort_values(by=['type_order', 'overall_accuracy'], ascending=[True, False])
 # Debug: Print the pivot table's columns to see what we have
 # print("Pivot columns:", pivot.columns.tolist())
 
@@ -133,10 +153,12 @@ pivot = pivot.reindex(columns=[False, True])
 # Prepare the bar chart
 models = pivot.index.tolist()
 models= [item.replace('responses_','') for item in models]
+sorted_models = [item.replace('responses_', '') for item in pivot.index.tolist()]
+
 x = np.arange(len(models))  # label locations for models
 bar_width = 0.2
 
-plt.figure(figsize=(20, 12))
+plt.figure(figsize=(15, 9))
 # Bars for "Without Context" (False)
 bars1 = plt.bar(x - bar_width/2, pivot[False], bar_width, label='Without Context')
 # Bars for "With Context" (True)
@@ -147,7 +169,7 @@ plt.ylabel('Accuracy')
 plt.title('Accuracy by Model with/without Context')
 plt.xticks(x, models, rotation=0)  # Set labels horizontal (0 degrees)
 plt.legend(title='Context Used')
-plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.grid(axis='y', linestyle='--', alpha=0.3)
 plt.tight_layout()
 
 # Add numerical values above each bar
@@ -169,6 +191,43 @@ for bar in bars2:
 # Save the figure
 plt.savefig(os.path.join(analysis_folder, 'accuracy_bar_models.png'))
 plt.close()
+
+
+
+# Prepare data list for tokens used
+token_data = []
+for model in sorted_models:
+    df_model = main_df[main_df['model_name'] == model]
+    token_data.append((df_model['output_tokens'] + df_model['input_tokens']).values)
+
+plt.figure(figsize=(20, 12))
+plt.boxplot(token_data, labels=sorted_models, patch_artist=True, showfliers=False)
+plt.title('Distribution of Number of Tokens Used')
+plt.xlabel('Model')
+plt.ylabel('Number of Tokens')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.savefig(os.path.join(analysis_folder, 'boxplot_tokens.png'))
+plt.close()
+
+# Prepare data list for latency
+latency_data = []
+for model in sorted_models:
+    df_model = main_df[main_df['model_name'] == model]
+    latency_data.append(df_model['latency'].values)
+
+plt.figure(figsize=(20, 12))
+plt.boxplot(latency_data, labels=sorted_models, patch_artist=True, showfliers=False)
+plt.title('Distribution of Latency')
+plt.xlabel('Model')
+plt.ylabel('Latency (ms)')  # Adjust unit if needed
+plt.grid(axis='y', linestyle='--', alpha=0.3)
+plt.tight_layout()
+plt.savefig(os.path.join(analysis_folder, 'boxplot_latency.png'))
+plt.close()
+
+
+
 
 
 ######################### Number of hops #####################################
@@ -208,9 +267,6 @@ plot_grouped_by_n_hops(df_without_context, "Without Context", "accuracy_by_model
 
 ################## Number of Tokens Distribution ##############################
 
-# Ensure the analysis folder exists
-analysis_folder = 'analysis'
-os.makedirs(analysis_folder, exist_ok=True)
 
 # Create a new column for total tokens used
 main_df['total_tokens'] = main_df['input_tokens'] + main_df['output_tokens'] 
@@ -245,9 +301,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-# Ensure the analysis folder exists
-analysis_folder = 'analysis'
-os.makedirs(analysis_folder, exist_ok=True)
 
 # Compute a new column for total tokens used if not already computed
 if 'total_tokens' not in main_df.columns:
@@ -310,10 +363,6 @@ plt.close()
 import os
 import matplotlib.pyplot as plt
 
-# Ensure the analysis folder exists
-analysis_folder = 'analysis'
-os.makedirs(analysis_folder, exist_ok=True)
-
 # Compute a new column for total tokens used if not already computed
 if 'total_tokens' not in main_df.columns:
     main_df['total_tokens'] = main_df['input_tokens'] + main_df['output_tokens'] + main_df['reasoning_tokens']
@@ -361,9 +410,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-# Ensure the analysis folder exists
-analysis_folder = 'analysis'
-os.makedirs(analysis_folder, exist_ok=True)
 
 # Get sorted unique models and n_hops values
 models = sorted(main_df['model_name'].unique())
@@ -422,9 +468,6 @@ plt.close()
 import os
 import matplotlib.pyplot as plt
 
-# Ensure the analysis folder exists
-analysis_folder = 'analysis'
-os.makedirs(analysis_folder, exist_ok=True)
 
 
 # Get sorted unique models
