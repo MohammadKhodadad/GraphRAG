@@ -38,7 +38,7 @@ def get_model_type(model_name):
     if any(keyword in model_name.lower() for keyword in ['claude']):
         return 'claude'
     # Mapping for llama (Meta LLaMA3)
-    elif 'llama' in model_name:
+    elif 'llama' in model_name.lower():
         return 'llama'
     # Mapping for mistral models
     elif 'mistral' in model_name.lower():
@@ -192,39 +192,155 @@ for bar in bars2:
 plt.savefig(os.path.join(analysis_folder, 'accuracy_bar_models.png'))
 plt.close()
 
+import os
+import numpy as np
+import matplotlib.pyplot as plt
 
+# Assuming main_df, sorted_models, and analysis_folder are already defined.
+# sorted_models is the list of model names in desired order.
+# Also, main_df should have a boolean column "context_used".
 
-# Prepare data list for tokens used
-token_data = []
+# --- Boxplot for Tokens (split by context) ---
+
+# Prepare data lists for tokens used by context
+token_data_without = []  # for context_used == False
+token_data_with = []     # for context_used == True
+
 for model in sorted_models:
     df_model = main_df[main_df['model_name'] == model]
-    token_data.append((df_model['output_tokens'] + df_model['input_tokens']).values)
+    tokens_without = (df_model[df_model['context_used'] == False]['input_tokens'] +
+                      df_model[df_model['context_used'] == False]['output_tokens']).values
+    tokens_with = (df_model[df_model['context_used'] == True]['input_tokens'] +
+                   df_model[df_model['context_used'] == True]['output_tokens']).values
+    token_data_without.append(tokens_without)
+    token_data_with.append(tokens_with)
+
+# Set positions for side-by-side boxplots for each model
+num_models = len(sorted_models)
+x = np.arange(num_models)
+box_width = 0.35  # width for each box
+
+positions_without = x - box_width/2
+positions_with = x + box_width/2
 
 plt.figure(figsize=(20, 12))
-plt.boxplot(token_data, labels=sorted_models, patch_artist=True, showfliers=False)
-plt.title('Distribution of Number of Tokens Used')
+
+# Create boxplots
+bp_without = plt.boxplot(token_data_without,
+                         positions=positions_without,
+                         widths=box_width,
+                         patch_artist=True,
+                         showfliers=False)
+bp_with = plt.boxplot(token_data_with,
+                      positions=positions_with,
+                      widths=box_width,
+                      patch_artist=True,
+                      showfliers=False)
+
+# Optional: Color customization
+for box in bp_without['boxes']:
+    box.set(facecolor='lightblue')
+for box in bp_with['boxes']:
+    box.set(facecolor='lightgreen')
+
+plt.yscale('log')  # Log-normalize the y-axis
+plt.xticks(x, sorted_models)
 plt.xlabel('Model')
-plt.ylabel('Number of Tokens')
+plt.ylabel('Number of Tokens (log scale)')
+plt.title('Distribution of Number of Tokens Used by Model (split by Context)')
 plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+# Custom legend using the first box from each group
+plt.legend([bp_without['boxes'][0], bp_with['boxes'][0]],
+           ['Without Context', 'With Context'],
+           loc='upper right')
+
 plt.tight_layout()
-plt.savefig(os.path.join(analysis_folder, 'boxplot_tokens.png'))
+plt.savefig(os.path.join(analysis_folder, 'boxplot_tokens_by_context.png'))
 plt.close()
 
-# Prepare data list for latency
-latency_data = []
+
+# --- Boxplot for Latency (split by context) ---
+
+latency_data_without = []  # for context_used == False
+latency_data_with = []     # for context_used == True
+
 for model in sorted_models:
     df_model = main_df[main_df['model_name'] == model]
-    latency_data.append(df_model['latency'].values)
+    latency_without = df_model[df_model['context_used'] == False]['latency'].values
+    latency_with = df_model[df_model['context_used'] == True]['latency'].values
+    latency_data_without.append(latency_without)
+    latency_data_with.append(latency_with)
 
 plt.figure(figsize=(20, 12))
-plt.boxplot(latency_data, labels=sorted_models, patch_artist=True, showfliers=False)
-plt.title('Distribution of Latency')
+
+# Use the same positions as before
+bp_latency_without = plt.boxplot(latency_data_without,
+                                 positions=positions_without,
+                                 widths=box_width,
+                                 patch_artist=True,
+                                 showfliers=False)
+bp_latency_with = plt.boxplot(latency_data_with,
+                              positions=positions_with,
+                              widths=box_width,
+                              patch_artist=True,
+                              showfliers=False)
+
+# Optional: Color customization
+for box in bp_latency_without['boxes']:
+    box.set(facecolor='lightcoral')
+for box in bp_latency_with['boxes']:
+    box.set(facecolor='lightgoldenrodyellow')
+
+plt.xticks(x, sorted_models)
 plt.xlabel('Model')
 plt.ylabel('Latency (ms)')  # Adjust unit if needed
-plt.grid(axis='y', linestyle='--', alpha=0.3)
+plt.title('Distribution of Latency by Model (split by Context)')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+plt.legend([bp_latency_without['boxes'][0], bp_latency_with['boxes'][0]],
+           ['Without Context', 'With Context'],
+           loc='upper right')
+
 plt.tight_layout()
-plt.savefig(os.path.join(analysis_folder, 'boxplot_latency.png'))
+plt.savefig(os.path.join(analysis_folder, 'boxplot_latency_by_context.png'))
 plt.close()
+
+
+
+
+
+# # Prepare data list for tokens used
+# token_data = []
+# for model in sorted_models:
+#     df_model = main_df[main_df['model_name'] == model]
+#     token_data.append((df_model['output_tokens'] + df_model['input_tokens']).values)
+
+# plt.figure(figsize=(20, 12))
+# plt.boxplot(token_data, labels=sorted_models, patch_artist=True, showfliers=False)
+# plt.title('Distribution of Number of Tokens Used')
+# plt.xlabel('Model')
+# plt.ylabel('Number of Tokens')
+# plt.grid(axis='y', linestyle='--', alpha=0.7)
+# plt.tight_layout()
+# plt.savefig(os.path.join(analysis_folder, 'boxplot_tokens.png'))
+# plt.close()
+
+# # Prepare data list for latency
+# latency_data = []
+# for model in sorted_models:
+#     df_model = main_df[main_df['model_name'] == model]
+#     latency_data.append(df_model['latency'].values)
+
+# plt.figure(figsize=(20, 12))
+# plt.boxplot(latency_data, labels=sorted_models, patch_artist=True, showfliers=False)
+# plt.title('Distribution of Latency')
+# plt.xlabel('Model')
+# plt.ylabel('Latency (ms)')  # Adjust unit if needed
+# plt.grid(axis='y', linestyle='--', alpha=0.3)
+# plt.tight_layout()
+# plt.savefig(os.path.join(analysis_folder, 'boxplot_latency.png'))
+# plt.close()
 
 
 
@@ -240,18 +356,18 @@ hops_df.to_csv(os.path.join(analysis_folder, 'hops_df.csv'), index=False)
 df_with_context = hops_df[hops_df['context_used'] == True]
 df_without_context = hops_df[hops_df['context_used'] == False]
 
-# Plotting for accuracy
-plot_metric(df_with_context, 'is_correct', 'With Context', 'accuracy_with_context.png')
-plot_metric(df_without_context, 'is_correct', 'Without Context', 'accuracy_without_context.png')
+# # Plotting for accuracy
+# plot_metric(df_with_context, 'is_correct', 'With Context', 'accuracy_with_context.png')
+# plot_metric(df_without_context, 'is_correct', 'Without Context', 'accuracy_without_context.png')
 
 
-# Plotting for output_tokens
-plot_metric(df_with_context, 'output_tokens', 'With Context', 'output_tokens_with_context.png')
-plot_metric(df_without_context, 'output_tokens', 'Without Context', 'output_tokens_without_context.png')
+# # Plotting for output_tokens
+# plot_metric(df_with_context, 'output_tokens', 'With Context', 'output_tokens_with_context.png')
+# plot_metric(df_without_context, 'output_tokens', 'Without Context', 'output_tokens_without_context.png')
 
-# Plotting for latency
-plot_metric(df_with_context, 'latency', 'With Context', 'latency_with_context.png')
-plot_metric(df_without_context, 'latency', 'Without Context', 'latency_without_context.png')
+# # Plotting for latency
+# plot_metric(df_with_context, 'latency', 'With Context', 'latency_with_context.png')
+# plot_metric(df_without_context, 'latency', 'Without Context', 'latency_without_context.png')
 
 
 # Plot for responses with context
@@ -268,27 +384,27 @@ plot_grouped_by_n_hops(df_without_context, "Without Context", "accuracy_by_model
 ################## Number of Tokens Distribution ##############################
 
 
-# Create a new column for total tokens used
-main_df['total_tokens'] = main_df['input_tokens'] + main_df['output_tokens'] 
+# # Create a new column for total tokens used
+# main_df['total_tokens'] = main_df['input_tokens'] + main_df['output_tokens'] 
 
-# Get the unique models
-models = main_df['model_name'].unique()
+# # Get the unique models
+# models = main_df['model_name'].unique()
 
-# Prepare data: for each model, extract the distribution of total tokens
-data = [main_df.loc[main_df['model_name'] == model, 'total_tokens'] for model in models]
+# # Prepare data: for each model, extract the distribution of total tokens
+# data = [main_df.loc[main_df['model_name'] == model, 'total_tokens'] for model in models]
 
-# Create a box plot for the distribution of total tokens used per model, without outlier markers
-plt.figure(figsize=(20, 12))
-plt.boxplot(data, tick_labels=models, showfliers=False)
-plt.xlabel('Model')
-plt.ylabel('Total Tokens')
-plt.title('Distribution of Total Tokens Used per Model (Outliers Hidden)')
-plt.grid(axis='y', linestyle='--', alpha=0.7)
-plt.tight_layout()
+# # Create a box plot for the distribution of total tokens used per model, without outlier markers
+# plt.figure(figsize=(20, 12))
+# plt.boxplot(data, tick_labels=models, showfliers=False)
+# plt.xlabel('Model')
+# plt.ylabel('Total Tokens')
+# plt.title('Distribution of Total Tokens Used per Model (Outliers Hidden)')
+# plt.grid(axis='y', linestyle='--', alpha=0.7)
+# plt.tight_layout()
 
-# Save the figure in the analysis folder
-plt.savefig(os.path.join(analysis_folder, 'total_tokens_boxplot.png'))
-plt.close()
+# # Save the figure in the analysis folder
+# plt.savefig(os.path.join(analysis_folder, 'total_tokens_boxplot.png'))
+# plt.close()
 
 
 
@@ -360,8 +476,6 @@ plt.savefig(os.path.join(analysis_folder, 'total_tokens_grouped_by_n_hops.png'))
 plt.close()
 
 
-import os
-import matplotlib.pyplot as plt
 
 # Compute a new column for total tokens used if not already computed
 if 'total_tokens' not in main_df.columns:

@@ -426,7 +426,7 @@ class Evaluate:
         responses_save_path: str = None,
         verifier_provider: Provider = Provider.OPENAI,
         verifier_model: str = "gpt-4o",
-        num_workers: int = 2,
+        num_workers: int = 1,
         bedrock_cooldown: float = 1.0,
     ):
         self.qa_llm = qa_llm
