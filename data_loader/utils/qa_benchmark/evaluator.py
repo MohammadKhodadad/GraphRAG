@@ -33,13 +33,11 @@ class Answer(BaseModel):
 
 
 class AreSimilar(BaseModel):
-    are_the_same: bool = Field(
-        ..., description="Whether the two entities are the same."
-    )
+    are_the_same: bool = Field(..., description="Whether the two answers are the same.")
 
 
 JSON_ENFORCE = (
-    "Please return only the raw JSON string (no markdown) that strictly conforms to the following JSON schema, with no additional text: {json_schema}"
+    "Please return only the raw JSON string that strictly conforms to the following JSON schema, with no additional text: {json_schema}"
     "Example: {example}"
 )
 
@@ -65,7 +63,6 @@ class ModelRegistry:
             "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
             "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
             "us.meta.llama3-3-70b-instruct-v1:0",
-            "anthropic.claude-3-5-sonnet-20240620-v1:0",
             "mistral.mistral-large-2402-v1:0",
             "us.anthropic.claude-3-7-sonnet-20250219-v1:0-reasoning",
             "us.deepseek.r1-v1:0-reasoning",
@@ -226,30 +223,50 @@ class StructuredLLM:
 
         return parsed_output
 
-    def _process_unstructured_stream(self, stream: Iterable[AIMessage]):
-        responses = []
-        usage_metadata = {}
-        text = ""
-        reason = ""
-        for x in stream:
-            if x.content:
-                for content in x.content:
-                    if "type" in content and content["type"] == "text":
-                        text += content["text"]
-                    if "type" in content and content["type"] == "reasoning_content":
-                        reasoning_content = content["reasoning_content"]
-                        if "text" in reasoning_content:
-                            reason += reasoning_content["text"]
-            if x.response_metadata:
-                if "metrics" in x.response_metadata:
-                    latency = x.response_metadata["metrics"]["latencyMs"]
-                    latency = latency[0] if isinstance(latency, list) else latency
-            if x.usage_metadata:
-                usage_metadata["input_tokens"] = x.usage_metadata["input_tokens"]
-                usage_metadata["output_tokens"] = x.usage_metadata["output_tokens"]
-            responses.append(x)
-        parsed_output = self._parse_json_from_text(text)
-        return {"raw": responses}, reason, parsed_output, latency, usage_metadata
+    def _extract_from_content(
+        self, content: Union[str, List[AIMessage]]
+    ) -> Tuple[str, str]:
+        """Extract raw_response and reasoning from model response content."""
+        raw_response, reason = None, None
+        try:
+            if isinstance(content, str):
+                raw_response = content
+            elif isinstance(content, list):
+                # We only have reasoning content if `content` is a list
+                reason = next(
+                    (
+                        item["reasoning_content"]["text"]
+                        for item in content
+                        if item.get("type") == "reasoning_content"
+                    ),
+                    None,
+                )
+                # We don't use tool call for these models, just raw json output
+                if self.model_id in [
+                    "us.deepseek.r1-v1:0",
+                    "mistral.mistral-large-2402-v1:0",
+                ]:
+                    raw_response = next(
+                        (
+                            item["text"]
+                            for item in content
+                            if item.get("type") == "text"
+                        ),
+                        None,
+                    )
+                else:
+                    raw_response = next(
+                        (
+                            item["input"]
+                            for item in content
+                            if item.get("type") == "tool_use"
+                        ),
+                        None,
+                    )
+        except Exception as e:
+            raw_response = None
+
+        return raw_response, reason
 
     def _get_bedrock_llm(self):
         """Get the Bedrock LLM model based on the model name and temperature."""
@@ -262,45 +279,29 @@ class StructuredLLM:
         )
         llm = (
             llm.with_structured_output(self.output_format, include_raw=True)
-            if not self.is_reasoning
+            if self.model_id
+            not in ["us.deepseek.r1-v1:0", "mistral.mistral-large-2402-v1:0"]
             else llm
         )
         return llm
 
     def _call_bedrock(self, messages: list[dict]) -> Dict[str, Any]:
         """Call the Bedrock LLM model with the given message."""
-        reason = None
-        if self.model_id in [
-            "us.deepseek.r1-v1:0",
-            "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
-            "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
-            "us.meta.llama3-3-70b-instruct-v1:0",
-        ]:
-            streams = self.bedrock_llm.stream(messages)
-            if self.is_reasoning:
-                response, reason, parsed_output, latency, usage_metadata = (
-                    self._process_unstructured_stream(streams)
-                )
-            else:
-                response = next(streams)
-                latency = response["raw"].response_metadata["metrics"]["latencyMs"]
-                latency = latency[0] if isinstance(latency, list) else latency
-                usage_metadata = response["raw"].usage_metadata
-                output_text = (
-                    response["raw"].content[0]["input"]
-                    if isinstance(response["raw"].content, list)
-                    else response["raw"].content
-                )
-                parsed_output = self._parse_json_from_text(output_text)
-
+        response = self.bedrock_llm.invoke(messages)
+        if self.model_id in ["us.deepseek.r1-v1:0", "mistral.mistral-large-2402-v1:0"]:
+            content = response.content
+            raw_response, reason = self._extract_from_content(content)
+            parsed_output = self._parse_json_from_text(raw_response)
         else:
-            response = self.bedrock_llm.invoke(messages)
-            usage_metadata = response["raw"].usage_metadata
             parsed_output = response["parsed"]
-            latency = response["raw"].response_metadata["metrics"]["latencyMs"][0]
+            response = response["raw"]
+            raw_response, reason = self._extract_from_content(response.content)
+
+        usage_metadata = response.usage_metadata
+        latency = response.response_metadata["metrics"]["latencyMs"][0]
 
         output = {
-            "raw_response": response["raw"],
+            "raw_response": raw_response,
             "parsed_output": parsed_output,
             "date": datetime.now(),
             "latency": latency,
@@ -320,9 +321,8 @@ class StructuredLLM:
                 messages=messages,
                 max_completion_tokens=self.max_completion_tokens,
             )
-            parsed_output = self._parse_json_from_text(
-                response.choices[0].message.content
-            )
+            raw_response = response.choices[0].message.content
+            parsed_output = self._parse_json_from_text(raw_response)
         else:
             response = self.client.beta.chat.completions.parse(
                 model=self.model_id,
@@ -331,10 +331,11 @@ class StructuredLLM:
                 temperature=self.temperature,
                 max_completion_tokens=self.max_completion_tokens,
             )
+            raw_response = response.choices[0].message.content
             parsed_output = response.choices[0].message.parsed
         elapsed_ms = (time.time() - now) * 1000
         output = {
-            "raw_response": response,
+            "raw_response": raw_response,
             "parsed_output": parsed_output,
             "date": datetime.now(),
             "latency": elapsed_ms,
@@ -369,7 +370,7 @@ class StructuredLLM:
         parsed_output = self._parse_json_from_text(text_to_parse)
 
         output = {
-            "raw_response": response,
+            "raw_response": text_to_parse,
             "parsed_output": parsed_output,
             "reasoning_tokens": reasoning_tokens,
             "date": datetime.now(),
@@ -399,7 +400,7 @@ class StructuredLLM:
 
     def __call__(self, prompt: str) -> Dict[str, Any]:
         """Evaluate the given messages using the appropriate LLM model."""
-        # Todo: Add support for dynamic example, instead of hardcoding
+        # TODO: Add support for dynamic example, instead of hardcoding
         json_schema = JSON_ENFORCE.format(
             json_schema=self.output_format.model_json_schema(),
             example='{"entity": "Aspirin"}',
@@ -510,6 +511,7 @@ class Evaluate:
         return {
             "candidate": candidate,
             "is_correct": is_correct,
+            "raw_response": response.get("raw_response", None),
             "context_used": False,
             "input_tokens": response.get("input_tokens", 0),
             "output_tokens": response.get("output_tokens", 0),
@@ -550,6 +552,7 @@ class Evaluate:
         return {
             "candidate": candidate,
             "is_correct": is_correct,
+            "raw_response": response.get("raw_response", None),
             "context_used": True,
             "input_tokens": response.get("input_tokens", 0),
             "output_tokens": response.get("output_tokens", 0),
